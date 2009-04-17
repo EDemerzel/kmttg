@@ -1,0 +1,9 @@
+=Known Issues=
+
+===Encoding profile names must be all lowercase to work in auto mode===
+
+If you make your own encoding profiles (name.enc files under encode folder) be sure to use all lowercase file names otherwise they won't work when used in auto transfers mode.
+
+===VRD QS fix===
+
+Currently VideoRedo Quickstream Fix doesn't work when run as a windows service, so if using kmttg in windows service mode you need to avoid enabling VRD QS fix step.
