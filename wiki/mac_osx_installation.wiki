@@ -55,7 +55,7 @@ sudo make install
 
   * Perl and Tk are now ready. Change the permissions for “/System/Library/Perl/lib” back to what they were when you began. (This step may not be necessary, but I like to keep my Mac tidy)
 
-==INSTALL THE HELPER TOOLS==
+==4. INSTALL THE HELPER TOOLS==
 AudioNutz was kind enough to package up a zip file with the tools needed:
 <br>
 http://kmttg.googlecode.com/files/kmttg_MacOSX_tools_v0p5m.zip
