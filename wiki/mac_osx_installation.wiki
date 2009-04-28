@@ -20,3 +20,37 @@ If by some miracle your Macintosh does not have Perl installed:
   * Click on Continue
   * For 5.8.x version (on right side) scroll down and find the relevant installation file for your system
   * Download and install on your system. NOTE: This step can vary depending on your system so is not documented here.
+
+==3. INSTALLING PERL Tk MODULE USING Terminal and X11==
+  * http://search.cpan.org/~ni-s/Tk-804.027/
+  * If you are using Safari, make sure that your browser is not set to “Open safe files after downloading”.
+  * Download the latest release.
+  * Move the Tk-804.028.tar.gz to your /System/Library/Perl/lib folder I suppose you can put it anywhere you like. I just put it here to keep things tidy.
+  * Change permissions of this folder, so that you have rights to install software here. (Make a note as to what the permissions were, as you will want to change them back later)
+  * Open a Terminal window, and execute the following commands: (May differ if you’ve changed the install location)
+
+BUILD EXAMPLE
+
+cd /System/Library/Perl/lib
+
+tar -zxvpf Tk-804.028.tar.gz
+
+cd Tk-804.028
+
+perl Makefile.PL
+
+make
+
+Now go to your “Utilities” folder on your Hard Drive, and open an X11 window.
+
+In the X11 window, type the following commands :
+
+cd /System/Library/Perl/lib/Tk-804.028
+
+make test
+
+(Stand back and watch this happen)
+
+sudo make install
+
+  * Perl and Tk are now ready. Change the permissions for “/System/Library/Perl/lib” back to what they were when you began. (This step may not be necessary, but I like to keep my Mac tidy)
