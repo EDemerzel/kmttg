@@ -32,25 +32,25 @@ If by some miracle your Macintosh does not have Perl installed:
 BUILD EXAMPLE
 
 cd /System/Library/Perl/lib
-
+<br>
 tar -zxvpf Tk-804.028.tar.gz
-
+<br>
 cd Tk-804.028
-
+<br>
 perl Makefile.PL
-
+<br>
 make
-
+<br>
 Now go to your “Utilities” folder on your Hard Drive, and open an X11 window.
-
+<br>
 In the X11 window, type the following commands :
-
+<br>
 cd /System/Library/Perl/lib/Tk-804.028
-
+<br>
 make test
-
+<br>
 (Stand back and watch this happen)
-
+<br>
 sudo make install
 
   * Perl and Tk are now ready. Change the permissions for “/System/Library/Perl/lib” back to what they were when you began. (This step may not be necessary, but I like to keep my Mac tidy)
