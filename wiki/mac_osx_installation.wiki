@@ -1,0 +1,22 @@
+=KMTTG MAC OSX INSTALLATION=
+
+(special thanks to AudioNutz in Tivo Community forums for putting this together)
+
+==1. INSTALL XCODE TOOLS==
+The Tk module for the Perl GUI will need the X11 environment to be compiled, installed, and executed. Locate your Mac OS X installation DVD, and install the XCode Tools.
+
+==2. INSTALL PERL (ONLY IF NEEDED)==
+Most Macs with “Tiger” (Mac OS X 10.4.x) or “Leopard” (Mac OS X 10.5.x) already have Perl 5.8.x installed, so you can skip to the part below where you install the Tk module.
+
+Kmttg is written in Perl and uses the Tk module for GUI. Perl versions 5.8.x is confirmed to work as long as you have the proper Tk module.
+
+Note that Macintosh ActivePerl version does not include Tk module by default and therefore requires more work to install – see details below.
+
+If by some miracle your Macintosh does not have Perl installed:
+
+  * http://www.activestate.com/Products/activeperl/
+  * Click on Get ActivePerl
+  * Click on Download by free download version
+  * Click on Continue
+  * For 5.8.x version (on right side) scroll down and find the relevant installation file for your system
+  * Download and install on your system. NOTE: This step can vary depending on your system so is not documented here.
