@@ -1,3 +1,4 @@
+#labels Featured
 ==Encoding profile naming must be lowercase==
 If you make your own encoding profiles (name.enc files under encode folder) be sure to use all lowercase file names otherwise they won't work when used in auto transfers mode.
 
