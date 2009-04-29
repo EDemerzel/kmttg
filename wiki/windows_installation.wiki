@@ -45,3 +45,12 @@ http://code.google.com/p/kmttg/downloads/list
 
   * Unpack kmttg_vxxx.zip file to your desired location. In this example: *c:\home*
   * Unpack kmttg_win32_tools_vxxx.zip file in the kmttg folder. In this example *c:\home\kmttg*
+
+==4. STARTING KMTTG==
+Easiest way to start kmttg is to setup a desktop shortcut:
+  * Determine the path to your Perl installation and to kmttg.pl file. In this example Perl is installed in *c:\Perl* and kmttg is installed under *c:\home*
+  * Right click somewhere free on your desktop and choose *New->Shortcut*
+  * Enter *c:\Perl\bin\wperl.exe c:\home\kmttg\kmttg.pl*
+  * *Next*
+  * Use *kmttg* as name for the shortcut
+  * *Finish*
