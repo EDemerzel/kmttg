@@ -202,7 +202,7 @@ You can control services from the command line using the “sc.exe” command. E
 
 Perl scripts cannot natively be run as services in windows. Kmttg uses the “srvany.exe” program from the Windows NT Development Kit which enables any program to run as a windows service. So the kmttg service is actually running 2 binaries: srvany as well as the perl interpreter. The full command being run as a service is:
 
-*<path>/srvany/srvany.exe <path>/perl.exe <path>/kmttg.pl -a*
+*`<path>/srvany/srvany.exe <path>/perl.exe <path>/kmttg.pl -a`*
 
 The –a option to kmttg.pl indicates to run kmttg in non graphical auto download mode, running in a loop where Tivos are checked and matching shows processed.
 
