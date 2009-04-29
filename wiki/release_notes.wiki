@@ -1,16 +1,11 @@
 =RELEASE NOTES=
-{{{
-------------------
-v0.5m (04/27/2009)
-------------------
+
+==v0.5m (04/27/2009)==
 FIXES
 * Fixed problem with batch/auto mode in problem last update (typo that
   prevented batch/auto mode from running).
 
-ENHANCEMENTS
-------------------
-v0.5l (04/26/2009)
-------------------
+==v0.5l (04/26/2009)==
 ENHANCEMENTS
 * Added automatic Tivo detection which will automatically detect any Tivos
   on the LAN not already included in TIVOS list. Added option to disable
@@ -575,4 +570,3 @@ BUG FIXES:
 v0p1 (03/15/2008)
 ------------------
 Initial public release.
-}}}
