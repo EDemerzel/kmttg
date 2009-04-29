@@ -18,3 +18,23 @@
   Tivo Central—Messages&Settings—Settings—Phone&Network: IP addr
   * Click on *ADD* button to add the entry to the Tivos list
   * If you want to remove entries, then select them in the Tivos list and click on DEL button.
+
+==FILES Default Path==
+  * Defines where you would like the file browser to start from in FILES mode.
+  * NOTE: You can use this option without having any Tivos defined if you wish.
+
+ 
+==Remove .TiVo file after decrypt==
+  * Enable this option if you would like kmttg to remove .TiVo files automatically once they have been successfully decrypted to .mpg format.
+
+==Remove .edl & .mpg files after comcut==
+  * If you use comcut you can enable this option if you would like kmttg to remove .edl & .mpg files automatically once comcut completes succesfully.
+
+==Remove .mpg file after encode==
+  * If you use encode you can enable this option if you would like kmttg to remove .mpg files automatically once they have been successfully re-encoded.
+
+
+==MAK==
+  * REQUIRED if you plan to download files from Tivo Now Playing lists.
+  * Your Tivo Media Access Key. You can find the number on any of your Tivos:
+      Tivo Central—Messages&Settings—Account&System Information—Media Access Key
