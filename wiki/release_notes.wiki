@@ -1,36 +1,25 @@
 =RELEASE NOTES=
 
 ==v0.5m (04/27/2009)==
-FIXES<br>
-  * Fixed problem with batch/auto mode in problem last update (typo that
-  prevented batch/auto mode from running).
+*FIXES*
+  * Fixed problem with batch/auto mode in problem last update (typo that prevented batch/auto mode from running).
 
 ==v0.5l (04/26/2009)==
-ENHANCEMENTS
-* Added automatic Tivo detection which will automatically detect any Tivos
-  on the LAN not already included in TIVOS list. Added option to disable
-  that capability if desired. NOTE: This adds an extra file called
-  tivo_beacon.pm to the installation set.
+*ENHANCEMENTS*
+  * Added automatic Tivo detection which will automatically detect any Tivos on the LAN not already included in TIVOS list. Added option to disable that capability if desired.
+  NOTE: This adds an extra file called tivo_beacon.pm to the installation set.
   
-* Added AtomicParsley configuration option. If AtomicParsley executable is
-  defined in the configuration then kmttg will automatically add some meta
-  data to mp4 files following the encoding step.
-  NOTE: You also have to have pyTivo metadata defined/available since kmttg
-  looks for information from file.mp4.txt file for AtomicParsley run.
-  An AtomicParsley windows executable is now included as part of the win32
-  zip package.
+  * Added AtomicParsley configuration option. If AtomicParsley executable is defined in the configuration then kmttg will automatically add some meta data to mp4 files following the encoding step.
+  NOTE: You also have to have pyTivo metadata defined/available since kmttg looks for information from file.mp4.txt file for AtomicParsley run.
+  An AtomicParsley windows executable is now included as part of the win32 zip package.
   
-* Added newer versions of ffmpeg and comskip to win32 zip package.
+  * Added newer versions of ffmpeg and comskip to win32 zip package.
 
-* Changed -me to -me_method in ffmpeg profiles to make it compatible with
-  newer versions of ffmpeg. That argument is also backwards compatible.
+  * Changed -me to -me_method in ffmpeg profiles to make it compatible with newer versions of ffmpeg. That argument is also backwards compatible.
   
-* Added hb_tivo_sd & hb_tivo_hd encoding profiles. Handbrake encoding profiles
-  that work pretty well for encoding H.264 video + AC3 audio for native Tivo
-  playback. Only difference between them is higher bitrate for hd version.
+  * Added hb_tivo_sd & hb_tivo_hd encoding profiles. Handbrake encoding profiles that work pretty well for encoding H.264 video + AC3 audio for native Tivo playback. Only difference between them is higher bitrate for hd version.
   
-* Added ffmpeg ff_tivo_sd & ff_tivo_hd profiles roughly equivalent to the above
-  handbrake recipes, but ffmpeg is generally quite a bit faster than handbrake.
+  * Added ffmpeg ff_tivo_sd & ff_tivo_hd profiles roughly equivalent to the above handbrake recipes, but ffmpeg is generally quite a bit faster than handbrake.
 
 ------------------
 v0.5k (03/15/2009)
