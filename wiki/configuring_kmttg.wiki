@@ -37,7 +37,7 @@
 ==MAK==
   * REQUIRED if you plan to download files from Tivo Now Playing lists.
   * Your Tivo Media Access Key. You can find the number on any of your Tivos:
-      Tivo Central—Messages&Settings—Account&System Information—Media Access Key
+  Tivo Central—Messages&Settings—Account&System Information—Media Access Key
 
 ==File Naming==
   * This defines how file names will look for downloaded shows. Certain keywords are provided which you specify within square brackets that will be substituted accordingly. You can use almost any other characters you want (*avoid quotes!*) and arrange the keywords in any order you like.
