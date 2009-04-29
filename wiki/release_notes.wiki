@@ -1,7 +1,7 @@
 =RELEASE NOTES=
 
 ==v0.5m (04/27/2009)==
-FIXES
+FIXES<br>
 * Fixed problem with batch/auto mode in problem last update (typo that
   prevented batch/auto mode from running).
 
