@@ -1,0 +1,47 @@
+=KMTTG WINDOWS INSTALLATION INSTRUCTIONS=
+
+==1. INSTALL PERL IF NEEDED==
+
+Kmttg is written in Perl and uses the Tk module for GUI. Perl versions 5.8.x and 5.10.x are confirmed to work as long as you have the proper Tk module for each.
+
+Note that ActivePerl 5.10.x version does not include Tk module by default and therefore requires more work to install – see details below.
+
+ActivePerl 5.8.x automatically includes Tk module and can be installed as follows:
+
+http://www.activestate.com/Products/activeperl/
+
+  * Click on Get ActivePerl
+  * Click on Download by free download version
+  * Click on Continue
+  * For 5.8.x version (on right side) scroll down to windows (x86) and choose the MSI version
+  * Once the .msi file is downloaded, double-click on the file to start the installation process and pick all default installation options
+
+ActivePerl 5.10.x does NOT automatically include the Tk module, so it requires a little more work to install:
+
+http://www.activestate.com/Products/activeperl/
+
+  * Click on Get ActivePerl
+  * Click on Download by free download version
+  * Click on Continue
+  * For 5.10.x version (on left side) scroll down to windows (x86) and choose the MSI version
+  * Once the .msi file is downloaded, double-click on the file to start the installation process and pick all default installation options
+  * Once installed you can now use Perl Package Manager (PPM) to install the Tk module as follows:
+    # start—Programs—ActivePerl 5.10xx—Perl Package Manager
+    # In PPM window choose View—All Packages
+    #  Scroll down and find “Tk” and click on it to select
+    # Choose Action—Install Tk
+    # Choose File—Run Marked Actions
+
+==2. DOWNLOAD KMTTG ZIP FILES==
+
+Download kmttg zip files from:
+
+http://code.google.com/p/kmttg/downloads/list
+
+    * kmttg_vxxx.zip file – This contains the platform independent kmttg installation files
+    * kmttg_win32_tools_vxxx.zip file - This includes required and optional 3rd party tools: curl, tivodecode, ffmpeg, handbrake, mencoder, comskip, srvany, etc.
+
+==3. UNPACK ZIP FILES==
+
+  * Unpack kmttg_vxxx.zip file to your desired location. In this example: c:\home
+  * For windows users unpack kmttg_win32_tools_vxxx.zip file in the kmttg folder. In this example c:\home\kmttg
