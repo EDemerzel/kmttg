@@ -211,7 +211,7 @@ One problem of using the srvany program is there is no way to catch start, stop,
  
 ===FURTHER DETAILS ON KMTTG BACKGROUND PROCESS (LINUX)===
 
-On linux systems kmttg auto transfers program simply runs as a background process on your system using the *–a* command line option. If you reboot your system then you will need to re-start the program, or you can use the /etc/rc* method to put a script in place that will automatically start the program in background mode with the *–a* option.
+On linux systems kmttg auto transfers program simply runs as a background process on your system using the *–a* command line option. If you reboot your system then you will need to re-start the program, or you can use the /etc/rc method to put a script in place that will automatically start the program in background mode with the *–a* option.
 
  
 ===RUNNING THE AUTO TRANSFERS PROGRAM AS A BATCH COMMAND===
