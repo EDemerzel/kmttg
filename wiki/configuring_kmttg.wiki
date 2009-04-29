@@ -4,10 +4,10 @@
   * Start kmttg if you have not done so already.
   * From *File* pulldown menu select *Configure…*
   * Adjust settings according to your environment
-  * At bare minimum you should enter proper *MAK* value and define *.TiVo* dir (where to save download .TiVo files).
+  * At bare minimum you should enter proper *MAK* value and define *`.TiVo`* dir (where to save download `.TiVo` files).
   NOTE: As of version 0.5l kmttg will automatically detect any Tivos on your network and add them to Tivos list, but you can optionally add tivos yourself if you wish.
 
-  NOTE: You can specify different output directories for .TiVo files, .mpg files and encoded files if you wish or you can set them all the same.
+  NOTE: You can specify different output directories for `.TiVo` files, `.mpg` files and encoded files if you wish or you can set them all the same.
   * OK the form when you have completed your configuration. This will save your settings to config.ini file so they will be remembered next time you run kmttg.
 
 ==MANUALLY ENTERING TIVO NAMES AND IP NUMBERS==
@@ -62,7 +62,7 @@ So continuing with above example, if I set:<br>
 The `.TiVo` file name would become:<br>
 *`The Big Bang Theory – The Loobenfeld Decay (Recorded Mar 17,2008,KABCDT).TiVo`*<br>
 
-The `[/]` keyword is a folder separator which allows you to create custom sub-folder names as part of the output file definition. Continuing above example:
+The `[/]` keyword is a folder separator which allows you to create custom sub-folder names as part of the output file definition. Continuing above example:<br>
 *`File Naming = [mainTitle][/][year]_[monthNum]_[mday] [episodeTitle]`*<br>
 The `.TiVo` file name would become (using Windows folder structure note the resulting sub-folder structure):<br>
 *`The Big Bang Theory\2008_03_24 The Loobenfeld Decay.TiVo`*
