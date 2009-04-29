@@ -115,7 +115,7 @@ The advanced keyword is highlighted in bold and signifies only include `“_Ep#x
   * REQUIRED if you plan to download files from Tivo Now Playing lists.
   * Adjust to match the full path to the curl binary if you plan to download files
   * NOTE: For Windows users who installed the tools zip file this should not have to change.
-  * NOTE: Most Linux installations already have curl installed under /usr/bin/curl
+  * NOTE: Most Linux installations already have curl installed under */usr/bin/curl*
 
  
 ==ffmpeg (optional)==
@@ -136,5 +136,5 @@ The advanced keyword is highlighted in bold and signifies only include `“_Ep#x
 ==comskip (optional)==
   * REQUIRED if you plan to use comskip.
   * comskip is a public domain program that can scan an mpeg2 file and detect commercials. With default configuration it will produce a .edl file which can be fed to mencoder to cut out detected commercial segments.
-  * NOTE: comskip can be configured to output several other files too such as a bookmark .mls file for Womble Mpeg Video Wizard or a cut file for VideoRedo. Consult comskip documentation for details.
+  * NOTE: comskip can be configured to output several other files too such as a bookmark .mls file for Womble Mpeg Video Wizard or a cut file for `VideoRedo`. Consult comskip documentation for details.
   * NOTE: Accuracy varies greatly depending on the show. Comskip is most useful to use as an initial guess as to where cut points should be made. Ideally you should then use Womble, VRD or similar editor to adjust the cut points as needed.
