@@ -31,3 +31,12 @@ http://www.activestate.com/Products/activeperl/
     #  Scroll down and find “Tk” and click on it to select
     # Choose Action—Install Tk
     # Choose File—Run Marked Actions
+
+==2. DOWNLOAD KMTTG ZIP FILES==
+
+Download kmttg zip files from:
+
+http://code.google.com/p/kmttg/downloads/list
+
+    * kmttg_vxxx.zip file – This contains the platform independent kmttg installation files
+    * kmttg_win32_tools_vxxx.zip file -  For windows users this includes required and optional 3rd party tools: curl, tivodecode, ffmpeg, handbrake, mencoder, comskip, srvany, etc.
