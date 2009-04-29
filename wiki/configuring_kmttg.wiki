@@ -24,8 +24,8 @@
   * NOTE: You can use this option without having any Tivos defined if you wish.
 
  
-==Remove .TiVo file after decrypt==
-  * Enable this option if you would like kmttg to remove .TiVo files automatically once they have been successfully decrypted to .mpg format.
+==Remove `.TiVo` file after decrypt==
+  * Enable this option if you would like kmttg to remove `.TiVo` files automatically once they have been successfully decrypted to .mpg format.
 
 ==Remove .edl & .mpg files after comcut==
   * If you use comcut you can enable this option if you would like kmttg to remove .edl & .mpg files automatically once comcut completes succesfully.
