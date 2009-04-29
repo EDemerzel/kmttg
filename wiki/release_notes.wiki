@@ -89,7 +89,7 @@ that use encoding profiles you have to update them. You can do this as follows:
 *ENHANCEMENTS*
   * Added option to check for low disk space (user can specify min desired space). Option is disabled by default but can be enabled under configuration. With option enabled, jobs will not run if there is not sufficient disk space available according to specified minimum.
   * Forward slash in show name replaced with underscore to avoid undesired sub-folders.
-  * In auto transfer mode .TiVo files are now not re-downloaded if they already exist in destination dir.
+  * In auto transfer mode `.TiVo` files are now not re-downloaded if they already exist in destination dir.
   
 *FIXES*
   * tivostream profiles changed to use full paths instead of relative path such that they still work if running in windows service mode.
@@ -115,7 +115,7 @@ that use encoding profiles you have to update them. You can do this as follows:
 *ENHANCEMENTS*
   * Added "VRD QS fix" option which runs `VideoRedo` Quickstream Fix in batch mode on .mpg files (Windows only). The option is enabled only if `VideoRedo` is configured and is also available in Auto Transfers mode.
   
-  * "comcut" step will use `VideoRedo` in batch mode instead of "mencoder" for the commercial cutting step if `VideoRedo` is configured. VideoRedo does a much better job of keeping audio/video in sync when doing the cuts.
+  * "comcut" step will use `VideoRedo` in batch mode instead of "mencoder" for the commercial cutting step if `VideoRedo` is configured. `VideoRedo` does a much better job of keeping audio/video in sync when doing the cuts.
   
   NOTE: You need to configure comskip.ini to set output_videoredo=1 such that when "comskip" is run a `VideoRedo` .VPrj file is created.
   
