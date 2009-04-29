@@ -62,6 +62,6 @@
 `The .TiVo file name would become:`<br>
 *`The Big Bang Theory – The Loobenfeld Decay (Recorded Mar 17,2008,KABCDT).TiVo`*
   * `The [/] keyword is a folder separator which allows you to create custom sub-folder names as part of the output file definition. Continuing above example:`
-`File Naming = [mainTitle][/][year]_[monthNum]_[mday] [episodeTitle]`<br>
+*`File Naming = [mainTitle][/][year]_[monthNum]_[mday] [episodeTitle]`*<br>
 `The .TiVo file name would become (using Windows folder structure note the resulting sub-folder structure):`<br>
-`The Big Bang Theory\2008_03_24 The Loobenfeld Decay.TiVo`
+*`The Big Bang Theory\2008_03_24 The Loobenfeld Decay.TiVo`*
