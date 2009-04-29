@@ -17,4 +17,4 @@ NOTE: You can redirect stdout/stderr messages to files in Windows as follows:<br
 
 You can redirect console messages to files (see step 1)
 
-5. If you still can’t figure out what’s wrong send an email to moyekj@yahoo.com or P.M. moyekj at Tivo Forums.
+5. If you still can’t figure out what’s wrong ask for help at [http://www.tivocommunity.com/tivo-vb/showthread.php?t=387725 Tivo Community Forums kmttg thread]
