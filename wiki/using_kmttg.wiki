@@ -1,4 +1,4 @@
 ==USING KMTTG==
-NOTE: The first time you start kmttg you must configure kmttg by selecting *File->Configure…* menu entry. See the  wiki documentation for details on configuration options.
+NOTE: The first time you start kmttg you must configure kmttg by selecting *File->Configure…* menu entry. See the [http://code.google.com/p/kmttg/wiki/configuring_kmttg configuring_kmttg] wiki documentation for details on configuration options.
 
 Hopefully, the kmttg GUI is pretty intuitive to use. For more information on the Auto Downloads mode see the section further below. A little guidance is provided for basic usage of the GUI mode:
