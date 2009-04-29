@@ -1,0 +1,19 @@
+=DEBUGGING PROBLEMS=
+If you are having problems getting the program to start or run properly here are some things you try:
+
+1. Check the kmttg text area for errors (red text) for clues about what the problem could be.
+
+2. Triple check your configuration setup (File->Configure…) for any syntax errors in IP #s, MAK, paths, etc.
+
+3. Run program from command line:<br>
+*perl kmttg.pl*
+
+  * You will see stdout/stderr in the window. If the problem is missing Tk module (Can't locate Tk.pm ...) see installation instructions above for installing Perl with Tk module.
+  * NOTE: You can redirect stdout/stderr messages to files in Windows as follows:
+*`perl kmttg.pl >out.txt 2>err.txt`*
+
+4. kmttg will print out a lot of debugging information if you edit the kmttg.pl script and change $DEBUG variable to 1
+
+You can redirect console messages to files (see step 1)
+
+5. If you still can’t figure out what’s wrong send an email to moyekj@yahoo.com or P.M. moyekj at Tivo Forums.
