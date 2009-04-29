@@ -118,3 +118,131 @@ You can setup a more complex keyword match by specifying multiple keywords with 
   * An example is given in the Auto Transfers Configuration GUI as a reminder:
   `(basketball)|(football)|!new york`<br>
   This means match show descriptions that contain either “basketball” or “football” but don’t include any that have “new york”
+
+===Enabling desired options to perform following a download===
+Enable which tasks you want to perform following a download for each entry you define. The same options as are available in GUI mode are available here, just make sure kmttg is properly configured as described above. Note that you can define different tasks for each entry and if you are enabling encode task you can use different encoding profiles for each entry.
+
+===ADD===
+Once you are happy with an entry setup click this button to add the entry to the setup list. Note that if you click on an entry in the setup list then the form options are updated to match  the setup for that entry.
+
+===UPDATE===
+If you want to modify an entry then select the entry in the setup list to display the current configuration for the entry. Then modify configuration as desired and click on the UPDATE button to update the entry.
+
+===DEL===
+If you want to remove 1 or more entries then select them in the setup list and click on the DEL button.
+ 
+===GLOBAL SETTING: Check Tivos Interval (mins)===
+
+This defines the interval in minutes for kmttg to check your Tivos for matching shows to download and process. Once matches are found kmttg will automatically download and process all matching shows, then it will sleep for the period of time you define here before checking your Tivos again for more matches. Don’t set this number too low since that will unnecessarily create too much network activity with your Tivos.
+
+===GLOBAL SETTING: Dry Run Mode (test keywords only)===
+
+This option enabled is useful for testing your title and keyword matching setup without actually having kmttg download and process matching shows. Kmttg will simply match your titles and keyword entries versus shows on your Tivo and report which shows match in the *auto.log* file (or if you run in GUI mode you can see matching shows reported in the text area). This mode allows you to quickly test out your setup to make sure you will get the shows you want. Once you have finished debugging obviously this option should be disabled.
+
+===RUNNING AUTO TRANSFERS IN GUI MODE===
+  * *Auto Transfers->Run in GUI* menu entries enables you to run auto transfers while in GUI mode so that you can easily monitor what shows are being processed. Note that while this is a convenient way of running and monitoring auto transfers be warned that if you close the kmttg GUI then all actively running jobs will be killed, so don’t use this mode if you plan on terminating the graphical program. If you want to run auto transfers in non-graphical mode consult the sections below.
+ 
+===WORKAROUND FOR REPEATED SHOWS WITH SAME ProgramId===
+
+In order to prevent transfer of same show over and over in auto mode kmttg creates an *auto.history* file that contains *ProgramId* entries for previously downloaded shows. *ProgramId* is usually unique for every show and each episode of a series. However, there are some series where for some reason that is not the case. So for those cases once an episode is downloaded once, no further episodes will download in auto transfers mode because of this issue. To workaround this issue you can setup exceptions for *ProgramId* entries where the *auto.history* file will not be checked in auto transfers mode. To do so you must manually edit the *auto.ini* file and add a 2 line entry to bottom of the file as in following example:<br>
+`<ignorehistory>`<br>
+`SH1940720000`<br>
+
+If you have several such exceptions then add a 2 line entry as in above example for each one.
+
+===RUNNING THE AUTO TRANSFERS PROGRAM AS A SERVICE IN WINDOWS XP===
+
+*NOTE: running kmttg auto transfers as a service is still experimental and may not work for everyone (see below for notes on getting it working with Vista).*
+
+In Windows the auto transfer program can be setup to run as a Windows Service called kmttg.
+
+Use the Auto Transfers Service menu entries to enable, disable or view the status of the service:
+
+  * *Auto Transfers->Service->Status* Reports if the kmttg service is running or not
+  * *Auto Transfers->Service->Enable* Creates/Starts the kmttg service
+  * *Auto Transfers->Service->Disable* Stops the kmttg service (this doesn’t delete the service, merely stops it)
+  * *Auto Transfers->Service->Delete* Deletes the kmttg service such that it won’t automatically start running again upon reboot
+
+===SETTING UP KMTTG AS A SERVICE IN WINDOWS VISTA===
+
+Vista with it’s extra security takes more work to get kmttg running as a service. I was able to get it up and running as follows:
+
+  * Run kmttg as *“Run As Administrator”*
+  * *Auto Transfers->Service->Enable* to create the registry entries
+  * Close kmttg
+  * *Control Panel->Administrative Tools->Services*
+  * Scroll down and find *kmttg* entry
+  * Right click on *kmttg* and stop service if it is running
+  * Right click on kmttg and select *Properties*
+  * Choose *Log On* tab and select *“Local System account”*
+  * OK the form
+  * Right click on kmttg and start the service
+  * It should now be running as expected (inspect auto.log file in the same folder as kmttg.pl to check)
+
+===CHANGING KMTTG WINDOWS SERVICE STARTUP MODE===
+
+By default the kmttg service is setup as *automatic* startup mode. This means that should you restart your computer the kmttg service will automatically be started on bootup. If desired you can change the mode to manual (which means you will need to manually start and stop the service and by default the service will not start on bootup) as follows (Windows XP):
+
+  * Control Panel – Administrative Tools – Services
+  * Find the kmttg service in the list and right click and select *Properties* and change *Startup Type* to *Manual*
+  * Note that you can also stop and start the service from here if you wish
+
+ 
+===CONTROLLING KMTTG WINDOWS SERVICE FROM COMMAND LINE===
+
+You can control services from the command line using the “sc.exe” command. Examples:
+
+  * sc query kmttg
+  * sc start kmttg
+  * sc stop kmttg
+  * sc delete kmttg
+
+ 
+===FURTHER DETAILS ON KMTTG WINDOWS SERVICE===
+
+Perl scripts cannot natively be run as services in windows. Kmttg uses the “srvany.exe” program from the Windows NT Development Kit which enables any program to run as a windows service. So the kmttg service is actually running 2 binaries: srvany as well as the perl interpreter. The full command being run as a service is:
+
+*<path>/srvany/srvany.exe <path>/perl.exe <path>/kmttg.pl -a*
+
+The –a option to kmttg.pl indicates to run kmttg in non graphical auto download mode, running in a loop where Tivos are checked and matching shows processed.
+
+One problem of using the srvany program is there is no way to catch start, stop, pause signals. Hence if you turn off your computer while the kmttg service is actively processing jobs then those jobs will not be gracefully interrupted.
+
+ 
+===FURTHER DETAILS ON KMTTG BACKGROUND PROCESS (LINUX)===
+
+On linux systems kmttg auto transfers program simply runs as a background process on your system using the *–a* command line option. If you reboot your system then you will need to re-start the program, or you can use the /etc/rc* method to put a script in place that will automatically start the program in background mode with the *–a* option.
+
+ 
+===RUNNING THE AUTO TRANSFERS PROGRAM AS A BATCH COMMAND===
+
+As an alternative to running auto transfers program as a service, you can alternatively supply the *–b* command line option to kmttg.pl to run batch mode. For example, the command might look something like:
+
+*C:\Perl\bin\perl.exe c:\kmttg\kmttg.pl –b*
+
+In this mode the program will check your tivos once for matching programs and download and process any matches and then exit.
+
+This is especially useful when used in conjunction with a job scheduler program such as Windows Task Scheduler or Linux cron.
+
+ 
+===AUTO TRANSFER RELATED FILES===
+
+There are 3 files associated with auto transfers you should be aware of, all residing in the same directory where the kmttg.pl main program file is located:
+
+====auto.ini====
+
+This file contains your saved auto transfers configuration including any title and keyword matching setups.
+
+NOTE: This file is re-parsed at every Check Tivos Interval so that it is not necessary to re-start the background process whenever you want to update your auto transfer configuration.
+
+====auto.log====
+
+This file contains activity log information for the background process. Entries in the log file all contain a time stamp. You can view this file from kmttg GUI using *Auto Transfers->Examine Log File* menu.
+
+====auto.history====
+
+This file contains a list of ProgramId entries for every show that has been processed by the kmttg background process. This is what prevents the same shows from being downloaded over and over again from your Tivos. The ProgramId entry is added to this file following a successful download of a show by the kmttg background process. Any shows that are not downloaded are indicated with their associated ProgramId entry in the auto.log file.
+
+NOTE: If this file is already created then downloads that complete successfully in GUI mode will also be recorded in the history file such that they will not be re-processed in kmttg background/service mode.
+
+NOTE: You can use *Auto Transfers->Add selected to history file* menu entry to add selected entries in show list to the history file if you wish.
