@@ -42,35 +42,25 @@
 ==File Naming==
   * This defines how file names will look for downloaded shows. Certain keywords are provided which you specify within square brackets that will be substituted accordingly. You can use almost any other characters you want (*avoid quotes!*) and arrange the keywords in any order you like.
   * EXAMPLE:  Let’s say you have a recorded show as follows:
-*Mon 3/24/2008 at 8:00pm called “The Big Bang Theory – The Loobenfeld Decay” from channel 702=KCBSDT*
+*Mon 3/24/2008 at 8:00pm called “The Big Bang Theory – The Loobenfeld Decay” from channel 702=KCBSDT*<br>
 `Keywords in this example are:`<br>
 `[title] = The Big Bang Theory – The Loobenfeld Decay`<br>
 `[mainTitle] = The Big Bang Theory`<br>
-
-      [episodeTitle] = The Loobenfeld Decay
-
-      [channelNum] = 702
-
-      [channel] = KCBSDT
-
-      [min] = 00
-
-      [hour] = 20
-
-      [wday] = Mon
-
-      [mday] = 24
-
-      [month] = Mar
-
-      [monthNum] = 03
-
-      [year] = 2008
+`[episodeTitle] = The Loobenfeld Decay`<br>
+`[channelNum] = 702`<br>
+`[channel] = KCBSDT`<br>
+`[min] = 00`<br>
+`[hour] = 20`<br>
+`[wday] = Mon`<br>
+`[mday] = 24`<br>
+`[month] = Mar`<br>
+`[monthNum] = 03`<br>
+`[year] = 2008`<br>
 
   * So continuing with above example, if I set:
-      *File Naming = [title] (Recorded [month] [mday],[year],[channel])*
-      The .TiVo file name would become:
-      *The Big Bang Theory – The Loobenfeld Decay (Recorded Mar 17,2008,KABCDT).TiVo*
+*File Naming = [title] (Recorded [month] [mday],[year],[channel])*<br>
+The .TiVo file name would become:<br>
+*`The Big Bang Theory – The Loobenfeld Decay (Recorded Mar 17,2008,KABCDT).TiVo`*
   * The [/] keyword is a folder separator which allows you to create custom sub-folder names as part of the output file definition. Continuing above example:
       File Naming = [mainTitle][/][year]_[monthNum]_[mday] [episodeTitle]
       The .TiVo file name would become (using Windows folder structure note the resulting sub-folder structure):
