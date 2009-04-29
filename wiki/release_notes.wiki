@@ -48,7 +48,7 @@ that use encoding profiles you have to update them. You can do this as follows:
 *ENHANCEMENTS*
   * Added capbility for advanced, conditional keywords in file naming template. Thus for example one can now define something like:
   `[mainTitle]["_Ep#" EpisodeNumber]_[wday]_[month]_[mday]`
-  * In this example `"_Ep#xxx"` will be included in file name only if EpisodeNumber exists, otherwise `"_Ep#"` is not included in the file name.
+  * In this example `"_Ep#xxx"` will be included in file name only if `EpisodeNumber` exists, otherwise `"_Ep#"` is not included in the file name.
   * Consult the html documentation for more details.
   
 *FIXES*
