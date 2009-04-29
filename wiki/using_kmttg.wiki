@@ -4,22 +4,22 @@ NOTE: The first time you start kmttg you must configure kmttg by selecting *File
 Hopefully, the kmttg GUI is pretty intuitive to use. For more information on the Auto Downloads mode see the section further below. A little guidance is provided for basic usage of the GUI mode:
 
 ==DOWNLOADING FROM TIVOS==
-1. Use the TIVO cyclic to select which Tivo you want to download shows from. By default the first entry is always FILES which allows you to find files on your computer to use as a starting point for kmttg (see documentation on this a little further down). Additionally any Tivos you have previously configured for kmttg will show up in this list so that you can use shows on your Tivos as starting points for kmttg.
+1. Use the *TIVO* cyclic to select which Tivo you want to download shows from. By default the first entry is always *FILES* which allows you to find files on your computer to use as a starting point for kmttg (see documentation on this a little further down). Additionally any Tivos you have previously configured for kmttg will show up in this list so that you can use shows on your Tivos as starting points for kmttg.
 NOTE: Shows that are still recording or are copy protected are marked as such and displayed differently by kmttg and cannot be downloaded.
 NOTE: You can sort shows in the list by clicking on the list headers:
 
     * Clicking on 1st column header button you can sort shows by expiration type.
-    * Clicking on the DATE header button you can sort shows by earliest or latest date first.
-    * Clicking on the CHANNEL header button you can sort shows by lowest or highest channel number.
-    * Clicking on the ~SIZE header button you can sort shows by smallest or largest file size first.
-    * Clicking on the SHOW header button you can sort shows alphabetically or reverse alphabetically by show name.
+    * Clicking on the *DATE* header button you can sort shows by earliest or latest date first.
+    * Clicking on the *CHANNEL* header button you can sort shows by lowest or highest channel number.
+    * Clicking on the *~SIZE* header button you can sort shows by smallest or largest file size first.
+    * Clicking on the *SHOW* header button you can sort shows alphabetically or reverse alphabetically by show name.
 
 2. Select 1 or more shows in the SHOW list that you wish to download. You can select multiple entries at once. Ctrl+left click toggles individual selections without losing your selection list.
 
 3. Enable actions you would like to perform on the selected list of shows. The actions (in order that they are generally performed) are:
 ===metadata===
   * If this option is enabled then kmttg will create a metadata file with .mpg.txt extension.
-  * This metadata file can be used by pyTivo when serving back shows on your PC to your Tivos to provide detailed information about the show. Without the metadata file if you serve .mpg (or non `.TiVo` files) back to your Tivos there will be no information about the shows when you view them from your Tivos.<br>
+  * This metadata file can be used by *pyTivo* when serving back shows on your PC to your Tivos to provide detailed information about the show. Without the metadata file if you serve .mpg (or non `.TiVo` files) back to your Tivos there will be no information about the shows when you view them from your Tivos.<br>
   NOTE: According to pyTivo conventions this file should be the same name as your video file but with .txt extension added. Thus if you re-name your video file be sure to re-name this file as well.
 
 ===decrypt===
@@ -33,9 +33,8 @@ NOTE: You can sort shows in the list by clicking on the list headers:
 
 ===comskip===
   * comskip is a public domain program that can scan an mpeg2 file and detect commercials.
-  * With default configuration it will produce a .edl file which can be fed to mencoder to cut out detected commercial segments.
-  NOTE: If you have VRD enabled then you should edit comskip.ini file and set:<br>
-  output_videoredo=1<br>
+  * With default configuration it will produce a .edl file which can be fed to *mencoder* to cut out detected commercial segments.
+  NOTE: If you have VRD enabled then you should edit *comskip.ini* file and set:<br>*output_videoredo=1*<br>
   * By doing so the comskip step will create a .VPrj file which contains the cut sections for VideoRedo to be used in the comcut stage.
 NOTE: comskip can be configured to output several other files too such as a bookmark .mls file for Womble Mpeg Video Wizard or a cut file for VideoRedo. Consult comskip documentation for details.<br>
 NOTE: Accuracy varies greatly depending on the show. Comskip is most useful to use as an initial guess as to where cut points should be made. Ideally you should then use Womble, VRD or similar editor to adjust the cut points as needed.
@@ -43,7 +42,7 @@ NOTE: Accuracy varies greatly depending on the show. Comskip is most useful to u
 ===comcut===
   * mencoder is used if you select the “comcut” option in kmttg to automatically cut out commercial segments detected by comskip.
   NOTE: You are better off using an mpeg2 editor if you want precise cuts and in sync audio/video. The combination of comskip and comcut can work well for some shows but not well at all for others. On occasion I find mencoder can produce out of sync audio/video files.<br>
-  NOTE: If you have configured VRD and set output_videoredo=1 in comskip.ini then this stage will use `VideoRedo` for doing the video cuts instead of mencoder.
+  NOTE: If you have configured VRD and set *output_videoredo=1* in *comskip.ini* then this stage will use `VideoRedo` for doing the video cuts instead of mencoder.
 
 ===captions===
   * This option is only enabled on Windows systems and if you have configured full path to `T2Sami` t2extract.exe.
@@ -52,13 +51,13 @@ NOTE: Accuracy varies greatly depending on the show. Comskip is most useful to u
 
 ===encode===
   * Enable this option if you wish to re-encode .mpg files to another format.
-  * You should also select the appropriate Encoding Profile you want to use for the encode.
+  * You should also select the appropriate *Encoding Profile* you want to use for the encode.
   * You can define your own encoding profiles if you wish (see section below on Encoding Profiles).
   NOTE: If *comcut* is enabled then the encoding will be done on `_cut.mpg` file instead of .mpg file.
 
-4. Click on START JOBS button to start processing all your selections.
+4. Click on *START JOBS* button to start processing all your selections.
    * NOTE: Jobs that are not dependant on each other will run in parallel. Downloads are intentionally limited to 1 download per Tivo so as not to overload your Tivos. Additional downloads are queued up to be performed once the current download completes. Jobs that depend on previous jobs to complete are also queued up.
   * NOTE: kmttg will automatically skip steps based on the presence of files in the output directory. For example, if .TiVo file for a show exists kmttg will skip downloading it from the Tivo. If .mpg file for a show exists kmttg will skip the decode phase even if decode is enabled, etc.
 
-5. You can cancel any queued up or running jobs if you wish. Select jobs you wish to cancel in the JOB MONITOR and then click on the CANCEL JOBS button.
+5. You can cancel any queued up or running jobs if you wish. Select jobs you wish to cancel in the *JOB MONITOR* and then click on the *CANCEL JOBS* button.
   * NOTE: In general kmttg will not automatically delete partial output files that were being generated by a running job in case you wish to do something with the files, so if you don’t want them you should clean them up. There are options in the configuration setup you can enable to automatically delete files of intermediate tasks such as `.TiVo` files.
