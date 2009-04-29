@@ -8,7 +8,7 @@ If you are having problems getting the program to start or run properly here are
 3. Run program from command line:<br>
 *perl kmttg.pl*
 
-You will see stdout/stderr in the window. If the problem is missing Tk module (Can't locate Tk.pm ...) see installation instructions above for installing Perl with Tk module.
+You will see stdout/stderr in the window. If the problem is missing Tk module (Can't locate Tk.pm ...) see installation instructions wiki for the platform you are running on for details on installing Perl with Tk module.
 
 NOTE: You can redirect stdout/stderr messages to files in Windows as follows:<br>
 *`perl kmttg.pl >out.txt 2>err.txt`*
