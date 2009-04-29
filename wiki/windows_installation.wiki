@@ -44,4 +44,4 @@ http://code.google.com/p/kmttg/downloads/list
 ==3. UNPACK ZIP FILES==
 
   * Unpack kmttg_vxxx.zip file to your desired location. In this example: c:\home
-  * For windows users unpack kmttg_win32_tools_vxxx.zip file in the kmttg folder. In this example c:\home\kmttg
+  * Unpack kmttg_win32_tools_vxxx.zip file in the kmttg folder. In this example c:\home\kmttg
