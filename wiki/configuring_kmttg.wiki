@@ -79,3 +79,34 @@ By request some more advanced keyword processing was introduced to allow for con
 `[mainTitle]`*`["_Ep#" EpisodeNumber]`*`_[wday]_[month]_[mday]`<br>
 
 The advanced keyword is highlighted in bold and signifies only include `“_Ep#xxx”` if `EpisodeNumber` exists for the show in question. `“_Ep#”` is literal string to which the evaluated contents of `EpisodeNumber` keyword are appended. If `EpisodeNumber` does not exist then the whole advanced keyword evaluates to empty string.
+
+==Create sub-folder==
+  * Enable this option if you would like kmttg to create a sub-folder for each show to be processed. The name of the folder will be the same as the file format you defined but without any file extension.
+
+==`.TiVo` Output Dir==
+  * REQUIRED if you plan to download files from Tivo Now Playing lists.
+  * This defines where your Tivo Now Playing List files will be downloaded to.
+  * NOTE: Make sure you have plenty of space here
+
+==.mpg Output Dir==
+  * REQUIRED if you plan to decrypt `.TiVo` files
+  * This defines where the decrypted .mpg files will be saved
+  * NOTE: Make sure you have plenty of space here
+  * NOTE: This can be same as `.TiVo` Output Dir
+
+==.mpg Cut Dir==
+  * REQUIRED if you plan to run the comcut step
+  * This defines where the comcut commercial stripped .mpg file will be saved
+  * NOTE: Make sure you have plenty of space here
+  * NOTE: This can be same as .TiVo Output Dir
+
+==Encode Output Dir==
+  * REQUIRED if you plan to re-encode .mpg files to other formats
+  * This defines where re-encoded files will be saved
+  * NOTE: Make sure you have plenty of space here
+  * NOTE: This can be same as .TiVo Output Dir or .mpg Output Dir
+
+==tivodecode==
+  * REQUIRED if you plan to decrypt .TiVo files to .mpg
+  * Adjust to match the full path to the tivodecode binary.
+  * NOTE: For Windows users who installed the tools zip file this should not have to change.
