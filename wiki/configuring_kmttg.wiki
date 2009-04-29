@@ -12,9 +12,9 @@
 
 ==MANUALLY ENTERING TIVO NAMES AND IP NUMBERS==
   * Starting with version 0.5l kmttg will automatically detect and add Tivos on your network, so you can choose to skip steps below that detail how to manually add tivos to kmttg.
-  * Supply a Tivo name in the Tivo Name field and the associated Tivo IP number in the Tivo IP# field.
-  EXAMPLE: Tivo Name = Bedroom   Tivo IP# = 192.168.1.101
+  * Supply a Tivo name in the *Tivo Name* field and the associated Tivo IP number in the *Tivo IP#* field.
+  EXAMPLE: *Tivo Name = Bedroom   Tivo IP# = 192.168.1.101*
   * You can find Tivo IP numbers for each of your Tivos as follows:
   Tivo Central—Messages&Settings—Settings—Phone&Network: IP addr
-  * Click on ADD button to add the entry to the Tivos list
+  * Click on *ADD* button to add the entry to the Tivos list
   * If you want to remove entries, then select them in the Tivos list and click on DEL button.
