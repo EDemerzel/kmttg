@@ -42,7 +42,6 @@
 ==File Naming==
   * This defines how file names will look for downloaded shows. Certain keywords are provided which you specify within square brackets that will be substituted accordingly. You can use almost any other characters you want (*avoid quotes!*) and arrange the keywords in any order you like.
   * EXAMPLE:  Let’s say you have a recorded show as follows:
-{{{
       *Mon 3/24/2008 at 8:00pm called “The Big Bang Theory – The Loobenfeld Decay” from channel 702=KCBSDT*
       Keywords in this example are:
       [title] = The Big Bang Theory – The Loobenfeld Decay
@@ -57,16 +56,11 @@
       [month] = Mar
       [monthNum] = 03
       [year] = 2008
-}}}
   * So continuing with above example, if I set:
-{{{
       *File Naming = [title] (Recorded [month] [mday],[year],[channel])*
       The .TiVo file name would become:
       *The Big Bang Theory – The Loobenfeld Decay (Recorded Mar 17,2008,KABCDT).TiVo*
-}}}
   * The [/] keyword is a folder separator which allows you to create custom sub-folder names as part of the output file definition. Continuing above example:
-{{{
       File Naming = [mainTitle][/][year]_[monthNum]_[mday] [episodeTitle]
       The .TiVo file name would become (using Windows folder structure note the resulting sub-folder structure):
       The Big Bang Theory\2008_03_24 The Loobenfeld Decay.TiVo
-}}}
