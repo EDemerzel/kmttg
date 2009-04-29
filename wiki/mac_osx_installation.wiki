@@ -1,4 +1,3 @@
-#labels Featured
 =KMTTG MAC OSX INSTALLATION=
 
 (special thanks to `AudioNutz` in Tivo Community forums for putting this together)
