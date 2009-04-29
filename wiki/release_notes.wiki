@@ -68,12 +68,12 @@ that use encoding profiles you have to update them. You can do this as follows:
 
 *FIXES*
   * Add deletion of .edl file when VRD is used for comcut step and the "Remove .edl & .mpg files after comcut" option is set.
-  * Transform unicode data in metadata file generation from .TiVo files
+  * Transform unicode data in metadata file generation from `.TiVo` files
   * In config GUI moved DEL button to be right beside ADD button (cosmetic)
 
 ==v0.5g (12/14/2008)==
 *ENHANCEMENTS*
-  * Added "captions" option which uses T2Sami to extract captions from `.TiVo` or .mpg files. This creates a .srt file with same name as the video file from which it was derived but using .srt suffix.
+  * Added "captions" option which uses `T2Sami` to extract captions from `.TiVo` or .mpg files. This creates a .srt file with same name as the video file from which it was derived but using .srt suffix.
   * This option is only enabled for Windows machines with path to "t2extract.exe" program specified in the configuration.
   
 ==v0.5f (11/19/2008)==
