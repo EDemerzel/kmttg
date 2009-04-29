@@ -26,11 +26,11 @@ http://www.activestate.com/Products/activeperl/
   * For 5.10.x version (on left side) scroll down to windows (x86) and choose the MSI version
   * Once the .msi file is downloaded, double-click on the file to start the installation process and pick all default installation options
   * Once installed you can now use Perl Package Manager (PPM) to install the Tk module as follows:
-    # start—Programs—ActivePerl 5.10xx—Perl Package Manager
-    # In PPM window choose View—All Packages
+    # `start—Programs—ActivePerl 5.10xx—Perl Package Manager`
+    # In PPM window choose `View—All Packages`
     #  Scroll down and find “Tk” and click on it to select
-    # Choose Action—Install Tk
-    # Choose File—Run Marked Actions
+    # Choose `Action—Install Tk`
+    # Choose `File—Run Marked Actions`
 
 ==2. DOWNLOAD KMTTG ZIP FILES==
 
