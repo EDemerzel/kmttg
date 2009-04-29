@@ -1,4 +1,4 @@
-==USING KMTTG==
+=USING KMTTG=
 NOTE: The first time you start kmttg you must configure kmttg by selecting *File->Configure…* menu entry. See the [http://code.google.com/p/kmttg/wiki/configuring_kmttg configuring_kmttg] wiki documentation for details on configuration options.
 
 Hopefully, the kmttg GUI is pretty intuitive to use. For more information on the Auto Downloads mode see the section further below. A little guidance is provided for basic usage of the GUI mode:
@@ -83,3 +83,38 @@ NOTE: kmttg installation also comes with a *qt-faststart* folder that contains a
 The windows version is *qt-faststart.exe* but the c source code and Makefile are also included in case you want to build a binary for a different platform.
 
 NOTE: kmttg installation also comes with a *tivo_mp4_encode.pl* Perl script which is the encode command for the *tivostream_sd.enc* and *tivostream_hd.enc* encoding profiles.
+
+==KMTTG AUTO TRANSFERS==
+
+You have the ability to run kmttg as a background non-graphical program that can automatically download and perform the other usual actions you choose based on titles and keywords you setup.
+
+*NOTE: By default the kmttg Windows service is setup as “automatic” startup mode. This means that should you restart your computer the kmttg service will automatically be started on bootup. If you would like to change this behavior see the relevant section below for more details on how to do that.*
+
+===CONFIGURING AUTO TRANSFERS===
+  * *Auto Transfers->Configure…* entry should be use as the first step is to bring up the Auto Transfers Configuration GUI
+
+===Adding title and keyword entries===
+
+You can specify to match shows by title or keyword.
+
+====Title Matching====
+Title matching is very simple: supply the exact main title of a show such as ‘lost’, ‘two and a half men’, etc. Note that the title matching is case insensitive so using capital letters is not necessary, however any punctuation should be included.
+
+If you already have shows on your Tivo with titles you wish to add you can more easily do so (outside this GUI) by selecting the entries in the shows list and then using the *Auto Transfers->Add Selected Titles* menu.
+
+====Keyword Matching====
+
+*NOTE: Keywords will be matched only against show titles, episode titles and descriptions. Extended information such as actors, directors etc. are not included in the search. The reason for this is that extra information is only available as a separate URL for each show, so it would be too network intensive to gather all the extra information for each show.*
+
+You can specify one or more keywords for matching shows.
+
+When you specify a single keyword that means that keyword must be present somewhere in title, episode title or description in order to get a match.
+
+You can setup a more complex keyword match by specifying multiple keywords with different operators:
+
+  * With no parenthesis surrounding a keyword this indicates a logical AND.
+  * With (parenthesis) surrounding a keyword this indicates a logical OR.
+  * With a ! as the first character in a keyword his indicates a logical NOT.
+  * An example is given in the Auto Transfers Configuration GUI as a reminder:
+  `(basketball)|(football)|!new york`<br>
+  This means match show descriptions that contain either “basketball” or “football” but don’t include any that have “new york”
