@@ -54,3 +54,4 @@ Easiest way to start kmttg is to setup a desktop shortcut:
   * *Next*
   * Use *kmttg* as name for the shortcut
   * *Finish*
+  * Now you can simply double-click the kmttg icon to launch the application
