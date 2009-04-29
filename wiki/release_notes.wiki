@@ -22,7 +22,6 @@
   * Added ffmpeg ff_tivo_sd & ff_tivo_hd profiles roughly equivalent to the above handbrake recipes, but ffmpeg is generally quite a bit faster than handbrake.
 
 ==v0.5k (03/15/2009)==
-
 *ENHANCEMENTS*
   * Added new encoding profiles for popular Handbrake encoder. Handbrake command line executable now included in win32 zip file. Several of the main Handbrake profiles were added but it's easy to add your own as well if desired.
   
@@ -39,518 +38,115 @@ that use encoding profiles you have to update them. You can do this as follows:
   # Repeat above steps as needed for each title
   # OK the form
 
-------------------
-v0.5j (02/25/2009)
-------------------
-FIXES
-* With prior version in some cases characters were incorrectly being treated
-  as keywords and being replaced. Example:
+==v0.5j (02/25/2009)==
+*FIXES*
+  * With prior version in some cases characters were incorrectly being treated as keywords and being replaced. Example:
   'Terminator: The Sarah Connor Chronicles'
-  The "min" in Terminator was being replaced with # minutes.
+  * The "min" in Terminator was being replaced with # minutes.
 
-------------------
-v0.5i (02/15/2009)
-------------------
-ENHANCEMENTS
-* Added capbility for advanced, conditional keywords in file naming template.
-  Thus for example one can now define something like:
+==v0.5i (02/15/2009)==
+*ENHANCEMENTS*
+  * Added capbility for advanced, conditional keywords in file naming template. Thus for example one can now define something like:
   [mainTitle]["_Ep#" EpisodeNumber]_[wday]_[month]_[mday]
-  In this example "_Ep#xxx" will be included in file name only if EpisodeNumber
-  exists, otherwise "_Ep#" is not included in the file name.
-  Consult the html documentation for more details.
+  * In this example "_Ep#xxx" will be included in file name only if EpisodeNumber exists, otherwise "_Ep#" is not included in the file name.
+  * Consult the html documentation for more details.
   
-FIXES
-* Remove special character '$' for file names originating from Tivos.
-  Files with that character got truncated in steps subsequent to download
-  leading to problems.
-* Ensure Episode Number is always 3 digits.
-* For metadata creation no longer include episodeTitle as part of title since
-  the metadata parsing issue has now been fixed in recent versions of pyTivo.
+*FIXES*
+  * Remove special character '$' for file names originating from Tivos. Files with that character got truncated in steps subsequent to download leading to problems.
+  * Ensure Episode Number is always 3 digits.
+  * For metadata creation no longer include episodeTitle as part of title since the metadata parsing issue has now been fixed in recent versions of pyTivo.
 
-------------------
-v0.5h (01/31/2009)
-------------------
-ENHANCEMENTS:
-* FILES entry is now permanent option and first choice in Tivos cyclic.
-  (removed option of enabling/disabling FILES support as it was not very
-  intuitive to have an option and leave it off by default).
-* seriesId is now included in metadata file if available.
-* Added Zune encoding profile.
-* Added capability to ignore history checking for specific programId's. This
-  is useful for certain shows that always have same programId even for
-  different episodes. Those shows are prevented from being auto downloaded
-  once programId is added first time to history file.
-  You can setup an exception for these shows by adding <ignorehistory>
-  entries to auto.ini file as in following example:
-<ignorehistory>
-SH1940720000
+==v0.5h (01/31/2009)==
+*ENHANCEMENTS*
+  * FILES entry is now permanent option and first choice in Tivos cyclic (removed option of enabling/disabling FILES support as it was not very intuitive to have an option and leave it off by default).
+  * seriesId is now included in metadata file if available.
+  * Added Zune encoding profile.
+  * Added capability to ignore history checking for specific programId's. This is useful for certain shows that always have same programId even for different episodes. Those shows are prevented from being auto downloaded once programId is added first time to history file.
+  * You can setup an exception for these shows by adding `<ignorehistory>` entries to auto.ini file as in following example:
+  `<ignorehistory>`
+  `SH1940720000`
 
+*FIXES*
+  * Add deletion of .edl file when VRD is used for comcut step and the "Remove .edl & .mpg files after comcut" option is set.
+  * Transform unicode data in metadata file generation from .TiVo files
+  * In config GUI moved DEL button to be right beside ADD button (cosmetic)
 
-FIXES:
-* Add deletion of .edl file when VRD is used for comcut step and the
-  "Remove .edl & .mpg files after comcut" option is set.
-* Transform unicode data in metadata file generation from .TiVo files
-* In config GUI moved DEL button to be right beside ADD button (cosmetic)
-
-------------------
-v0.5g (12/14/2008)
-------------------
-ENHANCEMENTS:
-* Added "captions" option which uses T2Sami to extract captions from
-  .TiVo or .mpg files. This creates a .srt file with same name as the
-  video file from which it was derived but using .srt suffix.
-  This option is only enabled for Windows machines with path to
-  "t2extract.exe" program specified in the configuration.
+==v0.5g (12/14/2008)==
+*ENHANCEMENTS*
+  * Added "captions" option which uses T2Sami to extract captions from `.TiVo` or .mpg files. This creates a .srt file with same name as the video file from which it was derived but using .srt suffix.
+  * This option is only enabled for Windows machines with path to "t2extract.exe" program specified in the configuration.
   
-------------------
-v0.5f (11/19/2008)
-------------------
-ENHANCEMENTS:
-* Added percentage complete for ffmpeg encodes (previously only time was displayed)
+==v0.5f (11/19/2008)==
+*ENHANCEMENTS*
+ * Added percentage complete for ffmpeg encodes (previously only time was displayed)
   
-FIXES:
-* Auto transfers were not working properly with cached data
-* Fixed problem with auto run in GUI with cached data
-* In auto transfers configuration GUI the list type & keywords fields were
-  not updated when using UPDATE button to change type or keywords 
+*FIXES*
+  * Auto transfers were not working properly with cached data
+  * Fixed problem with auto run in GUI with cached data
+  * In auto transfers configuration GUI the list type & keywords fields were not updated when using UPDATE button to change type or keywords 
 
-------------------
-v0.5e (11/02/2008)
-------------------
-ENHANCEMENTS:
-* Added option to check for low disk space (user can specify min desired space).
-  Option is disabled by default but can be enabled under configuration.
-  With option enabled, jobs will not run if there is not sufficient disk
-  space available according to specified minimum.
-* Forward slash in show name replaced with underscore to avoid undesired
-  sub-folders.
-* In auto transfer mode .TiVo files are now not re-downloaded if they already
-  exist in destination dir.
+==v0.5e (11/02/2008)==
+*ENHANCEMENTS*
+  * Added option to check for low disk space (user can specify min desired space). Option is disabled by default but can be enabled under configuration. With option enabled, jobs will not run if there is not sufficient disk space available according to specified minimum.
+  * Forward slash in show name replaced with underscore to avoid undesired sub-folders.
+  * In auto transfer mode .TiVo files are now not re-downloaded if they already exist in destination dir.
   
-FIXES:
-* tivostream profiles changed to use full paths instead of relative paths
-  such that they still work if running in windows service mode.
-  This change affected files under encode directory and tivo_mp4_encode.pl
+*FIXES*
+  * tivostream profiles changed to use full paths instead of relative path such that they still work if running in windows service mode.
+  * This change affected files under encode directory and tivo_mp4_encode.pl
     
-------------------
-v0.5d (10/23/2008)
-------------------
-ENHANCEMENTS:
-* Added documentation on how to get kmttg running as a service in Windows Vista.
+==v0.5d (10/23/2008)==
+*ENHANCEMENTS*
+  * Added documentation on how to get kmttg running as a service in Windows Vista.
     
-AUTO TRANSFERS MODE FIXES:
-* Encoding profile name was not being properly obtained from auto config
-  setup and hence encoding in auto transfers mode was not working.
-* metadata and encode file name suffix was missing a leading "."
+*AUTO TRANSFERS MODE FIXES*
+  * Encoding profile name was not being properly obtained from auto config setup and hence encoding in auto transfers mode was not working.
+  * metadata and encode file name suffix was missing a leading "."
 
-------------------
-v0.5c (10/18/2008)
-------------------
-ENHANCEMENTS:
-* Added [monthNum] as another keyword option for File Naming. This is
-  2 digit numeric month as compared to [month] which is 3 character
-  abbreviation for month.
+==v0.5c (10/18/2008)==
+*ENHANCEMENTS*
+  * Added `[monthNum]` as another keyword option for File Naming. This is 2 digit numeric month as compared to `[month]` which is 3 character abbreviation for month.
+  * Remove "Copyright Tribune Media Services, Inc." from description text of shows downloaded from Tivo. That text shows up in all/most show descriptions and is not useful to display.
   
-* Remove "Copyright Tribune Media Services, Inc." from description
-  text of shows downloaded from Tivo. That text shows up in all/most
-  show descriptions and is not useful to display.
+*FIXES*
+  * After loading Now Playing List from Cache when clicking on a show in the list the show details were not being printed to message pane.
+
+==v0.5b (10/04/2008)==
+*ENHANCEMENTS*
+  * Added "VRD QS fix" option which runs `VideoRedo` Quickstream Fix in batch mode on .mpg files (Windows only). The option is enabled only if `VideoRedo` is configured and is also available in Auto Transfers mode.
   
-FIX:
-* After loading Now Playing List from Cache when clicking on a show
-  in the list the show details were not being printed to message pane.
-
-------------------
-v0.5b (10/04/2008)
-------------------
-ENHANCEMENTS:
-* Added "VRD QS fix" option which runs VideoRedo Quickstream Fix in batch
-  mode on .mpg files (Windows only). The option is enabled only if VideoRedo is
-  configured and is also available in Auto Transfers mode.
+  * "comcut" step will use `VideoRedo` in batch mode instead of "mencoder" for the commercial cutting step if `VideoRedo` is configured. VideoRedo does a much better job of keeping audio/video in sync when doing the cuts.
   
-* "comcut" step will use VideoRedo in batch mode instead of "mencoder" for the
-  commercial cutting step if VideoRedo is configured. VideoRedo does a much
-  better job of keeping audio/video in sync when doing the cuts.
+  NOTE: You need to configure comskip.ini to set output_videoredo=1 such that when "comskip" is run a `VideoRedo` .VPrj file is created.
   
-  NOTE: You need to configure comskip.ini to set output_videoredo=1 such that
-  when "comskip" is run a VideoRedo .VPrj file is created.
-  
-------------------
-v0.5a (09/26/2008)
-------------------
-ENHANCEMENTS:
-* Overhauled the encoding setup to make it easier to use as well as more flexible:
-  - Added pre-defined encoding profiles for Ipod, PS3, Xbox360, PSP, Tivo Streaming
-    and low and high bitrate H.264.
-  - Each encoding profile is defined in an "encode" folder with a .enc file extension
-  - You can add your own or modify existing .enc files to add more profiles
-  - Added encoding profiles to create Tivo streamable H.264 mpeg4 videos
-  - Menu entry added for refreshing encoding profiles so you don't have to re-start
-    kmttg when adding/modifying profiles.
+==v0.5a (09/26/2008)==
+*ENHANCEMENTS*
+  * Overhauled the encoding setup to make it easier to use as well as more flexible:
+    * Added pre-defined encoding profiles for Ipod, PS3, Xbox360, PSP, Tivo Streaming and low and high bitrate H.264.
+    * Each encoding profile is defined in an "encode" folder with a .enc file extension
+    * You can add your own or modify existing .enc files to add more profiles
+    * Added encoding profiles to create Tivo streamable H.264 mpeg4 videos
+    * Menu entry added for refreshing encoding profiles so you don't have to re-start kmttg when adding/modifying profiles.
 
-* Overhauled auto downloads setup to allow different tasks
-  (metadata, decrypt, comskip, comcut, encode) to be defined for each
-  entry. You can also define different encoding profiles to each as well if you
-  use the encode option.
+  * Overhauled auto downloads setup to allow different tasks(metadata, decrypt, comskip, comcut, encode) to be defined for each entry. You can also define different encoding profiles to each as well if you use the encode option.
 
-* Added an UPDATE button in auto download configuration to allow modifying an
-  existing entry instead of having to delete it and re-enter it.
+  * Added an UPDATE button in auto download configuration to allow modifying an existing entry instead of having to delete it and re-enter it.
 
-* Added "Create sub-folder" option which if enabled will create a separate
-  sub-folder for each show that is processed. The sub-folder is defined with
-  same name as the File Naming definition but without any file suffix.
+  * Added "Create sub-folder" option which if enabled will create a separate sub-folder for each show that is processed. The sub-folder is defined with same name as the File Naming definition but without any file suffix.
 
-* Added "[/]" keyword to File Naming definition which represents a folder separator
-  so that you can define custom sub-folders as part of the output files.
+  * Added `"[/]"` keyword to File Naming definition which represents a folder separator so that you can define custom sub-folders as part of the output files.
 
-* Added Now Playing List caching
-  - This avoids having to wait to re-download Now Playing List for a Tivo if you have
-    already downloaded it recently in the same kmttg session.
-  - Configuration option added to define cache timeout (can specify 0 for no cache)
-  - Menu entry added to clear all cache
+  * Added Now Playing List caching
+    * This avoids having to wait to re-download Now Playing List for a Tivo if you have already downloaded it recently in the same kmttg session.
+    * Configuration option added to define cache timeout (can specify 0 for no cache)
+    * Menu entry added to clear all cache
 
-* Included recent version of ffmpeg in win32 tools zip file with more codecs compiled
-  in as well as ability to encode H.264 + AC3.
+  * Included recent version of ffmpeg in win32 tools zip file with more codecs compiled in as well as ability to encode H.264 + AC3.
 
 ===IMPORTANT NOTES AND CONFIGURATION CHANGES===
 
-* For Windows users you should download the kmttg_win32_tools_v0p5.zip package to
-  get the new version of ffmpeg. Also, since the path to ffmpeg changed you should
-  adjust your path to ffmpeg in configuration accordingly.
+  * For Windows users you should download the kmttg_win32_tools_v0p5.zip package to get the new version of ffmpeg. Also, since the path to ffmpeg changed you should adjust your path to ffmpeg in configuration accordingly.
 
-* Because of changes in auto downloads you must re-run auto download configuration
-  and assign which tasks you want to run for each entry.
+  * Because of changes in auto downloads you must re-run auto download configuration and assign which tasks you want to run for each entry.
 
-* The kmttg zip file now includes an "encode" folder with encoding profiles as well
-  as a "qt-faststart" folder (see documentation for details on that).
- 
-------------------
-v0.4k (09/21/2008)
-------------------
-ENHANCEMENTS:
-* Added configuration option for separate mpeg cut path (for comcut step).
-
-FIX:
-* Fixed unintentional deletion of file with .mpeg suffix in FILES mode
-
-------------------
-v0.4j (09/09/2008)
-------------------
-ENHANCEMENTS:
-* Added configuration options for separate .TiVo, .mpg, and encoded file
-  locations. These paths are now all defined separately. If you don't
-  re-run configuration they all default to being the same.
-* Added [mainTitle], [episodeTitle] and [description] templates for default
-  file name building.
-
-FIX:
-* Non-path related '\' characters are now dropped from file name.
-
-------------------
-v0.4i (08/01/2008)
-------------------
-ENHANCEMENT:
-* Prints statistics for total number of shows, space and time after obtaining
-  Now Playing List from a Tivo.
-
-------------------
-v0.4h (07/13/2008)
-------------------
-BUG FIX:
-* Shows with '*' characters in the name would not download with kmttg.
-  The characters are now dropped from the file name in order to prevent
-  problems.
-
-------------------
-v0.4g (05/22/2008)
-------------------
-ENHANCEMENT:
-* Smarter naming of metadata file to match final video file name. Previously
-  the metadata file was hardcoded to be .mpg.txt.
-
-------------------
-v0.4f (05/15/2008)
-------------------
-ENHANCEMENTS:
-* A new menu entry is available: Auto Transfers->Run in GUI
-  This is like running the Auto Transfers batch mode but inside the GUI instead of
-  a background process. This will automatically match up your titles and keywords
-  setup in Auto Transfers configuration and queue up all appropriate tasks to be
-  run in the GUI such that you can monitor jobs just like normal in GUI mode.
-
-BUG FIX:
-* Previously copy protected and still recording shows were not being skipped by kmttg
-  in Auto Transfers mode leading to failures when attempting to download those shows.
-  This has now been fixed.
-
-------------------
-v0.4e (05/14/2008)
-------------------
-ENHANCEMENTS:
-* History file entries now include show title in addition to Program ID.
-* There is a new "Auto transfers->Add selected to history file" menu entry for
-  adding selections from the GUI shows list to the history file.
-* If history file is created then successfully downloaded shows in GUI mode are now
-  also added to the history file so they aren't processed again in batch/service mode.
-
-------------------
-v0.4d (05/12/2008)
-------------------
-ENHANCEMENTS:
-* Added "active job limit" setting to configuration which limits the number of CPU
-  intensive jobs that can run at the same time to this number (defaults to 2).
-
-------------------
-v0.4c (05/10/2008)
-------------------
-ENHANCEMENTS:
-* Added 2 options for file cleanup in the configuration:
-Remove .edl & .mpg files after comcut
-Remove .mpg file after encode
-
-------------------
-v0.4b (05/09/2008)
-------------------
-BUG FIX:
-* More than 1 download at a time per Tivo was being allowed through with
-  previous version. This has been corrected.
-
-------------------
-v0.4a (05/07/2008)
-------------------
-**IMPORTANT** For windows users if you want to use auto downloads service
-capability you will need to install the srvany folder with the srvany.exe executable
-that is part of the kmttg_win32_tools.zip file.
-
-ENHANCEMENTS:
-* Auto downloads capability now enabled. There is now a GUI you can use to
-  setup auto downloads by title or keyword matching.
-  For Windows platform you can run this as a service.
-  kmttg can now be run in batch modes:
-    -a command line option => auto download daemon mode (loops after processing)
-    -b command line option => auto download batch mode (exits after processing)
-  Consult documentation for more details on this capability.
-* Multiple jobs now run in parallel where possible instead of sequentially.
-  The program limits to 1 file download per Tivo so as not to overload Tivos.
-* For windows, file browser can now select multiple files at a time
-* Episode number is now available as a keyword to build file names
-* Metadata generation from .TiVo files is now supported when starting from FILE mode
-
-------------------
-v0.3e (04/19/2008)
-------------------
-ENHANCEMENTS:
-* Added option to create a pyTivo compatible metadata file. This allows one to save the
-detailed descriptions about a show such that if you serve the show back to your Tivos
-using pyTivo server you can see the detailed information in show description.
-
-------------------
-v0.3d (04/12/2008)
-------------------
-ENHANCEMENTS:
-* Added Tivo show expiration graphics as 1st column of Now Playing List. Added a CHANNEL
-column indicating channel number and name for the show. Just as with other column headers
-you can sort shows by expiration or channel # by clicking on the list header buttons.
-
-BUG FIX:
-* File cleanup following comskip was not working - that has been fixed.
-
-------------------
-v0.3c (04/11/2008)
-------------------
-ENHANCEMENTS:
-* Added sorting capability to Now Playing List shows. By clicking on list headers you can
-now sort by earliest/latest date first, smallest/biggest file size first or
-alphabetically/reverse alphabetically by show name.
-
-* Added configuration option that can be enabled to delete .TiVo files automatically
-following successful decryption to .mpg
-
-------------------
-v0.3b (04/10/2008)
-------------------
-ENHANCEMENTS:
-* Implemented multiple reads from the Tivo server for cases when the Now Playing List
-  exceeds the max number of items the server can return at a time (128). So now there should
-  be no limit on number of Now Playing List shows that can be displayed in kmttg.
-
-BUG FIX:
-* Fix to file naming convention for files with additional '.' characters before the
-  file extension.
-
-------------------
-v0.3a (04/09/2008)
-------------------
-ENHANCEMENTS:
-* Re-implemented Windows systems background process forking to be the same as what is
-  now used for unix systems. In the new implementation now any errors returned by
-  background processes are displayed in the kmttg text area.
-
-* Any running background jobs are now killed if kmttg is terminated (previously
-  still running jobs would continue to run even if kmttg was closed).
-
-------------------
-v0.2k (04/08/2008)
-------------------
-BUG FIXES:
-* Re-implemented Unix systems background process forking once again to workaround issues
-  with hanging processes in previous implementations. As a bonus in the new implementation
-  now any errors returned by background processes are displayed in the kmttg text area.
-  Will need to evaluate the same implementation for Windows platform since currently the
-  Windows platform does not catch and display background process errors.
-
-------------------
-v0.2j (04/06/2008)
-------------------
-BUG FIXES:
-* Fix to properly deal with file browser default paths with spaces.
-* Re-implemented Unix systems background process forking to workaround issues with hanging
-  processes in previous implementations.
-
-------------------
-v0.2i (04/05/2008)
-------------------
-ENHANCEMENT:
-* Added some more error checking for configuration setup.
-
-------------------
-v0.2h (04/03/2008)
-------------------
-BUG FIX:
-* Fixed problem with Now Playing List retrieval checking that would flag
-  certain successful downloads as in error.
-
-------------------
-v0.2g (04/02/2008)
-------------------
-ENHANCEMENTS:
-* Status indicated in the title so that when you minimize kmttg you still
-  get an indication of progress from the taskbar.
-
-------------------
-v0.2f (04/01/2008)
-------------------
-ENHANCEMENTS:
-* Copy Protected and Currently Recording shows are now displayed along with
-  other shows but are marked differently (and of course cannot be downloaded).
-* You can now request Now Playing Lists from your Tivos (and start additional
-  jobs) while other jobs are running in kmttg.
-* Change implemented for Linux platform to avoid zombie (<defunct>) process
-  accumulation when jobs are killed.
-
-------------------
-v0.2e (03/31/2008)
-------------------
-BUG FIXES:
-* Fix implemented to not allow multiple configuration windows.
-* Console window no longer appears if running with wperl in Windows.
-
-------------------
-v0.2d (03/30/2008)
-------------------
-ENHANCEMENTS:
-* Added detailed show info in message area when a show is selected
-* Applied html unicode conversions for text so that special characters
-  now display properly
-
-------------------
-v0.2c (03/29/2008)
-------------------
-ENHANCEMENTS:
-* Added a "File Naming" configuration option which allows you to customize
-  how file names look for downloaded shows.
-
-BUG FIX:
-* Fixed problem where kmttg would not work with spaces present in path names.
-
-------------------
-v0.2b (03/28/2008)
-------------------
-BUG FIX:
-* Fixed problem with comskip and mencoder settings not being read from
-  config.ini file.
-
-------------------
-v0.2a (03/28/2008)
-------------------
-ENHANCEMENTS:
-* All configuration can now be done via the GUI. config.pl file no longer
-  used - replaced with simple config.ini which is automatically saved via GUI.
-* Added capability to start from files already on your computer instead of
-  being forced to select a show. This makes all steps optional including
-  downloads.
-* Added capability to mark default Tivo to use on program start with a
-  leading '*' character
-* Changed text area type such that contents can now be selected and
-  copy/pasted.
-* Additional error checking added
-* Documentation extensively improved and converted to HTML format
-
-------------------
-v0p1g (03/22/2008)
-------------------
-ENHANCEMENTS:
-* Added "comcut" option in addition to "comskip". I found cases when
-  "mencoder" when cutting out commercials would produce an out of sync mpeg.
-  Thus by separating comskip and comcut this gives the user option to use
-  bookmark/cut file produced by "comskip" with a different mpeg editor for
-  doing the actual commercial cutting step.
-* Both ffmpeg and mencoder are now included in kmttg_win32_tools.zip.
-* Added more notes on how to use the program GUI in the README.txt file.
-
-------------------
-v0p1f (03/22/2008)
-------------------
-ENHANCEMENTS:
-* Commercial detection and cutting is now completely automated. mencoder is
-  fed the .edl file produced by comskip to cut out the commercials - so there
-  is no need to use a commercial editor such as VideoRedo or Womble for this
-  task anymore.
-NOTE: Additional options added to the config.pl file.
-
-------------------
-v0p1e (03/21/2008)
-------------------
-ENHANCEMENTS:
-* Changed configuration to allow for any encoder, not just ffmpeg. The user
-  can now supply the command line for encoding step allowing one to use ffmpeg
-  or any other command line encoder such as mencoder.
-NOTE: The config.pl has changed.
-
-------------------
-v0p1d (03/20/2008)
-------------------
-BUG FIXES:
-* Fixed problem with bogus error check: "$encodedFileExtension not defined"
-* Better error checking in case of wrong IPs or MAK given
-
-------------------
-v0p1c (03/19/2008)
-------------------
-ENHANCEMENTS:
-* Added comskip support (commercial detection software).
-* Changed to use XML version of Now Playing List for more accurate show
-  recording dates and easier parsing.
-NOTE: Support for > 128 shows still not included.
-
-BUG FIXES:
-* Fix to Windows kill job call
-
-------------------
-v0p1b (03/17/2008)
-------------------
-ENHANCEMENTS:
-* Added Linux support
-
-------------------
-v0p1a (03/16/2008)
-------------------
-ENHANCEMENTS:
-* Added support to run multiple jobs at once (queued up).
-
-BUG FIXES:
-* Fix to cancel jobs routine
-
-------------------
-v0p1 (03/15/2008)
-------------------
-Initial public release.
+  * The kmttg zip file now includes an "encode" folder with encoding profiles as well as a "qt-faststart" folder (see documentation for details on that).
