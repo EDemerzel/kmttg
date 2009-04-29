@@ -1,0 +1,10 @@
+=CONFIGURING KMTTG=
+*This step is very important and must be run at least the first time you start kmttg.*
+
+  * Start kmttg if you have not done so already.
+  * From *File* pulldown menu select *Configure…*
+  * Adjust settings according to your environment
+  * At bare minimum you should enter proper *MAK* value and define *.TiVo* dir (where to save download .TiVo files).
+  NOTE: As of version 0.5l kmttg will automatically detect any Tivos on your network and add them to Tivos list, but you can optionally add tivos yourself if you wish.
+  NOTE: You can specify different output directories for .TiVo files, .mpg files and encoded files if you wish or you can set them all the same.
+  * OK the form when you have completed your configuration. This will save your settings to config.ini file so they will be remembered next time you run kmttg.
