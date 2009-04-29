@@ -135,7 +135,7 @@ The advanced keyword is highlighted in bold and signifies only include `“_Ep#x
 
 ==comskip (optional)==
   * REQUIRED if you plan to use comskip.
-  * comskip is a public domain program that can scan an mpeg2 file and detect commercials. With default configuration it will produce a .edl file which can be fed to mencoder to cut out detected commercial segments.
+  * comskip is a public domain program that can scan an mpeg2 file and detect commercials. With default configuration it will produce a .edl file which can be fed to *mencoder* to cut out detected commercial segments.
   * NOTE: comskip can be configured to output several other files too such as a bookmark .mls file for Womble Mpeg Video Wizard or a cut file for `VideoRedo`. Consult comskip documentation for details.
   * NOTE: Accuracy varies greatly depending on the show. Comskip is most useful to use as an initial guess as to where cut points should be made. Ideally you should then use Womble, VRD or similar editor to adjust the cut points as needed.
 
@@ -159,14 +159,14 @@ The advanced keyword is highlighted in bold and signifies only include `“_Ep#x
   `C:\Program Files (x86)\VideoRedoPlus`
 
 ==t2extract==
-  * For windows systems if you specify the full path to `T2Sami` t2extract.exe program this will enable the captions option to extract closed captions from video files.
+  * For windows systems if you specify the full path to `T2Sami` *t2extract.exe* program this will enable the *captions* option to extract closed captions from video files.
 
 ==`AtomicParsley`==
   * If you specify the full path to `AtomicParsley` executable then some meta data information will be automatically added to mp4 files following encode step.
   * NOTE: This will only work if you have pyTivo metadata available for the file since kmttg will look for file.mp4.txt file to get information it needs for `AtomicParsley` run.
 
 ==Check Available Disk Space==
-  * If this option is enabled and Minimum required disk space is specified then kmttg will check that destination drive has more than that space available before running jobs.
+  * If this option is enabled and *Minimum required disk space* is specified then kmttg will check that destination drive has more than that space available before running jobs.
 
 ==Look for Tivos on network==
   * If this option is enabled then kmttg will check for Tivo broadcast beacons to automatically detect Tivos on your network. You can optionally choose to disable this feature and add tivos manually to kmttg if you wish.
