@@ -72,7 +72,7 @@ NOTE: Accuracy varies greatly depending on the show. Comskip is most useful to u
 ==ENCODING PROFILES==
 Kmttg installation comes with an *encode* folder that contains files with *.enc* suffixes. These files define the entries that are shown in the Encoding Profile cyclic in the main kmttg window. You can create more encoding profiles of your own by adding additional *.enc* files to this folder. Kmttg expects these files to be in a very specific syntax so it’s highly recommended if you create your own file to start with a copy of an existing one.
   * Lines starting with “#” are comments and you can add as many comment lines as you wish since they are ignored.
-  * There are 3 keywords that should be present: <description>, <command>, <extension>. There should be only 1 line after each.
+  * There are 3 keywords that should be present: `<description>, <command>, <extension>`. There should be only 1 line after each.
   * If you require more than 1 command for your encoding then you can make a batch script and define that as the command to be run
   * There are a few uppercase keywords that kmttg understands and will replace with full paths appropriately: *INPUT, OUTPUT, FFMPEG, HANDBRAKE, MENCODER, PERL*
 
