@@ -43,9 +43,7 @@
   * This defines how file names will look for downloaded shows. Certain keywords are provided which you specify within square brackets that will be substituted accordingly. You can use almost any other characters you want (*avoid quotes!*) and arrange the keywords in any order you like.
   * EXAMPLE:  Let’s say you have a recorded show as follows:
 *Mon 3/24/2008 at 8:00pm called “The Big Bang Theory – The Loobenfeld Decay” from channel 702=KCBSDT*
-<br>
-      Keywords in this example are:
-<br>
+      `Keywords in this example are:`
       `[title] = The Big Bang Theory – The Loobenfeld Decay`
 
       [mainTitle] = The Big Bang Theory
