@@ -98,15 +98,43 @@ The advanced keyword is highlighted in bold and signifies only include `“_Ep#x
   * REQUIRED if you plan to run the comcut step
   * This defines where the comcut commercial stripped .mpg file will be saved
   * NOTE: Make sure you have plenty of space here
-  * NOTE: This can be same as .TiVo Output Dir
+  * NOTE: This can be same as `.TiVo` Output Dir
 
 ==Encode Output Dir==
   * REQUIRED if you plan to re-encode .mpg files to other formats
   * This defines where re-encoded files will be saved
   * NOTE: Make sure you have plenty of space here
-  * NOTE: This can be same as .TiVo Output Dir or .mpg Output Dir
+  * NOTE: This can be same as `.TiVo` Output Dir or .mpg Output Dir
 
 ==tivodecode==
-  * REQUIRED if you plan to decrypt .TiVo files to .mpg
+  * REQUIRED if you plan to decrypt `.TiVo` files to .mpg
   * Adjust to match the full path to the tivodecode binary.
   * NOTE: For Windows users who installed the tools zip file this should not have to change.
+
+==curl==
+  * REQUIRED if you plan to download files from Tivo Now Playing lists.
+  * Adjust to match the full path to the curl binary if you plan to download files
+  * NOTE: For Windows users who installed the tools zip file this should not have to change.
+  * NOTE: Most Linux installations already have curl installed under /usr/bin/curl
+
+ 
+==ffmpeg (optional)==
+  * If you plan on re-encoding mpeg2 files to a different format using kmttg and ffmpeg encoding profiles then you should define here the full path to ffmpeg here. All the kmttg pre-defined encoding profiles starting with “ff_” prefix use ffmpeg as their encoding engine.
+  * NOTE: For Windows users ffmpeg is included as part of the tools zip file.
+
+ 
+==handbrake (optional)==
+  * If you plan on re-encoding mpeg2 files to a different format using kmttg and handbrake encoding profiles then you should define here the full path to HandBrakeCLI here. All the kmttg pre-defined encoding profiles starting with “hb_” use handbrake as their encoding engine.
+  * NOTE: For Windows users handbrake is included as part of the tools zip file.
+
+==mencoder (optional)==
+  * REQUIRED if you plan to enable “comcut” in kmttg.
+  * Supply the full path to the mencoder binary.
+  * mencoder is used if you select the “comcut” option in kmttg to automatically cut out commercial segments detected by comskip.
+  * NOTE: You are better off using an mpeg2 editor if you want precise cuts and in sync audio/video. The combination of comskip and comcut can work well for some shows but not well at all for others. On occasion I find mencoder can produce out of sync audio/video files.
+
+==comskip (optional)==
+  * REQUIRED if you plan to use comskip.
+  * comskip is a public domain program that can scan an mpeg2 file and detect commercials. With default configuration it will produce a .edl file which can be fed to mencoder to cut out detected commercial segments.
+  * NOTE: comskip can be configured to output several other files too such as a bookmark .mls file for Womble Mpeg Video Wizard or a cut file for VideoRedo. Consult comskip documentation for details.
+  * NOTE: Accuracy varies greatly depending on the show. Comskip is most useful to use as an initial guess as to where cut points should be made. Ideally you should then use Womble, VRD or similar editor to adjust the cut points as needed.
