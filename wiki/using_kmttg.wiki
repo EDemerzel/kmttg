@@ -2,3 +2,19 @@
 NOTE: The first time you start kmttg you must configure kmttg by selecting *File->Configure…* menu entry. See the [http://code.google.com/p/kmttg/wiki/configuring_kmttg configuring_kmttg] wiki documentation for details on configuration options.
 
 Hopefully, the kmttg GUI is pretty intuitive to use. For more information on the Auto Downloads mode see the section further below. A little guidance is provided for basic usage of the GUI mode:
+
+DOWNLOADING FROM TIVOS
+
+  # Use the TIVO cyclic to select which Tivo you want to download shows from. By default the first entry is always FILES which allows you to find files on your computer to use as a starting point for kmttg (see documentation on this a little further down). Additionally any Tivos you have previously configured for kmttg will show up in this list so that you can use shows on your Tivos as starting points for kmttg.
+NOTE: Shows that are still recording or are copy protected are marked as such and displayed differently by kmttg and cannot be downloaded.
+NOTE: You can sort shows in the list by clicking on the list headers:
+
+    * Clicking on 1st column header button you can sort shows by expiration type.
+    * Clicking on the DATE header button you can sort shows by earliest or latest date first.
+    * Clicking on the CHANNEL header button you can sort shows by lowest or highest channel number.
+    * Clicking on the ~SIZE header button you can sort shows by smallest or largest file size first.
+    * Clicking on the SHOW header button you can sort shows alphabetically or reverse alphabetically by show name.
+
+  # Select 1 or more shows in the SHOW list that you wish to download. You can select multiple entries at once. Ctrl+left click toggles individual selections without losing your selection list.
+
+  # Enable actions you would like to perform on the selected list of shows. The actions (in order that they are generally performed) are:
