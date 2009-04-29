@@ -60,7 +60,7 @@
 So continuing with above example, if I set:<br>
 *`File Naming = [title] (Recorded [month] [mday],[year],[channel])`*<br>
 The `.TiVo` file name would become:<br>
-*`The Big Bang Theory – The Loobenfeld Decay (Recorded Mar 17,2008,KABCDT).TiVo`*
+*`The Big Bang Theory – The Loobenfeld Decay (Recorded Mar 17,2008,KABCDT).TiVo`*<br>
 
 The `[/]` keyword is a folder separator which allows you to create custom sub-folder names as part of the output file definition. Continuing above example:
 *`File Naming = [mainTitle][/][year]_[monthNum]_[mday] [episodeTitle]`*<br>
