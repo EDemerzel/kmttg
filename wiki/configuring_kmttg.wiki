@@ -138,3 +138,25 @@ The advanced keyword is highlighted in bold and signifies only include `“_Ep#x
   * comskip is a public domain program that can scan an mpeg2 file and detect commercials. With default configuration it will produce a .edl file which can be fed to mencoder to cut out detected commercial segments.
   * NOTE: comskip can be configured to output several other files too such as a bookmark .mls file for Womble Mpeg Video Wizard or a cut file for `VideoRedo`. Consult comskip documentation for details.
   * NOTE: Accuracy varies greatly depending on the show. Comskip is most useful to use as an initial guess as to where cut points should be made. Ideally you should then use Womble, VRD or similar editor to adjust the cut points as needed.
+
+==comskip.ini (optional)==
+  * REQUIRED if you plan to use comskip.
+  * Supply the full path to the comskip.ini file you wish to use. Comskip has many configuration options and you may want to use different .ini files for different shows for best results.
+
+==wan http port (optional)==
+  * Set this option only if you plan to use kmttg over a WAN instead of your local LAN. By default http port 80 is used to download shows from the Tivos on the LAN, but from WAN side you will have to setup port forwarding in your router, and often service providers do not allow you to use port 80.
+  * NOTE: For Now Playing List retrieval https port 443 also should be port forwarded to your Tivo port 443 in your router.
+
+==NPL cache mins==
+  * Defines number of minutes to cache Now Playing List downloads. Using cache prevents having to re-download the Now Playing List every time the same Tivo is selected. If you don’t want caching you can set this to 0.
+
+==active job limit==
+  * Limits the number of CPU intensive jobs that can kmttg can run in parallel to this setting (defaults to 2). If you want to allow more CPU intensive jobs to run at the same time (for example if you have a mult-core processor) you can increase this limit accordingly. Be careful not to overwhelm your computer by setting this number too high.
+
+==VRD path==
+  * If you have `VideoRedo` program available you can supply the path to your `VideoRedo` installation directory to enable the “VRD QS fix” option which stands for `VideoRedo` Quickstream Fix. If you plan on any further processing of .mpg files such as cutting out commercials or re-encoding to different format it’s useful to run the file through VRD QS fix first to fix any potential glitches in the .mpg file that may cause issues. Note that “VRD QS fix” will only be enabled once you supply a valid path to VideoRedo installation. By doing so kmttg will also use VideoRedo instead of mencoder for the comcut step. VideoRedo does a much better job of cutting out commercials while keeping proper audio/video sync.
+  * Example path setting (on Vista):
+  *`C:\Program Files (x86)\VideoRedoPlus`*
+
+==t2extract==
+  * For windows systems if you specify the full path to T2Sami t2extract.exe program this will enable the captions option to extract closed captions from video files.
