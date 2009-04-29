@@ -4,23 +4,23 @@
 
 Kmttg is written in Perl and uses the Tk module for GUI. Perl versions 5.8.x and 5.10.x are confirmed to work as long as you have the proper Tk module for each.
 
-Note that ActivePerl 5.10.x version does not include Tk module by default and therefore requires more work to install – see details below.
+Note that `ActivePerl` 5.10.x version does not include Tk module by default and therefore requires more work to install – see details below.
 
-ActivePerl 5.8.x automatically includes Tk module and can be installed as follows:
+`ActivePerl` 5.8.x automatically includes Tk module and can be installed as follows:
 
 http://www.activestate.com/Products/activeperl/
 
-  * Click on Get ActivePerl
+  * Click on Get `ActivePerl`
   * Click on Download by free download version
   * Click on Continue
   * For 5.8.x version (on right side) scroll down to windows (x86) and choose the MSI version
   * Once the .msi file is downloaded, double-click on the file to start the installation process and pick all default installation options
 
-ActivePerl 5.10.x does NOT automatically include the Tk module, so it requires a little more work to install:
+`ActivePerl` 5.10.x does NOT automatically include the Tk module, so it requires a little more work to install:
 
 http://www.activestate.com/Products/activeperl/
 
-  * Click on Get ActivePerl
+  * Click on Get `ActivePerl`
   * Click on Download by free download version
   * Click on Continue
   * For 5.10.x version (on left side) scroll down to windows (x86) and choose the MSI version
