@@ -38,8 +38,8 @@ Download kmttg zip files from:
 
 http://code.google.com/p/kmttg/downloads/list
 
-    * kmttg_vxxx.zip file – This contains the platform independent kmttg installation files
-    * kmttg_win32_tools_vxxx.zip file - This includes required and optional 3rd party tools: curl, tivodecode, ffmpeg, handbrake, mencoder, comskip, srvany, etc.
+    * *kmttg_vxxx.zip* file – This contains the platform independent kmttg installation files
+    * *kmttg_win32_tools_vxxx.zip* file - This includes required and optional 3rd party tools: curl, tivodecode, ffmpeg, handbrake, mencoder, comskip, srvany, etc.
 
 ==3. UNPACK ZIP FILES==
 
