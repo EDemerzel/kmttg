@@ -1,5 +1,10 @@
 =RELEASE NOTES=
 
+==v0.5n (05/01/2009)==
+*UPDATES*
+  * Removed need for tivo_beacon.pm file by embedding functionality inside kmttg.pl.
+  * Updated Now Playing URLs to replace %2F with /
+
 ==v0.5m (04/27/2009)==
 *FIXES*
   * Fixed problem with batch/auto mode in problem last update (typo that prevented batch/auto mode from running).
