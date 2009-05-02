@@ -4,6 +4,7 @@
 *UPDATES*
   * Removed need for tivo_beacon.pm file by embedding functionality inside kmttg.pl.
   * Updated Now Playing URLs to replace %2F with /
+  * Documentation is now all online - README.html included with distribution with links to the documentation.
 
 ==v0.5m (04/27/2009)==
 *FIXES*
