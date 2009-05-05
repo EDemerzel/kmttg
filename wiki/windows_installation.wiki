@@ -43,8 +43,8 @@ http://code.google.com/p/kmttg/downloads/list
 
 ==3. UNPACK ZIP FILES==
 
-  * Unpack kmttg_vxxx.zip file to your desired location. In this example: *c:\home*
-  * Unpack kmttg_win32_tools_vxxx.zip file in the kmttg folder. In this example *c:\home\kmttg*
+  * Unpack kmttg_vxxx.zip file to your desired location. In this example: *c:\home* (this creates *c:\home\kmttg* folder)
+  * Unpack kmttg_win32_tools_vxxx.zip file inside the kmttg folder. In this example *c:\home\kmttg* (so you end up with c:\home\kmttg\comskip, c:\home\kmttg\comcut, etc)
 
 ==4. STARTING KMTTG==
 Easiest way to start kmttg is to setup a desktop shortcut:
