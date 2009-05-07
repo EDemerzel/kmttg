@@ -50,7 +50,7 @@ http://code.google.com/p/kmttg/downloads/list
 Easiest way to start kmttg is to setup a desktop shortcut:
   * Determine the path to your Perl installation and to kmttg.pl file. In this example Perl is installed in *c:\Perl* and kmttg is installed under *c:\home*
   * Right click somewhere free on your desktop and choose *New->Shortcut*
-  * Enter *c:\Perl\bin\wperl.exe c:\home\kmttg\kmttg.pl*
+  * Enter *"c:\Perl\bin\wperl.exe" "c:\home\kmttg\kmttg.pl"* (NOTE: Quotes around the paths are needed in case paths have spaces)
   * *Next*
   * Use *kmttg* as name for the shortcut
   * *Finish*
