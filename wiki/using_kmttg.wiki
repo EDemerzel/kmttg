@@ -103,7 +103,7 @@ Title matching is very simple: supply the exact main title of a show such as ‘
 If you already have shows on your Tivo with titles you wish to add you can more easily do so (outside this GUI) by selecting the entries in the shows list and then using the *Auto Transfers->Add Selected Titles* menu.
 
 ====Auto Transfer Everything====
-If you want kmttg to auto transfer everything available on all your tivos you can setup a title matching entry with simply *.** as the title. In pattern matching this will match anything.
+If you want kmttg to auto transfer everything available on all your tivos you can setup a title matching entry with simply *{{{.*}}}* as the title. In pattern matching this will match anything.
 
 ====Keyword Matching====
 
