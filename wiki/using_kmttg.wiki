@@ -152,13 +152,13 @@ In order to prevent transfer of same show over and over in auto mode kmttg creat
 
 If you have several such exceptions then add a 2 line entry as in above example for each one.
 
-===RUNNING THE AUTO TRANSFERS PROGRAM AS A SERVICE IN WINDOWS XP===
+===RUNNING THE AUTO TRANSFERS PROGRAM AS A SERVICE IN WINDOWS===
 
-*NOTE: running kmttg auto transfers as a service is still experimental and may not work for everyone (see below for notes on getting it working with Vista).*
+*NOTE: running kmttg auto transfers as a service is still experimental and may not work for everyone.*
 
 In Windows the auto transfer program can be setup to run as a Windows Service called kmttg.
 
-Browse to the folder where you installed kmttg and then go to *service\win32* folder. Here there are scripts to install, start, stop or uninstall the kmttg service. For Windows XP simply double-click on the appropriate script to run it. For Vista these must be run as Administrator in order to work, so you should right click and select "Run as administrator" to run them.
+Browse to the folder where you installed kmttg and then go to *service\win32* folder. Here there are scripts to install, start, stop or uninstall the kmttg service. For Windows XP simply double-click on the appropriate script to run it. *For Vista these must be run as Administrator in order to work, so you should right click and select "Run as administrator" to run them.*
 
   * *install-kmttg-service.bat* Installs kmttg as a service
   * *start-kmttg-service.bat* Will start an already installed kmttg service
