@@ -3,15 +3,15 @@
 
   * Start kmttg if you have not done so already.
   * From *File* pulldown menu select *Configure…*
-  * Adjust settings according to your environment
-  * At bare minimum you should enter proper *MAK* value and define *`.TiVo`* dir (where to save download `.TiVo` files).
-  NOTE: As of version 0.5l kmttg will automatically detect any Tivos on your network and add them to Tivos list, but you can optionally add tivos yourself if you wish.
+  * Adjust settings according to your environment. Many of the 3rd party tools are installed automatically for Windows & Mac platforms (and auto-detected on Linux platforms if available), but some tools such as VideoRedo and t2extract are not setup by default and must be user defined if you have them installed and wish to use them.
+  * If you did not specify *MAK* during first launch you should enter proper *MAK* value and define *`.TiVo`* dir (where to save download `.TiVo` files).
+  NOTE: As of version 0.6a kmttg will automatically detect any Tivos on your network and add them to Tivos list, but you can optionally add tivos yourself if you wish.
 
   NOTE: You can specify different output directories for `.TiVo` files, `.mpg` files and encoded files if you wish or you can set them all the same.
   * OK the form when you have completed your configuration. This will save your settings to config.ini file so they will be remembered next time you run kmttg.
 
 ==MANUALLY ENTERING TIVO NAMES AND IP NUMBERS==
-  * Starting with version 0.5l kmttg will automatically detect and add Tivos on your network, so you can choose to skip steps below that detail how to manually add tivos to kmttg.
+  * Starting with version 0.6a kmttg will automatically detect and add Tivos on your network, so you can choose to skip steps below that detail how to manually add tivos to kmttg.
   * Supply a Tivo name in the *Tivo Name* field and the associated Tivo IP number in the *Tivo IP#* field.
   EXAMPLE: *Tivo Name = Bedroom   Tivo IP# = 192.168.1.101*
   * You can find Tivo IP numbers for each of your Tivos as follows:
@@ -22,7 +22,6 @@
 ==FILES Default Path==
   * Defines where you would like the file browser to start from in FILES mode.
   * NOTE: You can use this option without having any Tivos defined if you wish.
-
  
 ==Remove `.TiVo` file after decrypt==
   * Enable this option if you would like kmttg to remove `.TiVo` files automatically once they have been successfully decrypted to .mpg format.
