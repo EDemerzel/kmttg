@@ -1,3 +1,4 @@
+#labels Featured
 =CONFIGURING KMTTG=
 *This step is very important and must be run at least the first time you start kmttg.*
 
