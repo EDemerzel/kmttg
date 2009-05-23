@@ -7,8 +7,7 @@ ENHANCEMENTS
 
   * Much easier installation. For Windows & Mac platforms the 3rd party tools are automatically downloaded and installed if needed the first time you run the application. For Linux platforms the tools are searched for in run path.
 
-  * Addition of "custom" job which you can enable to run whatever post-processing
-program/script you want.
+  * Addition of "custom" job which you can enable to run whatever post-processing program/script you want.
 
   * When you use the *Auto Transfers-Add selected titles* entry to add auto transfer entries from Now Playing list the entries default to performing tasks selected in main window instead of just defaulting to download only. 
 
