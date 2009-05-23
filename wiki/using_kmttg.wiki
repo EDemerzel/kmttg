@@ -156,28 +156,23 @@ If you have several such exceptions then add a 2 line entry as in above example 
 
 In Windows the auto transfer program can be setup to run as a Windows Service called kmttg.
 
-Use the Auto Transfers Service menu entries to enable, disable or view the status of the service:
+Browse to the folder where you installed kmttg and then go to *service\win32* folder. Here there are scripts to install, start, stop or uninstall the kmttg service. For Windows XP simply double-click on the appropriate script to run it. For Vista these must be run as Administrator in order to work, so you should right click and select "Run as administrator" to run them.
 
-  * *Auto Transfers->Service->Status* Reports if the kmttg service is running or not
-  * *Auto Transfers->Service->Enable* Creates/Starts the kmttg service
-  * *Auto Transfers->Service->Disable* Stops the kmttg service (this doesn’t delete the service, merely stops it)
-  * *Auto Transfers->Service->Delete* Deletes the kmttg service such that it won’t automatically start running again upon reboot
+  * *install-kmttg-service.bat* Installs kmttg as a service
+  * *start-kmttg-service.bat* Will start an already installed kmttg service
+  * *stop-kmttg-service.bat* Stops a running kmttg service (this doesn’t delete the service, merely stops it)
+  * *uninstall-kmttg-service.bat* Deletes the kmttg service such that it won’t automatically start running again upon reboot
 
-===SETTING UP KMTTG AS A SERVICE IN WINDOWS VISTA===
+NOTE: If you have a service already running from a previous kmttg installation you must uninstall the service using that installation first and then re-install using the new installation.
 
-Vista with it’s extra security takes more work to get kmttg running as a service. I was able to get it up and running as follows:
+NOTE: All output messages will be logged in *auto.log* file which resides in the main kmttg installation folder (where kmttg.jar file is located).
 
-  * Run kmttg as *“Run As Administrator”*
-  * *Auto Transfers->Service->Enable* to create the registry entries
-  * Close kmttg
+For more specific control you can get to the kmttg service in Windows as follows:
+
   * *Control Panel->Administrative Tools->Services*
   * Scroll down and find *kmttg* entry
   * Right click on *kmttg* and stop service if it is running
   * Right click on kmttg and select *Properties*
-  * Choose *Log On* tab and select *“Local System account”*
-  * OK the form
-  * Right click on kmttg and start the service
-  * It should now be running as expected (inspect auto.log file in the same folder as kmttg.pl to check)
 
 ===CHANGING KMTTG WINDOWS SERVICE STARTUP MODE===
 
@@ -200,29 +195,33 @@ You can control services from the command line using the “sc.exe” command. E
  
 ===FURTHER DETAILS ON KMTTG WINDOWS SERVICE===
 
-Perl scripts cannot natively be run as services in windows. Kmttg uses the “srvany.exe” program from the Windows NT Development Kit which enables any program to run as a windows service. So the kmttg service is actually running 2 binaries: srvany as well as the perl interpreter. The full command being run as a service is:
+Java scripts cannot natively be run as services in windows. Kmttg uses a windows wrapper program which can interface with Windows services in order to run:
 
-*`<path>/srvany/srvany.exe <path>/perl.exe <path>/kmttg.pl -a`*
+*"<path>\service\win32\bin\wrapper.exe" -s "<path>\service\conf\wrapper.conf"
 
-The –a option to kmttg.pl indicates to run kmttg in non graphical auto download mode, running in a loop where Tivos are checked and matching shows processed.
+The *wrapper.conf* files sets up to run Java with *com.tivo.kmttg.main.kmttg -a* as arguments.
 
-One problem of using the srvany program is there is no way to catch start, stop, pause signals. Hence if you turn off your computer while the kmttg service is actively processing jobs then those jobs will not be gracefully interrupted.
+The *–a* option to indicates to run kmttg in non graphical auto transfers mode, running in a loop where Tivos are checked and matching shows processed.
 
  
-===FURTHER DETAILS ON KMTTG BACKGROUND PROCESS (LINUX)===
+===SETTING UP KMTTG AUTO TRANSFERS AS A BACKGROUND JOB (MACINTOSH/LINUX)===
 
-On linux systems kmttg auto transfers program simply runs as a background process on your system using the *–a* command line option. If you reboot your system then you will need to re-start the program, or you can use the /etc/rc method to put a script in place that will automatically start the program in background mode with the *–a* option.
+On Mac & linux systems you can setup to run kmttg as a background non-graphical job. You need to start kmttg with *-a* argument to do this. You can use the *kmttg* that comes with the installation and simply add -a argument when running it:
+
+*kmttg -a*
+
+If you reboot your system then you will need to re-start the program, or you can use the /etc/rc method to put a script in place that will automatically start the program in background mode with the *–a* option.
 
  
 ===RUNNING THE AUTO TRANSFERS PROGRAM AS A BATCH COMMAND===
 
-As an alternative to running auto transfers program as a service, you can alternatively supply the *–b* command line option to kmttg.pl to run batch mode. For example, the command might look something like:
+As an alternative to running auto transfers program as a service, you can alternatively supply the *–b* command line option to kmttg to run batch mode. For example, the command might look something like:
 
-*C:\Perl\bin\perl.exe c:\kmttg\kmttg.pl –b*
+*kmttg –b*
 
 In this mode the program will check your tivos once for matching programs and download and process any matches and then exit.
 
-This is especially useful when used in conjunction with a job scheduler program such as Windows Task Scheduler or Linux cron.
+This is especially useful when used in conjunction with a job scheduler program such as Linux cron.
 
  
 ===AUTO TRANSFER RELATED FILES===
