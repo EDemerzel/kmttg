@@ -13,7 +13,7 @@ Download kmttg installation zip file from:
 http://code.google.com/p/kmttg/downloads/list
 
     * *kmttg_vxxx.zip* file – This contains the platform independent kmttg installation files
-    * v0p6a or later are Java versions. Versions prior to that were Perl based.
+    * v0p6a or later are Java versions. Versions prior to that were Perl based and should no longer be used.
 
 ==3. UNPACK ZIP FILE==
 
