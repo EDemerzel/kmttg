@@ -1,66 +1,23 @@
 =KMTTG MAC OSX INSTALLATION=
 
-(special thanks to `AudioNutz` in Tivo Community forums for putting this together)
+==1. INSTALL JAVA IF NEEDED==
 
-==1. INSTALL XCODE TOOLS==
-The Tk module for the Perl GUI will need the X11 environment to be compiled, installed, and executed. Locate your Mac OS X installation DVD, and install the XCode Tools.
+Kmttg is now written in Java (originally used Perl) and supports Java 1.5 or later. You can download Java Runtime Environment (JRE) from here:
 
-==2. INSTALL PERL (ONLY IF NEEDED)==
-Most Macs with “Tiger” (Mac OS X 10.4.x) or “Leopard” (Mac OS X 10.5.x) already have Perl 5.8.x installed, so you can skip to the part below where you install the Tk module.
+http://java.com/en/download/manual.jsp
 
-Kmttg is written in Perl and uses the Tk module for GUI. Perl versions 5.8.x is confirmed to work as long as you have the proper Tk module.
+==2. DOWNLOAD KMTTG INSTALLATION ZIP FILE==
 
-Note that Macintosh `ActivePerl` version does not include Tk module by default and therefore requires more work to install – see details below.
+Download kmttg installation zip file from:
 
-If by some miracle your Macintosh does not have Perl installed:
+http://code.google.com/p/kmttg/downloads/list
 
-  * http://www.activestate.com/Products/activeperl/
-  * Click on Get `ActivePerl`
-  * Click on Download by free download version
-  * Click on Continue
-  * For 5.8.x version (on right side) scroll down and find the relevant installation file for your system
-  * Download and install on your system. NOTE: This step can vary depending on your system so is not documented here.
+    * *kmttg_vxxx.zip* file – This contains the platform independent kmttg installation files
+    * v0p6a or later are Java versions. Versions prior to that were Perl based and should no longer be used.
 
-==3. INSTALLING PERL Tk MODULE USING Terminal and X11==
-  * http://search.cpan.org/~ni-s/Tk-804.027/
-  * If you are using Safari, make sure that your browser is not set to “Open safe files after downloading”.
-  * Download the latest release.
-  * Move the Tk-804.028.tar.gz to your /System/Library/Perl/lib folder I suppose you can put it anywhere you like. I just put it here to keep things tidy.
-  * Change permissions of this folder, so that you have rights to install software here. (Make a note as to what the permissions were, as you will want to change them back later)
-  * Open a Terminal window, and execute the following commands: (May differ if you’ve changed the install location)
+==3. UNPACK ZIP FILE==
 
-BUILD EXAMPLE
-
-cd /System/Library/Perl/lib
-<br>
-tar -zxvpf Tk-804.028.tar.gz
-<br>
-cd Tk-804.028
-<br>
-perl Makefile.PL
-<br>
-make
-<br>
-Now go to your “Utilities” folder on your Hard Drive, and open an X11 window.
-<br>
-In the X11 window, type the following commands :
-<br>
-cd /System/Library/Perl/lib/Tk-804.028
-<br>
-make test
-<br>
-(Stand back and watch this happen)
-<br>
-sudo make install
-
-  * Perl and Tk are now ready. Change the permissions for “/System/Library/Perl/lib” back to what they were when you began. (This step may not be necessary, but I like to keep my Mac tidy)
-
-==4. INSTALL THE HELPER TOOLS==
-`AudioNutz` was kind enough to package up a zip file with the tools needed:
-<br>
-http://kmttg.googlecode.com/files/kmttg_MacOSX_tools_v0p5m.zip
+  * Unpack *kmttg_vxxx.zip* file to your desired location. In this example: /home/moyekj (this creates /home/moyekj/kmttg_vxxx folder)
 
 ==STARTING KMTTG==
-Simplest way to run kmttg:
-<br>
-perl kmttg.pl
+Run the *kmttg* script in the installation folder to start kmttg.
