@@ -199,7 +199,7 @@ You can control services from the command line using the “sc.exe” command. E
 
 Java scripts cannot natively be run as services in windows. Kmttg uses a windows wrapper program which can interface with Windows services in order to run:
 
-*"<path>\service\win32\bin\wrapper.exe" -s "<path>\service\conf\wrapper.conf"
+*{{{"<path>\service\win32\bin\wrapper.exe" -s "<path>\service\conf\wrapper.conf"}}}*
 
 The *wrapper.conf* files sets up to run Java with *com.tivo.kmttg.main.kmttg -a* as arguments.
 
