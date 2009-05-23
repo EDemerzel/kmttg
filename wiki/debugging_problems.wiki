@@ -1,20 +1,15 @@
 =DEBUGGING PROBLEMS=
-If you are having problems getting the program to start or run properly here are some things you try:
+If you are having problems getting the program to start or run properly here are some things to try:
 
-1. Check the kmttg text area for errors (red text) for clues about what the problem could be.
+1. In GUI mode check the kmttg text area for errors (red text) for clues about what the problem could be. For non-graphical/service mode all error messages go to auto.log file. Any Java stack trace messages will go to the message window in GUI mode or to auto.log file in non-graphical mode.
 
 2. Triple check your configuration setup (*File->Configure…*) for any syntax errors in IP #s, MAK, paths, etc.
 
-3. Run program from command line:<br>
-*perl kmttg.pl*
+3. If in windows when you double-click on kmttg.jar it doesn't run  then open a cmd window and run program from command line to be able to see any error messages:<br>
+*java -jar kmttg.jar*
 
-You will see stdout/stderr in the window. If the problem is missing Tk module (Can't locate Tk.pm ...) see installation instructions wiki for the platform you are running on for details on installing Perl with Tk module.
-
-NOTE: You can redirect stdout/stderr messages to files in Windows as follows:<br>
-*`perl kmttg.pl >out.txt 2>err.txt`*
-
-4. kmttg will print out a lot of debugging information if you edit the kmttg.pl script and change $DEBUG variable to 1
-
-You can redirect console messages to files (see step 1)
+4. Start kmttg from command line with -d argument to generate a lot of debug information that is saved to debug.log file:
+<br>
+*java -jar kmttg.jar -d*
 
 5. If you still can’t figure out what’s wrong ask for help at [http://www.tivocommunity.com/tivo-vb/showthread.php?t=387725 Tivo Community Forums kmttg thread]
