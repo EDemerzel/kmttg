@@ -1,3 +1,4 @@
+#labels Featured
 =RELEASE NOTES=
 
 ==v0.6a (05/23/2009)==
