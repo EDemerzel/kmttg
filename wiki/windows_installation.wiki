@@ -17,7 +17,7 @@ http://code.google.com/p/kmttg/downloads/list
 
 ==3. UNPACK ZIP FILE==
 
-  * Unpack kmttg_vxxx.zip file to your desired location. In this example: *c:\home* (this creates c:\home\kmttg_vxxx folder)
+  * Unpack *kmttg_vxxx.zip* file to your desired location. In this example: c:\home (this creates c:\home\kmttg_vxxx folder)
 
 ==4. STARTING KMTTG==
 Simply double click on *kmttg.jar* file (c:\home\kmttg_vxxx\kmttg.jar in this example) of the installation to start the program. (You can also create a shortcut to that file if you wish to make it easier).
