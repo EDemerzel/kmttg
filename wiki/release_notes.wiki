@@ -1,7 +1,7 @@
 =RELEASE NOTES=
 
 ==v0.6a (05/23/2009)==
-ENHANCEMENTS
+*ENHANCEMENTS*
 
   * Completely ported to Java (supports Java 1.5 or later).
 
