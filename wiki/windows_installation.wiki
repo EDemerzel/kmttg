@@ -1,57 +1,25 @@
 =KMTTG WINDOWS INSTALLATION INSTRUCTIONS=
 
-==1. INSTALL PERL IF NEEDED==
+==1. INSTALL JAVA IF NEEDED==
 
-Kmttg is written in Perl and uses the Tk module for GUI. Perl versions 5.8.x and 5.10.x are confirmed to work as long as you have the proper Tk module for each.
+Kmttg is now written in Java (originally used Perl) and supports Java 1.5 or later. You can download Java Runtime Environment (JRE) from here:
 
-Note that `ActivePerl` 5.10.x version does not include Tk module by default and therefore requires more work to install – see details below.
+http://java.com/en/download/manual.jsp
 
-`ActivePerl` 5.8.x automatically includes Tk module and can be installed as follows:
+==2. DOWNLOAD KMTTG INSTALLATION ZIP FILE==
 
-http://www.activestate.com/Products/activeperl/
-
-  * Click on Get `ActivePerl`
-  * Click on Download by free download version
-  * Click on Continue
-  * For 5.8.x version (on right side) scroll down to windows (x86) and choose the MSI version
-  * Once the .msi file is downloaded, double-click on the file to start the installation process and pick all default installation options
-
-`ActivePerl` 5.10.x does NOT automatically include the Tk module, so it requires a little more work to install:
-
-http://www.activestate.com/Products/activeperl/
-
-  * Click on Get `ActivePerl`
-  * Click on Download by free download version
-  * Click on Continue
-  * For 5.10.x version (on left side) scroll down to windows (x86) and choose the MSI version
-  * Once the .msi file is downloaded, double-click on the file to start the installation process and pick all default installation options
-  * Once installed you can now use Perl Package Manager (PPM) to install the Tk module as follows:
-    # `start—Programs—ActivePerl 5.10xx—Perl Package Manager`
-    # In PPM window choose `View—All Packages`
-    #  Scroll down and find “Tk” and click on it to select
-    # Choose `Action—Install Tk`
-    # Choose `File—Run Marked Actions`
-
-==2. DOWNLOAD KMTTG ZIP FILES==
-
-Download kmttg zip files from:
+Download kmttg installation zip file from:
 
 http://code.google.com/p/kmttg/downloads/list
 
     * *kmttg_vxxx.zip* file – This contains the platform independent kmttg installation files
-    * *kmttg_win32_tools_vxxx.zip* file - This includes required and optional 3rd party tools: curl, tivodecode, ffmpeg, handbrake, mencoder, comskip, srvany, etc.
+    * v0p6a or later are Java versions. Versions prior to that were Perl based.
 
-==3. UNPACK ZIP FILES==
+==3. UNPACK ZIP FILE==
 
-  * Unpack kmttg_vxxx.zip file to your desired location. In this example: *c:\home* (this creates c:\home\kmttg folder)
-  * Unpack kmttg_win32_tools_vxxx.zip file inside the kmttg folder. In this example *c:\home\kmttg* (so you end up with c:\home\kmttg\comskip, c:\home\kmttg\comcut, etc)
+  * Unpack kmttg_vxxx.zip file to your desired location. In this example: *c:\home* (this creates c:\home\kmttg_vxxx folder)
 
 ==4. STARTING KMTTG==
-Easiest way to start kmttg is to setup a desktop shortcut:
-  * Determine the path to your Perl installation and to kmttg.pl file. In this example Perl is installed in *c:\Perl* and kmttg is installed under *c:\home*
-  * Right click somewhere free on your desktop and choose *New->Shortcut*
-  * Enter *"c:\Perl\bin\wperl.exe" "c:\home\kmttg\kmttg.pl"* (NOTE: Quotes around the paths are needed in case paths have spaces)
-  * *Next*
-  * Use *kmttg* as name for the shortcut
-  * *Finish*
-  * Now you can simply double-click the kmttg icon to launch the application
+Simply double click on kmttg.jar file of the installation to start the program. (You can also create a shortcut to that file if you wish to make it easier).
+  * The first time launch you will be prompted to allow kmttg to download and install required tools. Choose Yes and wait for the download and installation to complete.
+  * Also the first time you launch kmttg you will be prompted for your 10 digit Media Access Key (MAK) which is needed to download & decrypt programs from your Tivos.
