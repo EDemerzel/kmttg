@@ -17,12 +17,14 @@
   * You can find Tivo IP numbers for each of your Tivos as follows:
   Tivo Central—Messages&Settings—Settings—Phone&Network: IP addr
   * Click on *ADD* button to add the entry to the Tivos list
-  * If you want to remove entries, then select them in the Tivos list and click on DEL button.
+  * If you want to remove entries, then select them in the Tivos list and click on *DEL* button.
 
-==FILES Default Path==
-  * Defines where you would like the file browser to start from in FILES mode.
-  * NOTE: You can use this option without having any Tivos defined if you wish.
- 
+==Look for Tivos on network==
+  * If this option is enabled then kmttg will check for Tivo broadcast beacons to automatically detect Tivos on your network. You can optionally choose to disable this feature and add tivos manually to kmttg if you wish.
+
+==Create sub-folder==
+  * Enable this option if you would like kmttg to create a sub-folder for each show to be processed. The name of the folder will be the same as the file format you defined but without any file extension.
+
 ==Remove `.TiVo` file after decrypt==
   * Enable this option if you would like kmttg to remove `.TiVo` files automatically once they have been successfully decrypted to .mpg format.
 
@@ -32,14 +34,11 @@
 ==Remove .mpg file after encode==
   * If you use encode you can enable this option if you would like kmttg to remove .mpg files automatically once they have been successfully re-encoded.
 
-
-==MAK==
-  * REQUIRED if you plan to download files from Tivo Now Playing lists.
-  * Your Tivo Media Access Key. You can find the number on any of your Tivos:
-  Tivo Central—Messages&Settings—Account&System Information—Media Access Key
+==Check Available Disk Space==
+  * If this option is enabled then kmttg will check that destination drive has more than the space available defined in *Min req space (GB)* field before running jobs.
 
 ==File Naming==
-  * This defines how file names will look for downloaded shows. Certain keywords are provided which you specify within square brackets that will be substituted accordingly. You can use almost any other characters you want (*avoid quotes!*) and arrange the keywords in any order you like.
+  * This defines how file names will look for downloaded shows. Certain keywords are provided which you specify within square brackets that will be substituted accordingly. The choices for those you can see in the *Available keywords* cyclic. Choosing an entry from *Available keywords* will insert it in the File Naming field. You can use almost any other characters you want (*avoid quotes!*) and arrange the keywords in any order you like.
   * EXAMPLE:  Let’s say you have a recorded show as follows:
 *Mon 3/24/2008 at 8:00pm called “The Big Bang Theory – The Loobenfeld Decay” from channel 702=KCBSDT*<br>
 `Keywords in this example are:`<br>
@@ -79,8 +78,14 @@ By request some more advanced keyword processing was introduced to allow for con
 
 The advanced keyword is highlighted in bold and signifies only include `“_Ep#xxx”` if `EpisodeNumber` exists for the show in question. `“_Ep#”` is literal string to which the evaluated contents of `EpisodeNumber` keyword are appended. If `EpisodeNumber` does not exist then the whole advanced keyword evaluates to empty string.
 
-==Create sub-folder==
-  * Enable this option if you would like kmttg to create a sub-folder for each show to be processed. The name of the folder will be the same as the file format you defined but without any file extension.
+==FILES Default Path==
+  * Defines where you would like the file browser to start from in FILES mode.
+  * NOTE: You can use this option without having any Tivos defined if you wish.
+
+==MAK==
+  * REQUIRED if you plan to download files from Tivo Now Playing lists.
+  * Your Tivo Media Access Key. You can find the number on any of your Tivos:
+  Tivo Central—Messages&Settings—Account&System Information—Media Access Key
 
 ==`.TiVo` Output Dir==
   * REQUIRED if you plan to download files from Tivo Now Playing lists.
@@ -115,12 +120,10 @@ The advanced keyword is highlighted in bold and signifies only include `“_Ep#x
   * Adjust to match the full path to the curl binary if you plan to download files
   * NOTE: For Windows users who installed the tools zip file this should not have to change.
   * NOTE: Most Linux installations already have curl installed under */usr/bin/curl*
-
  
 ==ffmpeg (optional)==
   * If you plan on re-encoding mpeg2 files to a different format using kmttg and ffmpeg encoding profiles then you should define here the full path to ffmpeg here. All the kmttg pre-defined encoding profiles starting with “ff_” prefix use ffmpeg as their encoding engine.
   * NOTE: For Windows users ffmpeg is included as part of the tools zip file.
-
  
 ==handbrake (optional)==
   * If you plan on re-encoding mpeg2 files to a different format using kmttg and handbrake encoding profiles then you should define here the full path to HandBrakeCLI here. All the kmttg pre-defined encoding profiles starting with “hb_” use handbrake as their encoding engine.
@@ -163,9 +166,3 @@ The advanced keyword is highlighted in bold and signifies only include `“_Ep#x
 ==`AtomicParsley`==
   * If you specify the full path to `AtomicParsley` executable then some meta data information will be automatically added to mp4 files following encode step.
   * NOTE: This will only work if you have pyTivo metadata available for the file since kmttg will look for file.mp4.txt file to get information it needs for `AtomicParsley` run.
-
-==Check Available Disk Space==
-  * If this option is enabled and *Minimum required disk space* is specified then kmttg will check that destination drive has more than that space available before running jobs.
-
-==Look for Tivos on network==
-  * If this option is enabled then kmttg will check for Tivo broadcast beacons to automatically detect Tivos on your network. You can optionally choose to disable this feature and add tivos manually to kmttg if you wish.
