@@ -81,6 +81,8 @@ Kmttg installation comes with an *encode* folder that contains files with *.enc*
 
 There are comments in the pre-defined *.enc* file which hopefully makes it pretty obvious how to properly define these files.
 
+NOTE: You *MUST* use all lowercase file names with no spaces if creating your own .enc files.
+
 ==KMTTG AUTO TRANSFERS==
 
 You have the ability to run kmttg as a background non-graphical program that can automatically download and perform the other usual actions you choose based on titles and keywords you setup.
