@@ -1,3 +1,4 @@
+#labels Featured
 =USING KMTTG=
 NOTE: The first time you start kmttg you may be prompted to allow 3rd party tool download and installation which are used by kmttg as well as prompted for your Media Access Key (MAK). You can further configure kmttg as needed by selecting *File->Configure…* menu entry. See the [http://code.google.com/p/kmttg/wiki/configuring_kmttg configuring_kmttg] wiki documentation for details on configuration options.
 
