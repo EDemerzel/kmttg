@@ -20,6 +20,10 @@ http://code.google.com/p/kmttg/downloads/list
 
   * Unpack *kmttg_vxxx.zip* file to your desired location. In this example: /home/moyekj (this creates /home/moyekj/kmttg_vxxx folder)
 
+===TIP===
+If upgrading from a previous Java kmttg installation you can unzip over the previous installation or just replace the *kmttg.jar* file of the old installation with the one from the new installation. That way you can preserve the kmttg configuration and avoid having to re-configure.
+
+
 ==STARTING KMTTG==
   * Run the *kmttg* script in the installation folder to start kmttg.
   * The first time launch you will be prompted to allow kmttg to download and install required tools. Choose Yes and wait for the download and installation to complete.
