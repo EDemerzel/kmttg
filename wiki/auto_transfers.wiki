@@ -3,6 +3,8 @@
 
 You have the ability to run kmttg as a background non-graphical program that can automatically download and perform the other usual actions you choose based on titles and keywords you setup.
 
+NOTE: If you have {{{VideoRedo}}} configured for use in kmttg consult the [http://code.google.com/p/kmttg/wiki/VideoRedo_configuration VideoRedo_configuration] wiki page for special configuration instructions.
+
 *NOTE: By default the kmttg Windows service is setup as “automatic” startup mode. This means that should you restart your computer the kmttg service will automatically be started on bootup. If you would like to change this behavior see the relevant section below for more details on how to do that.*
 
 ===CONFIGURING AUTO TRANSFERS===
