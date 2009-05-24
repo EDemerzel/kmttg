@@ -20,6 +20,9 @@ http://code.google.com/p/kmttg/downloads/list
 
   * Unpack *kmttg_vxxx.zip* file to your desired location. In this example: c:\home (this creates c:\home\kmttg_vxxx folder)
 
+===TIP===
+If upgrading from a previous Java kmttg installation you can unzip over the previous installation or just replace the *kmttg.jar* file of the old installation with the one from the new installation. That way you can preserve the kmttg configuration and avoid having to re-configure.
+
 ==4. STARTING KMTTG==
 Simply double click on *kmttg.jar* file (c:\home\kmttg_vxxx\kmttg.jar in this example) of the installation to start the program. (You can also create a shortcut to that file if you wish to make it easier).
   * The first time launch you will be prompted to allow kmttg to download and install required tools. Choose Yes and wait for the download and installation to complete.
