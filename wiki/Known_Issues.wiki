@@ -1,7 +1,7 @@
 ==Encoding profile naming must be lowercase==
 If you make your own encoding profiles (name.enc files under encode folder) be sure to use all lowercase file names otherwise they won't work when used in auto transfers mode.
 
-==`VideoRedo` in windows service mode==
+==*`VideoRedo`* in windows service mode==
 `VideoRedo` won't run properly using the default kmttg service setup. Consult the [http://code.google.com/p/kmttg/wiki/VideoRedo_configuration VideoRedo_configuration] wiki page for details on how to fix that.
 
 ==comcut creates audio/video sync issues==
