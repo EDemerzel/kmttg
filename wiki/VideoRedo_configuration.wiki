@@ -1,0 +1,18 @@
+==VIDEOREDO SPECIAL CONFIGURATION INSTRUCTIONS==
+
+===COMSKIP SETUP===
+By default comskip.ini is not setup to create a .VPrj file that can be used by VideoRedo for detected commercial segment cutting. You should edit the comskip\comskip.ini file and find the *output_videoredo=0* setting and change it to *output_videoredo=1*.
+
+===WINDOWS SERVICE===
+When running in service mode with the default kmttg Windows Service configuration VideoRedo will fail to run with an error such as *"WScript.CreateObject: Could not create object named VideoReDo.VideoReDoSilent".
+
+The fix to this problem is to configure the kmttg service to run using a Local Account. You can do that as follows:
+
+  * *Control Panel->Administrative Tools->Services*
+  * Scroll down and find *kmttg* entry
+  * Right click on *kmttg* and stop service if it is running
+  * Right click on kmttg and select *Properties*
+  * Choose *Log On* tab
+  * Click on *This account* and type in a valid user account for this computer along with the password to go along with it.
+  * OK the form
+
