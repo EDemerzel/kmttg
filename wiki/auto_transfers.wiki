@@ -72,11 +72,16 @@ If you have several such exceptions then add a 2 line entry as in above example 
 
 ===RUNNING THE AUTO TRANSFERS PROGRAM AS A SERVICE IN WINDOWS===
 
-*NOTE: running kmttg auto transfers as a service is still experimental and may not work for everyone.*
-
 In Windows the auto transfer program can be setup to run as a Windows Service called kmttg.
 
-Browse to the folder where you installed kmttg and then go to *service\win32* folder. Here there are scripts to install, start, stop or uninstall the kmttg service. For Windows XP simply double-click on the appropriate script to run it. *For Vista these must be run as Administrator in order to work, so you should right click and select "Run as administrator" to run them.*
+You can install, start, stop and remove kmttg service directly from the kmttg GUI:
+  * Use *Auto Transfers->Service->Status* to view the status of kmttg service
+  * Use *Auto Transfers->Service->Install* to install the kmttg service so as to run auto transfers as a service. NOTE: This only installs the service, you then need to start it using entry below.
+  * Use *Auto Transfers->Service->Start* to start the kmttg service
+  * Use *Auto Transfers->Service->Stop* to stop the kmttg service
+  * Use *Auto Transfers->Service->Remove* to remove the kmttg service
+
+Alternatively there is another way to control kmttg service. Browse to the folder where you installed kmttg and then go to *service\win32* folder. Here there are scripts to install, start, stop or uninstall the kmttg service. For Windows XP simply double-click on the appropriate script to run it. *For Vista these must be run as Administrator in order to work, so you should right click and select "Run as administrator" to run them.*
 
   * *install-kmttg-service.bat* Installs kmttg as a service
   * *start-kmttg-service.bat* Will start an already installed kmttg service
@@ -129,6 +134,11 @@ The *–a* option to indicates to run kmttg in non graphical auto transfers mode
 On Mac & linux systems you can setup to run kmttg as a background non-graphical job. You need to start kmttg with *-a* argument to do this. You can use the *kmttg* that comes with the installation and simply add -a argument when running it:
 
 *kmttg -a*
+
+You can start and stop kmttg as a background auto transfers job directly from the kmttg GUI if you wish:
+  * Use *Auto Transfers->Background Job->Status* to check if background job is running
+  * Use *Auto Transfers->Background Job->Enable* to run a kmttg background auto transfers job.
+  * Use *Auto Transfers->Background Job->Disable* to stop the kmttg background job.
 
 If you reboot your system then you will need to re-start the program, or you can use the /etc/rc method to put a script in place that will automatically start the program in background mode with the *–a* option.
 
