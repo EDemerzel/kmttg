@@ -1,6 +1,18 @@
 #labels Featured
 =RELEASE NOTES=
 
+==v0.6b (05/24/2009)==
+*FIXES*
+
+  * Fixed problem with obtaining Now Playing list of more than 256 shows.
+
+*ENHANCEMENTS*
+
+  * Added *Auto Transfers->Service* menu for Windows platform to create/start/stop/view status of Windows kmttg auto transfers service.
+
+  * Added *Auto Transfers->Background Job* menu for other platforms to start/stop/view status of kmttg auto transfers background job.
+
+
 ==v0.6a (05/23/2009)==
 *ENHANCEMENTS*
 
