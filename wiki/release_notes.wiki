@@ -2,7 +2,7 @@
 =RELEASE NOTES=
 
 ==v0.6c (05/30/2009)==
-NOTE: To upgrade from a previous java version easiest thing to do is replace the *kmttg.jar* file in previous installation with the one in the [http://kmttg.googlecode.com/files/kmttg_v0p6c.zip kmttg_v0p6.zip] file.
+NOTE: To upgrade from a previous java version easiest thing to do is replace the *kmttg.jar* file in previous installation with the one in the [http://kmttg.googlecode.com/files/kmttg_v0p6c.zip kmttg_v0p6c.zip] file.
 
 *ENHANCEMENTS*
 
