@@ -10,7 +10,7 @@
 
   NOTE: You can specify different output directories for `.TiVo` files, `.mpg` files and encoded files if you wish or you can set them all the same.
 
-  *NOTE: For file and directory fields you can double-click in the field to bring up a File Browser to help locate files/directories.*
+  NOTE: For file and directory fields you can double-click in the field to bring up a File Browser to help locate files/directories.
 
   * OK the form when you have completed your configuration. This will save your settings to config.ini file so they will be remembered next time you run kmttg.
 
