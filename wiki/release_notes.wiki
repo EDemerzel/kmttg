@@ -2,6 +2,8 @@
 =RELEASE NOTES=
 
 ==v0.6c (05/30/2009)==
+NOTE: To upgrade from a previous java version easiest thing to do is replace the *kmttg.jar* file in previous installation with the one in the *kmttg_v0p6.zip* file.
+
 *ENHANCEMENTS*
 
   * Added toolTips to most GUI components (with option to disable)
