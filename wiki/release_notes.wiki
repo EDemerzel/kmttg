@@ -5,12 +5,18 @@
 *ENHANCEMENTS*
 
   * Added toolTips to most GUI components (with option to disable)
+
   * Remembers last main GUI selections and window width/height when re-starting GUI.
+
   * Added File Browser option for configure window for setting file and directory entries.
   (Double-click in the field to bring up File Browser).
+
   * Added *File->Save messages to file* menu entry as a convenient way to save kmttg message window contents to a file.
+
   * Added option to use *`VRD AdScan`* instead of comskip for commercial detection
+
   * Added error message display if custom job fails (exit status is non-zero).
+
   * Removed 'duration' field from metadata files as pyTivo won't use them anyway.
 
 *FIXES*
