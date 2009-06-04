@@ -33,7 +33,7 @@ NOTE: You can sort shows in the list by clicking on the list headers:
   * If you plan on any further processing of .mpg files such as cutting out commercials or re-encoding to different format it’s useful to run the file through VRD QS fix first to fix any potential glitches in the .mpg file that may cause issues.
 
 ===Ad Detect===
-  * This option is for automated commercial segment detection using either comskip or VideoRedo AdScan.
+  * This option is for automated commercial segment detection using either comskip or `VideoRedo AdScan`.
   * comskip is a public domain program that can scan an mpeg2 file and detect commercials.
   * With default configuration it will produce a .edl file which can be fed to *mencoder* to cut out detected commercial segments.
   * If you have VRD enabled then the comskip job will run with --videoredo option which will create a .VPrj file which contains the cut sections for `VideoRedo` to be used in the comcut stage.
