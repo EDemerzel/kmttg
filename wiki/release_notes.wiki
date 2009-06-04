@@ -13,17 +13,17 @@ NOTE: If upgrading a previous kmttg version in same installation directory, be s
   
   * Added --videoredo option to comskip if `VideoRedo` is configured so that .VPrj file is created without need to edit comskip.ini
   
-* comskip task now shows % complete for each phase (only comskip, not adscan)
+  * comskip task now shows % complete for each phase (only comskip, not adscan)
 
-* Added task dependency checking - will automatically add missing tasks if needed. For example if Ad Cut is selected without Ad Scan and Ad Scan output file is not available then automatically enables Ad Scan job.
+  * Added task dependency checking - will automatically add missing tasks if needed. For example if Ad Cut is selected without Ad Scan and Ad Scan output file is not available then automatically enables Ad Scan job.
   
-* Added auto transfer START and SHUTDOWN messages so that there is a record of when auto transfers service/background jobs are started and stopped.
+  * Added auto transfer START and SHUTDOWN messages so that there is a record of when auto transfers service/background jobs are started and stopped.
 
-* Added -harddup option to mencoder for better audio/video sync for cut mpeg files
+  * Added -harddup option to mencoder for better audio/video sync for cut mpeg files
 
-* Changed comskip/comcut labels to Ad Detect/Ad Cut
+  * Changed comskip/comcut labels to Ad Detect/Ad Cut
 
-* Added season # to `AtomicParsley` processing (so that mpeg4 videos get season # metadata)
+  * Added season # to `AtomicParsley` processing (so that mpeg4 videos get season # metadata)
 
 *FIXES*
   * Fixed auto mode crash problem related to unmapped mpaaRating when generating pyTivo metadata file.
