@@ -35,8 +35,7 @@ NOTE: You can sort shows in the list by clicking on the list headers:
 ===comskip===
   * comskip is a public domain program that can scan an mpeg2 file and detect commercials.
   * With default configuration it will produce a .edl file which can be fed to *mencoder* to cut out detected commercial segments.
-  NOTE: If you have VRD enabled then you should edit *comskip.ini* file and set:<br>*output_videoredo=1*<br>
-  * By doing so the comskip step will create a .VPrj file which contains the cut sections for `VideoRedo` to be used in the comcut stage.
+  * If you have VRD enabled then the comskip job will run with --videoredo option which will create a .VPrj file which contains the cut sections for `VideoRedo` to be used in the comcut stage.
 NOTE: comskip can be configured to output several other files too such as a bookmark .mls file for Womble Mpeg Video Wizard or a cut file for `VideoRedo`. Consult comskip documentation for details.<br>
 NOTE: Accuracy varies greatly depending on the show. Comskip is most useful to use as an initial guess as to where cut points should be made. Ideally you should then use Womble, VRD or similar editor to adjust the cut points as needed.
 
