@@ -15,7 +15,7 @@ NOTE: If upgrading a previous kmttg version in same installation directory, be s
   
   * comskip task now shows % complete for each phase (only comskip, not adscan)
 
-  * Added task dependency checking - will automatically add missing tasks if needed. For example if Ad Cut is selected without Ad Scan and Ad Scan output file is not available then automatically enables Ad Scan job.
+  * Added task dependency checking - will automatically add missing tasks if needed. For example if Ad Cut is selected without Ad Detect and Ad Detect output file is not available then automatically enables Ad Detect job.
   
   * Added auto transfer START and SHUTDOWN messages so that there is a record of when auto transfers service/background jobs are started and stopped.
 
