@@ -32,14 +32,16 @@ NOTE: You can sort shows in the list by clicking on the list headers:
   * This option is short for `VideoRedo` Quickstream Fix.
   * If you plan on any further processing of .mpg files such as cutting out commercials or re-encoding to different format it’s useful to run the file through VRD QS fix first to fix any potential glitches in the .mpg file that may cause issues.
 
-===comskip===
+===Ad Detect===
+  * This option is for automated commercial segment detection using either comskip or VideoRedo AdScan.
   * comskip is a public domain program that can scan an mpeg2 file and detect commercials.
   * With default configuration it will produce a .edl file which can be fed to *mencoder* to cut out detected commercial segments.
   * If you have VRD enabled then the comskip job will run with --videoredo option which will create a .VPrj file which contains the cut sections for `VideoRedo` to be used in the comcut stage.
 NOTE: comskip can be configured to output several other files too such as a bookmark .mls file for Womble Mpeg Video Wizard or a cut file for `VideoRedo`. Consult comskip documentation for details.<br>
 NOTE: Accuracy varies greatly depending on the show. Comskip is most useful to use as an initial guess as to where cut points should be made. Ideally you should then use Womble, VRD or similar editor to adjust the cut points as needed.
 
-===comcut===
+===Ad Cut===
+  * This option is for automated commercial segment removal based on commercials detected in the *Ad Detect* stage.
   * mencoder is used if you select the “comcut” option in kmttg to automatically cut out commercial segments detected by comskip.
   NOTE: You are better off using an mpeg2 editor if you want precise cuts and in sync audio/video. The combination of comskip and comcut can work well for some shows but not well at all for others. On occasion I find mencoder can produce out of sync audio/video files.<br>
   NOTE: If you have configured VRD then this stage will use `VideoRedo` for doing the video cuts instead of mencoder.
