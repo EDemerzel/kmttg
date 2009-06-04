@@ -42,7 +42,7 @@ NOTE: Accuracy varies greatly depending on the show. Comskip is most useful to u
 ===comcut===
   * mencoder is used if you select the “comcut” option in kmttg to automatically cut out commercial segments detected by comskip.
   NOTE: You are better off using an mpeg2 editor if you want precise cuts and in sync audio/video. The combination of comskip and comcut can work well for some shows but not well at all for others. On occasion I find mencoder can produce out of sync audio/video files.<br>
-  NOTE: If you have configured VRD and set *output_videoredo=1* in *comskip.ini* then this stage will use `VideoRedo` for doing the video cuts instead of mencoder.
+  NOTE: If you have configured VRD then this stage will use `VideoRedo` for doing the video cuts instead of mencoder.
 
 ===captions===
   * This option is only enabled on Windows systems and if you have configured full path to `T2Sami` t2extract.exe.
