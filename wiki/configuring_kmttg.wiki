@@ -177,6 +177,9 @@ The advanced keyword is highlighted in bold and signifies only include `“_Ep#x
 ==custom command==
   * Here you can setup any script you want to run as a post-processing step to all other tasks. You can use certain pre-defined keywords in square brackets as arguments to your script if you wish which kmttg will replace with the associated full path file names. The supported keywords are listed in the *Available file args* cyclic.
 
+==encoding cpu cores===
+  * Specify the number of cpu cores to use for encoding jobs. If you have a multi-core machine this can speed up encoding jobs quite significantly. Consider this setting and *active job limit* when deciding what number to use here. Setting this too high may really slow down your machine for other tasks running in parallel.
+
 ==Display toolTips==
   * Enable or disable mouse over toolTips which are text tips that appear when you move the mouse over an item in the GUI.
 
