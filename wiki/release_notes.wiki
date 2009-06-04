@@ -1,6 +1,39 @@
 #labels Featured
 =RELEASE NOTES=
 
+==v0.6d (06/04/2009)==
+NOTE: If upgrading a previous kmttg version in same installation directory, be sure to copy the new encode folder with updated profiles.
+
+*ENHANCEMENTS*
+  * SHOW column alphabetical sort now also sorts episodes of same show in date order
+
+  * GUI mode will now remember tivo name selected on exit next time you start
+
+  * Added encoding cpu_cores config option and added multi-core flags to all encoding profiles.  NOTE: New keyword CPU_CORES added to encoding profile files.
+  
+  * Added --videoredo option to comskip if VideoRedo is configured so that .VPrj file is created without need to edit comskip.ini
+  
+* comskip task now shows % complete for each phase (only comskip, not adscan)
+
+* Added task dependency checking - will automatically add missing tasks if needed. For example if Ad Cut is selected without Ad Scan and Ad Scan output file is not available then automatically enables Ad Scan job.
+  
+* Added auto transfer START and SHUTDOWN messages so that there is a record of when auto transfers service/background jobs are started and stopped.
+
+* Added -harddup option to mencoder for better audio/video sync for cut mpeg files
+
+* Changed comskip/comcut labels to Ad Detect/Ad Cut
+
+* Added season # to AtomicParsley processing (so that mpeg4 videos get season # metadata)
+
+*FIXES*
+  * Fixed auto mode crash problem related to unmapped mpaaRating when generating pyTivo metadata file.
+
+  * Tool installer fix for Mac systems when setting executable file permissions to properly handle directories with spaces.
+
+  * Filter out pyTivo beacons (previously pyTivo server was being treated as a Tivo)
+
+  * Fix to apply toolTipsTimeout change when modified in config
+
 ==v0.6c (05/30/2009)==
 NOTE: To upgrade from a previous java version easiest thing to do is replace the *kmttg.jar* file in previous installation with the one in the [http://kmttg.googlecode.com/files/kmttg_v0p6c.zip kmttg_v0p6c.zip] file.
 
