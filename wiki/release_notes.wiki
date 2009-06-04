@@ -11,7 +11,7 @@ NOTE: If upgrading a previous kmttg version in same installation directory, be s
 
   * Added encoding cpu_cores config option and added multi-core flags to all encoding profiles.  NOTE: New keyword CPU_CORES added to encoding profile files.
   
-  * Added --videoredo option to comskip if VideoRedo is configured so that .VPrj file is created without need to edit comskip.ini
+  * Added --videoredo option to comskip if `VideoRedo` is configured so that .VPrj file is created without need to edit comskip.ini
   
 * comskip task now shows % complete for each phase (only comskip, not adscan)
 
@@ -23,7 +23,7 @@ NOTE: If upgrading a previous kmttg version in same installation directory, be s
 
 * Changed comskip/comcut labels to Ad Detect/Ad Cut
 
-* Added season # to AtomicParsley processing (so that mpeg4 videos get season # metadata)
+* Added season # to `AtomicParsley` processing (so that mpeg4 videos get season # metadata)
 
 *FIXES*
   * Fixed auto mode crash problem related to unmapped mpaaRating when generating pyTivo metadata file.
