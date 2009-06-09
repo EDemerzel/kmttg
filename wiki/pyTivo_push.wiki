@@ -1,3 +1,4 @@
+#labels Featured
 =Using kmttg "custom" job and pyTivo to push files to your computer=
 
 This document gives an example of using kmttg "custom" job capability to automatically push videos processed through kmttg to your Series 3 Tivos.
