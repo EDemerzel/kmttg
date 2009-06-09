@@ -26,6 +26,8 @@ Once you are done making those edits then re-start pyTivo server.
 ==kmttg setup==
   * Download the following *push.py* python script and for convenience put it in the same installation path where you installed kmttg. It can go anywhere you wish though. For this example I'm going to use *c:\kmttg\push.py* as the location of the script.
 
+  [http://kmttg.googlecode.com/files/push.py push.py]
+
   * Edit the *push.py* script and change the tivo name to match your tivo name. i.e. Change *"Bedroom"* to your Tivo's name. 
 
   * Determine your python installation path. For example this is the full path to *python.exe* on windows systems, such as *c:\Python25\python.exe*
