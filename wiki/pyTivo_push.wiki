@@ -21,6 +21,8 @@ path=your_path
 NOTE: Adjust your_username, your_password and your_path above to match your real ones.
 For this example I'm using *c:\home\dvd* as my your_path setting.
 
+REMINDER: The your_path setting above needs to match the location of where kmttg files end up that you want to push to your Tivo.
+
 Once you are done making those edits then re-start pyTivo server.
 
 ==kmttg setup==
