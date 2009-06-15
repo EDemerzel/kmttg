@@ -32,7 +32,7 @@ Once you are done making those edits then re-start pyTivo server.
 
   [http://kmttg.googlecode.com/files/push.py push.py]
 
-  * Edit the *push.py* script and change the tivo name to match your tivo name. i.e. Change *"Bedroom"* to your Tivo's name. NOTE: If your tivo name contains any spaces, use *%20* in place of each space.
+  * Edit the *push.py* script and change the tivo name to match your tivo name. i.e. Change *"Bedroom"* to your Tivo's name. NOTE: If your tivo name contains any spaces, use *%20* in place of each space. i.e. Instead of *"Living Room"* it would be *"Living%20Room"*.
 
   * Determine the full path to your *python* executable for your computer. For example this is the full path to my *python.exe* on my Windows pc: *c:\Python25\python.exe*
 
