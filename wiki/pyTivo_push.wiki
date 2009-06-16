@@ -23,6 +23,8 @@ path=your_path
 NOTE: Adjust your_username, your_password and your_path above to match your *tivo.com* login and password.
 For this example I'm using *c:\home\dvd* as my your_path setting.
 
+NOTE: You can use a different name than *kmttg* if you wish such as the default name *My Videos*. If you do that you will need to change *container* setting in *push.py* script below.
+
 REMINDER: The your_path setting above needs to match the location of where kmttg files end up that you want to push to your Tivo.
 
 Once you are done making those edits then re-start pyTivo server.
