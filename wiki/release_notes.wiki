@@ -5,11 +5,11 @@
 
 *ENHANCEMENTS*
 
-  * Main GUI window updated to use a separate tab for each TiVo (and a separate tab for FILES mode).
+  * Main GUI window updated to use a separate tab for each Tivo (and a separate tab for FILES mode).
 
 
 
-  * TiVo basic statistics now displayed as a label for each TiVo along with last time Now Playing List was updated.
+  * TiVo basic statistics now displayed as a label for each Tivo along with last time Now Playing List was updated.
 
 
 
