@@ -156,7 +156,7 @@ The advanced keyword is highlighted in bold and signifies only include `“_Ep#x
   * If you specify the full path to `AtomicParsley` executable then some meta data information will be automatically added to mp4 files following encode step.
   * NOTE: This will only work if you have pyTivo metadata available for the file since kmttg will look for file.mp4.txt file to get information it needs for `AtomicParsley` run.
 
-==VideoRedo path==
+==`VideoRedo` path==
   * If you have `VideoRedo` program available you can supply the path to your `VideoRedo` installation directory to enable the “VRD QS fix” option which stands for `VideoRedo` Quickstream Fix. If you plan on any further processing of .mpg files such as cutting out commercials or re-encoding to different format it’s useful to run the file through VRD QS fix first to fix any potential glitches in the .mpg file that may cause issues. Note that “VRD QS fix” will only be enabled once you supply a valid path to `VideoRedo` installation. By doing so kmttg will also use `VideoRedo` instead of mencoder for the comcut step. `VideoRedo` does a much better job of cutting out commercials while keeping proper audio/video sync.
   * Example path setting (on Vista):
   `C:\Program Files (x86)\VideoRedoPlus`
