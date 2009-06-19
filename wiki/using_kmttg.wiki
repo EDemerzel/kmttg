@@ -5,7 +5,7 @@ NOTE: The first time you start kmttg you may be prompted to allow 3rd party tool
 Hopefully, the kmttg GUI is pretty intuitive to use. For more information on the Auto Transfers mode see the section further below. A little guidance is provided for basic usage of the GUI mode:
 
 ==DOWNLOADING FROM TIVOS==
-1. Starting with version 0.6e kmttg uses a separate tab displaying the Now Playing List of each Tivo on your network. There is also always a *FILES* tab which allows you to find files on your computer to use as a starting point for kmttg (see documentation on this a little further down). Additionally any Tivos you have previously configured for kmttg will show up in their own tab so that you can use shows on your Tivos as starting points for kmttg. Use the *Refresh List* button to refresh the Now Playing list for a Tivo.
+Starting with version 0.6e kmttg uses a separate tab displaying the Now Playing List of each Tivo on your network. There is also always a *FILES* tab which allows you to find files on your computer to use as a starting point for kmttg (see documentation on this a little further down). Additionally any Tivos you have previously configured for kmttg will show up in their own tab so that you can use shows on your Tivos as starting points for kmttg. Use the *Refresh List* button to refresh the Now Playing list for a Tivo.
 NOTE: Shows that are still recording or are copy protected are marked as such and displayed differently by kmttg and cannot be downloaded.
 NOTE: You can sort shows in the list by clicking on the list headers:
 
