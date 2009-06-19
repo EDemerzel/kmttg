@@ -9,7 +9,7 @@
 
 
 
-  * TiVo basic statistics now displayed as a label for each Tivo along with last time Now Playing List was updated.
+  * Tivo basic statistics now displayed as a label for each Tivo along with last time Now Playing List was updated.
 
 
 
@@ -53,7 +53,7 @@
 
 
 
-  * When adding a TiVo manually in config, cyclic is now updated to show the latest addition
+  * When adding a Tivo manually in config, cyclic is now updated to show the latest addition
 
 
 
