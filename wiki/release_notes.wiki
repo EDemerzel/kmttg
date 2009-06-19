@@ -25,7 +25,7 @@
 
 
 
-  * Auto detected TiVos are now automatically saved to config.ini when detected.
+  * Auto detected Tivos are now automatically saved to config.ini when detected.
 
 
 
@@ -37,7 +37,7 @@
 
 *FIXES*
 
-  * Fixed endless looping error printing condition when NowPlaying List retrieval fails.
+  * Fixed endless looping error printing condition when Now Playing List retrieval fails.
 
 
 
