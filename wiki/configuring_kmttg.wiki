@@ -35,11 +35,11 @@
 ==Remove .edl & .mpg files after comcut==
   * If you use comcut you can enable this option if you would like kmttg to remove .edl & .mpg files automatically once comcut completes succesfully.
 
-==Create sub-folder for each download==
-  * Enable this option if you would like kmttg to create a sub-folder for each show to be processed. The name of the folder will be the same as the file format you defined but without any file extension.
-
 ==Remove .mpg file after encode==
   * If you use encode you can enable this option if you would like kmttg to remove .mpg files automatically once they have been successfully re-encoded.
+
+==Create sub-folder for each download==
+  * Enable this option if you would like kmttg to create a sub-folder for each show to be processed. The name of the folder will be the same as the file format you defined but without any file extension.
 
 ==Check Available Disk Space==
   * If this option is enabled then kmttg will check that destination drive has more than the space available defined in *Min req space (GB)* field before running jobs.
