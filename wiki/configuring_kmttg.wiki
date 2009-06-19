@@ -5,7 +5,7 @@
   * Start kmttg if you have not done so already.
   * From *File* pulldown menu select *Configure…*
   * Adjust settings according to your environment. Many of the 3rd party tools are installed automatically for Windows & Mac platforms (and auto-detected on Linux platforms if available), but some tools such as {{{VideoRedo}}} and t2extract are not setup by default and must be user defined if you have them installed and wish to use them.
-  * If you did not specify *MAK* during first launch you should enter proper *MAK* value and define *`.TiVo`* dir (where to save download `.TiVo` files).
+  * If you did not specify *MAK* during first launch you should enter proper *MAK* value under *Other* tab and define *`.TiVo`* dir (where to save download `.TiVo` files) under *File Settings* tab.
   NOTE: As of version 0.6a kmttg will automatically detect any Tivos on your network and add them to Tivos list, but you can optionally add tivos yourself if you wish.
 
   NOTE: You can specify different output directories for `.TiVo` files, `.mpg` files and encoded files if you wish or you can set them all the same.
@@ -14,7 +14,8 @@
 
   * OK the form when you have completed your configuration. This will save your settings to config.ini file so they will be remembered next time you run kmttg.
 
-==MANUALLY ENTERING TIVO NAMES AND IP NUMBERS==
+==MANUALLY ENTERING TIVO NAMES AND IP NUMBERS - Tivos tab==
+  * Starting with version 0.6e the configuration window now has tabs. Select the *Tivos* tab to see options related to your networked Tivos.
   * Starting with version 0.6a kmttg will automatically detect and add Tivos on your network, so you can choose to skip steps below that detail how to manually add tivos to kmttg.
   * Supply a Tivo name in the *Tivo Name* field and the associated Tivo IP number in the *Tivo IP#* field.
   EXAMPLE: *Tivo Name = Bedroom   Tivo IP# = 192.168.1.101*
@@ -26,17 +27,16 @@
 ==Look for Tivos on network==
   * If this option is enabled then kmttg will check for Tivo broadcast beacons to automatically detect Tivos on your network. You can optionally choose to disable this feature and add tivos manually to kmttg if you wish.
 
-==Create sub-folder for each download==
-  * Enable this option if you would like kmttg to create a sub-folder for each show to be processed. The name of the folder will be the same as the file format you defined but without any file extension.
-
-==Use `VRD AdScan` instead of comskip==
-  * If you have `VideoRedo` configured for use by kmttg then enabling this option instructs kmttg to use *`VideoRedo AdScan`* instead of comskip program for the comskip step.
+==File Settings==
 
 ==Remove `.TiVo` file after decrypt==
   * Enable this option if you would like kmttg to remove `.TiVo` files automatically once they have been successfully decrypted to .mpg format.
 
 ==Remove .edl & .mpg files after comcut==
   * If you use comcut you can enable this option if you would like kmttg to remove .edl & .mpg files automatically once comcut completes succesfully.
+
+==Create sub-folder for each download==
+  * Enable this option if you would like kmttg to create a sub-folder for each show to be processed. The name of the folder will be the same as the file format you defined but without any file extension.
 
 ==Remove .mpg file after encode==
   * If you use encode you can enable this option if you would like kmttg to remove .mpg files automatically once they have been successfully re-encoded.
@@ -89,11 +89,6 @@ The advanced keyword is highlighted in bold and signifies only include `“_Ep#x
   * Defines where you would like the file browser to start from in FILES mode.
   * NOTE: You can use this option without having any Tivos defined if you wish.
 
-==MAK==
-  * REQUIRED if you plan to download files from Tivo Now Playing lists.
-  * Your Tivo Media Access Key. You can find the number on any of your Tivos:
-  Tivo Central—Messages&Settings—Account&System Information—Media Access Key
-
 ==`.TiVo` Output Dir==
   * REQUIRED if you plan to download files from Tivo Now Playing lists.
   * This defines where your Tivo Now Playing List files will be downloaded to.
@@ -117,27 +112,29 @@ The advanced keyword is highlighted in bold and signifies only include `“_Ep#x
   * NOTE: Make sure you have plenty of space here
   * NOTE: This can be same as `.TiVo` Output Dir or .mpg Output Dir
 
-==tivodecode==
-  * REQUIRED if you plan to decrypt `.TiVo` files to .mpg
-  * Adjust to match the full path to the tivodecode binary.
-  * NOTE: For Windows users who installed the tools zip file this should not have to change.
+==Programs==
 
 ==curl==
   * REQUIRED if you plan to download files from Tivo Now Playing lists.
   * Adjust to match the full path to the curl binary if you plan to download files
   * NOTE: For Windows users who installed the tools zip file this should not have to change.
   * NOTE: Most Linux installations already have curl installed under */usr/bin/curl*
- 
-==ffmpeg (optional)==
-  * If you plan on re-encoding mpeg2 files to a different format using kmttg and ffmpeg encoding profiles then you should define here the full path to ffmpeg here. All the kmttg pre-defined encoding profiles starting with “ff_” prefix use ffmpeg as their encoding engine.
-  * NOTE: For Windows users ffmpeg is included as part of the tools zip file.
- 
-==mencoder (optional)==
+
+==tivodecode==
+  * REQUIRED if you plan to decrypt `.TiVo` files to .mpg
+  * Adjust to match the full path to the tivodecode binary.
+  * NOTE: For Windows users who installed the tools zip file this should not have to change.
+
+ ==mencoder (optional)==
   * REQUIRED if you plan to enable “comcut” in kmttg.
   * Supply the full path to the mencoder binary.
   * mencoder is used if you select the “comcut” option in kmttg to automatically cut out commercial segments detected by comskip.
   * NOTE: You are better off using an mpeg2 editor if you want precise cuts and in sync audio/video. The combination of comskip and comcut can work well for some shows but not well at all for others. On occasion I find mencoder can produce out of sync audio/video files.
 
+==ffmpeg (optional)==
+  * If you plan on re-encoding mpeg2 files to a different format using kmttg and ffmpeg encoding profiles then you should define here the full path to ffmpeg here. All the kmttg pre-defined encoding profiles starting with “ff_” prefix use ffmpeg as their encoding engine.
+  * NOTE: For Windows users ffmpeg is included as part of the tools zip file.
+ 
 ==handbrake (optional)==
   * If you plan on re-encoding mpeg2 files to a different format using kmttg and handbrake encoding profiles then you should define here the full path to HandBrakeCLI here. All the kmttg pre-defined encoding profiles starting with “hb_” use handbrake as their encoding engine.
   * NOTE: For Windows users handbrake is included as part of the tools zip file.
@@ -152,11 +149,6 @@ The advanced keyword is highlighted in bold and signifies only include `“_Ep#x
   * REQUIRED if you plan to use comskip.
   * Supply the full path to the comskip.ini file you wish to use. Comskip has many configuration options and you may want to use different .ini files for different shows for best results.
 
-==VRD path==
-  * If you have `VideoRedo` program available you can supply the path to your `VideoRedo` installation directory to enable the “VRD QS fix” option which stands for `VideoRedo` Quickstream Fix. If you plan on any further processing of .mpg files such as cutting out commercials or re-encoding to different format it’s useful to run the file through VRD QS fix first to fix any potential glitches in the .mpg file that may cause issues. Note that “VRD QS fix” will only be enabled once you supply a valid path to `VideoRedo` installation. By doing so kmttg will also use `VideoRedo` instead of mencoder for the comcut step. `VideoRedo` does a much better job of cutting out commercials while keeping proper audio/video sync.
-  * Example path setting (on Vista):
-  `C:\Program Files (x86)\VideoRedoPlus`
-
 ==t2extract==
   * For windows systems if you specify the full path to `T2Sami` *t2extract.exe* program this will enable the *captions* option to extract closed captions from video files.
 
@@ -164,24 +156,40 @@ The advanced keyword is highlighted in bold and signifies only include `“_Ep#x
   * If you specify the full path to `AtomicParsley` executable then some meta data information will be automatically added to mp4 files following encode step.
   * NOTE: This will only work if you have pyTivo metadata available for the file since kmttg will look for file.mp4.txt file to get information it needs for `AtomicParsley` run.
 
+==VideoRedo path==
+  * If you have `VideoRedo` program available you can supply the path to your `VideoRedo` installation directory to enable the “VRD QS fix” option which stands for `VideoRedo` Quickstream Fix. If you plan on any further processing of .mpg files such as cutting out commercials or re-encoding to different format it’s useful to run the file through VRD QS fix first to fix any potential glitches in the .mpg file that may cause issues. Note that “VRD QS fix” will only be enabled once you supply a valid path to `VideoRedo` installation. By doing so kmttg will also use `VideoRedo` instead of mencoder for the comcut step. `VideoRedo` does a much better job of cutting out commercials while keeping proper audio/video sync.
+  * Example path setting (on Vista):
+  `C:\Program Files (x86)\VideoRedoPlus`
+
+==custom command==
+  * Here you can setup any script you want to run as a post-processing step to all other tasks. You can use certain pre-defined keywords in square brackets as arguments to your script if you wish which kmttg will replace with the associated full path file names. The supported keywords are listed in the *Available file args* cyclic.
+
+==Use `VideoRedo AdScan` instead of comskip==
+  * If you have `VideoRedo` configured for use by kmttg then enabling this option instructs kmttg to use *`VideoRedo AdScan`* instead of comskip program for the comskip step.
+
+==Use `VideoRedo` GUI to review detected commercials==
+  * If you have `VideoRedo` configured for use by kmttg then enabling this option instructs kmttg to start `VideoRedo` GUI following the *Ad Detect* job so that you can manually inspect/correct the detected commercial segments. If you do make changes be sure to save the changes to the same VPrj file before exiting `VideoRedo`. kmttg will wait until you close `VideoRedo` GUI before proceeding with next set of jobs.
+  NOTE: This setting only applies to GUI mode. In auto transfers mode this setting has no effect.
+
+==Other== 
+
+==MAK==
+  * REQUIRED if you plan to download files from Tivo Now Playing lists.
+  * Your Tivo Media Access Key. You can find the number on any of your Tivos:
+  Tivo Central—Messages&Settings—Account&System Information—Media Access Key
+
 ==active job limit==
   * Limits the number of CPU intensive jobs that can kmttg can run in parallel to this setting (defaults to 2). If you want to allow more CPU intensive jobs to run at the same time (for example if you have a mult-core processor) you can increase this limit accordingly. Be careful not to overwhelm your computer by setting this number too high.
+
+==encoding cpu cores===
+  * Specify the number of cpu cores to use for encoding jobs. If you have a multi-core machine this can speed up encoding jobs quite significantly. Consider this setting and *active job limit* when deciding what number to use here. Setting this too high may really slow down your machine for other tasks running in parallel.
 
 ==wan http port (optional)==
   * Set this option only if you plan to use kmttg over a WAN instead of your local LAN. By default http port 80 is used to download shows from the Tivos on the LAN, but from WAN side you will have to setup port forwarding in your router, and often service providers do not allow you to use port 80.
   * NOTE: For Now Playing List retrieval https port 443 also should be port forwarded to your Tivo port 443 in your router.
 
-==NPL cache mins==
-  * Defines number of minutes to cache Now Playing List downloads. Using cache prevents having to re-download the Now Playing List every time the same Tivo is selected. If you don’t want caching you can set this to 0.
-
-==custom command==
-  * Here you can setup any script you want to run as a post-processing step to all other tasks. You can use certain pre-defined keywords in square brackets as arguments to your script if you wish which kmttg will replace with the associated full path file names. The supported keywords are listed in the *Available file args* cyclic.
-
-==encoding cpu cores===
-  * Specify the number of cpu cores to use for encoding jobs. If you have a multi-core machine this can speed up encoding jobs quite significantly. Consider this setting and *active job limit* when deciding what number to use here. Setting this too high may really slow down your machine for other tasks running in parallel.
+==toolTip timeout (secs)==
+  * Set the amount of time that a toolTip will display before disappearing.
 
 ==Display toolTips==
   * Enable or disable mouse over toolTips which are text tips that appear when you move the mouse over an item in the GUI.
-
-==toolTip timeout (secs)==
-  * Set the amount of time that a toolTip will display before disappearing.
