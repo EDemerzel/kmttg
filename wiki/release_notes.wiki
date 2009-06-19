@@ -1,6 +1,66 @@
 #labels Featured
 =RELEASE NOTES=
 
+==v0.6e (06/19/2009)==
+
+*ENHANCEMENTS*
+
+  * Main GUI window updated to use a separate tab for each TiVo (and a separate tab for FILES mode).
+
+
+
+  * TiVo basic statistics now displayed as a label for each TiVo along with last time Now Playing List was updated.
+
+
+
+  * Configuration dialog updated to separate out settings into different tabs for a cleaner/easier view of all the settings.
+
+
+
+  * Added *Use `VideoRedo` GUI to review commercials* option that if set will start `VideoRedo` GUI following commercial detection job using the `.VPrj` file where you can review/adjust edits visually as desired. Then as soon as you close the `VideoRedo` GUI the next job in the pipe (normally would be the commercial cut job) will proceed.
+
+
+
+  * Job Monitor now shows % complete for jobs where % complete is available and not the first running job (first running job has % complete in title so no need to duplicate).
+
+
+
+  * Auto detected TiVos are now automatically saved to config.ini when detected.
+
+
+
+  * Cosmetic: DATE & SIZE columns of Tivo Playlist table are now right justified so that numbers line up.
+
+
+
+
+
+*FIXES*
+
+  * Fixed endless looping error printing condition when NowPlaying List retrieval fails.
+
+
+
+  * kmttg now limits to 1000 number of stdout/stderr messages saved per process. Previously this was unlimited which could result in JVM out of memory problem. This was especially a problem when running "comcut" with mencoder for example.
+
+
+
+  * When enabling *Look for Tivos on network* setting in config GUI if it will now take effect in current session. Previously kmttg would not look for Tivos after this was enabled until next GUI session.
+
+
+
+  * Tivo names with special characters such as `'*'` caused some exception problems that are now fixed with this release.
+
+
+
+  * When adding a TiVo manually in config, cyclic is now updated to show the latest addition
+
+
+
+  * Corrected bug in checking active jobs running versus "active job limit" configuration setting.
+
+
+
 ==v0.6d (06/04/2009)==
 NOTE: If upgrading a previous kmttg version in same installation directory, be sure to copy the new encode folder with updated profiles.
 
