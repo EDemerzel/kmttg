@@ -14,7 +14,7 @@
 
   * OK the form when you have completed your configuration. This will save your settings to config.ini file so they will be remembered next time you run kmttg.
 
-==MANUALLY ENTERING TIVO NAMES AND IP NUMBERS - _Tivos tab_==
+==_Tivos tab_ (MANUALLY ENTERING TIVO NAMES AND IP NUMBERS)==
   * Starting with version 0.6e the configuration window now has tabs. Select the *Tivos* tab to see options related to your networked Tivos.
   * Starting with version 0.6a kmttg will automatically detect and add Tivos on your network, so you can choose to skip steps below that detail how to manually add tivos to kmttg.
   * Supply a Tivo name in the *Tivo Name* field and the associated Tivo IP number in the *Tivo IP#* field.
