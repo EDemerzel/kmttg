@@ -14,7 +14,7 @@
 
   * OK the form when you have completed your configuration. This will save your settings to config.ini file so they will be remembered next time you run kmttg.
 
-==MANUALLY ENTERING TIVO NAMES AND IP NUMBERS - Tivos tab==
+==MANUALLY ENTERING TIVO NAMES AND IP NUMBERS - _Tivos tab_==
   * Starting with version 0.6e the configuration window now has tabs. Select the *Tivos* tab to see options related to your networked Tivos.
   * Starting with version 0.6a kmttg will automatically detect and add Tivos on your network, so you can choose to skip steps below that detail how to manually add tivos to kmttg.
   * Supply a Tivo name in the *Tivo Name* field and the associated Tivo IP number in the *Tivo IP#* field.
@@ -27,7 +27,7 @@
 ==Look for Tivos on network==
   * If this option is enabled then kmttg will check for Tivo broadcast beacons to automatically detect Tivos on your network. You can optionally choose to disable this feature and add tivos manually to kmttg if you wish.
 
-==File Settings==
+==_File Settings_ tab==
 
 ==Remove `.TiVo` file after decrypt==
   * Enable this option if you would like kmttg to remove `.TiVo` files automatically once they have been successfully decrypted to .mpg format.
@@ -112,7 +112,7 @@ The advanced keyword is highlighted in bold and signifies only include `“_Ep#x
   * NOTE: Make sure you have plenty of space here
   * NOTE: This can be same as `.TiVo` Output Dir or .mpg Output Dir
 
-==Programs==
+==_Programs_ tab==
 
 ==curl==
   * REQUIRED if you plan to download files from Tivo Now Playing lists.
@@ -171,7 +171,7 @@ The advanced keyword is highlighted in bold and signifies only include `“_Ep#x
   * If you have `VideoRedo` configured for use by kmttg then enabling this option instructs kmttg to start `VideoRedo` GUI following the *Ad Detect* job so that you can manually inspect/correct the detected commercial segments. If you do make changes be sure to save the changes to the same VPrj file before exiting `VideoRedo`. kmttg will wait until you close `VideoRedo` GUI before proceeding with next set of jobs.
   NOTE: This setting only applies to GUI mode. In auto transfers mode this setting has no effect.
 
-==Other== 
+==_Other_ tab== 
 
 ==MAK==
   * REQUIRED if you plan to download files from Tivo Now Playing lists.
