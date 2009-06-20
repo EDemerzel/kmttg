@@ -168,7 +168,7 @@ The advanced keyword is highlighted in bold and signifies only include `“_Ep#x
   * If you have `VideoRedo` configured for use by kmttg then enabling this option instructs kmttg to use *`VideoRedo AdScan`* instead of comskip program for the comskip step.
 
 ==Use `VideoRedo` GUI to review detected commercials==
-  * If you have `VideoRedo` configured for use by kmttg then enabling this option instructs kmttg to start `VideoRedo` GUI following the *Ad Detect* job so that you can manually inspect/correct the detected commercial segments. If you do make changes be sure to save the changes to the same VPrj file before exiting `VideoRedo`. kmttg will wait until you close `VideoRedo` GUI before proceeding with next set of jobs.
+  * If you have `VideoRedo` configured for use by kmttg then enabling this option instructs kmttg to start `VideoRedo` GUI following the *Ad Detect* job so that you can manually inspect/correct the detected commercial segments. If you do make changes be sure to save the changes to the same VPrj file before exiting `VideoRedo` (*Ctrl-P* shortcut). kmttg will wait until you close `VideoRedo` GUI before proceeding with next set of jobs.
   NOTE: This setting only applies to GUI mode. In auto transfers mode this setting has no effect.
 
 ==_Other_ tab== 
