@@ -20,58 +20,58 @@ NOTE: You can sort shows in the list by clicking on the list headers:
 3. Enable actions you would like to perform on the selected list of shows. The actions (in order that they are generally performed) are:
 ===metadata===
   * If this option is enabled then kmttg will create a metadata file which will have same file name as the final video file name but with .txt extension at the end.
-  * This metadata file can be used by *pyTivo* when serving back shows on your PC to your Tivos to provide detailed information about the show. Without the metadata file if you serve .mpg (or non `.TiVo` files) back to your Tivos there will be no information about the shows when you view them from your Tivos.<br>
+  * This metadata file can be used by *pyTivo* when serving back shows on your PC to your Tivos to provide detailed information about the show. Without the metadata file if you serve .mpg (or non .TiVo files) back to your Tivos there will be no information about the shows when you view them from your Tivos.<br>
   NOTE: According to pyTivo conventions this file should be the same name as your video file but with .txt extension added. Thus if you re-name your video file be sure to re-name this file as well.
 
 ===decrypt===
-  * Shows downloaded from your Tivos are encrypted mpeg2 program files saved with `.TiVo` file extension.
-  * With this option enabled kmttg will use tivodecode to decrypt `.TiVo` files to unencrypted mpeg2 program files with .mpg extension.
+  * Shows downloaded from your Tivos are encrypted mpeg2 program files saved with .TiVo file extension.
+  * With this option enabled kmttg will use tivodecode to decrypt .TiVo files to unencrypted mpeg2 program files with .mpg extension.
   * Most often you will want this option enabled.
 
 ===VRD QS Fix===
-  * This option is short for `VideoRedo` Quickstream Fix.
+  * This option is short for VideoRedo Quickstream Fix.
   * If you plan on any further processing of .mpg files such as cutting out commercials or re-encoding to different format it’s useful to run the file through VRD QS fix first to fix any potential glitches in the .mpg file that may cause issues.
 
 ===Ad Detect===
-  * This option is for automated commercial segment detection using either comskip or `VideoRedo AdScan`.
+  * This option is for automated commercial segment detection using either comskip or VideoRedo AdScan.
   * comskip is a public domain program that can scan an mpeg2 file and detect commercials.
   * With default configuration it will produce a .edl file which can be fed to *mencoder* to cut out detected commercial segments.
-  * If you have VRD enabled then the comskip job will run with --videoredo option which will create a .VPrj file which contains the cut sections for `VideoRedo` to be used in the comcut stage.
-NOTE: comskip can be configured to output several other files too such as a bookmark .mls file for Womble Mpeg Video Wizard or a cut file for `VideoRedo`. Consult comskip documentation for details.<br>
+  * If you have VRD enabled then the comskip job will run with --videoredo option which will create a .VPrj file which contains the cut sections for VideoRedo to be used in the comcut stage.
+NOTE: comskip can be configured to output several other files too such as a bookmark .mls file for Womble Mpeg Video Wizard or a cut file for VideoRedo. Consult comskip documentation for details.<br>
 NOTE: Accuracy varies greatly depending on the show. Comskip is most useful to use as an initial guess as to where cut points should be made. Ideally you should then use Womble, VRD or similar editor to adjust the cut points as needed.
 
 ===Ad Cut===
   * This option is for automated commercial segment removal based on commercials detected in the *Ad Detect* stage.
   * mencoder is used if you select the “comcut” option in kmttg to automatically cut out commercial segments detected by comskip.
   NOTE: You are better off using an mpeg2 editor if you want precise cuts and in sync audio/video. The combination of comskip and comcut can work well for some shows but not well at all for others. On occasion I find mencoder can produce out of sync audio/video files.<br>
-  NOTE: If you have configured VRD then this stage will use `VideoRedo` for doing the video cuts instead of mencoder.
+  NOTE: If you have configured VRD then this stage will use VideoRedo for doing the video cuts instead of mencoder.
 
 ===captions===
-  * This option is only enabled on Windows systems and if you have configured full path to `T2Sami` t2extract.exe.
-  * This gives you the ability to extract closed captions from `.TiVo` or .mpg files to a .srt file.
+  * This option is only enabled on Windows systems and if you have configured full path to T2Sami t2extract.exe.
+  * This gives you the ability to extract closed captions from .TiVo or .mpg files to a .srt file.
   * The file created will have same name as the video file but with .srt suffix.
 
 ===encode===
   * Enable this option if you wish to re-encode .mpg files to another format.
   * You should also select the appropriate *Encoding Profile* you want to use for the encode.
   * You can define your own encoding profiles if you wish (see section below on Encoding Profiles).
-  NOTE: If *comcut* is enabled then the encoding will be done on `_cut.mpg` file instead of .mpg file.
+  NOTE: If *comcut* is enabled then the encoding will be done on _cut.mpg file instead of .mpg file.
 
 ===custom===
   * You can use this option if you have configured a custom script to run in kmttg configuration. This is always the last task to be performed in the set of enabled tasks and gives you flexibility to do any custom actions you want.
 
 4. Click on *START JOBS* green button to start processing all your selections.
    * NOTE: Jobs that are not dependant on each other will run in parallel. Downloads are intentionally limited to 1 download per Tivo so as not to overload your Tivos. Additional downloads are queued up to be performed once the current download completes. Jobs that depend on previous jobs to complete are also queued up.
-  * NOTE: kmttg will automatically skip steps based on the presence of files in the output directory. For example, if `.TiVo` file for a show exists kmttg will skip downloading it from the Tivo. If .mpg file for a show exists kmttg will skip the decode phase even if decode is enabled, etc.
+  * NOTE: kmttg will automatically skip steps based on the presence of files in the output directory. For example, if .TiVo file for a show exists kmttg will skip downloading it from the Tivo. If .mpg file for a show exists kmttg will skip the decode phase even if decode is enabled, etc.
 
 5. You can cancel any queued up or running jobs if you wish. Select jobs you wish to cancel in the *JOB MONITOR* (Panel below the *CANCEL JOBS* button) and then click on the *CANCEL JOBS* button.
-  * NOTE: In general kmttg will not automatically delete partial output files that were being generated by a running job in case you wish to do something with the files, so if you don’t want them you should clean them up. There are options in the configuration setup you can enable to automatically delete files of intermediate tasks such as `.TiVo` files.
+  * NOTE: In general kmttg will not automatically delete partial output files that were being generated by a running job in case you wish to do something with the files, so if you don’t want them you should clean them up. There are options in the configuration setup you can enable to automatically delete files of intermediate tasks such as .TiVo files.
 
 *NOTE: For jobs that are actively running you can double click on the entry in the JOB MONITOR to view more detailed output information for that job. A window will appear showing any stdout/stderr messages generated by the 3rd party tool that is running.*
 
 ==STARTING FROM FILES ON YOUR COMPUTER==
-  * The FILES entry is a special TIVO cyclic entry which lets you use kmttg starting from `.TiVo/.mpg/.mpeg` files already downloaded/installed on your computer instead of downloading from your Tivos. If you select this option then 2 buttons will be added to the GUI:
-  * *Add...* will bring up a file browser you can use to locate `.TiVo/.mpg/.mpeg` files on your computer you wish to process further with kmttg. Once you select files to add they will be added to the kmttg FILES list.
+  * The FILES entry is a special TIVO cyclic entry which lets you use kmttg starting from .TiVo/.mpg/.mpeg files already downloaded/installed on your computer instead of downloading from your Tivos. If you select this option then 2 buttons will be added to the GUI:
+  * *Add...* will bring up a file browser you can use to locate .TiVo/.mpg/.mpeg files on your computer you wish to process further with kmttg. Once you select files to add they will be added to the kmttg FILES list.
   * *Remove...* button can be used to remove files you have selected to process in the kmttg FILES list.
   NOTE: This doesn’t remove the files from your computer, simply removes them from the kmttg FILES list.
   * Rest of the flow is very similar to the section above describing *DOWNLOADING FROM TIVOS*.
