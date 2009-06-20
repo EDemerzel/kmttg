@@ -1,6 +1,12 @@
 #labels Featured
 =RELEASE NOTES=
 
+==v0.6f (06/19/2009)==
+
+*FIXES*
+
+  * Discovered that `VideoRedo` does not allow/work with more than 1 job at a time. So now kmttg limits tasks using `VideoRedo` to one at a time.
+
 ==v0.6e (06/19/2009)==
 
 *ENHANCEMENTS*
