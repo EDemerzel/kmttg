@@ -1,6 +1,42 @@
 #labels Featured
 =RELEASE NOTES=
 
+==v0.6g (06/27/2009)==
+
+*ENHANCEMENTS*
+  * Added job insertion capability. Previously when starting a task set for a show and you forgot to enable a task there was no good way to add it without killing all running jobs and starting over. Now kmttg will insert the task into the task set if possible without you having to start over. For example, you start a download but forgot to enable decrypt. Previously if you then enabled decrypt and clicked on START JOBS again kmttg would try and decrypt the partially download .TiVo file. Now kmttg will queue up the decrypt job and wait for download to complete as is desired.
+
+  * Switched to use Bonjour (MDNS) for networked Tivo discovery. Faster and perhaps more reliable method of Tivo detection compared to the older Tivo Beacon method. NOTE: Check still designed to stop after 5 minutes.
+
+  * Added support for moving columns around for Tivo and FILES tables. You can hold down left mouse button on a column header and drag the column to a new position. Thus for example you can move *SHOW* column from last column to second column etc. Also kmttg will remember and restore same column order for each tab in next session.
+
+  * Added *SOURCE* and *OUTPUT* columns to job monitor in place of *DESCRIPTION* column. This allows more text to be seen in output file name.
+
+  * Added *Show full paths in Job Monitor* configuration option to control if you would like to see full path names in Job Monitor or not.
+
+  * Added Help->About... menu that brings up a dialog showing current and latest version as well as html links to kmttg web pages.
+
+  * Changed default tivo file naming template to {{{[title] ([monthNum]_[mday]_[year])}}}.
+
+  * All sub-windows now are first positioned relative to main window instead of top left corner of the screen.
+
+  * Minor: Changed *Other* tab name to *General* in configuration GUI.
+
+  * Minor: Added an extra space to right justified *SIZE* and *DATE* table columns to give some more separation of text from next column.
+
+  * Minor: Changed table column background grey columns to a much lighter shade of grey.
+
+*FIXES*
+
+  * Refreshing encoding profiles will not reset current encoding profile setting if still valid.
+
+  * Removed *-aspect 16:9* from *ff_psp* profile so as to avoid distorting 4:3 aspect ratio sources.
+
+  * Removed *-threads* argument from *ff_zune* profile since wmv codec does not allow for more than 1 thread.
+
+  * Made all encode profile files DOS compatible so they can be edited with Windows simple Notepad editor.
+
+
 ==v0.6f (06/19/2009)==
 
 *FIXES*
