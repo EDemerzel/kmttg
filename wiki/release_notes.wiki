@@ -9,6 +9,7 @@
   * Switched to use Bonjour (MDNS) for networked Tivo discovery. Faster and perhaps more reliable method of Tivo detection compared to the older Tivo Beacon method. NOTE: Check still designed to stop after 5 minutes.
 
   * Added support for moving columns around for Tivo and FILES tables. You can hold down left mouse button on a column header and drag the column to a new position. Thus for example you can move *SHOW* column from last column to second column etc. Also kmttg will remember and restore same column order for each tab in next session.
+  NOTE: In previous Java releases moving columns with mouse also was possible, however that would lead to exception problems which this release fixes.
 
   * Added *SOURCE* and *OUTPUT* columns to job monitor in place of *DESCRIPTION* column. This allows more text to be seen in output file name.
 
