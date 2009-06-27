@@ -6,7 +6,9 @@ Hopefully, the kmttg GUI is pretty intuitive to use. For more information on the
 
 ==DOWNLOADING FROM TIVOS==
 Starting with version 0.6e kmttg uses a separate tab displaying the Now Playing List of each Tivo on your network. There is also always a *FILES* tab which allows you to find files on your computer to use as a starting point for kmttg (see documentation on this a little further down). Additionally any Tivos you have previously configured for kmttg will show up in their own tab so that you can use shows on your Tivos as starting points for kmttg. Use the *Refresh List* button to refresh the Now Playing list for a Tivo.
+
 NOTE: Shows that are still recording or are copy protected are marked as such and displayed differently by kmttg and cannot be downloaded.
+
 NOTE: You can sort shows in the list by clicking on the list headers:
 
     * Clicking on 1st column header button you can sort shows by expiration type.
@@ -14,6 +16,8 @@ NOTE: You can sort shows in the list by clicking on the list headers:
     * Clicking on the *CHANNEL* header button you can sort shows by lowest or highest channel number.
     * Clicking on the *SIZE* header button you can sort shows by smallest or largest file size first.
     * Clicking on the *SHOW* header button you can sort shows alphabetically or reverse alphabetically by show name.
+
+NOTE: Starting with v0p6g release you can change the column order to be whatever you prefer. Simply hold left button down on a column header and drag the column to new position. kmttg will save and restore column positions for each tab when you start next session.
 
 2. Select 1 or more shows in the SHOW list that you wish to download. You can select multiple entries at once. Ctrl+left click toggles individual selections without losing your selection list.
 
