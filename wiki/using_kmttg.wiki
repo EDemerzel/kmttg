@@ -99,3 +99,6 @@ NOTE: Auto Transfers requires running a separate kmttg process either as a servi
 
 ==SAVING MESSAGES TO A FILE==
 A quick way to save all messages shown in message window to a file is using the *File->Save messages to file* menu entry, or simply Ctrl-S bindkey. The message window will print where the file is saved to: *kmttg.log* file saved to same folder as kmttg.jar file.
+
+==Help About... menu===
+*Help->About...* menu entry brings up a window showing latest released version of kmttg available (with a link to that release) as well as links to the online kmttg documentation.
