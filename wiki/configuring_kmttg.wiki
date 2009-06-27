@@ -171,7 +171,7 @@ The advanced keyword is highlighted in bold and signifies only include `“_Ep#x
   * If you have VideoRedo configured for use by kmttg then enabling this option instructs kmttg to start VideoRedo GUI following the *Ad Detect* job so that you can manually inspect/correct the detected commercial segments. If you do make changes be sure to save the changes to the same VPrj file before exiting VideoRedo (*Ctrl-P* shortcut). kmttg will wait until you close VideoRedo GUI before proceeding with next set of jobs.
   NOTE: This setting only applies to GUI mode. In auto transfers mode this setting has no effect.
 
-==_Other_ tab== 
+==_General_ tab== 
 
 ==MAK==
   * REQUIRED if you plan to download files from Tivo Now Playing lists.
@@ -193,3 +193,6 @@ The advanced keyword is highlighted in bold and signifies only include `“_Ep#x
 
 ==Display toolTips==
   * Enable or disable mouse over toolTips which are text tips that appear when you move the mouse over an item in the GUI.
+
+==Show full paths in Job Monitor==
+  * If you don't care to see full path names of files in Job Monitor table you can disable this option. kmttg will then only show the full file name without the path to the file in the Job Monitor. This is useful especially if you have very long path names configured.
