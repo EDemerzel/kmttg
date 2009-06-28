@@ -12,4 +12,4 @@ If you are having problems getting the program to start or run properly here are
 <br>
 *java -jar kmttg.jar -d*
 
-5. If you still can’t figure out what’s wrong ask for help at [http://www.tivocommunity.com/tivo-vb/showthread.php?t=387725 Tivo Community Forums kmttg thread]
+5. If you still can’t figure out what’s wrong file an [http://code.google.com/p/kmttg/issues/list issue] or ask for help at [http://www.tivocommunity.com/tivo-vb/showthread.php?t=387725 Tivo Community Forums kmttg thread]
