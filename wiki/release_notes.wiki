@@ -4,7 +4,7 @@
 ==v0.6h (06/27/2009)==
 
 *ENHANCEMENTS*
-   * Added new boolean configuration option "Overwrite existing files". By default kmttg has always been designed skip a task if output file for that task already exists. This option can be enabled to force kmttg to run the task and overwrite the existing file anyway.
+   * Added new boolean configuration option *Overwrite existing files* under *General* tab. By default kmttg has always been designed skip a task if output file for that task already exists. This option can be enabled to force kmttg to run the task and overwrite the existing file anyway.
 
 *FIXES*
    * Fix to Tivo detection algorithm to prevent exceptions for names with special characters.
