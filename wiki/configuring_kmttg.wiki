@@ -196,3 +196,6 @@ The advanced keyword is highlighted in bold and signifies only include `“_Ep#x
 
 ==Show full paths in Job Monitor==
   * If you don't care to see full path names of files in Job Monitor table you can disable this option. kmttg will then only show the full file name without the path to the file in the Job Monitor. This is useful especially if you have very long path names configured.
+
+==Overwrite existing files==
+  * With this option disabled kmttg will skip tasks for which output files already exist so as not to overwrite any existing files of same name on your computer. With this option enabled kmttg will run tasks regardless of whether their output files exist or not, overwriting existing files as needed.
