@@ -8,4 +8,4 @@ VideoRedo won't run properly using the default kmttg service setup. Consult the 
 If you have comcut step enabled using mencoder to make the cuts very often this results in audio/video sync issues. If you have VideoRedo enabled in kmttg it will be used instead to make the cuts and works much better.
 
 ==encoding creates audio/video sync issues===
-Recordings originating from Tivos very often have timestamp defects that lead to problems if not corrected before encoding to other video formats. VideoRedo Quick Stream Fix is the only (non-free) tool out there that can reliably correct these defects such that when you encode mpeg2 to other format it will be perfectly in sync.
+Recordings originating from Tivos very often have timestamp defects that lead to problems if not corrected before encoding to other video formats. VideoRedo Quick Stream Fix is the only (non-free) tool out there that can reliably correct these defects such that when you encode the faulty recording to other formats it will be perfectly in sync.
