@@ -1,6 +1,11 @@
 #labels Featured
 =RELEASE NOTES=
 
+==v0p6i (07/01/2009)==
+
+FIXES
+  * Bug fix to avoid null exception when clicking on OK in configuration dialog when Tivo detection option is disabled.
+
 ==v0.6h (06/27/2009)==
 
 *ENHANCEMENTS*
