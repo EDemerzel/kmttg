@@ -21,7 +21,7 @@ http://code.google.com/p/kmttg/downloads/list
   * Unpack *kmttg_vxxx.zip* file to your desired location. In this example: /home/moyekj (this creates /home/moyekj/kmttg_vxxx folder)
 
 ===TIP===
-If upgrading from a previous Java kmttg installation you can unzip over the previous installation or just replace the *kmttg.jar* file of the old installation with the one from the new installation. That way you can preserve the kmttg configuration and avoid having to re-configure.
+If upgrading from a previous Java kmttg installation you can unzip over the previous installation or just replace the *kmttg.jar* file of the old installation with the one from the new installation. That way you can preserve the kmttg configuration and avoid having to re-configure. NOTE: In some cases there are other files such as encoding profiles updated as part of a release, so you can also just unzip the file over the top of your previous installation to make sure you overwrite all files that make up an installation.
 
 
 ==STARTING KMTTG==
