@@ -28,4 +28,5 @@ If upgrading from a previous Java kmttg installation you can unzip over the prev
   * Run the *kmttg* script in the installation folder to start kmttg.
   * The first time launch you will be prompted to allow kmttg to download and install required tools. Choose Yes and wait for the download and installation to complete.
   * Also the first time you launch kmttg you will be prompted for your 10 digit Media Access Key (MAK) which is needed to download & decrypt programs from your Tivos.
+  NOTE: kmttg may detect Tivos on your network before you have a chance to enter the 10 digit MAK, and will not be able to get listings for detected Tivos without MAK, so after entering MAK you will need to click on *Refresh List* button for each Tivo to get listings.
   * You will probably want to further configure kmttg after installation. Consult the [http://code.google.com/p/kmttg/wiki/configuring_kmttg configuring_kmttg] wiki page for details.
