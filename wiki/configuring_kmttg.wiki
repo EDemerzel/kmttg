@@ -201,3 +201,4 @@ The advanced keyword is highlighted in bold and signifies only include `“_Ep#x
 
 ==Overwrite existing files==
   * With this option disabled kmttg will skip tasks for which output files already exist so as not to overwrite any existing files of same name on your computer. With this option enabled kmttg will run tasks regardless of whether their output files exist or not, overwriting existing files as needed.
+  *NOTE: It is highly recommended you enable this option if setting up Auto Transfers as when Auto Transfers are interrupted that can leave partial files created that you would want Auto Transfers to overwrite*
