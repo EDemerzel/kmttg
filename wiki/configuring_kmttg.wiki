@@ -166,12 +166,20 @@ The advanced keyword is highlighted in bold and signifies only include `“_Ep#x
 ==custom command==
   * Here you can setup any script you want to run as a post-processing step to all other tasks. You can use certain pre-defined keywords in square brackets as arguments to your script if you wish which kmttg will replace with the associated full path file names. The supported keywords are listed in the *Available file args* cyclic.
 
+==_Program Options_ tab==
+
 ==Use VideoRedo AdScan instead of comskip==
   * If you have VideoRedo configured for use by kmttg then enabling this option instructs kmttg to use *VideoRedo AdScan* instead of comskip program for the comskip step.
 
 ==Use VideoRedo GUI to review detected commercials==
   * If you have VideoRedo configured for use by kmttg then enabling this option instructs kmttg to start VideoRedo GUI following the *Ad Detect* job so that you can manually inspect/correct the detected commercial segments. If you do make changes be sure to save the changes to the same VPrj file before exiting VideoRedo (*Ctrl-P* shortcut). kmttg will wait until you close VideoRedo GUI before proceeding with next set of jobs.
   NOTE: This setting only applies to GUI mode. In auto transfers mode this setting has no effect.
+
+==t2extract extra arguments==
+  * Any extra arguments you want kmttg to use when running *t2extract* which is the program used to generate closed captions *.srt* file. By default the program arguments are as follows:
+  {{{t2extract -f srt videoFile}}}
+  * Extra arguments you supply are added following the *-f srt* option.
+  * NOTE: kmttg expects *srt* as output file. If you want to output a different format then consider using *custom* job to run t2extract with whatever arguments you want.
 
 ==_General_ tab== 
 
