@@ -97,8 +97,18 @@ Consult the [http://code.google.com/p/kmttg/wiki/auto_transfers auto_transfers] 
 
 NOTE: Auto Transfers requires running a separate kmttg process either as a service in Windows or a background job for Macintosh/Linux systems.
 
-==SAVING MESSAGES TO A FILE==
-A quick way to save all messages shown in message window to a file is using the *File->Save messages to file* menu entry, or simply Ctrl-S bindkey. The message window will print where the file is saved to: *kmttg.log* file saved to same folder as kmttg.jar file.
+==*File* menu items==
+  * *Configure* (Ctrl+o) - Bring up the kmttg configuration window. See the [http://code.google.com/p/kmttg/wiki/configuring_kmttg configuring_kmttg] wiki for details.
+
+  * *Refresh Encoding Profiles* (Ctrl+e) - If you update any of the encoding file profiles *.enc* files under the *encode* folder you need either re-start kmttg or choose this menu entry to have kmttg re-parse the encoding profile files.
+
+  * *Save messages to file* (Ctrl+s) - A quick way to save all messages shown in message window to a file. The message window will print where the file is saved to: *kmttg.log* file saved to same folder as kmttg.jar file.
+
+  * *Clear all messages* - Clear the bottom message panel of all messages.
+
+  * *Reset TiVo web server* - This uses {{{http://<ip>/TiVoConnect?Command=ResetServer}}} which may help clear out conditions where TiVo is reporting *<h2>Server Busy</h2> errors when attempting to download shows, which seems to be fairly common for Series 2 Tivos.
+
+  * *Exit* - Exit kmttg. Also kills any background jobs started by kmttg in GUI mode that may still be running.
 
 ==Help About... menu===
 *Help->About...* menu entry brings up a window showing latest released version of kmttg available (with a link to that release) as well as links to the online kmttg documentation.
