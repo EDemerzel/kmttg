@@ -13,3 +13,8 @@ The fix to this problem is to configure the kmttg service to run using a Local A
   * Choose *Log On* tab
   * Click on *This account* and type in a valid user account for this computer along with the password to go along with it.
   * OK the form
+
+===RUNNING VIDEOREDO FROM KMTTG===
+  * You *MUST* run VideoRedo GUI at least once before attempting to use it with kmttg since otherwise the needed COM files will not be registered and you will get error messages such as:
+  {{{WScript.CreateObject: Could not locate automation class named "VideoReDo.VideoReDoSilent" }}}
+  * If using a trial version of VideoRedo make sure you have registered the trial key before using with kmttg or it will just hang when launching from kmttg.
