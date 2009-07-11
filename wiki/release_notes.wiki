@@ -1,6 +1,36 @@
 #labels Featured
 =RELEASE NOTES=
 
+==v0p6j (07/11/2009)==
+
+*ENHANCEMENTS*
+   * Auto Transfers algorithm re-done to better optimize throughput when multiple Tivos exist on the network. No longer waits for all jobs on all Tivos to complete before launching new ones. The user specified *Check Tivos Interval* now applies independently to each Tivo.
+   
+   * Added encoding profile name to OUTPUT field in job monitor table for *encode* jobs so that you can see what encoding profile was selected for that run.
+   
+   * Added *File->Reset TiVo web server* menu item. This uses {{{http://<ip>/TiVoConnect?Command=ResetServer}}} which may help clear out conditions where TiVo is reporting "Server Busy" when attempting to download shows which seems to be fairly common for Series 2 Tivos.
+   
+   * Added user provided *me_zen* encoding profile which is profile for Creative Zen using mencoder.
+   
+   * Added *File->Clear all messages* menu item to clear the text message area.
+   
+   * Added *SRTFILE* keyword support to encoding profiles which represents full path closed captioned srt file.
+   
+   * Added new *Program Options* tab. Moved a couple of program related options under that tab and added a new *t2extract extra arguments* field where advanced users can enter optional arguments to add to t2extract program call for generating closed captions.
+   
+   * Moved *Overwite existing files* option from *General* tab to *File Settings* tab.
+   
+   * Cosmetic: Made CANCEL button background and error highlight background color a much lighter red to make it easier to read.
+   
+*FIXES*
+   * Prevent launch of *custom* job multiple times in Auto Transfers mode when same show is on more than 1 Tivo.
+   
+   * Make sure *atomic* job is scheduled before *custom* job.
+   
+   * Do not allow multiple encode jobs of different kinds of same source file to run at same time.
+   
+   * Prevent Configuration dialog from being resized so as to avoid layout distortion.
+
 ==v0p6i (07/01/2009)==
 
 *FIXES*
