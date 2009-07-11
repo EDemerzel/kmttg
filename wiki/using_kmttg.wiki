@@ -107,6 +107,7 @@ NOTE: Auto Transfers requires running a separate kmttg process either as a servi
   * *Clear all messages* - Clear the bottom message panel of all messages.
 
   * *Reset TiVo web server* - This uses {{{http://<ip>/TiVoConnect?Command=ResetServer}}} which may help clear out conditions where TiVo is reporting *{{{<h2>Server Busy</h2>}}}* errors when attempting to download shows, which seems to be fairly common for Series 2 Tivos.
+  NOTE: You need to select the tab of the TiVo you wish to run this command on before selecting this menu item.
 
   * *Exit* - Exit kmttg. Also kills any background jobs started by kmttg in GUI mode that may still be running.
 
