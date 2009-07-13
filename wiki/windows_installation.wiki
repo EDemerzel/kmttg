@@ -18,13 +18,13 @@ http://code.google.com/p/kmttg/downloads/list
 
 ==3. UNPACK ZIP FILE==
 
-  * Unpack *kmttg_vxxx.zip* file to your desired location. In this example: c:\home (this creates c:\home\kmttg_vxxx folder)
+  * Unpack *kmttg_vxxx.zip* file to your desired location. In this example: c:\kmttg
 
 ===TIP===
 If upgrading from a previous Java kmttg installation you can normally unzip over the previous installation or just replace the *kmttg.jar* file of the old installation with the one from the new installation. That way you can preserve the kmttg configuration and avoid having to re-configure. NOTE: In some cases there are other files such as encoding profiles updated as part of a release, so you can also just unzip the file over the top of your previous installation to make sure you overwrite all files that make up an installation.
 
 ==4. STARTING KMTTG==
-Simply double click on *kmttg.jar* file (c:\home\kmttg_vxxx\kmttg.jar in this example) of the installation to start the program. (You can also create a shortcut to that file if you wish to make it easier).
+Simply double click on *kmttg.jar* file (c:\kmttg\kmttg.jar in this example) of the installation to start the program. (You can also create a shortcut to that file if you wish to make it easier).
   * The first time launch you will be prompted to allow kmttg to download and install required tools. Choose Yes and wait for the download and installation to complete.
   * Also the first time you launch kmttg you will be prompted for your 10 digit Media Access Key (MAK) which is needed to download & decrypt programs from your Tivos.
   NOTE: kmttg may detect Tivos on your network before you have a chance to enter the 10 digit MAK, and will not be able to get listings for detected Tivos without MAK, so after entering MAK you will need to click on *Refresh List* button for each Tivo to get listings.
