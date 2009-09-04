@@ -1,6 +1,18 @@
 #labels Featured
 =RELEASE NOTES=
 
+==v0p6k (09/03/2009)==
+
+*CHANGES*
+   * Added \r to history file writes so that simple DOS editors can easily edit the file.
+   * Added more error checking for file rename following qsfix.
+   * Updated Atomic Parsley run to handle pyTivo metadata files with name:value pairs without spaces.
+
+*FIXES*
+   * Don't allow folders ending in '.' characters since folders ending in '.' are illegal.
+   * Fix to Atomic Parsley run to strip quotation characters from values obtained from metadata file. This was causing Atomic Parsley call to crash and kmttg to shut down if in auto mode.
+   * Fixed issue with debug mode not starting properly.
+
 ==v0p6j (07/11/2009)==
 
 *ENHANCEMENTS*
