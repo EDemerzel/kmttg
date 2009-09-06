@@ -32,8 +32,13 @@ If upgrading from a previous Java kmttg installation you can unzip over the prev
 
 ==USING WINE TO RUN WINDOWS ONLY TOOLS==
 Some tools used by kmttg only run on Windows platform, however can be made to run on Linux platform using *wine* (tool to run Windows binaries on Linux platform). As an example, the following *t2extract* script can be made to run Windows T2Sami t2extract (used for creating captions files):
+  * Create following script called *t2extract*:
 {{{
 #! /bin/sh
 wine "C:\\Program Files\\T2Sami\\t2extract.exe" -f srt -p `dirname "$3"` "$3" "$4" "$5" "$6" "$7" "$8" "$9"
 }}}
-Create above script and call it what you want (t2extract for example) and then under kmttg config enter full path to the script as t2extract executable.
+  * Make it executable:
+{{{
+chmod +x t2extract
+}}}
+  * Under kmttg config enter full path to the script as t2extract executable.
