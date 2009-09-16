@@ -33,5 +33,5 @@ If upgrading from a previous Java kmttg installation you can unzip over the prev
 
 
 ==Intel Platform tivodecode binary==
-  * The Mac OSX tools package contains mostly "universal" binaries, however *tivodecode* which was compiled on PPC platform. Thus if you are on Intel platform and would like to have an Intel binary of tivodecode you can download it from [http://kmttg.googlecode.com/files/tivodecode_MacOSX_intel.zip here]. Replace the files in the standard installation with those in this file.
+  * The Mac OSX tools package contains mostly "universal" binaries, however *tivodecode* was compiled on PPC platform. Thus if you are on Intel platform and would like to have an Intel binary of tivodecode you can download it from [http://kmttg.googlecode.com/files/tivodecode_MacOSX_intel.zip here]. Replace the files in the standard installation with those in this file.
   NOTE: For example if while running tivodecode on Snow Leopard OS on Intel platform and it keeps prompting you to install rosetta in order to run tivodecode, installing the above would prevent that from happening and would not necessitate installing rosetta.
