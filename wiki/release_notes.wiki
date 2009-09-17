@@ -1,6 +1,29 @@
 #labels Featured
 =RELEASE NOTES=
 
+==v0p7a (09/16/2009)==
+
+*ENHANCEMENTS*
+   * Added *Show Folders* option for each Tivo tab to display Now Playing List using folders instead of flat structure. Can easily toggle between folder and non folder display modes.
+   
+   * Added auto transfer *Date Filter* capability so you can filter entries by less than or greater than specified number of hours old.
+   
+   * Added auto transfer statistics printing to log file (total number of auto matches vs # shows checked for each Tivo).
+   
+   * Added icon for identification of TiVo suggestions.
+   
+   * Added icon for identification of copy protected shows (in addition to color coding).
+
+   * Tivo discovery updated so as to be able to handle cases when Tivo IP assignments change dynamically.
+   
+   * TiVo discovery (Bonjour) now turned on as long as kmttg is running if "Look for Tivos on network" option is enabled (previously it would time out after 5 minutes). This is so that if there are any changes in Tivo IPs (for DHCP assigments that may be changing while kmttg is running) that kmttg can discover and automatically change the IPs appropriately. IP changes are automatically saved to config file.
+
+*FIXES*
+
+   * Applied user-supplied fix for Atomic Parsley call so that TV Episode & Episode Num show up correctly in iTunes.
+   
+   * Better exception handling if reading of .kmttg_settings file fails (perhaps because file is corrupted).
+
 ==v0p6k (09/03/2009)==
 
 *CHANGES*
