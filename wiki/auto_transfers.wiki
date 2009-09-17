@@ -61,6 +61,10 @@ This defines the interval in minutes for kmttg to check your Tivos for matching 
 
 This option enabled is useful for testing your title and keyword matching setup without actually having kmttg download and process matching shows. Kmttg will simply match your titles and keyword entries versus shows on your Tivo and report which shows match in the *auto.log* file (or if you run in GUI mode you can see matching shows reported in the text area). This mode allows you to quickly test out your setup to make sure you will get the shows you want. Once you have finished debugging obviously this option should be disabled.
 
+===GLOBAL SETTING: Date Filter===
+
+As requested by some users this option allows you to restrict which shows are automatically downloaded by kmttg by date. You can setup to only consider shows that are either less than or more than a specified number of hours old. Thus for example to get only new recordings you could setup Date Filter to less than 24 hours old which means only shows recorded in last 24 hours or less will be considered.
+
 ===RUNNING AUTO TRANSFERS IN GUI MODE===
   * *Auto Transfers->Run in GUI* menu entries enables you to run auto transfers while in GUI mode so that you can easily monitor what shows are being processed. Note that while this is a convenient way of running and monitoring auto transfers be warned that if you close the kmttg GUI then all actively running jobs will be killed, so don’t use this mode if you plan on terminating the graphical program. If you want to run auto transfers in non-graphical mode consult the sections below.
  
