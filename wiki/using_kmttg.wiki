@@ -9,6 +9,8 @@ Starting with version 0.6e kmttg uses a separate tab displaying the Now Playing 
 
 NOTE: Shows that are still recording or are copy protected are marked as such and displayed differently by kmttg and cannot be downloaded.
 
+You can enable or disable folder display by toggling the *Show Folders* toggle button individually for each Tivo listing. Similar to Tivo listings shows will be categorized by same name, "TiVo Suggestions" and "HD Channels". (Note that "HD Channels" category is intetionally named differently than on TiVo since it contains all recordings from HD channels regardless if they are actually HD or not). Simply single click on a folder to display the shows in the folder and then click on the *Return* button to return back to the top.
+
 NOTE: You can sort shows in the list by clicking on the list headers:
 
     * Clicking on 1st column header button you can sort shows by expiration type.
