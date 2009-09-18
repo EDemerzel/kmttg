@@ -1,6 +1,13 @@
 #labels Featured
 =RELEASE NOTES=
 
+==v0p7b (09/17/2009)==
+
+FIXES
+   * Fix for new exception issue introduced in v0p7a when clicking on any entry in FILES tab.
+   
+   * Changed Now Playing List XML parser to read in characters in UTF8 encoding format so that all special characters including foreign language characters are properly preserved. Previously special characters in Spanish & French language for example were being mangled.
+
 ==v0p7a (09/16/2009)==
 
 *ENHANCEMENTS*
