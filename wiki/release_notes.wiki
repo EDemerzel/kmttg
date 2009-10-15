@@ -1,6 +1,54 @@
 #labels Featured
 =RELEASE NOTES=
 
+==v0p7c (10/15/2009)==
+
+*ENHANCEMENTS*
+
+   * Added new NPL table columns: *DUR* (duration) and *Mbps* (bit rate in Megabits per second). The default order of columns is now set as: Icon, SHOW, DATE, CHANNEL, DUR, SIZE, Mbps
+
+   * Added new button to TiVo tabs: *Disk Usage*. This shows a pie chart breaking down disk space usage into Keep Until Space Needed, Keep Until I Delete, Suggestions (if there are any), and Free Space.
+
+   * Also as part of Disk Space Usage window there are statistics on total average bit rate and the estimated recording time remaining (using average bit rate and free space available for the calculation).
+
+   * Also as part of Disk Space Usage window there is a table summarizing the bit rate per channel. Table has Channel, Size, Rate (Mbps) and Rate (GB/hour) columns and you can sort by any of those columns.
+
+   * Now Playing List table now indicates which shows currently have running and queued jobs associated with them with a check mark icon and hour glass icon respectively. This makes it easy to see which shows you already launched for processing.
+
+   * Added new VideoRedo related configuration option called *Use VideoRedo QS Fix video dimension filter*. With that option enabled the VRD QS fix task will apply video dimensions filter to the VideoRedo processing. This is to eliminate the *Video Dimensions Changed* error message that VideoRedo pops up for some shows while you are editing them. Note that kmttg uses ffmpeg to automatically detect the video dimensions, so there is no per show configuration needed - kmttg will figure it out automatically.
+
+   * Free space check associated with *Check Available Disk Space* option now accounts for active downloads already in process when computing space remaining.
+     (NOTE: Currently only download jobs are checked, not other jobs that consume disk space).
+
+   * *Auto Transfers->Run in GUI* now refreshes Tivo NPL lists instead of clearing them.
+
+   * metadata file generated from .TiVo file now also includes episodeNumber & mpaaRating if available.
+
+   * In prior releases always the last column in the NPL table was stretched to fit window width. This was OK if SHOW column was last, but if changing column order it would look strange. Code is now updated to always stretch SHOW column wherever it may be located.
+
+   * Changed Folder and Copy Protected icons to more closely match those TiVo uses.
+
+   * TOTALS label now displays free disk space available if disk space total is configured for that TiVo. The label was shortened to take less horizontal space and total time is no longer displayed. You can use Disk Usage button to get more details on totals.
+
+   * Changed *Return* button text to *Back* when in folder view mode of NPL table.
+
+*FIXES*
+
+   * Auto Transfers title matching now lowercases keywords when checking against title so as to make matching case insensitive as was always the intent. Previously one had to enter title as lowercase in the Auto Transfers setup in order to get a title match.
+
+   * Fix for *IndexOutOfBoundsException* error when building file name out of keywords when keywords contain special characters such as *"$"*.
+
+   * Don't write empty episodeNumber to metadata file. This fix actually makes it such that any key with empty values are not written to pyTivo metadata file.
+
+   * metadata file generated from .TiVo file would sometimes put descriptionLanguage (usually "English") in place of program description.
+
+   * Now Playing List is now cleared right away when *Refresh* button is pressed. This is to prevent interaction with the list while the refresh is happening which can lead to unpredictable results.
+
+   * Don't process files if File Naming Template fails to generate a proper file name. This avoids situations for example of getting empty file names with just a file extension when there are no keywords available to make a proper file name.
+
+   * When clicking on an NPL entry channel number & name were not being displayed as they should have.
+
+
 ==v0p7b (09/17/2009)==
 
 FIXES
