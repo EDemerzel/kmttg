@@ -23,6 +23,8 @@ http://code.google.com/p/kmttg/downloads/list
 ===TIP===
 If upgrading from a previous Java kmttg installation you can normally unzip over the previous installation or just replace the *kmttg.jar* file of the old installation with the one from the new installation. That way you can preserve the kmttg configuration and avoid having to re-configure. NOTE: In some cases there are other files such as encoding profiles updated as part of a release, so you can also just unzip the file over the top of your previous installation to make sure you overwrite all files that make up an installation.
 
+*NOTE: If you have older version of kmttg service running you should shut down the service first and then unpack zip file over existing installation. If you don't do so then certain files cannot be overridden and hence installation will fail.*
+
 ==4. STARTING KMTTG==
 Simply double click on *kmttg.jar* file (c:\kmttg\kmttg.jar in this example) of the installation to start the program. (You can also create a shortcut to that file if you wish to make it easier).
   * The first time launch you will be prompted to allow kmttg to download and install required tools. Choose Yes and wait for the download and installation to complete.
