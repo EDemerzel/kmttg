@@ -44,6 +44,7 @@ NOTE: Starting with v0p6g release you can change the column order to be whatever
 ===VRD QS Fix===
   * This option is short for VideoRedo Quickstream Fix.
   * If you plan on any further processing of .mpg files such as cutting out commercials or re-encoding to different format it’s useful to run the file through VRD QS fix first to fix any potential glitches in the .mpg file that may cause issues.
+  * Starting with version 0p7c there is now a configuration option called *Enable VideoRedo QS Fix video dimension filter* which is very useful if you ever have run into *Video Dimensions Error* when editing files in VideoRedo.
 
 ===Ad Detect===
   * This option is for automated commercial segment detection using either comskip or VideoRedo AdScan.
