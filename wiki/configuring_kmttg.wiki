@@ -74,6 +74,8 @@ The `[/]` keyword is a folder separator which allows you to create custom sub-fo
 The `.TiVo` file name would become (using Windows folder structure note the resulting sub-folder structure):<br>
 *`The Big Bang Theory\2008_03_24 The Loobenfeld Decay.TiVo`*
 
+*NOTE: If you are not careful with file naming and don't include keywords that are always present for every show it is possible you end up with an empty file. So for example if you only use episodeTitle keyword then shows that don't have episode titles will result in an empty string. Starting with version 0p7c kmttg will now issue an error and not process files that end up as an empty string with just a file extension. In previous releases kmttg would continue anyway.
+
 ==Advanced File Naming==
 
 By request some more advanced keyword processing was introduced to allow for conditional text.
