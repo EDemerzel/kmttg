@@ -44,7 +44,7 @@
   {{{[mainTitle][/][year]_[monthNum]_[mday] [episodeTitle]}}}
 
 ==Check Available Disk Space==
-  * If this option is enabled then kmttg will check that destination drive has more than the space available defined in *Min req space (GB)* field before running jobs.
+  * If this option is enabled then kmttg will check that destination drive has more than the space available defined in *Min req space (GB)* field before running jobs. The available space calculation currently also subtracts estimated space to be taken by any ongoing .TiVo file downloads. (Currently no other jobs other than downloads are considered when estimating space to be consumed).
 
 ==File Naming==
   * This defines how file names will look for downloaded shows. Certain keywords are provided which you specify within square brackets that will be substituted accordingly. The choices for those you can see in the *Available keywords* cyclic. Choosing an entry from *Available keywords* will insert it in the File Naming field. You can use almost any other characters you want (*avoid quotes!*) and arrange the keywords in any order you like.
