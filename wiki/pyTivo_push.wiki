@@ -6,4 +6,4 @@ http://code.google.com/p/pytivo-auto-push/
 
 Next version of kmttg will also include a *push* task to automatically push video files to your Tivo(s) via pyTivo.
 
-Previously this Wiki page detailed a means of accomplishing this functionality using "custom" task, but that is now deprecated.
+Previously this Wiki page detailed a means of accomplishing this functionality using kmttg *custom* task, but that is now deprecated.
