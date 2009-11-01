@@ -192,8 +192,8 @@ The advanced keyword is highlighted in bold and signifies only include `“_Ep#x
 
 ==metadata files==
   * By default kmttg with *metadata* task enabled will only create a pyTivo metadata file for the last video file in the sequence of tasks you enable for processing an entry. That corresponds to *last* setting of this option. You can change that behavior by using various settings for this option:
-  * *mpegFile* - Generate only for .mpg file after decrypt step if enabled
-  * *mpegFile_cut* - Generate only for _cut.mpg file after AdCut step if enabled
+  * *mpegFile* - Generate only for {{{.mpg}}} file after decrypt step if enabled
+  * *mpegFile_cut* - Generate only for {{{_cut.mpg}}} file after AdCut step if enabled
   * *encodeFile* - Generate only for encoded video file after encode step if enabled
   * *last* - Generate only for last video file in the task set (the default setting)
   * *all* - Generate for all available video files in the task set (except .TiVo files)
@@ -237,8 +237,8 @@ The advanced keyword is highlighted in bold and signifies only include `“_Ep#x
 
 ==Files to push==
   * By default kmttg with *push* task enabled will only push the last video file in the sequence of tasks you enable for processing an entry. That corresponds to *last* setting of this option. You can change that behavior by using various settings for this option:
-  * *mpegFile* - Push only .mpg file after decrypt step if enabled
-  * *mpegFile_cut* - Push only _cut.mpg file after AdCut step if enabled
+  * *mpegFile* - Push only {{{.mpg}}} file after decrypt step if enabled
+  * *mpegFile_cut* - Push only {{{_cut.mpg}}} file after AdCut step if enabled
   * *encodeFile* - Push only encoded video file after encode step if enabled
   * *last* - Push only last video file in the task set (the default setting)
   * *all* - Push all available video files in the task set (except .TiVo files)
