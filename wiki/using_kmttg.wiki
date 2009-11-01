@@ -35,6 +35,7 @@ NOTE: Starting with v0p6g release you can change the column order to be whatever
   * If this option is enabled then kmttg will create a metadata file which will have same file name as the final video file name but with .txt extension at the end.
   * This metadata file can be used by *pyTivo* when serving back shows on your PC to your Tivos to provide detailed information about the show. Without the metadata file if you serve .mpg (or non .TiVo files) back to your Tivos there will be no information about the shows when you view them from your Tivos.<br>
   NOTE: According to pyTivo conventions this file should be the same name as your video file but with .txt extension added. Thus if you re-name your video file be sure to re-name this file as well.
+  * Starting with kmttg version 0p7d you now have more control over which video files to generate metadata files for. Under kmttg configuration *Program Options* tab use the *metadata files* setting to choose which file(s) to generate metadata files for.
 
 ===decrypt===
   * Shows downloaded from your Tivos are encrypted mpeg2 program files saved with .TiVo file extension.
@@ -74,7 +75,7 @@ NOTE: Accuracy varies greatly depending on the show. Comskip is most useful to u
 ===push===
   * Enable this option if you wish to push video file(s) to a Tivo of your choice.
   * This works in conjunction with pyTivo server to initiate pushes of video files to a TiVo. pyTivo server must be running and the file to be pushed should reside in a defined pyTivo share directory.
-  * In order for this task to be available you must define path to pyTivo.conf file in kmttg configuration (pyTivo tab). The TiVo you want to push to is also defined there.
+  * In order for this task to be available you must define path to pyTivo.conf file in kmttg configuration (*pyTivo tab*). The TiVo you want to push to is also defined there. You can also use the *Files to push* configuration option to control which video files you want to push.
   * Video files can reside anywhere below the top level directory of an existing pyTivo video share. If you try and push a video file outside a pyTivo video share it will fail, so make sure to define output directory of files you want to push via kmttg to be under a pyTivo video share somewhere.
 
 ===custom===
