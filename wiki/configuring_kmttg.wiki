@@ -223,3 +223,22 @@ The advanced keyword is highlighted in bold and signifies only include `“_Ep#x
 
 ==Show full paths in Job Monitor==
   * If you don't care to see full path names of files in Job Monitor table you can disable this option. kmttg will then only show the full file name without the path to the file in the Job Monitor. This is useful especially if you have very long path names configured.
+
+==_pyTivo_ tab== 
+
+==pyTivo.conf file==
+  * Double click in text field to bring up browser to find and set full path to your pyTivo config file *pyTivo.conf* file. This is where information on available pyTivo shares and their directory locations is contained. If you intend to use the *push* task for pushing files to your Tivos via pyTivo specifying a valid pyTivo.conf file is required. Note that you should also make sure that tivo_username & tivo_password corresponding to your tivo.com login and password are set in this file which is a requirement for Tivo pushes. kmttg will check that those options are set in the file.
+
+==pyTivo host name==
+  * Host name of the machine you are running pyTivo server on. If it is the same machine as you are running kmttg then *localhost* is usually the right setting to use. Note that the port number is obtained by kmttg from the *pyTivo.conf* file.
+
+==pyTivo push destination==
+  * Set which TiVo you would like to send files to via pyTivo push.
+
+==Files to push==
+  * By default kmttg with *push* task enabled will only push the last video file in the sequence of tasks you enable for processing an entry. That corresponds to *last* setting of this option. You can change that behavior by using various settings for this option:
+  * *mpegFile* - Push only .mpg file after decrypt step if enabled
+  * *mpegFile_cut* - Push only _cut.mpg file after AdCut step if enabled
+  * *encodeFile* - Push only encoded video file after encode step if enabled
+  * *last* - Push only last video file in the task set (the default setting)
+  * *all* - Push all available video files in the task set (except .TiVo files)
