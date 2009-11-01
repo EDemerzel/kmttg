@@ -69,7 +69,7 @@ NOTE: Accuracy varies greatly depending on the show. Comskip is most useful to u
   * Enable this option if you wish to re-encode .mpg files to another format.
   * You should also select the appropriate *Encoding Profile* you want to use for the encode.
   * You can define your own encoding profiles if you wish (see section below on Encoding Profiles).
-  NOTE: If *comcut* is enabled then the encoding will be done on _cut.mpg file instead of .mpg file.
+  NOTE: If *comcut* is enabled then the encoding will be done on {{{_cut.mpg}}} file instead of .mpg file.
 
 ===push===
   * Enable this option if you wish to push video file(s) to a Tivo of your choice.
