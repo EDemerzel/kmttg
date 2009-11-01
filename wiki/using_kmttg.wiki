@@ -71,6 +71,12 @@ NOTE: Accuracy varies greatly depending on the show. Comskip is most useful to u
   * You can define your own encoding profiles if you wish (see section below on Encoding Profiles).
   NOTE: If *comcut* is enabled then the encoding will be done on _cut.mpg file instead of .mpg file.
 
+===push===
+  * Enable this option if you wish to push video file(s) to a Tivo of your choice.
+  * This works in conjunction with pyTivo server to initiate pushes of video files to a TiVo. pyTivo server must be running and the file to be pushed should reside in a defined pyTivo share directory.
+  * In order for this task to be available you must define path to pyTivo.conf file in kmttg configuration (pyTivo tab). The TiVo you want to push to is also defined there.
+  * Video files can reside anywhere below the top level directory of an existing pyTivo video share. If you try and push a video file outside a pyTivo video share it will fail, so make sure to define output directory of files you want to push via kmttg to be under a pyTivo video share somewhere.
+
 ===custom===
   * You can use this option if you have configured a custom script to run in kmttg configuration. This is always the last task to be performed in the set of enabled tasks and gives you flexibility to do any custom actions you want.
 
