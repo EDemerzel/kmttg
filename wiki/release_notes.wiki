@@ -1,6 +1,29 @@
 #labels Featured
 =RELEASE NOTES=
 
+==v0p7d (11/01/2009)==
+
+*ENHANCEMENTS*
+
+   * Added new *push* task to initiate a push to a selected TiVo via pyTivo. You can specify specific video files to push, or last video file in sequence or all video files in sequence. This eliminates need to use "custom" job for pyTivo pushes as was previously recommended.
+   
+   * For *metadata* task there is now a config option under *Program Options* tab for specifying which video files to create metadata files for. You can choose individual video files, or last video file in sequence or all video files in sequence. (Previously the behavior was always just last video file in sequence).
+
+   * Changed DATE column in Now Playing List table from *Day DD/MM/YYYY* format to include hours and mins: *Day DD/MM/YY hh:mm*
+   
+   * Added *TIME* column to Disk Space window bit rate table (showing total recording time for each channel).
+   
+   * Added user-contributed ffmpeg zune HD encoding profile (ff_zune_hd)
+   
+   * Added "START PROCESSING OF ENTRY: titleOnly - episodeTitle" messages to log file in auto transfers mode to make it easier to see what entries are to be processed in auto.log file.
+   
+*CHANGES*
+   * For metadata file creation routines displayMajorNumber is now allowed to have sub-channel syntax. In older versions of pyTivo this was not allowed so kmttg was stripping off sub-channel number.
+
+*FIXES*
+
+   * custom job was not getting passed tivoFile name so {{{[tivoFile]}}} argument was not working.
+
 ==v0p7c (10/15/2009)==
 
 *ENHANCEMENTS*
