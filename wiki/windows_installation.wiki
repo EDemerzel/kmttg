@@ -7,7 +7,7 @@ Kmttg is now written in Java (originally used Perl) and supports Java 1.5 or lat
 
 http://java.com/en/download/manual.jsp
 
-*NOTE: If you are on a 64 bit system you should still install the 32 bit version. kmttg is compiled with 32 bit version to remain compatible with 32 bit systems.*
+*NOTE: If you are on a 64 bit system you should still install the 32 bit version of Java. kmttg is compiled with 32 bit version to remain compatible with 32 bit systems.*
 
 ==2. DOWNLOAD KMTTG INSTALLATION ZIP FILE==
 
