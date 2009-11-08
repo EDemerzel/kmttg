@@ -1,7 +1,7 @@
 #labels Featured
 =KMTTG WINDOWS INSTALLATION INSTRUCTIONS=
 
-==1. INSTALL JAVA IF NEEDED==
+==1. INSTALL 32 BIT JAVA IF NEEDED==
 
 Kmttg is now written in Java (originally used Perl) and supports Java 1.5 or later. You can download Java Runtime Environment (JRE) from here:
 
