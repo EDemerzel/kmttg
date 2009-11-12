@@ -16,6 +16,7 @@
 
 ===Encoding to different formats===
   * Along with several built in encoding profiles allows user to define own custom encoding profiles or modify existing ones.
+  * Can use optional VideoRedo integration to avoid A/V sync issues in resulting encodings that often happen when downloading shows from Series 3 TiVos.
 
 ===Extra capabilities===
   * Integration with commercial detection and cutting tools.
