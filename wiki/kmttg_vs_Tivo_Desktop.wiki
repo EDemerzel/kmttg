@@ -1,0 +1,34 @@
+=kmttg vs TiVo Desktop=
+
+==KMTTG ADVANTAGES==
+
+===Viewing TiVo Listings===
+  * Uses tabs to easily switch between viewing of listings for all your networked TiVos. Does not require re-download of listings when switching views.
+  * Listings contain information about bit rate for each show.
+  * Ability to view detailed Disk Usage information as a pie chart along with a summary of bit rate information per channel.
+
+===Auto Transfers===
+  * Can automatically pull files from all networked TiVos as background service using flexible title and/or keyword based matching.
+  * Ability to use regex expressions in setting up title matching such that for example you can pull all recordings from your TiVos and define various exclusion or inclusion filters.
+
+===Encoding to different formats===
+  * Along with several built in encoding profiles allows user to define own custom encoding profiles or modify existing ones.
+
+===Extra capabilities===
+  * Integration with commercial detection and cutting tools.
+  * Can generate closed captions (.srt) files.
+  * Close integration with *pyTivo* - can generate metadata files and push files automatically back to TiVos.
+  * Can define your own custom commands/scripts.
+
+===File Naming===
+  * Full control over file naming conventions and with ability to define sub-folders for series.
+
+===VideoRedo Integration===
+  * Has optional tight integration with VideoRedo for QuickStream fix, commercial detection and commercial cutting.
+
+===Cross Platform support===
+  * Runs on Windows, Mac or Linux (though some capabilities and 3rd party tools not available on Mac and Linux platforms).
+
+==KMTTG DISADVANTAGES==
+  * Requires separate solution for Go Back functionality, though integrates well when used in combination with *pyTivo*.
+  * Initial configuration and installation is a little harder.
