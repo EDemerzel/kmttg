@@ -32,6 +32,9 @@
 ===Cross Platform support===
   * Runs on Windows, Mac or Linux (though some capabilities and 3rd party tools not available on Mac and Linux platforms).
 
+===Open Source===
+  * All source code openly available.
+
 ==KMTTG DISADVANTAGES==
   * Requires separate solution for Go Back functionality, though integrates well when used in combination with *pyTivo*.
   * Initial configuration and installation is a little harder.
