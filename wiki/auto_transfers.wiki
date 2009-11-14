@@ -162,7 +162,7 @@ This is especially useful when used in conjunction with a job scheduler program 
  
 ===AUTO TRANSFER RELATED FILES===
 
-There are 3 files associated with auto transfers you should be aware of, all residing in the same directory where the kmttg.pl main program file is located:
+There are 3 files associated with auto transfers you should be aware of, all residing in the same directory where the kmttg.jar main program file is located:
 
 ====auto.ini====
 
