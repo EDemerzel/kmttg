@@ -181,6 +181,11 @@ The advanced keyword is highlighted in bold and signifies only include `“_Ep#x
   * If you have VideoRedo configured for use by kmttg then enabling this option instructs kmttg to start VideoRedo GUI following the *Ad Detect* job so that you can manually inspect/correct the detected commercial segments. If you do make changes be sure to save the changes to the same VPrj file before exiting VideoRedo (*Ctrl-P* shortcut). kmttg will wait until you close VideoRedo GUI before proceeding with next set of jobs.
   NOTE: This setting only applies to GUI mode. In auto transfers mode this setting has no effect.
 
+==Bring up VideoRedo GUI to make manual cuts==
+  * If you have VideoRedo and have configured kmttg with the installation path to VideoRedo, when this option is enabled kmttg will start VideoRedo GUI to allow you to manually define the commercial cuts before starting the commercial cutting job. kmttg will wait until you close the VideoRedo GUI before proceeding.
+  * NOTE: Be sure to save your changes to .VPrj file before you exit VideoRedo using File->Save Project VideoRedo menu.
+  * NOTE: When using this option you normally want to disable *Ad Detect* task and enable *Ad Cut* task.
+
 ==Enable VideoRedo QS Fix video dimension filter==
   * For some mpeg files that change video resolutions VideoRedo cannot handle that properly and results in a *Video Dimensions Changed* error message when editing the file. The usual fix to that problem is manually bring up Quick Stream Fix utility in VideoRedo and then enable the *Enable Filters* check button and specify the video resolution you want to set. However being a manual step is very inconvenient. With this option set kmttg will automatically enable a video dimension filter when running *VRD QS Fix* step. The video dimensions are automatically detected by kmttg with the help of ffmpeg. Thus this automates the whole process.
 
