@@ -5,6 +5,7 @@
 
 ===Viewing TiVo Listings===
   * Uses tabs to easily switch between viewing of listings for all your networked TiVos.
+  * Can choose to display listings with or without folders.
   * Does not require re-download of listings when switching views.
   * Can decide when to refresh listings for each TiVo.
   * Listings contain information about bit rate for each show.
