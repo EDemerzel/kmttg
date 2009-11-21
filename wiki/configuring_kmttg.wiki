@@ -32,16 +32,14 @@
 ==Remove .TiVo file after decrypt==
   * Enable this option if you would like kmttg to remove .TiVo files automatically once they have been successfully decrypted to .mpg format.
 
-==Remove .edl & .mpg files after comcut==
-  * If you use comcut you can enable this option if you would like kmttg to remove .edl & .mpg files automatically once comcut completes succesfully.
+==Remove Ad Detect files after Ad Cut==
+  * Enable this option if you would like kmttg to remove *Ad Detect* related files once *Ad Cut* task completes successfully.
+
+==Remove .mpg file after Ad Cut==
+  * Enable this option if you would like kmttg to remove .mpg file once *Ad Cut* task completes successfully.
 
 ==Remove .mpg file after encode==
   * If you use encode you can enable this option if you would like kmttg to remove .mpg files automatically once they have been successfully re-encoded.
-
-==Create sub-folder for each download==
-  * Enable this option if you would like kmttg to create a sub-folder for each show to be processed. The name of the folder will be the same as the file format you defined but without any file extension.
-  NOTE: This was a special request from a user and is probably not very useful to most users, so most will want to leave this off. If you want to create/group shows use the special keyword *`[/]`* as part of *File Naming* template (see section on File Naming further below). For example to group episodes of a repeating show under the show title alphabetically by date and including episode title of each you could define something like:
-  {{{[mainTitle][/][year]_[monthNum]_[mday] [episodeTitle]}}}
 
 ==Check Available Disk Space==
   * If this option is enabled then kmttg will check that destination drive has more than the space available defined in *Min req space (GB)* field before running jobs. The available space calculation currently also subtracts estimated space to be taken by any ongoing .TiVo file downloads. (Currently no other jobs other than downloads are considered when estimating space to be consumed).
