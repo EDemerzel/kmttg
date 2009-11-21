@@ -1,6 +1,47 @@
 #labels Featured
 =RELEASE NOTES=
 
+==vop7e (11/20/2009)==
+
+*ENHANCEMENTS*
+   
+   * Added new config option *Bring up VideoRedo GUI to make manual cuts*. Enabling this option enables you to skip *Ad Detect* task and instead bring up VideoRedo GUI automatically to allow you to define cut points manually. Once you save and close VideoRedo the remaining tasks such as *Ad Cut* etc. will proceed as normal. Previously you could not have VRD GUI come up automatically unless you had *Ad Detect* task enabled.
+   
+   * Each Auto Transfer entry now contains option to specify which TiVo to look at. Options are a single TiVo specified by name or "all". Entries setup before this enhancement will default to "all".
+
+   * Added new global Auto Transfers global filter options:
+   * *Filter out TiVo Suggestions* - when enabled do not process any TiVo suggestions.
+   * *Only process KUID recordings* - when enabled only process TiVo recordings marked as "Keep Until I Delete".
+   NOTE: If you don't use KUID feature on the TiVo this gives you a way to initiate transfers from your TiVo by having this option enabled and having kmttg auto transfers setup to transfer all recordings. For that setup once you mark a show as KUID on your TiVo it will transfer via kmttg auto transfers.
+   * *Do not process recordings without ProgramId* - when enabled do not process recordings that don't have *ProgramId* identifier (typically programs that were transferred to your TiVos using TiVo Desktop or pyTivo).
+   
+   * Each Auto Transfer entry now contains a comskip.ini override option where you can specify a path to a comskip.ini that overrides the main comskip.ini setting. This is so that you can fine tune comskip for each individual auto transfer if you wish.
+   
+   * Added option to enable/disable each Auto Transfer entry. This is useful to be able to temporarily disable certain entries without having to delete them.
+   
+   * kmttg will look for additional metadata files (.mpg.txt or _cut.mpg.txt) when trying to launch AtomicParsley job. Previously it was looking for only <encodeFile>.txt
+   
+   * Renamed the *Remove .edl & .mpg files after comcut* option to *Remove Ad Detect files after Ad Cut* and added a separate *Remove .mpg file after Ad Cut* option. i.e. Before to clean up Ad Detect related files you also had to choose to remove .mpg file which is no longer necessary.
+   
+*CHANGES*
+
+   * Auto Transfers processing now ignores currently recording or copy protected shows up front (a log message stating why they are skipped is still generated). Previously they were included in title/keyword matching only to issue error message later that they can't be downloaded.
+   
+   * Removed the confusing and discouraged for use *Create sub-folder for each download* option. If you want to create sub-folders then you can use *{{{[/]}}}* keyword in *File Naming* to do so (consult the configuring_kmttg Wiki).
+
+*FIXES*
+
+   * custom command with double quotes now handled properly
+   
+   * Fix to AtomicParsley metadata file parsing. Previously parser was not handling values with ":" characters which resulted in some metadata values not being included in AtomicParsley run.
+   
+   * Fix to preserve any manually added *ignorehistory* items added manually to auto.ini file. Previously saving auto transfer settings from GUI would eliminate them.
+   
+   * If *ProgramId* does not exist (such as for pyTivo pulls) then kmttg now creates a fake one out id in Url & file size as an alternate. Without a ProgramId a program is not marked as transferred by kmttg and therefore would keep getting pulled repeatedly.
+   
+   * Added --globoff option to curl commands so that special sequence of characters for curl such as #001 do not cause downloads to fail.
+
+
 ==v0p7d (11/01/2009)==
 
 *ENHANCEMENTS*
