@@ -183,6 +183,7 @@ The advanced keyword is highlighted in bold and signifies only include `“_Ep#x
 
 ==Bring up VideoRedo GUI to make manual cuts==
   * If you have VideoRedo and have configured kmttg with the installation path to VideoRedo, when this option is enabled kmttg will start VideoRedo GUI to allow you to manually define the commercial cuts before starting the commercial cutting job. kmttg will wait until you close the VideoRedo GUI before proceeding.
+  * This is useful to be able to skip the time-consuming and often inaccurate *Ad Detect* step so you can define the cut points to use yourself but then let kmttg continue with the rest of the tasks automatically.
   * NOTE: Be sure to save your changes to .VPrj file before you exit VideoRedo using File->Save Project VideoRedo menu.
   * NOTE: When using this option you normally want to disable *Ad Detect* task and enable *Ad Cut* task.
 
