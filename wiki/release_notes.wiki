@@ -1,7 +1,7 @@
 #labels Featured
 =RELEASE NOTES=
 
-==vop7e (11/20/2009)==
+==v0p7e (11/20/2009)==
 
 *ENHANCEMENTS*
    
@@ -10,9 +10,12 @@
    * Each Auto Transfer entry now contains option to specify which TiVo to look at. Options are a single TiVo specified by name or "all". Entries setup before this enhancement will default to "all".
 
    * Added new global Auto Transfers global filter options:
+
    * *Filter out TiVo Suggestions* - when enabled do not process any TiVo suggestions.
+
    * *Only process KUID recordings* - when enabled only process TiVo recordings marked as "Keep Until I Delete".
    NOTE: If you don't use KUID feature on the TiVo this gives you a way to initiate transfers from your TiVo by having this option enabled and having kmttg auto transfers setup to transfer all recordings. For that setup once you mark a show as KUID on your TiVo it will transfer via kmttg auto transfers.
+
    * *Do not process recordings without ProgramId* - when enabled do not process recordings that don't have *ProgramId* identifier (typically programs that were transferred to your TiVos using TiVo Desktop or pyTivo).
    
    * Each Auto Transfer entry now contains a comskip.ini override option where you can specify a path to a comskip.ini that overrides the main comskip.ini setting. This is so that you can fine tune comskip for each individual auto transfer if you wish.
