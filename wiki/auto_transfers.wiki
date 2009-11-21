@@ -41,6 +41,9 @@ You can setup a more complex keyword match by specifying multiple keywords with 
   `(basketball)|(football)|!new york`<br>
   This means match show descriptions that contain either “basketball” or “football” but don’t include any that have “new york”
 
+===TiVo===
+By default with *all* setting kmttg will match your auto transfer entries against recordings on all TiVos defined in kmttg. You can optionally restrict individual auto transfer entries to only look at a particular TiVo instead if you like.
+
 ===Enabling desired options to perform following a download===
 Enable which tasks you want to perform following a download for each entry you define. The same options as are available in GUI mode are available here, just make sure kmttg is properly configured as described above. Note that you can define different tasks for each entry and if you are enabling encode task you can use different encoding profiles for each entry.
 
@@ -52,6 +55,12 @@ If you want to modify an entry then select the entry in the setup list to displa
 
 ===DEL===
 If you want to remove 1 or more entries then select them in the setup list and click on the DEL button.
+
+===enabled===
+You can selectively disable auto transfer entries by unchecking this option. This provides a means of disabling certain auto transfer entries temporarily without having to delete them.
+
+===comskip.ini override===
+This only applies if you are using *comskip* in the *Ad Detect* step. This allows you to optionally specify a custom *comskip.ini* file to use for this auto transfer entry. Sometimes comskip needs to be tweaked to work well with certain shows. So this gives you ability to override the main/default kmttg comskip.ini for individual shows corresponding to auto transfer entries.
  
 ===GLOBAL SETTING: Check Tivos Interval (mins)===
 
@@ -64,6 +73,20 @@ This option enabled is useful for testing your title and keyword matching setup 
 ===GLOBAL SETTING: Date Filter===
 
 As requested by some users this option allows you to restrict which shows are automatically downloaded by kmttg by date. You can setup to only consider shows that are either less than or more than a specified number of hours old. Thus for example to get only new recordings you could setup Date Filter to less than 24 hours old which means only shows recorded in last 24 hours or less will be considered.
+
+===GLOBAL SETTING: Filter out TiVo Suggestions===
+
+If enabled then kmttg will filter out and not process any TiVo Suggestion recordings.
+
+===GLOBAL SETTING: Only process KUID recordings===
+
+When enabled only process TiVo recordings marked as *Keep Until I Delete*.
+
+NOTE: If you don't use KUID feature on the TiVo this gives you a way to initiate transfers from your TiVo by having this option enabled and having kmttg auto transfers setup to transfer all recordings. For that setup once you mark a show as KUID on your TiVo it will transfer via kmttg auto transfers.
+
+===GLOBAL SETTING: Do not process recordings without ProgramId===
+
+Programs that were transferred to your TiVo(s) for example using TiVo Desktop or pyTivo do not have a TiVo assigned *ProgramId* identifier. kmttg auto transfers uses this identifier to prevent shows from downloading more than once in auto transfers mode. For these shows kmttg will generate a fake *ProgramId* which is needed to prevent them from being processed multiple times by Auto Transfers. With this option enabled, these kinds of shows with fake *ProgramId* entries will be automatically filtered out by kmttg auto transfers.
 
 ===RUNNING AUTO TRANSFERS IN GUI MODE===
   * *Auto Transfers->Run in GUI* menu entries enables you to run auto transfers while in GUI mode so that you can easily monitor what shows are being processed. Note that while this is a convenient way of running and monitoring auto transfers be warned that if you close the kmttg GUI then all actively running jobs will be killed, so don’t use this mode if you plan on terminating the graphical program. If you want to run auto transfers in non-graphical mode consult the sections below.
