@@ -73,7 +73,7 @@ NOTE: Accuracy varies greatly depending on the show. Comskip is most useful to u
   NOTE: If *Ad Cut* is enabled then the encoding will be done on {{{_cut.mpg}}} file instead of .mpg file.
 
 ===atomic===
-  * This task does not show up explicitly as a choice to run. However if you have AtomicParsley executable specified in kmttg config and you generate an mp4 or mkv file in the *encode* step AND you have a .mp4.txt or .mkv.txt metadata file to accompany the encoded file then this step will be run automatically by kmttg once encoding job completes. This takes information from the metadata file and adds it to the video file so that programs such as Itunes can display extra information about encoded files.
+  * This task does not show up explicitly as a choice to run. However if you have AtomicParsley executable specified in kmttg config and you generate an mp4 or mkv file in the *encode* step AND you have a pyTivo metadata file to accompany the encoded file then this step will be run automatically by kmttg once encoding job completes. This takes information from the pyTivo metadata file and adds it to the video file so that programs such as Itunes can display extra information about encoded files.
 
 ===push===
   * Enable this option if you wish to push video file(s) to a Tivo of your choice.
