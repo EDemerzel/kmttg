@@ -13,6 +13,8 @@
 ===Auto Transfers===
   * Can automatically pull files from all networked TiVos as background service using flexible title and/or keyword based matching.
   * Ability to use regex expressions in setting up title matching such that for example you can pull all recordings from your TiVos and define various exclusion or inclusion filters.
+  * Can limit transfers to be from particular TiVos.
+  * Can use various filters to filter out programs you don't want to auto transfer.
 
 ===Encoding to different formats===
   * Along with several built in encoding profiles allows user to define own custom encoding profiles or modify existing ones.
