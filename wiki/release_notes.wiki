@@ -19,7 +19,7 @@
    
    * Added option to enable/disable each Auto Transfer entry. This is useful to be able to temporarily disable certain entries without having to delete them.
    
-   * kmttg will look for additional metadata files (.mpg.txt or _cut.mpg.txt) when trying to launch AtomicParsley job. Previously it was looking for only <encodeFile>.txt
+   * kmttg will look for additional metadata files ({{{.mpg.txt}}} or {{{_cut.mpg.txt}}}) when trying to launch AtomicParsley job. Previously it was looking for only {{{<encodeFile>.txt}}}
    
    * Renamed the *Remove .edl & .mpg files after comcut* option to *Remove Ad Detect files after Ad Cut* and added a separate *Remove .mpg file after Ad Cut* option. i.e. Before to clean up Ad Detect related files you also had to choose to remove .mpg file which is no longer necessary.
    
