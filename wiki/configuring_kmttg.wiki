@@ -162,31 +162,16 @@ The advanced keyword is highlighted in bold and signifies only include `“_Ep#x
   * If you specify the full path to AtomicParsley executable then some meta data information will be automatically added to mp4 files following encode step.
   * NOTE: This will only work if you have pyTivo metadata available for the file since kmttg will look for file.mp4.txt file to get information it needs for AtomicParsley run.
 
-==VideoRedo path==
-  * If you have VideoRedo program available you can supply the path to your VideoRedo installation directory to enable the “VRD QS fix” option which stands for `VideoRedo` Quickstream Fix. If you plan on any further processing of .mpg files such as cutting out commercials or re-encoding to different format it’s useful to run the file through VRD QS fix first to fix any potential glitches in the .mpg file that may cause issues. Note that “VRD QS fix” will only be enabled once you supply a valid path to VideoRedo installation. By doing so kmttg will also use VideoRedo instead of mencoder for the comcut step. VideoRedo does a much better job of cutting out commercials while keeping proper audio/video sync.
-  * Example path setting (on Vista):
-  `C:\Program Files (x86)\VideoRedoPlus`
-
 ==custom command==
   * Here you can setup any script you want to run as a post-processing step to all other tasks. You can use certain pre-defined keywords in square brackets as arguments to your script if you wish which kmttg will replace with the associated full path file names. The supported keywords are listed in the *Available file args* cyclic.
 
 ==_Program Options_ tab==
 
-==Use VideoRedo AdScan instead of comskip==
-  * If you have VideoRedo configured for use by kmttg then enabling this option instructs kmttg to use *VideoRedo AdScan* instead of comskip program for the comskip step.
-
-==Use VideoRedo GUI to review detected commercials==
-  * If you have VideoRedo configured for use by kmttg then enabling this option instructs kmttg to start VideoRedo GUI following the *Ad Detect* job so that you can manually inspect/correct the detected commercial segments. If you do make changes be sure to save the changes to the same VPrj file before exiting VideoRedo (*Ctrl-P* shortcut). kmttg will wait until you close VideoRedo GUI before proceeding with next set of jobs.
-  NOTE: This setting only applies to GUI mode. In auto transfers mode this setting has no effect.
-
-==Bring up VideoRedo GUI to make manual cuts==
-  * If you have VideoRedo and have configured kmttg with the installation path to VideoRedo, when this option is enabled kmttg will start VideoRedo GUI to allow you to manually define the commercial cuts before starting the commercial cutting job. kmttg will wait until you close the VideoRedo GUI before proceeding.
-  * This is useful to be able to skip the time-consuming and often inaccurate *Ad Detect* step so you can define the cut points to use yourself but then let kmttg continue with the rest of the tasks automatically.
-  * NOTE: Be sure to save your changes to .VPrj file before you exit VideoRedo using File->Save Project VideoRedo menu.
-  * NOTE: When using this option you normally want to disable *Ad Detect* task and enable *Ad Cut* task.
-
-==Enable VideoRedo QS Fix video dimension filter==
-  * For some mpeg files that change video resolutions VideoRedo cannot handle that properly and results in a *Video Dimensions Changed* error message when editing the file. The usual fix to that problem is manually bring up Quick Stream Fix utility in VideoRedo and then enable the *Enable Filters* check button and specify the video resolution you want to set. However being a manual step is very inconvenient. With this option set kmttg will automatically enable a video dimension filter when running *VRD QS Fix* step. The video dimensions are automatically detected by kmttg with the help of ffmpeg. Thus this automates the whole process.
+==Download TiVo files in Transport Stream format==
+  * For TiVo software that supports it, this forces TiVo file downloads to use Transport Stream format instead of the default Program Stream format by adding a *&Format=video/x-tivo-mpeg-ts* tag to the download URL.
+  * Currently only Australia/New Zealand TiVos support Transport Stream format so enabling this on other TiVos will have no effect.
+  * NOTE: One advantage of TiVo Transport Stream format is downloads are quite significantly faster than Program Stream format downloads.
+  * NOTE: *tivodecode* does not currently work for TiVo Transport Stream files, but if you have VideoRedo you can use it to decrypt them (see *VideoRedo* tab for an option to enable that).
 
 ==t2extract extra arguments==
   * Any extra arguments you want kmttg to use when running *t2extract* which is the program used to generate closed captions *.srt* file. By default the program arguments are as follows:
@@ -227,6 +212,34 @@ The advanced keyword is highlighted in bold and signifies only include `“_Ep#x
 
 ==Show full paths in Job Monitor==
   * If you don't care to see full path names of files in Job Monitor table you can disable this option. kmttg will then only show the full file name without the path to the file in the Job Monitor. This is useful especially if you have very long path names configured.
+
+==_VideoRedo_ tab (Windows only)==
+
+==VideoRedo path==
+  * If you have VideoRedo program available you can supply the path to your VideoRedo installation directory to enable the “VRD QS fix” option which stands for `VideoRedo` Quickstream Fix. If you plan on any further processing of .mpg files such as cutting out commercials or re-encoding to different format it’s useful to run the file through VRD QS fix first to fix any potential glitches in the .mpg file that may cause issues. Note that “VRD QS fix” will only be enabled once you supply a valid path to VideoRedo installation. By doing so kmttg will also use VideoRedo instead of mencoder for the comcut step. VideoRedo does a much better job of cutting out commercials while keeping proper audio/video sync.
+  * Example path setting (on Vista):
+  `C:\Program Files (x86)\VideoRedoPlus`
+
+==Use VideoRedo AdScan instead of comskip==
+  * If you have VideoRedo configured for use by kmttg then enabling this option instructs kmttg to use *VideoRedo AdScan* instead of comskip program for the comskip step.
+
+==Use VideoRedo GUI to review detected commercials==
+  * If you have VideoRedo configured for use by kmttg then enabling this option instructs kmttg to start VideoRedo GUI following the *Ad Detect* job so that you can manually inspect/correct the detected commercial segments. If you do make changes be sure to save the changes to the same VPrj file before exiting VideoRedo (*Ctrl-P* shortcut). kmttg will wait until you close VideoRedo GUI before proceeding with next set of jobs.
+  NOTE: This setting only applies to GUI mode. In auto transfers mode this setting has no effect.
+
+==Bring up VideoRedo GUI to make manual cuts==
+  * If you have VideoRedo and have configured kmttg with the installation path to VideoRedo, when this option is enabled kmttg will start VideoRedo GUI to allow you to manually define the commercial cuts before starting the commercial cutting job. kmttg will wait until you close the VideoRedo GUI before proceeding.
+  * This is useful to be able to skip the time-consuming and often inaccurate *Ad Detect* step so you can define the cut points to use yourself but then let kmttg continue with the rest of the tasks automatically.
+  * NOTE: Be sure to save your changes to .VPrj file before you exit VideoRedo using File->Save Project VideoRedo menu.
+  * NOTE: When using this option you normally want to disable *Ad Detect* task and enable *Ad Cut* task.
+
+==Enable VideoRedo QS Fix video dimension filter==
+  * For some mpeg files that change video resolutions VideoRedo cannot handle that properly and results in a *Video Dimensions Changed* error message when editing the file. The usual fix to that problem is manually bring up Quick Stream Fix utility in VideoRedo and then enable the *Enable Filters* check button and specify the video resolution you want to set. However being a manual step is very inconvenient. With this option set kmttg will automatically enable a video dimension filter when running *VRD QS Fix* step. The video dimensions are automatically detected by kmttg with the help of ffmpeg. Thus this automates the whole process.
+
+==Decrypt using VideoRedo instead of tivodecode==
+  * Use VideoRedo QS Fix task to decrypt TiVo files instead of using *tivodecode*.
+  * If you use QS Fix task anyway this helps save some time by skipping tivodecode step. This is also useful for Australia/New Zealand TiVos with mpeg2 Transport Stream TiVo files which cannot be decrypted by tivodecode.
+  * NOTE: You must have minimum TiVo Desktop installation with *TiVoDirectShowFilter* installed for VideoRedo to be able to decrypt TiVo files.
 
 ==_pyTivo_ tab== 
 
