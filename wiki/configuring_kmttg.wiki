@@ -187,7 +187,10 @@ The advanced keyword is highlighted in bold and signifies only include `“_Ep#x
   * *last* - Generate only for last video file in the task set (the default setting)
   * *all* - Generate for all available video files in the task set (except .TiVo files)
 
-==<u>General tab</u>== 
+==<u>General tab</u>==
+
+==GUI Font Size==
+  * Sets the text font size for all GUI text components. Should be an integer of reasonable size. Default value is 12.
 
 ==MAK==
   * REQUIRED if you plan to download files from Tivo Now Playing lists.
