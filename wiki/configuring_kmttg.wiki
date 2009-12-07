@@ -231,9 +231,10 @@ The advanced keyword is highlighted in bold and signifies only include `“_Ep#x
   NOTE: This setting only applies to GUI mode. In auto transfers mode this setting has no effect.
 
 ==Bring up VideoRedo GUI to make manual cuts==
-  * If you have VideoRedo and have configured kmttg with the installation path to VideoRedo, when this option is enabled kmttg will start VideoRedo GUI to allow you to manually define the commercial cuts before starting the commercial cutting job. kmttg will wait until you close the VideoRedo GUI before proceeding.
-  * This is useful to be able to skip the time-consuming and often inaccurate *Ad Detect* step so you can define the cut points to use yourself but then let kmttg continue with the rest of the tasks automatically.
-  * NOTE: Be sure to save your changes to .VPrj file before you exit VideoRedo using File->Save Project VideoRedo menu.
+  * If you have VideoRedo and have configured kmttg with the installation path to VideoRedo, when this option is enabled kmttg will start VideoRedo GUI to allow you to manually define the commercial cuts and save the output mpeg2 file with cuts with VideoRedo. kmttg will wait until you close the VideoRedo GUI before proceeding.
+  * This is useful to be able to skip the time-consuming and often inaccurate *Ad Detect* step so you can define and generated mpeg2 file with commercials cut out and then let kmttg continue with the rest of the tasks automatically.
+  * NOTE: It's expected that you use VideoRedo to output the cut file. You can use the default VideoRedo output file name with {{{" (02).mpg"}}} suffix or use the conventional {{{"_cut.mpg"}}} suffix when saving the output file in VideoRedo.
+  * Prior to kmttg version 0p7f with this option enabled the commercial cut step was still done by kmttg, but there are certain VideoRedo settings that only work in GUI mode, such as audio boost, so it is more flexible to just output the file from VideoRedo instead.
   * NOTE: When using this option you normally want to disable *Ad Detect* task and enable *Ad Cut* task.
 
 ==Enable VideoRedo QS Fix video dimension filter==
