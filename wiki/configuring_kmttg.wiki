@@ -198,7 +198,7 @@ The advanced keyword is highlighted in bold and signifies only include `“_Ep#x
   Tivo Central—Messages&Settings—Account&System Information—Media Access Key
 
 ==active job limit==
-  * Limits the number of CPU intensive jobs that can kmttg can run in parallel to this setting (defaults to 2). If you want to allow more CPU intensive jobs to run at the same time (for example if you have a mult-core processor) you can increase this limit accordingly. Be careful not to overwhelm your computer by setting this number too high.
+  * Limits the number of CPU intensive jobs that can kmttg can run in parallel to this setting (defaults to 2). If you want to allow more CPU intensive jobs to run at the same time (for example if you have a multi-core processor) you can increase this limit accordingly. Be careful not to overwhelm your computer by setting this number too high.
 
 ==encoding cpu cores===
   * Specify the number of cpu cores to use for encoding jobs. If you have a multi-core machine this can speed up encoding jobs quite significantly. Consider this setting and *active job limit* when deciding what number to use here. Setting this too high may really slow down your machine for other tasks running in parallel.
