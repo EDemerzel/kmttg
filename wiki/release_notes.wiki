@@ -9,6 +9,7 @@
    * Two extra options added to kmttg config useful to Australia/New Zealand TiVo users which have option of downloading TiVo files in Transport Stream format:
       * *Download TiVo files in Transport Stream format* (Program Options tab) - Adds *&Format=video/x-tivo-mpeg-ts* tag to downloads to force them to be downloaded in Transport Stream format.
       * *Decrypt using VideoRedo instead of tivodecode* (VideoRedo tab) - Use VideoRedo QSFix job to decrypt .TiVo files instead of tivodecode which doesn't work for TS TiVo files.
+      * This is also useful to skip *decrypt* task completely and jump straight to VRD QS Fix task to do decryption and QS Fix all in 1 step.
       
 *CHANGES*
    * If *Bring up VideoRedo GUI to make manual cuts* option is enabled kmttg will no longer schedule the commercial cut task. It's now expected that you use VideoRedo to output the cut file. You can use the default VideoRedo output file name with {{{" (02).mpg"}}} suffix or use the conventional {{{"_cut.mpg"}}} suffix when saving the output file in VideoRedo.
