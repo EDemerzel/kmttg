@@ -1,7 +1,7 @@
 #labels Featured
 ==VIDEOREDO SPECIAL CONFIGURATION INSTRUCTIONS==
 
-There are several VideoRedo related settings under kmttg configuration. From kmttg GUI select *File->Configure...* and then click on *VideoRedo* tab to see all the options. Consult the tooltips or the kmttg_configuration Wiki for details on each of the options.
+There are several VideoRedo related settings under kmttg configuration. From kmttg GUI select *File->Configure...* and then click on *VideoRedo* tab to see all the options. Consult the tooltips or the configuring_kmttg Wiki for details on each of the options.
 
 ===WINDOWS SERVICE===
 When running in service mode with the default kmttg Windows Service configuration {{{VideoRedo}}} will fail to run with an error such as {{{"WScript.CreateObject: Could not create object named VideoReDo.VideoReDoSilent"}}}
