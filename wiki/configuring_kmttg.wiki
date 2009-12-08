@@ -243,7 +243,7 @@ The advanced keyword is highlighted in bold and signifies only include `“_Ep#x
 ==Decrypt using VideoRedo instead of tivodecode==
   * Use VideoRedo QS Fix task to decrypt TiVo files instead of using *tivodecode*.
   * If you use QS Fix task anyway this helps save some time by skipping tivodecode step. This is also useful for Australia/New Zealand TiVos with mpeg2 Transport Stream TiVo files which cannot be decrypted by tivodecode.
-  * NOTE: You must have minimum TiVo Desktop installation with *TiVoDirectShowFilter* installed for VideoRedo to be able to decrypt TiVo files.
+  * NOTE: You must have minimum TiVo Desktop installation with *TiVoDirectShowFilter* installed for VideoRedo to be able to decrypt TiVo files. You can achieve this by first installing TiVo Desktop completely and specifying your MAK ID during installation. Once you verify you can play .TiVo files using Media Player then you can uninstall TiVo Desktop and use the option to retain capability to play TiVo files. This keeps TiVoDirectShowFilter.dll installed and registered which is all that is needed for VideoRedo to be able to decrypt TiVo files.
 
 ==<u>pyTivo tab</u>== 
 
