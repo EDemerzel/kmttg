@@ -7,7 +7,7 @@ NOTE: If you have {{{VideoRedo}}} configured for use in kmttg consult the [http:
 
 *NOTE: By default the kmttg Windows service is setup as “automatic” startup mode. This means that should you restart your computer the kmttg service will automatically be started on bootup. If you would like to change this behavior see the relevant section below for more details on how to do that.*
 
-===CONFIGURING AUTO TRANSFERS===
+===<u>CONFIGURING AUTO TRANSFERS</u>===
   * NOTE: It is highly recommended you enable *Overwrite existing files* option under kmttg configuration (File->Configure...) if setting up Auto Transfers as when Auto Transfers are interrupted that can leave partial files created that you would want Auto Transfers to overwrite.
 
   * *Auto Transfers->Configure…* entry should be use as the first step is to bring up the Auto Transfers Configuration GUI
@@ -88,10 +88,10 @@ NOTE: If you don't use KUID feature on the TiVo this gives you a way to initiate
 
 Programs that were transferred to your TiVo(s) for example using TiVo Desktop or pyTivo do not have a TiVo assigned *ProgramId* identifier. kmttg auto transfers uses this identifier to prevent shows from downloading more than once in auto transfers mode. For these shows kmttg will generate a fake *ProgramId* which is needed to prevent them from being processed multiple times by Auto Transfers. With this option enabled, these kinds of shows with fake *ProgramId* entries will be automatically filtered out by kmttg auto transfers.
 
-===RUNNING AUTO TRANSFERS IN GUI MODE===
+===<u>RUNNING AUTO TRANSFERS IN GUI MODE</u>===
   * *Auto Transfers->Run in GUI* menu entries enables you to run auto transfers while in GUI mode so that you can easily monitor what shows are being processed. Note that while this is a convenient way of running and monitoring auto transfers be warned that if you close the kmttg GUI then all actively running jobs will be killed, so don’t use this mode if you plan on terminating the graphical program. If you want to run auto transfers in non-graphical mode consult the sections below.
  
-===WORKAROUND FOR REPEATED SHOWS WITH SAME `ProgramId`===
+===<u>WORKAROUND FOR REPEATED SHOWS WITH SAME `ProgramId`</u>===
 
 In order to prevent transfer of same show over and over in auto mode kmttg creates an *auto.history* file that contains *`ProgramId`* entries for previously downloaded shows. *`ProgramId`* is usually unique for every show and each episode of a series. However, there are some series where for some reason that is not the case. So for those cases once an episode is downloaded once, no further episodes will download in auto transfers mode because of this issue. To workaround this issue you can setup exceptions for *`ProgramId`* entries where the *auto.history* file will not be checked in auto transfers mode. To do so you must manually edit the *auto.ini* file and add a 2 line entry to bottom of the file as in following example:<br>
 `<ignorehistory>`<br>
@@ -99,7 +99,7 @@ In order to prevent transfer of same show over and over in auto mode kmttg creat
 
 If you have several such exceptions then add a 2 line entry as in above example for each one.
 
-===RUNNING THE AUTO TRANSFERS PROGRAM AS A SERVICE IN WINDOWS===
+===<u>RUNNING THE AUTO TRANSFERS PROGRAM AS A SERVICE IN WINDOWS</u>===
 
 In Windows the auto transfer program can be setup to run as a Windows Service called kmttg.
 
@@ -158,7 +158,7 @@ The *wrapper.conf* files sets up to run Java with *com.tivo.kmttg.main.kmttg -a*
 The *–a* option to indicates to run kmttg in non graphical auto transfers mode, running in a loop where Tivos are checked and matching shows processed.
 
  
-===SETTING UP KMTTG AUTO TRANSFERS AS A BACKGROUND JOB (MACINTOSH/LINUX)===
+===<u>SETTING UP KMTTG AUTO TRANSFERS AS A BACKGROUND JOB (MACINTOSH/LINUX)</u>===
 
 On Mac & linux systems you can setup to run kmttg as a background non-graphical job. You need to start kmttg with *-a* argument to do this. You can use the *kmttg* that comes with the installation and simply add -a argument when running it:
 
@@ -172,7 +172,7 @@ You can start and stop kmttg as a background auto transfers job directly from th
 If you reboot your system then you will need to re-start the program, or you can use the /etc/rc method to put a script in place that will automatically start the program in background mode with the *–a* option.
 
  
-===RUNNING THE AUTO TRANSFERS PROGRAM AS A BATCH COMMAND===
+===<u>RUNNING THE AUTO TRANSFERS PROGRAM AS A BATCH COMMAND</u>===
 
 As an alternative to running auto transfers program as a service, you can alternatively supply the *–b* command line option to kmttg to run batch mode. For example, the command might look something like:
 
@@ -183,7 +183,7 @@ In this mode the program will check your tivos once for matching programs and do
 This is especially useful when used in conjunction with a job scheduler program such as Linux cron.
 
  
-===AUTO TRANSFER RELATED FILES===
+===<u>AUTO TRANSFER RELATED FILES</u>===
 
 There are 3 files associated with auto transfers you should be aware of, all residing in the same directory where the kmttg.jar main program file is located:
 
