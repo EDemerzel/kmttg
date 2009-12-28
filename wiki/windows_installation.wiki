@@ -32,7 +32,7 @@ If upgrading from a previous Java kmttg installation you can normally unzip over
 ==4. STARTING KMTTG==
 Simply double click on *kmttg.jar* file (c:\kmttg\kmttg.jar in this example) of the installation to start the program. (You can also create a shortcut to that file if you wish to make it easier).
   NOTE: If double-clicking on kmttg.jar file does nothing then you don't have proper jar file association setup. Either re-install Java or do the following to set the proper association. First determine full path to your Java installation *javaw.exe* file. Then start a *cmd* window and type:
-      * ftype jarfile="C:\Program Files (x86)\Java\jre6\bin\javaw.exe" -jar "%1" %*
+      * {{{ftype jarfile="C:\Program Files (x86)\Java\jre6\bin\javaw.exe" -jar "%1" %*}}}
       (Of course replace path to javaw.exe above with your installation path.)
 
   * The first time launch you will be prompted to allow kmttg to download and install required tools. Choose Yes and wait for the download and installation to complete.
