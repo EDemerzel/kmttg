@@ -40,3 +40,6 @@ Simply double click on *kmttg.jar* file (c:\kmttg\kmttg.jar in this example) of 
   * Also the first time you launch kmttg you will be prompted for your 10 digit Media Access Key (MAK) which is needed to download & decrypt programs from your Tivos.
   NOTE: kmttg may detect Tivos on your network before you have a chance to enter the 10 digit MAK, and will not be able to get listings for detected Tivos without MAK, so after entering MAK you will need to click on *Refresh List* button for each Tivo to get listings.
   * You will probably want to further configure kmttg after installation. Consult the [http://code.google.com/p/kmttg/wiki/configuring_kmttg configuring_kmttg] wiki page for details.
+
+==RUNNING JAR FILES AS ADMINISTRATOR==
+If for some reason you need to run kmttg.jar as administrator you will need to locate the path to *javaw.exe* and then right click on the file and set properties to run as administrator.
