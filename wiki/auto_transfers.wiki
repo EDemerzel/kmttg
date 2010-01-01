@@ -56,6 +56,9 @@ If you want to modify an entry then select the entry in the setup list to displa
 ===DEL===
 If you want to remove 1 or more entries then select them in the setup list and click on the DEL button.
 
+===Filter out TiVo Suggestions===
+If enabled then kmttg will filter out and not process any TiVo Suggestion recordings for this auto entry. NOTE: If the GLOBAL version of this setting is enabled it will override this setting, so if you want this only to apply to specific auto transfer entries then be sure to not enable the GLOBAL setting.
+
 ===enabled===
 You can selectively disable auto transfer entries by unchecking this option. This provides a means of disabling certain auto transfer entries temporarily without having to delete them.
 
