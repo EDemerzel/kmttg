@@ -79,7 +79,7 @@ As requested by some users this option allows you to restrict which shows are au
 
 ===GLOBAL SETTING: Filter out TiVo Suggestions===
 
-If enabled then kmttg will filter out and not process any TiVo Suggestion recordings.
+If enabled then kmttg will filter out and not process any TiVo Suggestion recordings. NOTE: If this GLOBAL version is enabled it will override individual auto transfer filter settings, so if you want this only to apply only to specific auto transfer entries then be sure to not this setting.
 
 ===GLOBAL SETTING: Only process KUID recordings===
 
