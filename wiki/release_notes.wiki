@@ -3,6 +3,8 @@
 
 ==v0p7g (01/01/2010)==
 
+NOTE: This version contains updates to encoding profiles so if you are upgrading an older kmttg version be sure to update the *encode* folder with files from this new release.
+
 *ENHANCEMENTS*
    
    * Added *ff_iphone* & *ff_zune_mp4* encoding profiles.
