@@ -1,6 +1,24 @@
 #labels Featured
 =RELEASE NOTES=
 
+==v0p7g (01/01/2010)==
+
+*ENHANCEMENTS*
+   
+   * Added *ff_iphone* & *ff_zune_mp4* encoding profiles.
+   
+   * Added a localized *Filter out TiVo Suggestions* filter for individual auto transfer entries in addition to the Global filter. Note that if Global filter is enabled it overrides any individual auto entry filter setting.
+   
+   * Added *tivoFile* to list of choices for metadata generation and for push task.
+      
+*CHANGES*
+   
+   * Auto Matching algorithm update: Previously as soon as a show was matched or filtered out versus an auto entry then no further auto entries were processed. Starting with this release a show is always matched against all auto entries. In the case of multiple matches the show will still only be processed once. This change was needed in support of the localized Suggestions filter mentioned above.   
+
+*FIXES*
+
+   * Fixed *ff_ipod_low_res* and *ff_ipod_high_res* encoding profiles.
+
 ==v0p7f (12/06/2009)==
 
 *ENHANCEMENTS*
