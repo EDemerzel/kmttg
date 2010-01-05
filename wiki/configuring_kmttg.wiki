@@ -75,7 +75,7 @@ The `.TiVo` file name would become (using Windows folder structure note the resu
 *NOTE: If you are not careful with file naming and don't include keywords that are always present for every show it is possible you end up with an empty file. So for example if you only use episodeTitle keyword then shows that don't have episode titles will result in an empty string. Starting with version 0p7c kmttg will now issue an error and not process files that end up as an empty string with just a file extension. In previous releases kmttg would continue anyway.*
 
 *NOTE: There are several special characters that are not allowed by kmttg for various reasons to be part of file names. The following set of characters are discarded from file names:<br>
-{{{* " ' : ; ! ? \ $}}}<br>
+{{{* " ' : ; ! ? \ $ [ ]}}}<br>
 In addition the following characters are mapped as:<br>
 {{{/ maps to _}}}<br>
 {{{& maps to and}}}<br>
