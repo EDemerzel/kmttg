@@ -79,7 +79,7 @@ The `.TiVo` file name would become (using Windows folder structure note the resu
 In addition the following characters are mapped as:<br>
 {{{/ maps to _}}}<br>
 {{{& maps to and}}}<br>
-{{{> and < map to _}}} (starting in release v0p7h)*
+{{{> and < and | map to _}}} (starting in release v0p7h)*
 
 ==Advanced File Naming==
 
