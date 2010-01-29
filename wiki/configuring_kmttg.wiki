@@ -216,11 +216,23 @@ The advanced keyword is highlighted in bold and signifies only include `“_Ep#x
 ==toolTip timeout (secs)==
   * Set the amount of time that a toolTip will display before disappearing.
 
+==Min # Channel Digits==
+  * Sets minimum number of digits to use for channel numbers. Leading channel number will be padded with zeros if shorter than this number. For example:
+      {{{
+         1 => channel 2 = 2;    channel 704 = 704
+         2 => channel 2 = 02;   channel 704 = 704
+         3 => channel 2 = 002;  channel 704 = 704
+         4 => channel 2 = 0002; channel 704 = 0704
+      }}}
+
 ==Display toolTips==
   * Enable or disable mouse over toolTips which are text tips that appear when you move the mouse over an item in the GUI.
 
 ==Show full paths in Job Monitor==
   * If you don't care to see full path names of files in Job Monitor table you can disable this option. kmttg will then only show the full file name without the path to the file in the Job Monitor. This is useful especially if you have very long path names configured.
+
+==Do not show copy protected files in table==
+  * Enabling this option filters out copy protected shows from being listed in TiVo Now Playing Lists.
 
 ==<u>VideoRedo tab (Windows only)</u>==
 
@@ -250,6 +262,13 @@ The advanced keyword is highlighted in bold and signifies only include `“_Ep#x
   * Use VideoRedo QS Fix task to decrypt TiVo files instead of using *tivodecode*.
   * If you use QS Fix task anyway this helps save some time by skipping tivodecode step. This is also useful for Australia/New Zealand TiVos with mpeg2 Transport Stream TiVo files which cannot be decrypted by tivodecode.
   * NOTE: You must have minimum TiVo Desktop installation with *TiVoDirectShowFilter* installed for VideoRedo to be able to decrypt TiVo files. You can achieve this by first installing TiVo Desktop completely and specifying your MAK ID during installation. Once you verify you can play .TiVo files using Media Player then you can uninstall TiVo Desktop and use the option to retain capability to play TiVo files. This keeps TiVoDirectShowFilter.dll installed and registered which is all that is needed for VideoRedo to be able to decrypt TiVo files.
+
+==Encode using VideoRedo==
+  * This requires VideoRedo version TVSuite 4 or later (version 4.20.2.595 or later). This enables you to use built in and/or custom VideoRedo encoding profiles for the *encode* task. kmttg will automatically switch to show available VideoRedo mp4 & wmv encoding profiles if this option is enabled.
+
+==Allow multiple VideoRedo jobs at once==
+  * If enabled allows multiple VideoRedo tasks to run at the same time. Enabling this option works around a bug in VideoRedo which does not allow more than 1 "silent" version of VideoRedo to run at once. With this option disabled VideoRedo tasks are restricted to one at a time only.
+  * NOTE: Side effect of enabling this option is for each VideoRedo task the initial GUI will popup momentarily before hiding itself from view if you are running kmttg in GUI mode.
 
 ==<u>pyTivo tab</u>== 
 
