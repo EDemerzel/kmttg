@@ -1,6 +1,73 @@
 #labels Featured
 =RELEASE NOTES=
 
+==v0p7h (1/29/2010)==
+
+*IMPORTANT NOTE: Encoding profiles were updated to work with newer ffmpeg build so if upgrading from a previous version make sure you install kmttg to a new location so as to automatically get the updated encoding profiles and tool binaries. Many of the encoding profiles changed to work with newer ffmpeg build and are not backwards compatible. If using auto transfers you can copy auto.ini file from your previous installation folder to copy over your auto transfers setup.*
+
+*ENHANCEMENTS*
+
+   * Changed GUI to use stretchable panes so that now it is possible to resize the Now Playing List table relative to bottom panes as well as resize Job pane relative to Message pane. The tasks row and encoding row in main GUI were also modified not to stretch with main window for more compact horizontal spacing and better look.
+  
+   * *download* task now displays current transfer rate (in Mbps) in the STATUS column of Job Monitor. The rate indicates current transfer rate by computing # of bytes downloaded over last 5 seconds or so. This can be useful metric to have when trying to optimize/speed up transfers by tuning to blank channels, pausing playback, etc.
+  
+   * Several VideoRedo related enhancements:
+      * Now when you cancel VideoRedo related jobs VideoRedo will actually be stopped as well. Previously the cscript job was killed but VideoRedo would continue running.
+      * All VideoRedo related tasks now have percent completion included.
+      * New *Allow multiple VideoRedo jobs at once* option which if enabled allows multiple VideoRedo tasks to run at the same time. Enabling this option works around a bug in VideoRedo which does not allow more than 1 "silent" version of VideoRedo to run at once. Side effect of enabling this option is for each VideoRedo task the initial GUI will popup momentarily before hiding itself from view if you are running kmttg in GUI mode.
+      * New *Encode using VideoRedo* option available. If you have VideoRedo TVSuite 4 this enables you to use built in and/or custom VideoRedo encoding profiles for the "encode" task. kmttg will automatically switch to show available VideoRedo mp4 & wmv encoding profiles if this option is enabled.
+
+   * Config option added under General tab: *Do not show copy protected files in table*. Enabling this option filters out copy protected shows from being listed in TiVo Now Playing Lists.
+  
+   * Config option added under General tab: *Min # Channel Digits* which sets minimum number of digits to use for channel numbers. Leading channel number will be padded with zeros if shorter than this number. For example:
+      {{{
+         1 => channel 2 = 2;    channel 704 = 704
+         2 => channel 2 = 02;   channel 704 = 704
+         3 => channel 2 = 002;  channel 704 = 704
+         4 => channel 2 = 0002; channel 704 = 0704
+      }}}
+     
+*CHANGES*
+
+   * Updated default ffmpeg to newer version. Also updated encoding profiles to work with newer ffmpeg.
+  
+   * Updated default win32 & Mac OSX tools zip package to use newer ffmpeg & handbrake executables. 
+  
+   * x264 encoding updated to work with newer ffmpeg for the following profiles:
+   ff_h264_high_rate, ff_h264_med_rate, ff_ps3, ff_tivo_hd, ff_tivo_sd, ff_xbox360
+  
+   * Switched to use *aac* codec instead of *libfaac* and *mpeg4* instead of *libxvid* for the following profiles to support newer ffmpeg:
+   ff_iphone, ff_ipod_hig_res, ff_ipod_low_res, ff_psp, ff_xbox360, ff_zune_hd, ff_zune_mp4
+  
+   * Changed pyTivo *push* task http timeout from 10 to 60 seconds.
+  
+   * Update to *ff_psp* profile to use h.264 instead of mpeg4 video codec and also to use higher resolution.
+  
+   * *vrdencode* graphical task no longer prevents other VideoRedo non-graphical tasks from running. There is still a limit of 1 at a time graphical or non-graphical VideoRedo job however.
+  
+   * A few user supplied changes to AtomicParsley runs:
+      * --tracknum & --album settings added.
+      * --TVSeasonNum used instead of --TVSeason.
+      * Added "Season #" to --title entry if season # exists.
+      * Non-pyTivo "season" and "episode" metadata tags are processed if they exist in metadata file.
+      * Non-pyTivo "artwork" metadata tag is processed if it exists in metadata file.
+
+   * Some aesthetic changes made to Auto Transfers config GUI: rearranged some options and moved Add/Update/Del buttons below all the options to which they apply.
+        
+   * Initiated jobs now immediately show "started" in job table. Previously they would show "queued" until job statistics started to display.
+  
+*FIXES*
+
+   * Moved font size setting function to before pack call to prevent UI freezes when kmttg first starts with Java 1.5 (Java 1.6 was not a problem).
+  
+   * Added additional handling of special characters in file names to avoid potential problems with helper applications. All special character handling in file names is now documented in configuring_kmttg Wiki page.
+  
+   * Fix to work with pyTivo share paths specified in pyTivo.conf ending in slash/backslash
+  
+   * Copy protected in progress transfers are now marked with blue in progress transfer icon & blue background. (Previously copy protected status was shown no matter what the transfer status).
+  
+   * Added missing -y option to *ff_zune_hd* profile.
+
 ==v0p7g (01/01/2010)==
 
 NOTE: This version contains updates to encoding profiles so if you are upgrading an older kmttg version be sure to update the *encode* folder with files from this new release.
