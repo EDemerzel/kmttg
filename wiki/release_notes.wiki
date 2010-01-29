@@ -43,7 +43,7 @@
   
    * Update to *ff_psp* profile to use h.264 instead of mpeg4 video codec and also to use higher resolution.
   
-   * *vrdencode* graphical task no longer prevents other VideoRedo non-graphical tasks from running. There is still a limit of 1 at a time graphical or non-graphical VideoRedo job however.
+   * *vrdencode* graphical task no longer prevents other VideoRedo non-graphical tasks from running. There is still a limit of 1 at a time graphical or non-graphical VideoRedo job however unless you set the *Allow multiple VideoRedo jobs at once* option.
   
    * A few user supplied changes to AtomicParsley runs:
       * --tracknum & --album settings added.
