@@ -21,3 +21,4 @@ The fix to this problem is to configure the kmttg service to run using a Local A
   {{{WScript.CreateObject: Could not locate automation class named "VideoReDo.VideoReDoSilent" }}}
   * If you still get above error then it may be necessary to run kmttg as administrator to get things to work. As user posted comment below it may be necessary to run VideoRedo GUI as administrator at least once to get things working.
   * If using a trial version of VideoRedo make sure you have registered the trial key before using with kmttg or it will just hang when launching from kmttg.
+  * If you still get persistent errors such as the above WScript error then another option is to turn off UAC in Windows Vista and/or Windows 7.
