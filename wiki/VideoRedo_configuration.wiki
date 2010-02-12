@@ -6,7 +6,9 @@ There are several VideoRedo related settings under kmttg configuration. From kmt
 ===WINDOWS SERVICE===
 When running in service mode with the default kmttg Windows Service configuration {{{VideoRedo}}} will fail to run with an error such as {{{"WScript.CreateObject: Could not create object named VideoReDo.VideoReDoSilent"}}}
 
-The fix to this problem is to configure the kmttg service to run using a Local Account. You can do that as follows:
+Even if you don't get above error it could very well be that in service mode the VideoRedo related tasks do not work as expected because of permissions problems.
+
+The fix to these problems is to configure the kmttg service to run using the same login account you are using when running VideoRedo GUI. You can do that as follows:
 
   * *Control Panel->Administrative Tools->Services*
   * Scroll down and find *kmttg* entry
