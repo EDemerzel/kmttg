@@ -1,6 +1,38 @@
 #labels Featured
 =RELEASE NOTES=
 
+==v0p7i (2/13/2010)==
+
+*IMPORTANT NOTE: Some encoding profiles were updated in this release, so if upgrading from a previous version be sure to update your installation encode folder.*
+
+*ENHANCEMENTS*
+
+   * Main GUI stretchable panels can now stretch full range vertically instead of a limited range.
+   
+   * Improved Auto Transfers GUI so that can be more easily stretched vertically and horizontally without becoming unusable.
+   
+   * Added new config option (Visual tab) called *Auto size NPL column widths*. If enabled then NPL table column widths are automatically sized to fit text as in previous releases. If disabled then column widths are not auto sized and user can set their preferred fixed widths, and the column widths are saved between GUI sessions.
+   
+   * For the *Encode using VideoRedo* option (with VideoRedo TVSuite 4) now all encoding profile types are available as an option rather than just MP4 & WMV types.
+         
+*CHANGES*
+
+   * When *Bring up VRD GUI to make manual cuts* option is enabled the *vrdreview* task now checks for expected output file: "<file> (02).mpg" or "<file>_cut.mpg". If one of those files is not found once task completes (user closes VideoRedo) then task is marked as failed and kmttg won't look to delete input files if *Remove .mpg file after Ad Cut* option is also enabled. This is to prevent possibility of losing input mpeg file when VideoRedo GUI is accidently closed before user generates expected output file.
+
+   * Per user feedback added "-noskip -mpegopts vbuf_size=400" to mencoder command for comcut task.
+   
+   * For config dialog there is now a tab scrollbar added if there is not enough space to fit all tabs horizontally instead of wrapping tabs around vertically as was the case in previous releases.
+   
+   * Config dialog tab changes: *Visual* tab was added in place of *General* for all GUI visual related settings and remaining former *General* tab items were moved to *Program Options* tab.
+   
+   * Removed *HD Channels* folder in folder view as almost all feedback for that folder was negative.
+         
+*FIXES*
+
+   * Fixed issue with initiating push task in FILES mode when pyTivo *Files to push* setting was set to *all*. In prior releases this would result in error and Java trace dump due to null string problem.
+
+   * Added *-level 41* to ff_tivo_hd & ff_tivo_sd profiles for TiVo compatibility (TiVo does not accept H.264 > level 41). Also updated those profiles and increased the video bit rates for much better quality results.
+
 ==v0p7h (1/29/2010)==
 
 *IMPORTANT NOTE: Encoding profiles were updated to work with newer ffmpeg build so if upgrading from a previous version make sure you install kmttg to a new location so as to automatically get the updated encoding profiles and tool binaries. Many of the encoding profiles changed to work with newer ffmpeg build and are not backwards compatible. If using auto transfers you can copy auto.ini file from your previous installation folder to copy over your auto transfers setup.*
