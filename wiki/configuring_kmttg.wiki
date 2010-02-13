@@ -2,7 +2,7 @@
 =CONFIGURING KMTTG=
 
 *NOTE: This documentation is updated to match latest kmttg release only.*
-<br>
+<br><br>
 *This step is very important and must be run at least the first time you start kmttg.*
 
   * Start kmttg if you have not done so already.
