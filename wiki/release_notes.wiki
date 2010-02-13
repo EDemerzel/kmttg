@@ -17,7 +17,7 @@
          
 *CHANGES*
 
-   * When *Bring up VRD GUI to make manual cuts* option is enabled the *vrdreview* task now checks for expected output file: "<file> (02).mpg" or "<file>_cut.mpg". If one of those files is not found once task completes (user closes VideoRedo) then task is marked as failed and kmttg won't look to delete input files if *Remove .mpg file after Ad Cut* option is also enabled. This is to prevent possibility of losing input mpeg file when VideoRedo GUI is accidently closed before user generates expected output file.
+   * When *Bring up VRD GUI to make manual cuts* option is enabled the *vrdreview* task now checks for expected output file: {{{"<file> (02).mpg" or "<file>_cut.mpg"}}}. If one of those files is not found once task completes (user closes VideoRedo) then task is marked as failed and kmttg won't look to delete input files if *Remove .mpg file after Ad Cut* option is also enabled. This is to prevent possibility of losing input mpeg file when VideoRedo GUI is accidently closed before user generates expected output file.
 
    * Per user feedback added "-noskip -mpegopts vbuf_size=400" to mencoder command for comcut task.
    
