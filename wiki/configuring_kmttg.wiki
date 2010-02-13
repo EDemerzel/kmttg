@@ -267,7 +267,7 @@ The advanced keyword is highlighted in bold and signifies only include `“_Ep#x
   * NOTE: You must have minimum TiVo Desktop installation with *TiVoDirectShowFilter* installed for VideoRedo to be able to decrypt TiVo files. You can achieve this by first installing TiVo Desktop completely and specifying your MAK ID during installation. Once you verify you can play .TiVo files using Media Player then you can uninstall TiVo Desktop and use the option to retain capability to play TiVo files. This keeps TiVoDirectShowFilter.dll installed and registered which is all that is needed for VideoRedo to be able to decrypt TiVo files.
 
 ==Encode using VideoRedo==
-  * This requires VideoRedo version TVSuite 4 or later (version 4.20.2.595 or later). This enables you to use built in and/or custom VideoRedo encoding profiles for the *encode* task. kmttg will automatically switch to show available VideoRedo mp4 & wmv encoding profiles if this option is enabled.
+  * This requires VideoRedo version TVSuite 4 or later (version 4.20.2.595 or later). This enables you to use built in and/or custom VideoRedo encoding profiles for the *encode* task. kmttg will automatically switch to show all available VideoRedo encode and/or remux profiles if this option is enabled.
 
 ==Allow multiple VideoRedo jobs at once==
   * If enabled allows multiple VideoRedo tasks to run at the same time. Enabling this option works around a bug in VideoRedo which does not allow more than 1 "silent" version of VideoRedo to run at once. With this option disabled VideoRedo tasks are restricted to one at a time only.
