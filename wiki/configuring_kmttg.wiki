@@ -173,11 +173,20 @@ The advanced keyword is highlighted in bold and signifies only include `“_Ep#x
 
 ==<u>Program Options tab</u>==
 
-==Download TiVo files in Transport Stream format==
-  * For TiVo software that supports it, this forces TiVo file downloads to use Transport Stream format instead of the default Program Stream format by adding a *&Format=video/x-tivo-mpeg-ts* tag to the download URL.
-  * Currently only Australia/New Zealand TiVos support Transport Stream format so enabling this on other TiVos will have no effect.
-  * NOTE: One advantage of TiVo Transport Stream format is downloads are quite significantly faster than Program Stream format downloads.
-  * NOTE: *tivodecode* does not currently work for TiVo Transport Stream files, but if you have VideoRedo you can use it to decrypt them (see *VideoRedo* tab for an option to enable that).
+==MAK==
+  * REQUIRED if you plan to download files from Tivo Now Playing lists.
+  * Your Tivo Media Access Key. You can find the number on any of your Tivos:
+  Tivo Central—Messages&Settings—Account&System Information—Media Access Key
+
+==active job limit==
+  * Limits the number of CPU intensive jobs that can kmttg can run in parallel to this setting (defaults to 2). If you want to allow more CPU intensive jobs to run at the same time (for example if you have a multi-core processor) you can increase this limit accordingly. Be careful not to overwhelm your computer by setting this number too high.
+
+==encoding cpu cores===
+  * Specify the number of cpu cores to use for encoding jobs. If you have a multi-core machine this can speed up encoding jobs quite significantly. Consider this setting and *active job limit* when deciding what number to use here. Setting this too high may really slow down your machine for other tasks running in parallel.
+
+==wan http port (optional)==
+  * Set this option only if you plan to use kmttg over a WAN instead of your local LAN. By default http port 80 is used to download shows from the Tivos on the LAN, but from WAN side you will have to setup port forwarding in your router, and often service providers do not allow you to use port 80.
+  * NOTE: For Now Playing List retrieval https port 443 also should be port forwarded to your Tivo port 443 in your router.
 
 ==t2extract extra arguments==
   * Any extra arguments you want kmttg to use when running *t2extract* which is the program used to generate closed captions *.srt* file. By default the program arguments are as follows:
@@ -193,25 +202,16 @@ The advanced keyword is highlighted in bold and signifies only include `“_Ep#x
   * *last* - Generate only for last video file in the task set (the default setting)
   * *all* - Generate for all available video files in the task set (except .TiVo files)
 
-==<u>General tab</u>==
+==Download TiVo files in Transport Stream format==
+  * For TiVo software that supports it, this forces TiVo file downloads to use Transport Stream format instead of the default Program Stream format by adding a *&Format=video/x-tivo-mpeg-ts* tag to the download URL.
+  * Currently only Australia/New Zealand TiVos support Transport Stream format so enabling this on other TiVos will have no effect.
+  * NOTE: One advantage of TiVo Transport Stream format is downloads are quite significantly faster than Program Stream format downloads.
+  * NOTE: *tivodecode* does not currently work for TiVo Transport Stream files, but if you have VideoRedo you can use it to decrypt them (see *VideoRedo* tab for an option to enable that).
+
+==<u>Visual tab</u>==
 
 ==GUI Font Size==
   * Sets the text font size for all GUI text components. Should be an integer of reasonable size. Default value is 12.
-
-==MAK==
-  * REQUIRED if you plan to download files from Tivo Now Playing lists.
-  * Your Tivo Media Access Key. You can find the number on any of your Tivos:
-  Tivo Central—Messages&Settings—Account&System Information—Media Access Key
-
-==active job limit==
-  * Limits the number of CPU intensive jobs that can kmttg can run in parallel to this setting (defaults to 2). If you want to allow more CPU intensive jobs to run at the same time (for example if you have a multi-core processor) you can increase this limit accordingly. Be careful not to overwhelm your computer by setting this number too high.
-
-==encoding cpu cores===
-  * Specify the number of cpu cores to use for encoding jobs. If you have a multi-core machine this can speed up encoding jobs quite significantly. Consider this setting and *active job limit* when deciding what number to use here. Setting this too high may really slow down your machine for other tasks running in parallel.
-
-==wan http port (optional)==
-  * Set this option only if you plan to use kmttg over a WAN instead of your local LAN. By default http port 80 is used to download shows from the Tivos on the LAN, but from WAN side you will have to setup port forwarding in your router, and often service providers do not allow you to use port 80.
-  * NOTE: For Now Playing List retrieval https port 443 also should be port forwarded to your Tivo port 443 in your router.
 
 ==toolTip timeout (secs)==
   * Set the amount of time that a toolTip will display before disappearing.
@@ -233,6 +233,9 @@ The advanced keyword is highlighted in bold and signifies only include `“_Ep#x
 
 ==Do not show copy protected files in table==
   * Enabling this option filters out copy protected shows from being listed in TiVo Now Playing Lists.
+
+==Auto size NPL column widths==
+  * If this option is enabled then NPL table column widths are automatically sized to fit text. If disabled then column widths are not auto sized and user can set their preferred fixed widths, and the column widths are saved between GUI sessions.
 
 ==<u>VideoRedo tab (Windows only)</u>==
 
