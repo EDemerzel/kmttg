@@ -7,6 +7,8 @@ NOTE: If you have {{{VideoRedo}}} configured for use in kmttg consult the [http:
 
 *NOTE: By default the kmttg Windows service is setup as “automatic” startup mode. This means that should you restart your computer the kmttg service will automatically be started on bootup. If you would like to change this behavior see the relevant section below for more details on how to do that.*
 
+*NOTE: For windows users please read section below entitled "CONFIGURING ACCOUNT TO RUN KMTTG WINDOWS SERVICE".*
+
 ===<u>CONFIGURING AUTO TRANSFERS</u>===
   * NOTE: It is highly recommended you enable *Overwrite existing files* option under kmttg configuration (File->Configure...) if setting up Auto Transfers as when Auto Transfers are interrupted that can leave partial files created that you would want Auto Transfers to overwrite.
 
