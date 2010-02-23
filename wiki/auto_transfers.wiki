@@ -132,7 +132,7 @@ For more specific control you can get to the kmttg service in Windows as follows
   * Right click on kmttg and select *Properties*
 
 ===CONFIGURING ACCOUNT TO RUN KMTTG WINDOWS SERVICE===
-By default the kmttg service will be setup to run using a generic administrator account. This may cause problems for certain setups such as if you have output files setup to go to network or external drives or you are using VideoRedo tasks. To avoid potential problems you should configure the kmttg service to run using the same login account you are using when running VideoRedo GUI. You can do that as follows:
+By default the kmttg service will be setup to run using a generic administrator account. This may cause problems for certain setups such as if you have output files setup to go to network or external drives or you are using VideoRedo tasks. To avoid potential problems you should configure the kmttg service to run using the same login account you are using when running kmttg GUI. You can do that as follows:
 
   * *Control Panel->Administrative Tools->Services*
   * Scroll down and find *kmttg* entry
