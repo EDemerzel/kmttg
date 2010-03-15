@@ -24,3 +24,4 @@ The fix to these problems is to configure the kmttg service to run using the sam
   * If you still get above error then it may be necessary to run kmttg as administrator to get things to work. As user posted comment below it may be necessary to run VideoRedo GUI as administrator at least once to get things working.
   * If using a trial version of VideoRedo make sure you have registered the trial key before using with kmttg or it will just hang when launching from kmttg.
   * If you still get persistent errors such as the above WScript error then another option is to turn off UAC in Windows Vista and/or Windows 7.
+  * Other alternative if you still get the VideoReDo.VideoReDoSilent errors is in kmttg configuration under *VideoRedo* tab turn on *Allow multiple VideoRedo jobs at once* option which will run VideoRedo in graphical mode instead.
