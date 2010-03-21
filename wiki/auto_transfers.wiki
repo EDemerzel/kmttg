@@ -115,7 +115,9 @@ You can install, start, stop and remove kmttg service directly from the kmttg GU
   * Use *Auto Transfers->Service->Stop* to stop the kmttg service
   * Use *Auto Transfers->Service->Remove* to remove the kmttg service
 
-Alternatively there is another way to control kmttg service. Browse to the folder where you installed kmttg and then go to *service\win32* folder. Here there are scripts to install, start, stop or uninstall the kmttg service. For Windows XP simply double-click on the appropriate script to run it. *For Vista these must be run as Administrator in order to work, so you should right click and select "Run as administrator" to run them.*
+  NOTE: If you get an error such as *OpenSCManager failed - Access is denied.* you need to run the batch files described below as Administrator for it to work.
+
+Alternatively there is another way to control kmttg service. Browse to the folder where you installed kmttg and then go to *service\win32* folder. Here there are scripts to install, start, stop or uninstall the kmttg service. For Windows XP simply double-click on the appropriate script to run it. *For Vista or Windows 7 because of UAC these must be run as Administrator in order to work, so you should right click and select "Run as administrator" to run them.*
 
   * *install-kmttg-service.bat* Installs kmttg as a service
   * *start-kmttg-service.bat* Will start an already installed kmttg service
