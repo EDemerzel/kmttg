@@ -12,6 +12,8 @@ Starting with version 0.7c kmttg has a *Disk Usage* button for each TiVo tab. Cl
 
 The first time you bring up this window you will need to set the proper value for *Total Disk Space (GB)* field at the top of the window. Enter the correct size for total disk space of this TiVo and then press *Enter* to update the window statistics and save the total disk space specification in kmttg configuration file.
 
+Setting this option to 0 also will reset it such that it will display total used space thus far. This is in case user does not know in advance how much disk space is available for recordings.
+
 ==DOWNLOADING FROM TIVOS==
 Starting with version 0.6e kmttg uses a separate tab displaying the Now Playing List of each Tivo on your network. There is also always a *FILES* tab which allows you to find files on your computer to use as a starting point for kmttg (see documentation on this a little further down). Additionally any Tivos you have previously configured for kmttg will show up in their own tab so that you can use shows on your Tivos as starting points for kmttg. Use the *Refresh* button to refresh the Now Playing list for a Tivo.
 
