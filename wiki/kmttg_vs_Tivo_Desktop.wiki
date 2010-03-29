@@ -38,6 +38,7 @@
 
 ===VideoRedo Integration===
   * Has optional tight integration with VideoRedo for QuickStream fix, commercial detection and commercial cutting.
+  * For VideoRedo TVSuite4 has option to use VideoRedo encoding profiles alongside ffmpeg/handbrake/mencoder custom and built in profiles.
 
 ===Cross Platform support===
   * Runs on Windows, Mac or Linux (though some capabilities and 3rd party tools not available on Mac and Linux platforms).
