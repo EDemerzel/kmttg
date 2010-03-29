@@ -13,7 +13,7 @@
 
    * Added better detection of failed downloads to go along with automatic failed download retry enhancement.
 
-   * VideoRedo option *Encode using VideoRedo* changed to *Show VideoRedo encoding profiles*. The behavior now is that VideoRedo profiles are ADDED to list of available Encoding Profiles for *encode* task. i.e. With that option enabled you can now choose among both VideoRedo and non-VideoRedo endcoding profiles for the *encode* task. Previously with option enabled only the VideoRedo encoding profiles were displayed/available.
+   * VideoRedo option *Encode using VideoRedo* changed to *Show VideoRedo encoding profiles*. The behavior now is that VideoRedo profiles are ADDED to list of available Encoding Profiles for *encode* task. i.e. With that option enabled you can now choose among both VideoRedo and non-VideoRedo encoding profiles for the *encode* task. Previously with option enabled only the VideoRedo encoding profiles were displayed/available.
   
    * VideoRedo encoding profiles parser updated to support latest TV Suite 4 598 release which changed the reporting of output files slightly compared to previous versions.
   
@@ -35,7 +35,7 @@
 
    * Added an additional check to *VRD QS Fix* task such that if input is a TiVo file and corresponding output mpeg file already exists then task is not scheduled to run if *Overwrite existing files* option is disabled.
 
-   * Job table sorting disabled. Doesn't really serve a useful purpose to sort job table by different columns and if one accidently clicked on a column header one could not revert to default sort order showing job execution priority.
+   * Job table sorting disabled. Doesn't really serve a useful purpose to sort job table by different columns and if one accidentally clicked on a column header one could not revert to default sort order showing job execution priority.
      
    * Added new VideoReDo4.exe executable name to list of executable names searched for to start VideoRedo in GUI mode (for vrdreview task).
   
