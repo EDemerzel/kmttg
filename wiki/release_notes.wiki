@@ -39,7 +39,7 @@
      
    * Added new VideoReDo4.exe executable name to list of executable names searched for to start VideoRedo in GUI mode (for vrdreview task).
   
-   * Updated Windows and Mac tools packages to include latest version of tivodecode with TS support and comskip.
+   * Updated Windows and Mac tools packages to include latest version of tivodecode 0.3pre4 with TS support and comskip.
   
    * *Download TiVo files in Transport Stream format* option is now enabled by default for a fresh kmttg installation.
   
