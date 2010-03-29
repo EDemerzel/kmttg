@@ -49,6 +49,20 @@ By default with *all* setting kmttg will match your auto transfer entries agains
 ===Enabling desired options to perform following a download===
 Enable which tasks you want to perform following a download for each entry you define. The same options as are available in GUI mode are available here, just make sure kmttg is properly configured as described above. Note that you can define different tasks for each entry and if you are enabling encode task you can use different encoding profiles for each entry.
 
+===comskip.ini override===
+This only applies if you are using *comskip* in the *Ad Detect* step. This allows you to optionally specify a custom *comskip.ini* file to use for this auto transfer entry. Sometimes comskip needs to be tweaked to work well with certain shows. So this gives you ability to override the main/default kmttg comskip.ini for individual shows corresponding to auto transfer entries.
+
+===Filter out TiVo Suggestions===
+If enabled then kmttg will filter out and not process any TiVo Suggestion recordings for this auto entry. NOTE: If the GLOBAL version of this setting is enabled it will override this setting, so if you want this only to apply to specific auto transfer entries then be sure to not enable the GLOBAL setting.
+
+===Treat each recording as unique===
+  * If enabled then kmttg will generate a unique ProgramId based on ProgramId and recorded time for each recording of this program.
+  * This is useful only for programs that do not already have unique ProgramIds for each episode, such as some news programs for example. For such programs kmttg would not ordinarily auto download subsequent episodes because a ProgramId entry already exists in *auto.history* file. By enabling this option kmttg will instead use a time-based ProgramId entry so that future recordings on different dates with same ProgramId will still auto download.
+  * NOTE: Enabling this option may lead to repeated downloads of shows so use wisely/sparingly only for shows without unique ProgramId.
+
+===enabled===
+You can selectively disable auto transfer entries by unchecking this option. This provides a means of disabling certain auto transfer entries temporarily without having to delete them.
+
 ===ADD===
 Once you are happy with an entry setup click this button to add the entry to the setup list. Note that if you click on an entry in the setup list then the form options are updated to match  the setup for that entry.
 
@@ -58,22 +72,14 @@ If you want to modify an entry then select the entry in the setup list to displa
 ===DEL===
 If you want to remove 1 or more entries then select them in the setup list and click on the DEL button.
 
-===Filter out TiVo Suggestions===
-If enabled then kmttg will filter out and not process any TiVo Suggestion recordings for this auto entry. NOTE: If the GLOBAL version of this setting is enabled it will override this setting, so if you want this only to apply to specific auto transfer entries then be sure to not enable the GLOBAL setting.
-
-===enabled===
-You can selectively disable auto transfer entries by unchecking this option. This provides a means of disabling certain auto transfer entries temporarily without having to delete them.
-
-===comskip.ini override===
-This only applies if you are using *comskip* in the *Ad Detect* step. This allows you to optionally specify a custom *comskip.ini* file to use for this auto transfer entry. Sometimes comskip needs to be tweaked to work well with certain shows. So this gives you ability to override the main/default kmttg comskip.ini for individual shows corresponding to auto transfer entries.
- 
-===GLOBAL SETTING: Check Tivos Interval (mins)===
-
-This defines the interval in minutes for kmttg to check your Tivos for matching shows to download and process. Once matches are found kmttg will automatically download and process all matching shows, then it will sleep for the period of time you define here before checking your Tivos again for more matches. Don’t set this number too low since that will unnecessarily create too much network activity with your Tivos.
 
 ===GLOBAL SETTING: Dry Run Mode (test keywords only)===
 
 This option enabled is useful for testing your title and keyword matching setup without actually having kmttg download and process matching shows. Kmttg will simply match your titles and keyword entries versus shows on your Tivo and report which shows match in the *auto.log* file (or if you run in GUI mode you can see matching shows reported in the text area). This mode allows you to quickly test out your setup to make sure you will get the shows you want. Once you have finished debugging obviously this option should be disabled.
+
+===GLOBAL SETTING: Check Tivos Interval (mins)===
+
+This defines the interval in minutes for kmttg to check your Tivos for matching shows to download and process. Once matches are found kmttg will automatically download and process all matching shows, then it will sleep for the period of time you define here before checking your Tivos again for more matches. Don’t set this number too low since that will unnecessarily create too much network activity with your Tivos.
 
 ===GLOBAL SETTING: Date Filter===
 
@@ -98,11 +104,7 @@ Programs that were transferred to your TiVo(s) for example using TiVo Desktop or
  
 ===<u>WORKAROUND FOR REPEATED SHOWS WITH SAME `ProgramId`</u>===
 
-In order to prevent transfer of same show over and over in auto mode kmttg creates an *auto.history* file that contains *`ProgramId`* entries for previously downloaded shows. *`ProgramId`* is usually unique for every show and each episode of a series. However, there are some series where for some reason that is not the case. So for those cases once an episode is downloaded once, no further episodes will download in auto transfers mode because of this issue. To workaround this issue you can setup exceptions for *`ProgramId`* entries where the *auto.history* file will not be checked in auto transfers mode. To do so you must manually edit the *auto.ini* file and add a 2 line entry to bottom of the file as in following example:<br>
-`<ignorehistory>`<br>
-`SH1940720000`<br>
-
-If you have several such exceptions then add a 2 line entry as in above example for each one.
+In order to prevent transfer of same show over and over in auto mode kmttg creates an *auto.history* file that contains *`ProgramId`* entries for previously downloaded shows. *`ProgramId`* is usually unique for every show and each episode of a series. However, there are some series where for some reason that is not the case. So for those cases once an episode is downloaded once, no further episodes will download in auto transfers mode because of this issue. To workaround this issue you can use the *Treat each recording as unique* option for such programs as described above.
 
 ===<u>RUNNING THE AUTO TRANSFERS PROGRAM AS A SERVICE IN WINDOWS</u>===
 
