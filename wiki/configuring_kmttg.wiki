@@ -203,7 +203,8 @@ The advanced keyword is highlighted in bold and signifies only include `“_Ep#x
   * Extra argument you suppy are added following the *-vf harddup* option.
 
 ==# download attempts==
-  * Number of times to attempt to download a TiVo file (in case download attempt fails). If you only want 1 attempt then set this to 1 or 0. NOTE: Occasionally TiVo downloads may fail due to *Server Busy* or other such errors reported by TiVo web server, but in some cases trying a download again after a short delay will work.
+  * Number of times to attempt to download a TiVo file (in case download attempt fails). If you only want 1 attempt then set this to 1 or 0.
+  * NOTE: Occasionally TiVo downloads may fail due to *Server Busy* or other such errors reported by TiVo web server, but in some cases trying a download again after a short delay will work.
 
 ==seconds between download retry attempts==
   * Number of seconds to wait between download retry attempts. kmttg will wait at least this number of seconds before trying a download again.
