@@ -33,11 +33,11 @@ If upgrading from a previous Java kmttg installation you can unzip over the prev
 ==TIVODECODE WITH MPEG2 TRANSPORT STREAM SUPPORT==
 If you have a TiVo Premiere of a TiVo in New Zealand or Australia be sure to use an updated version of *tivodecode* that has support for TiVo files in mpeg2 Transport Stream container.
 
-You can get the source code from here:
+You can get the source code from here:<br>
 http://kmttg.googlecode.com/files/tivodecode-0.3pre4.tar.gz
 
-Building from source on linux is very simple:
-./configure
+Building from source on linux is very simple:<br>
+./configure<br>
 make
 
 ==USING WINE TO RUN WINDOWS ONLY TOOLS==
