@@ -11,6 +11,11 @@
   * Listings contain information about bit rate for each show.
   * Ability to view detailed Disk Usage information as a pie chart along with a summary of bit rate information per channel.
 
+===Better download capabilities===
+  * For Premiere units kmttg offers option to download TiVo files in mpeg2 Transport Stream (TS) container which TiVo Desktop currently does not offer. Downloading in TS format offers significant speedup over the traditional Program Stream (PS) container.
+  * kmttg will automatically retry downloads that sometimes may fail due to transient TiVo web server issues. The number of download attempts and wait period between retry attempts are configurable.
+  * Displays download rates in Megabits per Second (Mbps).
+
 ===Auto Transfers===
   * Can automatically pull files from all networked TiVos as background service using flexible title and/or keyword based matching.
   * Ability to use regex expressions in setting up title matching such that for example you can pull all recordings from your TiVos.
@@ -20,6 +25,7 @@
 ===Encoding to different formats===
   * Along with several built in encoding profiles allows user to define own custom encoding profiles or modify existing ones.
   * Can use optional VideoRedo integration to avoid A/V sync issues in resulting encodings that often happen when downloading shows from Series 3 TiVos.
+  * Tight integration with VideoRedo TVSuite4 allows use of VideoRedo encoding profiles along with custom and built in ffmpeg/handbrake/mencoder ones.
 
 ===Extra capabilities===
   * Integration with commercial detection and cutting tools.
