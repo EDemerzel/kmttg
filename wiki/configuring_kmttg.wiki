@@ -140,7 +140,7 @@ The advanced keyword is highlighted in bold and signifies only include `“_Ep#x
   * Adjust to match the full path to the tivodecode binary.
   * NOTE: For Windows users who installed the tools zip file this should not have to change.
 
- ==mencoder (optional)==
+==mencoder (optional)==
   * REQUIRED if you plan to enable “comcut” in kmttg.
   * Supply the full path to the mencoder binary.
   * mencoder is used if you select the “comcut” option in kmttg to automatically cut out commercial segments detected by comskip.
@@ -197,6 +197,17 @@ The advanced keyword is highlighted in bold and signifies only include `“_Ep#x
   * Extra arguments you supply are added following the *-f srt* option.
   * NOTE: kmttg expects *srt* as output file. If you want to output a different format then consider using *custom* job to run t2extract with whatever arguments you want.
 
+==mencoder Ad Cut extra args==
+  * Any extra arguments you want kmttg to use when running *mencoder* for the Ad Cut (comcut) task. NOTE: If you have VideoRedo configured then VideoRedo is used for Ad Cut so this setting will not be relevant. The default mencoder arguments for the Ad Cut task are as follows:
+  {{{mencoder videoFile -edl edlFile -oac copy -ovc copy -of mpeg -vf harddup -o mpegFile_cut}}}
+  * Extra argument you suppy are added following the *-vf harddup* option.
+
+==# download attempts==
+  * Number of times to attempt to download a TiVo file (in case download attempt fails). If you only want 1 attempt then set this to 1 or 0. NOTE: Occasionally TiVo downloads may fail due to *Server Busy* or other such errors reported by TiVo web server, but in some cases trying a download again after a short delay will work.
+
+==seconds between download retry attempts==
+  * Number of seconds to wait between download retry attempts. kmttg will wait at least this number of seconds before trying a download again.
+
 ==metadata files==
   * By default kmttg with *metadata* task enabled will only create a pyTivo metadata file for the last video file in the sequence of tasks you enable for processing an entry. That corresponds to *last* setting of this option. You can change that behavior by using various settings for this option:
   * *mpegFile* - Generate only for {{{.mpg}}} file after decrypt step if enabled
@@ -204,6 +215,11 @@ The advanced keyword is highlighted in bold and signifies only include `“_Ep#x
   * *encodeFile* - Generate only for encoded video file after encode step if enabled
   * *last* - Generate only for last video file in the task set (the default setting)
   * *all* - Generate for all available video files in the task set (except .TiVo files)
+
+==Enable TivoWebPlus Delete task==
+  * If you have TivoWebPlus configured for your TiVo(s) then if you enable this option an optional *TWP Delete* task is made available in the kmttg GUI or auto transfers task set.
+  * When *TWP Delete* task is enabled a TivoWebPlus http call to delete a show on your source TiVo will be issued following a successful decrypt of a downloaded TiVo file.
+  * NOTE: Once you set and save this option you must restart kmttg to see the change. 
 
 ==Download TiVo files in Transport Stream format==
   * For TiVo software that supports it, this forces TiVo file downloads to use Transport Stream format instead of the default Program Stream format by adding a *&Format=video/x-tivo-mpeg-ts* tag to the download URL.
