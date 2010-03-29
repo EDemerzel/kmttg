@@ -1,6 +1,60 @@
 #labels Featured
 =RELEASE NOTES=
 
+==v0p7j (3/29/2010)==
+
+*IMPORTANT NOTE: Windows and Mac tools packages were updated, so if upgrading from a previous release be sure to remove the "tivodecode" folder of your previous installation in order to force kmttg to download the new tools packages.*
+
+*ENHANCEMENTS*
+
+   * Added automatic retry attempts for failed downloads which some users run into occasionally. Two new configuration settings were added to *Program Options* tab that are related:
+      * *# download attempts* (defaults to 5)
+      * *seconds between download retry attempts* (defaults to 10)
+
+   * Added better detection of failed downloads to go along with automatic failed download retry enhancement.
+
+   * VideoRedo option *Encode using VideoRedo* changed to *Show VideoRedo encoding profiles*. The behavior now is that VideoRedo profiles are ADDED to list of available Encoding Profiles for *encode* task. i.e. With that option enabled you can now choose among both VideoRedo and non-VideoRedo endcoding profiles for the *encode* task. Previously with option enabled only the VideoRedo encoding profiles were displayed/available.
+  
+   * VideoRedo encoding profiles parser updated to support latest TV Suite 4 598 release which changed the reporting of output files slightly compared to previous versions.
+  
+   * Added new auto transfers config option: *Treat each recording as unique*. If enabled then kmttg will generate a unique ProgramId based on ProgramId and recorded time for each recording of this program. This is useful only for programs that do not already have unique ProgramIds for each episode, such as some news programs for example. For such programs kmttg would not ordinarily auto download subsequent episodes because a ProgramId entry already exists in *auto.history* file. By enabling this option kmttg will instead use a time-based ProgramId entry so that future recordings on different dates with same ProgramId will still auto download.
+  
+   * Updated tooltips related to *Download TiVo files in Transport Stream format* to include the TiVo Premiere as a DVR which supports this option. Also updated the Windows and Macintosh tools packages to include the newer version of *tivodecode* with Transport Stream support.
+  
+   * Added new configuration option under *Program Options* called *Enable TivoWebPlus Delete task* useful for those with hacked TiVos using TivoWebPlus. When enabled kmttg GUI & auto transfers setup will present an additional *TWP Delete* task. When that task is enabled kmttg will use TivoWebPlus to delete a show off the TiVo once TiVo file has been successfully downloaded and decrypted.
+
+  * GUI now saves/restores the job table column order as well as the kmttg screen position.
+  
+   * Added new configuration option under *Program Options* called *mencoder Ad Cut extra args* which allows you to add additional custom arguments to mencoder for the Ad Cut task (comcut).
+  
+   * Disk Usage GUI will now set *Total Disk Space (GB)* as the total used space if user has not set that option. Setting that option to 0 also will reset it such that it will display total used space thus far. This is in case user does not know in advance how much disk space is available for recordings.
+        
+*CHANGES*
+  
+   * The previously supported *{{{<ignorehistory>}}}* workaround to deal with programs without unique ProgramId has been deprecated by the *Treat each recording as unique* auto transfers option described above and therefore is no longer used.
+
+   * Added an additional check to *VRD QS Fix* task such that if input is a TiVo file and corresponding output mpeg file already exists then task is not scheduled to run if *Overwrite existing files* option is disabled.
+
+   * Job table sorting disabled. Doesn't really serve a useful purpose to sort job table by different columns and if one accidently clicked on a column header one could not revert to default sort order showing job execution priority.
+     
+   * Added new VideoReDo4.exe executable name to list of executable names searched for to start VideoRedo in GUI mode (for vrdreview task).
+  
+   * Updated Windows and Mac tools packages to include latest version of tivodecode with TS support and comskip.
+  
+   * *Download TiVo files in Transport Stream format* option is now enabled by default for a fresh kmttg installation.
+  
+   * custom job now will also look for {{{[mpegFile_cut]}}} with VideoRedo extension file (02).mpg if file_cut.mpg file does not exist.
+        
+*FIXES*
+
+   * Fix to prevent folder names ending in white space. At least for Windows OS when creating a folder ending in white space the OS truncates the white space off the end of folder name which could lead to trouble depending how you configure File Naming setup.
+
+   * Updated pyTivo push call to work properly with change in pyTivo response to external push calls in recent releases. Prior to this fix auto_push would always get 404 (Not Found) response from pyTivo server leading to error message "Not Found" being printed after every push by kmttg (even though pushes were going through fine still). NOTE: Subsequently pyTivo has been updated again so this is no longer an issue, but the fix still is valid with the new update as well.
+  
+   * Removed the previously added *-noskip -mpegopts vbuf_size=400* arguments to mencoder for the comcut task as this was causing A/V sync issues and other problems for some users. Instead you can now add your own custom arguments for mencoder comcut task as detailed above.
+  
+   * Minor fix to *qsfix* task reporting delete of a null file under certain conditions.
+
 ==v0p7i (2/13/2010)==
 
 *IMPORTANT NOTE: Some encoding profiles were updated in this release, so if upgrading from a previous version be sure to update your installation encode folder.*
