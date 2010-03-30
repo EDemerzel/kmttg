@@ -22,8 +22,9 @@ http://code.google.com/p/kmttg/downloads/list
 
   * Unpack *kmttg_vxxx.zip* file to your desired location. In this example: c:\kmttg
 
-===TIP===
-If upgrading from a previous Java kmttg installation you can normally unzip over the previous installation or just replace the *kmttg.jar* file of the old installation with the one from the new installation. That way you can preserve the kmttg configuration and avoid having to re-configure. NOTE: In some cases there are other files such as encoding profiles updated as part of a release, so you can also just unzip the file over the top of your previous installation to make sure you overwrite all files that make up an installation. If you want to install to same location and make sure to get a clean new installation then remove everything except config.ini and auto.ini files. That way you get a full new installation but preserve all your previous settings.
+===UPGRADE INSTALLATION TIPS===
+  * If upgrading from a previous Java kmttg installation you can normally unzip over the previous installation or just replace the *kmttg.jar* file of the old installation with the one from the new installation. That way you can preserve the kmttg configuration and avoid having to re-configure. NOTE: In some cases there are other files such as encoding profiles updated as part of a release, so you can also just unzip the file over the top of your previous installation to make sure you overwrite all files that make up an installation. If you want to install to same location and make sure to get a clean new installation then remove everything except config.ini and auto.ini files. That way you get a full new installation but preserve all your previous settings.
+  * For some releases the 3rd party tools are also updated. To force kmttg to download and install the accompanying 3rd party tools simply remove the *tivodecode* folder. Then when you start kmttg GUI allow it to download and install the tools package (it will overwrite the files in current installation). 
 
 *NOTE: If you have older version of kmttg service running you should shut down the service first and then unpack zip file over existing installation. If you don't do so then certain files cannot be overridden and hence installation will fail.*
 
