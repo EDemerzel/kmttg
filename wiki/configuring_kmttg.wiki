@@ -32,6 +32,8 @@
 
 ==<u>File Settings tab</u>==
 
+*NOTE: For Windows users you can use network paths for output folders, but just make sure to use UNC style paths (\\server\share) instead of volumes (h:\share) since Windows services doesn't know about network volumes.*
+
 ==Remove .TiVo file after decrypt==
   * Enable this option if you would like kmttg to remove .TiVo files automatically once they have been successfully decrypted to .mpg format.
 
