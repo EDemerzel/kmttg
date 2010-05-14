@@ -1,6 +1,37 @@
 #labels Featured
 =RELEASE NOTES=
 
+==v0p7k (5/13/2010)==
+
+*ENHANCEMENTS*
+
+   * Added new *Auto Transfers -> Loop in GUI* checkbox menu entry. When checkbox enabled this will run Auto Transfers in the GUI in a continuous loop (until disabled or kmttg GUI shut down) unlike *Run in GUI* which only runs 1 pass. This provides an alternative to running Auto Transfers as a kmttg service (Windows) or background job (Mac/Linux) with easier visual feedback of queued jobs and status of running jobs.
+   NOTE: Loop in GUI mode also automatically logs messages to *auto.log.0* file just as in service/background mode.
+
+   * Added new *ff_ipad* 720p H.264 encoding profile for iPad devices.
+   
+   * Added new logging mechanism for Auto Transfers. Auto Transfer logs to file *auto.log.0* and once a user-configurable file size limit is reached the file is copied to *auto.log.1* and *auto.log.0* is reset. This is to give users control over auto transfers log files which otherwise grow very large over time and have to be emptied out manually. A configuration option under *File Settings* tab called *auto log file size limit (MB)* allows you set to file size limit in MBytes (default is 10).
+         
+*CHANGES*
+   
+   * *Download TiVo files in Transport Stream format* option is now disabled by default again for a fresh kmttg installation due to various problems being reported with download and decrypt using TS container vs PS container for TiVo Premiere units.
+   
+   * pyTivo metadata text files are now written to use \r character at end of lines to be Windows compatible and so that Windows Media Player doesn't crash when trying to parse the txt file. This also allows easy manual editing of the files with Windows Notepad.
+   
+   * *Auto Transfers -> Add selected to history file* menu entry now adds ProgramId_unique in addition to ProgramId to auto.history file in case *Treat each recording as unique* option is used for certain shows.
+   
+   * Auto Transfers menu entry *Run in GUI* changed to *Run Once in GUI* to more obviously distinguish from new *Loop in GUI* menu entry.
+   
+   * Change to use an alternate (simpler) approach to writing messages to message pane in GUI mode.
+         
+*FIXES*
+
+   * The GUI message pane is now restricted to up to 250KB of ascii text maximum (which corresponds to about 10MB or RAM used by the message pane). Once limit is reached earlier text in message pane is truncated. Previously there was no limit to amount of text allowed which meant if single GUI session was in use for a long time that Java memory use would eventually max out leading to application stack trace. This fix is especially needed now for use with Auto Transfers -> Loop in GUI capability which build up a lot of displayed messages for a single GUI session over time.
+
+   * Restore of *FILES Default Path* setting fixed. In last several releases that setting would always reset to *.TiVo Output Dir* setting when starting kmttg.
+   
+   * GUI restore of *Ad Detect* setting was fixed. This was broken in previous release.
+
 ==v0p7j (3/29/2010)==
 
 *IMPORTANT NOTE: Windows and Mac tools packages were updated, so if upgrading from a previous release be sure to remove the "tivodecode" folder of your previous installation in order to force kmttg to download the new tools packages.*
