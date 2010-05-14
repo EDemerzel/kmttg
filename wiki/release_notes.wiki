@@ -5,7 +5,7 @@
 
 *ENHANCEMENTS*
 
-   * Added new *Auto Transfers -> Loop in GUI* checkbox menu entry. When checkbox enabled this will run Auto Transfers in the GUI in a continuous loop (until disabled or kmttg GUI shut down) unlike *Run in GUI* which only runs 1 pass. This provides an alternative to running Auto Transfers as a kmttg service (Windows) or background job (Mac/Linux) with easier visual feedback of queued jobs and status of running jobs.
+   * Added new *Auto Transfers -> Loop in GUI* checkbox menu entry. When checkbox enabled this will run Auto Transfers in the GUI in a continuous loop (until disabled or kmttg GUI shut down) unlike *Run Once in GUI* which only runs 1 pass. This provides an alternative to running Auto Transfers as a kmttg service (Windows) or background job (Mac/Linux) with easier visual feedback of queued jobs and status of running jobs.
    NOTE: Loop in GUI mode also automatically logs messages to *auto.log.0* file just as in service/background mode.
 
    * Added new *ff_ipad* 720p H.264 encoding profile for iPad devices.
