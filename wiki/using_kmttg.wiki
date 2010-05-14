@@ -122,7 +122,7 @@ NOTE: You *MUST* use all lowercase file names with no spaces if creating your ow
 ==KMTTG AUTO TRANSFERS==
 Consult the [http://code.google.com/p/kmttg/wiki/auto_transfers auto_transfers] wiki page for details on setting up and running auto transfers.
 
-NOTE: Auto Transfers requires running a separate kmttg process either as a service in Windows or a background job for Macintosh/Linux systems.
+NOTE: Auto Transfers can be run in background mode as a separate kmttg process either as a service in Windows or a background job for Macintosh/Linux systems. Latest kmttg versions also provide options for running Auto Transfers in graphical mode.
 
 ==*File* menu items==
   * *Configure* (Ctrl+o) - Bring up the kmttg configuration window. See the [http://code.google.com/p/kmttg/wiki/configuring_kmttg configuring_kmttg] wiki for details.
