@@ -75,7 +75,7 @@ If you want to remove 1 or more entries then select them in the setup list and c
 
 ===GLOBAL SETTING: Dry Run Mode (test keywords only)===
 
-This option enabled is useful for testing your title and keyword matching setup without actually having kmttg download and process matching shows. Kmttg will simply match your titles and keyword entries versus shows on your Tivo and report which shows match in the *auto.log* file (or if you run in GUI mode you can see matching shows reported in the text area). This mode allows you to quickly test out your setup to make sure you will get the shows you want. Once you have finished debugging obviously this option should be disabled.
+This option enabled is useful for testing your title and keyword matching setup without actually having kmttg download and process matching shows. Kmttg will simply match your titles and keyword entries versus shows on your Tivo and report which shows match in the *auto.log.0* file (or if you run in GUI mode you can see matching shows reported in the text area). This mode allows you to quickly test out your setup to make sure you will get the shows you want. Once you have finished debugging obviously this option should be disabled.
 
 ===GLOBAL SETTING: Check Tivos Interval (mins)===
 
@@ -107,6 +107,8 @@ Programs that were transferred to your TiVo(s) for example using TiVo Desktop or
 NOTE: There is a separate loop for each TiVo defined in kmttg. Once all matching entries are processed for a TiVo then kmttg will wait for number of minutes you configured in Auto Transfers setup: *Check TiVos Interval (mins)* before matching against that TiVo again.
 
 NOTE: When you disable *Loop in GUI* it does not mean that all currently processed and queued jobs are terminated, it simply means that kmttg will stop checking TiVos for any new matches. All currently processing jobs will continue to run and queued jobs will go through as normal unless you close kmttg GUI.
+
+NOTE: *Loop in GUI* mode also logs to *auto.log.0* file so that there is a detailed record of all activity available should you need it.
  
 ===<u>WORKAROUND FOR REPEATED SHOWS WITH SAME `ProgramId`</u>===
 
@@ -134,7 +136,7 @@ Alternatively there is another way to control kmttg service. Browse to the folde
 
 NOTE: If you have a service already running from a previous kmttg installation you must uninstall the service using that installation first and then re-install using the new installation.
 
-NOTE: All output messages will be logged in *auto.log* file which resides in the main kmttg installation folder (where kmttg.jar file is located).
+NOTE: All output messages will be logged in *auto.log.0* file which resides in the main kmttg installation folder (where kmttg.jar file is located).
 
 For more specific control you can get to the kmttg service in Windows as follows:
 
@@ -219,13 +221,16 @@ This file contains your saved auto transfers configuration including any title a
 
 NOTE: This file is re-parsed at every Check Tivos Interval so that it is not necessary to re-start the background process whenever you want to update your auto transfer configuration.
 
-====auto.log====
+====auto.log.0====
 
 This file contains activity log information for the background process. Entries in the log file all contain a time stamp. You can view this file from kmttg GUI using *Auto Transfers->Examine Log File* menu.
 
+NOTE: In order to prevent this log file from growing too large over time there is a user-configurable setting to limit the size of this log file. Once the limit is reached the file is copied to *auto.log.1* and *auto.log.0* is reset.
+The configuration option can be found in kmttg main configuration window (File->Configure) under *File Settings* tab and is called *auto log file size limit (MB)*. This allows you to set file size limit in MBytes (default is 10).
+
 ====auto.history====
 
-This file contains a list of `ProgramId` entries for every show that has been processed by the kmttg background process. This is what prevents the same shows from being downloaded over and over again from your Tivos. The `ProgramId` entry is added to this file following a successful download of a show by the kmttg background process. Any shows that are not downloaded are indicated with their associated `ProgramId` entry in the auto.log file.
+This file contains a list of `ProgramId` entries for every show that has been processed by the kmttg background process. This is what prevents the same shows from being downloaded over and over again from your Tivos. The `ProgramId` entry is added to this file following a successful download of a show by the kmttg background process. Any shows that are not downloaded are indicated with their associated `ProgramId` entry in the auto.log.0 file.
 
 NOTE: If this file is already created then downloads that complete successfully in GUI mode will also be recorded in the history file such that they will not be re-processed in kmttg background/service mode.
 
