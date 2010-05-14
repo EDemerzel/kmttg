@@ -125,6 +125,9 @@ The advanced keyword is highlighted in bold and signifies only include `“_Ep#x
   * NOTE: Make sure you have plenty of space here
   * NOTE: This can be same as .TiVo Output Dir or .mpg Output Dir
 
+==auto log file size limit (MB)==
+  * This option is used to limit the size (number of MBytes) of the auto transfers log file: *auto.log.0*. Once the given limit is reached the file is copied to *auto.log.1* and *auto.log.0* is reset. By having a reasonable limit (defaults to 10 MBytes) this prevents the auto log file from growing too large.
+
 ==Overwrite existing files==
   * With this option disabled kmttg will skip tasks for which output files already exist so as not to overwrite any existing files of same name on your computer. With this option enabled kmttg will run tasks regardless of whether their output files exist or not, overwriting existing files as needed.
   * *NOTE: It is highly recommended you enable this option if setting up Auto Transfers as when Auto Transfers are interrupted that can leave partial files created that you would want Auto Transfers to overwrite*
@@ -226,9 +229,11 @@ The advanced keyword is highlighted in bold and signifies only include `“_Ep#x
 
 ==Download TiVo files in Transport Stream format==
   * For TiVo software that supports it, this forces TiVo file downloads to use Transport Stream format instead of the default Program Stream format by adding a *&Format=video/x-tivo-mpeg-ts* tag to the download URL.
-  * Currently only Australia/New Zealand TiVos support Transport Stream format so enabling this on other TiVos will have no effect.
+  * Currently only Australia/New Zealand and Premiere TiVos support Transport Stream format so enabling this on other TiVos will have no effect.
+  * *NOTE: For Premiere units it is still much more reliable to download in traditional Program Stream format, so you are advised not to enable this option if you want to be sure there are no issues with download and/or decryption.*
   * NOTE: One advantage of TiVo Transport Stream format is downloads are quite significantly faster than Program Stream format downloads.
-  * NOTE: *tivodecode* does not currently work for TiVo Transport Stream files, but if you have VideoRedo you can use it to decrypt them (see *VideoRedo* tab for an option to enable that).
+  * NOTE: Latest version of *tivodecode* shipped with kmttg does have support for decrypting TiVo Transport Stream files but there are sometimes issues with it, so it's safer to download in Program Stream format instead to avoid potential issues.
+  * NOTE: If you have VideoRedo TVSuite4 and at least minimal install of TiVo Desktop you can use it to decrypt downloads in TS format instead of tivodecode (see *VideoRedo* tab for an option to enable that).
 
 ==<u>Visual tab</u>==
 
