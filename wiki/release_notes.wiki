@@ -21,9 +21,9 @@
    * Added new *video files* filter with all the common video file extensions to File Browser in FILES mode in addition to existing *tivo and mpg* and *all files* filters.
    
    * Added Jobs sub-menu to Files menu with 3 new commands:
-     *Do not launch queued jobs* - A toggle menu item that when enabled prevents queued jobs from launching.
-     *Save queued jobs* - Saves current set of queued jobs to a file so that they can be loaded back into kmttg in the future. Useful if you need to exit kmttg without losing queued set of jobs.
-     *Load queued jobs* - Load from a previously saved file a set of queued jobs to run in kmttg.
+     * *Do not launch queued jobs* - A toggle menu item that when enabled prevents queued jobs from launching.
+     * *Save queued jobs* - Saves current set of queued jobs to a file so that they can be loaded back into kmttg in the future. Useful if you need to exit kmttg without losing queued set of jobs.
+     * *Load queued jobs* - Load from a previously saved file a set of queued jobs to run in kmttg.
                   
 *FIXES*
    
