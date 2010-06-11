@@ -118,6 +118,10 @@ Kmttg installation comes with an *encode* folder that contains files with *.enc*
   * There are 3 keywords that should be present: `<description>, <command>, <extension>`. There should be only 1 line after each.
   * If you require more than 1 command for your encoding then you can make a batch script and define that as the command to be run
   * There are a few uppercase keywords that kmttg understands and will replace with full paths appropriately: *INPUT, OUTPUT, FFMPEG, HANDBRAKE, MENCODER, PERL*
+  * Starting with release v0p7l there are 2 new special keywords available that are intended for use with ffmpeg encoding profiles to work around inability to specify fixed height with variable width, or fixed width with variable height resolutions. kmttg uses ffmpeg to determine the display aspect ratio (DAR) of the input video file and then uses that ratio to compute what to use for corresponding WIDTH or HEIGHT dimension, rounded to nearest even number. The 2 special keywords are:
+     * *#xHEIGHT* - (Example: *-s 640xHEIGHT*) In this example if input DAR is 4:3 then HEIGHT would be computed as 480, if input DAR is 16:9 it would be computed as 360.
+     * *WIDTHx#* - (Example: *-s WIDTHx360*) In this example if input DAR is 4:3 then HEIGHT would be computed as 480, if input DAR is 16:9 it would be computed as 640.
+     NOTE: Look at encode/ff_iphone.enc as an example of a profile using this feature.
 
 There are comments in the pre-defined *.enc* file which hopefully makes it pretty obvious how to properly define these files.
 
