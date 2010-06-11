@@ -1,6 +1,34 @@
 #labels Featured
 =RELEASE NOTES=
 
+==v0p7l (6/11/2010)==
+
+*IMPORTANT NOTE: Several encoding profiles were updated in this release, so if upgrading from a previous version be sure to update your installation "encode" folder.*
+
+*ENHANCEMENTS*
+
+   * Updated certain ffmpeg encoding profiles to use a fixed height but variable width output resolution so as to preserve the proper aspect ratio when playing on target device. Since ffmpeg doesn't have this capability natively kmttg now uses a #xHEIGHT keyword in encoding profile which tells kmttg to compute the proper WIDTH to use. WIDTHx# keyword is also supported for variable in which case proper HEIGHT is computed by kmttg.
+   Specifically the following ffmpeg profiles were updated to use this feature so that they end up with same aspect ratio for output as that of the input video file. The listed profiles below were also updated to use higher values for qmin & qmax such that resulting output file sizes are much lower. Finally the listed profiles were also switched to H.264 video instead of mpeg4 for improved video quality:
+   ff_ipad
+   ff_iphone
+   ff_ipod_high_res
+   ff_ipod_low_res
+   
+   * Added user-contributed mencoder iphone profile to distribution: *me_iphone*.
+   
+   * Added capability to run AtomicParsley run in FILES mode for files ending in .mp4/.m4v suffix. This was by request by some users who encode outside kmttg but still want to use a GUI for AtomicParsley run which uses information from pyTivo metadata file to add to mp4/m4v files. There is a *Run AtomicParsley* button now available in *FILES* tab so you can explicitly run it on selected mp4/m4v files.
+   
+   * Added new *video files* filter with all the common video file extensions to File Browser in FILES mode in addition to existing *tivo and mpg* and *all files* filters.
+   
+   * Added Jobs sub-menu to Files menu with 3 new commands:
+     *Do not launch queued jobs* - A toggle menu item that when enabled prevents queued jobs from launching.
+     *Save queued jobs* - Saves current set of queued jobs to a file so that they can be loaded back into kmttg in the future. Useful if you need to exit kmttg without losing queued set of jobs.
+     *Load queued jobs* - Load from a previously saved file a set of queued jobs to run in kmttg.
+                  
+*FIXES*
+   
+   * Updated *hb_iphone* and *hb_ipod* encoding profiles to match the 0.9.4 Handbrake built in profiles. The previous profiles would not sync to iPod when used with 0.9.4 Handbrake.
+
 ==v0p7k (5/13/2010)==
 
 *ENHANCEMENTS*
