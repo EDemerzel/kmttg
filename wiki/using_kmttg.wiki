@@ -136,6 +136,10 @@ NOTE: Auto Transfers can be run in background mode as a separate kmttg process e
   * *Reset TiVo web server* - This uses {{{http://<ip>/TiVoConnect?Command=ResetServer}}} which may help clear out conditions where TiVo is reporting *{{{<h2>Server Busy</h2>}}}* errors when attempting to download shows, which seems to be fairly common for Series 2 Tivos. It has also reportedly fixed issues with Series 3 Tivos not responding to downloads as well.
   NOTE: You need to select the tab of the TiVo you wish to run this command on before selecting this menu item.
 
+  * *Jobs->Do not launch queued jobs* - A toggle menu item that when enabled prevents queued jobs from launching.
+  * *Save queued jobs* - Saves current set of queued jobs to a file so that they can be loaded back into kmttg in the future. Useful if you need to exit kmttg without losing queued set of jobs.
+  * *Load queued jobs* - Load from a previously saved file a set of queued jobs to run in kmttg.
+
   * *Exit* (Ctrl+x) - Exit kmttg. Also kills any background jobs started by kmttg in GUI mode that may still be running.
 
 ==Help About... menu===
