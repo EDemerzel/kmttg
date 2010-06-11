@@ -137,8 +137,8 @@ NOTE: Auto Transfers can be run in background mode as a separate kmttg process e
   NOTE: You need to select the tab of the TiVo you wish to run this command on before selecting this menu item.
 
   * *Jobs->Do not launch queued jobs* - A toggle menu item that when enabled prevents queued jobs from launching.
-  * *Save queued jobs* - Saves current set of queued jobs to a file so that they can be loaded back into kmttg in the future. Useful if you need to exit kmttg without losing queued set of jobs.
-  * *Load queued jobs* - Load from a previously saved file a set of queued jobs to run in kmttg.
+  * *Jobs->Save queued jobs* - Saves current set of queued jobs to a file so that they can be loaded back into kmttg in the future. Useful if you need to exit kmttg without losing queued set of jobs.
+  * *Jobs->Load queued jobs* - Load from a previously saved file a set of queued jobs to run in kmttg.
 
   * *Exit* (Ctrl+x) - Exit kmttg. Also kills any background jobs started by kmttg in GUI mode that may still be running.
 
