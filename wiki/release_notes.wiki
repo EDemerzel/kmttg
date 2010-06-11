@@ -7,7 +7,7 @@
 
 *ENHANCEMENTS*
 
-   * Updated certain ffmpeg encoding profiles to use a fixed height but variable width output resolution so as to preserve the proper aspect ratio when playing on target device. Since ffmpeg doesn't have this capability natively kmttg now uses a #xHEIGHT keyword in encoding profile which tells kmttg to compute the proper WIDTH to use. WIDTHx# keyword is also supported for variable in which case proper HEIGHT is computed by kmttg.
+   * Updated certain ffmpeg encoding profiles to use a fixed height but variable width output resolution so as to preserve the proper aspect ratio when playing on target device. Since ffmpeg doesn't have this capability natively kmttg now uses a *#xHEIGHT* keyword in encoding profile which tells kmttg to compute the proper WIDTH to use. *WIDTHx#* keyword is also supported for variable in which case proper HEIGHT is computed by kmttg.
    Specifically the following ffmpeg profiles were updated to use this feature so that they end up with same aspect ratio for output as that of the input video file. The listed profiles below were also updated to use higher values for qmin & qmax such that resulting output file sizes are much lower. Finally the listed profiles were also switched to H.264 video instead of mpeg4 for improved video quality:
    ff_ipad
    ff_iphone
