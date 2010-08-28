@@ -46,6 +46,9 @@
 ==Remove .mpg file after encode==
   * If you use encode you can enable this option if you would like kmttg to remove .mpg files automatically once they have been successfully re-encoded.
 
+==For QS Fix of .mpg file backup original .mpg==
+  * If running VRD QS Fix on a .mpg file kmttg will rename the original .mpg file to .mpg.bak if this option is enabled. Otherwise by default kmttg removes the original .mpg file and replaces with the fixed version following successful VideoRedo QS Fix run.
+
 ==Check Available Disk Space==
   * If this option is enabled then kmttg will check that destination drive has more than the space available defined in *Min req space (GB)* field before running jobs. The available space calculation currently also subtracts estimated space to be taken by any ongoing .TiVo file downloads. (Currently no other jobs other than downloads are considered when estimating space to be consumed).
 
@@ -319,3 +322,36 @@ The advanced keyword is highlighted in bold and signifies only include `“_Ep#x
   * *encodeFile* - Push only encoded video file after encode step if enabled
   * *last* - Push only last video file in the task set (the default setting)
   * *all* - Push all available video files in the task set (except .TiVo files)
+
+==<u>Autotune tab</u>==
+This configuration section is to setup kmttg to automatically tune both TiVo tuners to specified channels before initiating a download from a TiVo. If you have TiVo tune to channels you don't subscribe to or to music channels, this can improve the download speeds as it frees up more resources on the TiVo to handle the download.
+  * This only works for Series 3 & 4 TiVos that have *Network Remote Control* option enabled.
+  * You can enable *Network Remote Control* option for Series 3/4 TiVos as follows:<br>
+      TiVo Central-Messages&Settings-Settings-Remote,CableCARD&Devices-Network Remote Control
+  * You can specify 2 different channels to use under configuration - 1 for each tuner. Typically these would be channels you don't subscribe to or music channels so as to reduce load on your TiVo.
+  * For each tune kmttg uses following sequence of button presses for the tune:<br>
+     LIVETV,CLEAR,CHANNEL #,ENTER. There is a configurable wait time in seconds between tunes to give TiVo a chance to react to the network button pushes (see below).
+  * *NOTE: You need to click on OK button if you adjust parameters for any of the TiVos in order to save the settings. You must click on OK button separately for each TiVo configuration.*
+
+==TiVo to Autotune==
+  * Select which TiVo you would like to configure or test for Autotune.
+
+==Tune to specified channels before a download==
+  * Enable or disable the autotune capability for the selected TiVo.
+
+==Channel number for tuner 1==
+  * Channel number to use for the first tuner. Both conventional integer only channel numbers are supported or OTA style xx-xx or xx.xx are supported. Typically you want this to be a channel you don't subscribe to or a music channel so as to reduce the CPU load on your TiVo which improves download speeds.
+
+==Channel number for tuner 2==
+  * Channel number to use for second tuner.
+
+==Channel change interval (secs)==
+  * Default is 5 seconds.
+  * The interval of time in seconds to wait after the first channel tune before attempting the second channel tune. Depending on how responsive your TiVo is you may have to adjust this setting as needed to get successful dual channel tuning.
+
+==Button press interval (msecs)==
+  * Default is 1000 msecs (1 second)
+  * Specifies interval of time in milliseconds to wait between network button commands that are sent to TiVo over network during autotune. Depending on responsiveness of your TiVo this may have to be adjusted so that it works properly.
+
+==TEST==
+  * Use this button to test autotune for the selected TiVo. Useful for testing the dual channel changing based on the current settings in the form.
