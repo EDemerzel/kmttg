@@ -324,6 +324,7 @@ The advanced keyword is highlighted in bold and signifies only include `“_Ep#x
   * *all* - Push all available video files in the task set (except .TiVo files)
 
 ==<u>Autotune tab</u>==
+Feature introduced in v0p7m release.
 This configuration section is to setup kmttg to automatically tune both TiVo tuners to specified channels before initiating a download from a TiVo. If you have TiVo tune to channels you don't subscribe to or to music channels, this can improve the download speeds as it frees up more resources on the TiVo to handle the download.
   * This only works for Series 3 & 4 TiVos that have *Network Remote Control* option enabled.
   * You can enable *Network Remote Control* option for Series 3/4 TiVos as follows:<br>
