@@ -23,8 +23,8 @@
       * If running VRD QS Fix on a .mpg file kmttg will rename the original .mpg file to .mpg.bak if this option is enabled. Otherwise by default kmttg removes the original .mpg file and replaces with the fixed version following successful VideoRedo QS Fix run.
 
    * Added 2 new user-contributed encoding profiles:
-     ff_droid - for Motorola droid
-     me_bb9k - for Blackberry 9xxx series
+     *ff_droid* - for Motorola droid
+     *me_bb9k* - for Blackberry 9xxx series
      
    * Updated *hb_appletv* encoding profile according to user update - uses mostly Handbrake AppleTV preset
    
@@ -38,7 +38,7 @@
 
    * When *captions* task enabled kmttg will look for TiVo and all mpeg2 file name variations to use as source file in cases when the TiVo file is removed as part of the task set. In previous releases if you started from TiVo file and had *Remove .TiVo file after decrypt* option enabled, srt file generation would fail because TiVo file was not available at the time the *captions* task kicked in.
    
-   * Updated pyTivo metadata generators to always look for values within <showing> in the xml tree, otherwise can be duplicate keys for other shows if pre or post padding is used for a recording.
+   * Updated pyTivo metadata generators to always look for values within {{{<showing>}}} in the xml tree, otherwise can be duplicate keys for other shows if pre or post padding is used for a recording.
    
    * When *Overwrite existing files* option is set and a download would overwrite existing file kmttg would not properly display the transfer rate for that file.
    
