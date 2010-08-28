@@ -48,6 +48,7 @@
 
 ==For QS Fix of .mpg file backup original .mpg==
   * If running VRD QS Fix on a .mpg file kmttg will rename the original .mpg file to .mpg.bak if this option is enabled. Otherwise by default kmttg removes the original .mpg file and replaces with the fixed version following successful VideoRedo QS Fix run.
+  * NOTE: If .mpg.bak file already exists then .mpg.bak1, .mpg.bak2, etc. will be used instead.
 
 ==Check Available Disk Space==
   * If this option is enabled then kmttg will check that destination drive has more than the space available defined in *Min req space (GB)* field before running jobs. The available space calculation currently also subtracts estimated space to be taken by any ongoing .TiVo file downloads. (Currently no other jobs other than downloads are considered when estimating space to be consumed).
