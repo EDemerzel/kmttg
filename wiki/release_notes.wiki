@@ -1,6 +1,51 @@
 #labels Featured
 =RELEASE NOTES=
 
+==v0p7m (8/28/2010)==
+
+*IMPORTANT NOTE: New encoding profiles were included in this release, so if upgrading from a previous version be sure to update your installation "encode" folder.*
+
+*ENHANCEMENTS*
+
+   * Added *autotune* capability to have kmttg automatically tune both TiVo tuners to specified channels before initiating a download from a TiVo. If you have TiVo tune to channels you don't subscribe to or to music channels, this can improve the download speeds as it frees up more resources on the TiVo to handle the download.
+      * This only works for Series 3 & 4 TiVos that have *Network Remote Control* option enabled.
+      * You can enable *Network Remote Control* option for Series 3/4 TiVos as follows:<br>
+      TiVo Central-Messages&Settings-Settings-Remote,CableCARD&Devices-Network Remote Control
+      * Configuration is under new *Autotune* tab (last tab under configuration that you may have to scroll to see).
+      * You can specify 2 different channels to use under configuration - 1 for each tuner. Typically these would be channels you don't subscribe to or music channels so as to reduce load on your TiVo.
+      * There are also some other timing options under configuration to fine tune and test the network channel changing feature for each TiVo you want.
+      * For each tune kmttg uses following sequence of button presses for the tune: LIVETV,CLEAR,CHANNEL #,ENTER. There is a configurable wait time in seconds between tunes to give TiVo a chance to react to the network button pushes.
+      * Under configuration there is option to enable/disable this feature for each TiVo on your network (and use different channels and fine tuning parameters for each if you wish).
+
+   * Added true xml parsing of TiVo show information for metadata creation. This also now allows for *seriesId* to be parsed from .TiVo files and included in metadata files (previously it was ommitted for .TiVo files due to parsing shortcomings).
+   
+   * Per user request added new option: *For QS Fix of .mpg file backup original .mpg*
+      * If running VRD QS Fix on a .mpg file kmttg will rename the original .mpg file to .mpg.bak if this option is enabled. Otherwise by default kmttg removes the original .mpg file and replaces with the fixed version following successful VideoRedo QS Fix run.
+
+   * Added 2 new user-contributed encoding profiles:
+     ff_droid - for Motorola droid
+     me_bb9k - for Blackberry 9xxx series
+     
+   * Updated *hb_appletv* encoding profile according to user update - uses mostly Handbrake AppleTV preset
+   
+   * Added % complete display in GUI mode for encode task for *mencoder* based profiles.
+      
+   * For encoding tasks kmttg will not display file size in job monitor if it is zero size.
+   
+   * Aesthetic: Changed job monitor elapsed time to h:mm:ss format (from hh:mm:ss).
+                     
+*FIXES*
+
+   * When *captions* task enabled kmttg will look for TiVo and all mpeg2 file name variations to use as source file in cases when the TiVo file is removed as part of the task set. In previous releases if you started from TiVo file and had *Remove .TiVo file after decrypt* option enabled, srt file generation would fail because TiVo file was not available at the time the *captions* task kicked in.
+   
+   * Updated pyTivo metadata generators to always look for values within <showing> in the xml tree, otherwise can be duplicate keys for other shows if pre or post padding is used for a recording.
+   
+   * When *Overwrite existing files* option is set and a download would overwrite existing file kmttg would not properly display the transfer rate for that file.
+   
+   * For some handbrake encoding profiles kmttg would not properly update % complete in GUI during encoding.
+
+   * Fixed issue with null exception thrown when a new TiVo name is detected on the network while kmttg service is running.
+
 ==v0p7l (6/11/2010)==
 
 *IMPORTANT NOTE: Several encoding profiles were updated in this release, so if upgrading from a previous version be sure to update your installation "encode" folder.*
