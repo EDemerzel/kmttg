@@ -23,8 +23,8 @@
       * If running VRD QS Fix on a .mpg file kmttg will rename the original .mpg file to .mpg.bak if this option is enabled. Otherwise by default kmttg removes the original .mpg file and replaces with the fixed version following successful VideoRedo QS Fix run.
 
    * Added 2 new user-contributed encoding profiles:
-     *ff_droid* - for Motorola droid
-     *me_bb9k* - for Blackberry 9xxx series
+     * *ff_droid* - for Motorola droid
+     * *me_bb9k* - for Blackberry 9xxx series
      
    * Updated *hb_appletv* encoding profile according to user update - uses mostly Handbrake AppleTV preset
    
