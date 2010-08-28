@@ -332,6 +332,7 @@ This configuration section is to setup kmttg to automatically tune both TiVo tun
   * For each tune kmttg uses following sequence of button presses for the tune:<br>
      LIVETV,CLEAR,CHANNEL #,ENTER. There is a configurable wait time in seconds between tunes to give TiVo a chance to react to the network button pushes (see below).
   * *NOTE: You need to click on OK button if you adjust parameters for any of the TiVos in order to save the settings. You must click on OK button separately for each TiVo configuration.*
+  * NOTE: If 1 or more tuners are recording at the time the dual channel change is attempted then the recordings will not be interrupted and the channel changing will fail. So obviously this feature is not useful if you have many suggestions recording all the time on your TiVos.
 
 ==TiVo to Autotune==
   * Select which TiVo you would like to configure or test for Autotune.
