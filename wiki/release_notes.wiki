@@ -1,6 +1,23 @@
 #labels Featured
 =RELEASE NOTES=
 
+==v0p7n (9/11/2010)==
+
+*ENHANCEMENTS*
+   * Added new configuration option under *Program Options* tab: *Use Java for downloads instead of curl*. If enabled then kmttg will use native Java methods for retrieving Now Playing lists and downloading shows from TiVos instead of using curl. May be useful if for some reason you are having issues with curl (though most likely when there are issues with curl downloads it's likely a network/TiVo server issue and not issue with curl itself).
+   
+   * When more than 1 connection is required for retrieving Now Playing list from a TiVo (more than 128 shows) kmttg now indicates number of shows processed and total number of shows left to process.
+   
+   * Added new configuration option under *Tivos* tab: *Detect with TiVo Beacon instead of Bonjour*. If enabled this uses the older TiVo Beacon mechanism for detecting networked TiVos rather than the newer Bonjour method. Useful if Bonjour is not working on your network for some reason.
+   
+   * Procedure to determine VideoRedo encoding profiles now runs in background mode. This procedure is called if you have VideoRedo configured with option enabled: *Show VideoRedo encoding profiles*. Since this can take several seconds it used to hang up the GUI waiting to complete. Now procedure runs in the background and the Encoding Profile list in the GUI is updated once completed.
+                     
+*FIXES*
+
+   * With no TiVos detected/setup in kmttg there was a null exception being thrown in last release related to autotune configuration that would prevent configuration settings from being saved properly.
+   
+   * List of TiVos shown in Autotune tab under configuration would not list newer added/detected TiVos until kmttg was restarted. Now the list is updated when new TiVos are detected automatically or added manually.
+
 ==v0p7m (8/28/2010)==
 
 *IMPORTANT NOTE: New encoding profiles were included in this release, so if upgrading from a previous version be sure to update your installation "encode" folder.*
