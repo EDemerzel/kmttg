@@ -30,6 +30,9 @@
 ==Look for Tivos on network==
   * If this option is enabled then kmttg will check for Tivo MDNS (Bonjour) broadcasts to automatically detect Tivos on your network. kmttg will now also detect IP changes and adjust settings automatically for you when this option is enabled. You can optionally choose to disable this feature and add tivos manually to kmttg if you wish.
 
+==Detect with TiVo Beacon instead of Bonjour==
+  * If enabled this uses the older Tivo Beacon mechanism for detecting networked TiVos rather than the newer Bonjour method. Useful if Bonjour is not working on your network for some reason.
+
 ==<u>File Settings tab</u>==
 
 *NOTE: For Windows users you can use network paths for output folders, but just make sure to use UNC style paths (\\server\share) instead of volumes (h:\share) since Windows services doesn't know about network volumes.*
@@ -239,6 +242,9 @@ The advanced keyword is highlighted in bold and signifies only include `“_Ep#x
   * NOTE: Latest version of *tivodecode* shipped with kmttg does have support for decrypting TiVo Transport Stream files but there are sometimes issues with it, so it's safer to download in Program Stream format instead to avoid potential issues.
   * NOTE: If you have VideoRedo TVSuite4 and at least minimal install of TiVo Desktop you can use it to decrypt downloads in TS format instead of tivodecode (see *VideoRedo* tab for an option to enable that).
 
+==Use Java for downloads instead of curl==
+  * If enabled then kmttg will use native Java methods for retrieving Now Playing lists and downloading shows from TiVos instead of using curl. May be useful if for some reason you are having issues with curl (though most likely when there are issues with curl downloads it's likely a network/TiVo server issue and not issue with curl itself).
+
 ==<u>Visual tab</u>==
 
 ==GUI Font Size==
@@ -300,6 +306,7 @@ The advanced keyword is highlighted in bold and signifies only include `“_Ep#x
 ==Show VideoRedo encoding profiles==
   * This requires VideoRedo version TVSuite 4 or later (version 4.20.2.595 or later) to work.
   * When enabled this option will add built in and/or custom VideoRedo encoding profiles to the list of encoding options available for the *encode* task. kmttg queries VideoRedo for all the available encoding profiles to build this list but this only works with recent versions of TVSuite 4 as mentioned in bullet above.
+  * NOTE: Starting with version v0p7n the procedure to obtain profiles from VideoRedo runs in the background and the Encoding Profile list in the GUI is only updated once that procedure has completed. It may take several seconds for the encoding profiles list in the GUT to be updated as a result. Previously kmttg would just hang while waiting for this procedure to complete resulting in a long start up time for kmttg GUI.
 
 ==Allow multiple VideoRedo jobs at once==
   * If enabled allows multiple VideoRedo tasks to run at the same time. Enabling this option works around a bug in VideoRedo which does not allow more than 1 "silent" version of VideoRedo to run at once. With this option disabled VideoRedo tasks are restricted to one at a time only.
