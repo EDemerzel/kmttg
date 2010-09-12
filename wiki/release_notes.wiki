@@ -1,6 +1,10 @@
 #labels Featured
 =RELEASE NOTES=
 
+==v0p7o (9/12/2010)==
+*FIXES*
+   * Change timeout for Java downloads to be 2 minutes instead of 10 seconds to allow for large playlist retrieval without timing out.
+
 ==v0p7n (9/11/2010)==
 
 *ENHANCEMENTS*
