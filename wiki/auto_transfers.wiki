@@ -27,7 +27,7 @@ If you already have shows on your Tivo with titles you wish to add you can more 
 If you want kmttg to auto transfer everything available on all your tivos you can setup a title matching entry with simply *{{{.*}}}* as the title (that's 2 characters: a dot followed by an asterisk). In pattern matching this will match anything.
 
 ====Regex Matching====
-With "title" matching kmttg actually uses Regex for matching up titles, so if you are familiar with regex expressions you can setup complex regex expressions. As an example a user asked for a way to record all shows except "The Daily Show" and "Steven Colbert". This is possible by setting up a "title" match with following text:<br>
+With "title" matching kmttg actually uses Regex for matching up titles, so if you are familiar with regex expressions you can setup complex regex expressions. As an example a user asked for a way to record all shows except "The Daily Show" and "Steven Colbert". This is possible by setting up a "title" match with following text which will match any title not containing "daily show" and "colbert" strings:<br>
 {{{^((?!daily show|colbert).)*$}}}
 
 ====Keyword Matching====
