@@ -33,6 +33,11 @@
 ==Detect with TiVo Beacon instead of Bonjour==
   * If enabled this uses the older Tivo Beacon mechanism for detecting networked TiVos rather than the newer Bonjour method. Useful if Bonjour is not working on your network for some reason.
 
+==wan http port & wan https port==
+  * Allow you to specify the WAN (public) side ports to use when kmttg uses http & https protocols to communicate with TiVos. By configuring your router to port forward to port 80 (http) and port 443 (https) on your home network from WAN side and using these settings you can run kmttg from any internet location and still access Now Playing Lists on your home TiVos and even download shows if you wish (and your ISP upstream bandwidth is high enough to make it feasible).
+
+   NOTE: In order to save these settings for a TiVo make sure the associated TiVo is selected in the *Tivos* list and then OK the configuration window. Repeat for each TiVo in the list you wish to access over internet.
+
 ==<u>File Settings tab</u>==
 
 *NOTE: For Windows users you can use network paths for output folders, but just make sure to use UNC style paths (\\server\share) instead of volumes (h:\share) since Windows services doesn't know about network volumes.*
@@ -199,10 +204,6 @@ The advanced keyword is highlighted in bold and signifies only include `“_Ep#x
 ==encoding cpu cores===
   * Specify the number of cpu cores to use for encoding jobs. If you have a multi-core machine this can speed up encoding jobs quite significantly. Consider this setting and *active job limit* when deciding what number to use here. Setting this too high may really slow down your machine for other tasks running in parallel.
 
-==wan http port (optional)==
-  * Set this option only if you plan to use kmttg over a WAN instead of your local LAN. By default http port 80 is used to download shows from the Tivos on the LAN, but from WAN side you will have to setup port forwarding in your router, and often service providers do not allow you to use port 80.
-  * NOTE: For Now Playing List retrieval https port 443 also should be port forwarded to your Tivo port 443 in your router.
-
 ==t2extract extra arguments==
   * Any extra arguments you want kmttg to use when running *t2extract* which is the program used to generate closed captions *.srt* file. By default the program arguments are as follows:
   {{{t2extract -f srt videoFile}}}
@@ -244,6 +245,11 @@ The advanced keyword is highlighted in bold and signifies only include `“_Ep#x
 
 ==Use Java for downloads instead of curl==
   * If enabled then kmttg will use native Java methods for retrieving Now Playing lists and downloading shows from TiVos instead of using curl. May be useful if for some reason you are having issues with curl (though most likely when there are issues with curl downloads it's likely a network/TiVo server issue and not issue with curl itself).
+
+==Show estimated time remaining for downloads==
+  * When this option enabled the estimated time remaining for downloads is shown in STATUS column instead of the download bit rate.
+
+  NOTE: Since TiVo does not report accurate file size to be downloaded this number is only an estimate and will never actually reach 0.
 
 ==<u>Visual tab</u>==
 
