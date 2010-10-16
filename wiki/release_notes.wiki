@@ -1,6 +1,31 @@
 #labels Featured
 =RELEASE NOTES=
 
+==v0p7p (10/16/2010)==
+
+*NOTE* This version introduces a new folder that makes up the installation called *VRDscripts* that is required to be present in top kmttg installation folder for all VideoRedo related tasks.
+
+*ENHANCEMENTS*
+
+   * Added qsfix & adcut support for latest versions of VideoRedo TVSuite 4: 4.20.5.604 or later. Those versions rely on new COM functions not available in older releases. kmttg qsfix still is backwards compatible with older versions of VideoRedo as well.
+
+   * Removed the *wan http port* global configuration setting under *Program Options* tab. That setting only applied to http interface and only for one TiVo, so was too limiting. Now the *Tivos* configuration tab contains 2 settings that can optionally be added for one or more TiVos, useful if you are running kmttg outside of the home network where your TiVos reside:
+      * *wan_http_port* and *wan_https_port* allow you to specify the WAN (public) side ports to use when kmttg uses http & https protocols to communicate with TiVos. By configuring your router to port forward to port 80 (http) and port 443 (https) on your home network from WAN side and using these settings you can run kmttg from any internet location and still access Now Playing Lists on your home TiVos and even download shows if you wish (and your ISP upstream bandwidth is high enough to make it feasible).
+      
+   * By user request added new configuration option under *Program Options* tab called *Show estimated time remaining for downloads*. When this option is enabled the estimated time remaining for downloads is shown in STATUS column instead of the download bit rate. NOTE: Since TiVo does not report accurate file size to be downloaded this number is only an estimate and will never actually reach 0.
+      
+   * Added 2 new user-contributed Hanbrake profiles:
+      * *hb_tivo_hd_crf, hb_tivo_sd_crf*
+
+   * For AtomicParsley job also consider use of .TiVo.txt metadata file if no later metadata files are available.
+
+*CHANGES*
+
+   * All VideoRedo related tasks now use scripts defined under new *VRDscripts* folder that makes up part of kmttg installation. This makes it more transparent exactly what kmttg is doing for each task as well as allowing for easier debug since the VideoRedo COM scripts are now readily visible. This also allows experts to make modifications as they see fit to VRD scripts if desired.
+   
+   * Added *--large-file* (64 bit) option to several Handbrake profiles in order to support mp4 files > 4GB. Note that not all profiles can get this option since for example ps3 and ipod profiles would make them invalid for the target devices. The following profiles were updated:
+      * *hb_animation, hb_film, hb_television, hb_tivo_hd, hb_tivo_sd*
+
 ==v0p7o (9/12/2010)==
 *FIXES*
    * Change timeout for Java downloads to be 2 minutes instead of 10 seconds to allow for large playlist retrieval without timing out.
