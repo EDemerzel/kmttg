@@ -1,6 +1,16 @@
 #labels Featured
 =RELEASE NOTES=
 
+==v0p7q (10/20/2010)==
+
+*FIXES*
+
+   * Fixed bug with extra ":" character being added to the end of TiVo IP address when WAN ports not specified (bug introduced in v0p7p release). That extra character was preventing downloads from functioning properly in previous release.
+
+   * Avoid potential divide by zero error when *Show estimated time remaining for downloads* option is enabled.
+      
+   * Added new configuration option under *Program Options* tab called *delay in seconds between multiple downloads*. This delay between downloads is needed to help relieve stress on TiVo server when there are multiple downloads queued up from same TiVo to help avoid *server busy* error messages. Following first download from TiVo kmttg will wait the configured number of seconds (defaults to 10) before attempting another download from that TiVo.
+
 ==v0p7p (10/16/2010)==
 
 *NOTE* This version introduces a new folder that makes up the installation called *VRDscripts* that is required to be present in top kmttg installation folder for all VideoRedo related tasks.
