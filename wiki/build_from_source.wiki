@@ -9,8 +9,8 @@ http://www.oracle.com/technetwork/java/javase/downloads/index.html<br>
 
 Once installed start a cmd window
 
-mkdir c:\kmttg
-cd c:\kmttg
+mkdir c:\kmttg<br>
+cd c:\kmttg<br>
 svn checkout http://kmttg.googlecode.com/svn/trunk/ .<br>
 set JAVA_HOME="C:\Program Files (x86)\Java\jdk1.5.0_16" [change this to match what you noted was the installation directory for the JDK].<br>
 ant
