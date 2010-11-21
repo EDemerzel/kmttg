@@ -1,4 +1,4 @@
-= Building kmttg from source (Windows) =
+= Building kmttg from source =
 
 You will need svn client to obtain the latest source tree:<br>
 http://www.sliksvn.com/en/download
@@ -7,7 +7,7 @@ You will need Java Development Kit (JDK) with javac compiler:<br>
 http://www.oracle.com/technetwork/java/javase/downloads/index.html<br>
 (Make note of Java installation directory)
 
-==Example of downloading and building in c:\kmttg directory==
+==Example of downloading and building in c:\kmttg directory in Windows==
 Start a windows command window (cmd)<br>
 {{{mkdir c:\kmttg}}}<br>
 {{{cd c:\kmttg}}}<br>
