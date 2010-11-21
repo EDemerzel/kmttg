@@ -1,6 +1,6 @@
 = Building kmttg from source =
 
-You will need svn client to obtain the latest source tree:<br>
+You will need a svn client such as one below to obtain the latest source tree:<br>
 http://www.sliksvn.com/en/download
 
 You will need Java Development Kit (JDK) with javac compiler:<br>
