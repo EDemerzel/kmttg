@@ -7,8 +7,8 @@ You will need Java Development Kit (JDK) with javac compiler:<br>
 http://www.oracle.com/technetwork/java/javase/downloads/index.html<br>
 (Make note of Java installation directory)
 
-Once installed start a cmd window
-
+==Example of downloading and building in c:\kmttg directory==
+Start a windows command window (cmd)<br>
 {{{mkdir c:\kmttg}}}<br>
 {{{cd c:\kmttg}}}<br>
 {{{svn checkout http://kmttg.googlecode.com/svn/trunk/ .}}}<br>
