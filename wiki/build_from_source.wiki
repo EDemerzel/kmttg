@@ -7,6 +7,9 @@ You will need Java Development Kit (JDK) with javac compiler:<br>
 http://www.oracle.com/technetwork/java/javase/downloads/index.html<br>
 (Make note of Java installation directory)
 
+Finally you need Apache Ant to actually compile the source from command line:<br>
+http://ant.apache.org/bindownload.cgi
+
 ==Example of downloading and building in c:\kmttg directory in Windows==
 Start a windows command window (cmd)<br>
 {{{mkdir c:\kmttg}}}<br>
