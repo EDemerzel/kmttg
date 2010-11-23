@@ -9,12 +9,15 @@ http://www.oracle.com/technetwork/java/javase/downloads/index.html<br>
 
 Finally you need Apache Ant to actually compile the source from command line:<br>
 http://ant.apache.org/bindownload.cgi
+(Make note of ant installation directory)
 
 ==Example of downloading and building in c:\kmttg directory in Windows==
 Start a windows command window (cmd)<br>
 {{{mkdir c:\kmttg}}}<br>
 {{{cd c:\kmttg}}}<br>
 {{{svn checkout http://kmttg.googlecode.com/svn/trunk/ .}}}<br>
+{{{set ANT_HOME=C:\ant}}}<br>
+(change above ANT_HOME setting to match what you noted was the ant installation directory).<br>
 {{{set JAVA_HOME=C:\Program Files (x86)\Java\jdk1.5.0_16}}}<br>
 (change above JAVA_HOME setting to match what you noted was the installation directory for the JDK).<br>
 {{{ant}}}
