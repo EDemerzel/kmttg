@@ -6,6 +6,8 @@
 *CHANGES*
    * For SHOW column sort inside a folder in Folder view mode sort shows purely alphabetically instead of titleOnly + chronological sort which is default mode of sort for that column.
 
+   * *Available keywords* combo box in configuration behaved such that you could not insert current selection in File Naming field. Now defaults to no selection and resets to no selection after you make a choice so you can always choose any item.
+
 *FIXES*
 
    * Ensure that all running processes/threads are killed properly when exiting GUI mode.
@@ -13,8 +15,6 @@
    * Trap all exceptions for NPL XML listings parsing in case there is incomplete/corrupt listings being parsed.
 
    * For jobs without stdout/stderr double-click in job table would get empty window and a Null Pointer Exception message. Nothing happens now if double-clicking on those jobs.
-
-   * *Available keywords* combo box in configuration behaved such that you could not insert current selection in File Naming field. Now defaults to no selection and resets to no selection after you make a choice so you can always choose any item.
 
 ==v0p7q (10/20/2010)==
 
