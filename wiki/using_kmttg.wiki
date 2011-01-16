@@ -108,6 +108,7 @@ NOTE: Accuracy varies greatly depending on the show. Comskip is most useful to u
 ==STARTING FROM FILES ON YOUR COMPUTER==
   * The FILES entry is a special TIVO cyclic entry which lets you use kmttg starting from .TiVo/.mpg/.mpeg files already downloaded/installed on your computer instead of downloading from your Tivos. If you select this option then 2 buttons will be added to the GUI:
   * *Add...* will bring up a file browser you can use to locate .TiVo/.mpg/.mpeg files on your computer you wish to process further with kmttg. Once you select files to add they will be added to the kmttg FILES list.
+  * NOTE: On Mac platforms you can browse to */Volumes* folder to get to other disk volumes.
   * *Remove...* button can be used to remove files you have selected to process in the kmttg FILES list.
   NOTE: This doesn’t remove the files from your computer, simply removes them from the kmttg FILES list.
   * Rest of the flow is very similar to the section above describing *DOWNLOADING FROM TIVOS*.
