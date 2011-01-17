@@ -39,6 +39,7 @@
   * A setting of 1 means limit to 1 fetch (128 most recent shows).
   * A setting of 2 means limit to 2 fetches (256 most recent shows).
   etc.
+
   NOTE: The *Disk Usage* totals will obviously not be complete if you set this > 0
 
 ==wan http port & wan https port==
