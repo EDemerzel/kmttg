@@ -254,6 +254,13 @@ The advanced keyword is highlighted in bold and signifies only include `“_Ep#x
 
   NOTE: Since TiVo does not report accurate file size to be downloaded this number is only an estimate and will never actually reach 0.
 
+==Combine download and tivodecode decrypt==
+  * If enabled then download & tivodecode steps are combined into 1 if you have *decrypt* task selected and you are performing a download (i.e. TiVo file creation is bypassed).
+  NOTE: This only applies if you have not configured VideoRedo for decrypt instead of tivodecode.
+
+==Allow only 1 download at a time==
+  * If enabled then kmttg will only download 1 program at a time no matter how many TiVos you have and how many download tasks are queued up.
+
 ==<u>Visual tab</u>==
 
 ==GUI Font Size==
