@@ -4,7 +4,7 @@
 ==v0p7s (01/17/2011)==
 
 *CHANGES*
-   * If *.mpg Cut Dir* is defined as a different directory than *.mpg Output Dir* then the *_cut* suffix is no longer used for the output mpeg file name for the *Ad Cut* task.
+   * If *.mpg Cut Dir* is defined as a different directory than *.mpg Output Dir* then the *{{{_cut}}}* suffix is no longer used for the output mpeg file name for the *Ad Cut* task.
 
 *ENHANCEMENTS*
    * Added configuration option under *Program Options* called *Combine download and tivodecode decrypt*. If enabled then download & tivodecode steps are combined into 1 if you have *decrypt* task selected and you are performing a download (i.e. TiVo file creation is bypassed).
