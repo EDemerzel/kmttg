@@ -1,6 +1,26 @@
 #labels Featured
 =RELEASE NOTES=
 
+==v0p7s (01/17/2011)==
+
+*CHANGES*
+   * If *.mpg Cut Dir* is defined as a different directory than *.mpg Output Dir* then the *_cut* suffix is no longer used for the output mpeg file name for the *Ad Cut* task.
+
+*ENHANCEMENTS*
+   * Added configuration option under *Program Options* called *Combine download and tivodecode decrypt*. If enabled then download & tivodecode steps are combined into 1 if you have *decrypt* task selected and you are performing a download (i.e. TiVo file creation is bypassed).
+   NOTE: This only applies if you have not configured VideoRedo for decrypt instead of tivodecode.
+   
+   * Added configuration option under *Tivos* tab called *limit # of npl fetches*. This is useful if your TiVo has a lot recorded shows and you don't care about older shows and want to speed up NPL retrieval by limiting # of shows retrieved.
+   With default setting of 0 all shows are retrieved as normal.
+   A setting of 1 means limit to 1 fetch (128 most recent shows).
+   A setting of 2 means limit to 2 fetches (256 most recent shows).
+   etc.
+   NOTE: The *Disk Usage* totals will obviously not be complete if you set this > 0
+   
+   * Added configuration option under *Program Options* called *Allow only 1 download at a time*. If enabled then kmttg will only download 1 program at a time no matter how many TiVos you have and how many download tasks are queued up.
+   
+   * Added new Auto Transfers individual (non-global) *channel filter*. Here you can specify a channel name or a channel number that you wish to restrict an individual auto transfer setup to. Thus for example a type title setup with ".*" keyword and a specified channel will match all recordings from specified channel.
+
 ==v0p7r (12/29/2010)==
 
 *CHANGES*
