@@ -53,6 +53,9 @@ By default with *all* setting kmttg will match your auto transfer entries agains
 ===Enabling desired options to perform following a download===
 Enable which tasks you want to perform following a download for each entry you define. The same options as are available in GUI mode are available here, just make sure kmttg is properly configured as described above. Note that you can define different tasks for each entry and if you are enabling encode task you can use different encoding profiles for each entry.
 
+===channel filter===
+Here you can specify a channel name or a channel number that you wish to restrict an individual auto transfer setup to. Thus for example a type title setup with {{{.*}}} keyword and a specified channel will match all recordings from specified channel.
+
 ===comskip.ini override===
 This only applies if you are using *comskip* in the *Ad Detect* step. This allows you to optionally specify a custom *comskip.ini* file to use for this auto transfer entry. Sometimes comskip needs to be tweaked to work well with certain shows. So this gives you ability to override the main/default kmttg comskip.ini for individual shows corresponding to auto transfer entries.
 
