@@ -33,6 +33,14 @@
 ==Detect with TiVo Beacon instead of Bonjour==
   * If enabled this uses the older Tivo Beacon mechanism for detecting networked TiVos rather than the newer Bonjour method. Useful if Bonjour is not working on your network for some reason.
 
+==limit # of npl fetches==
+  * This is useful if your TiVo has a lot recorded shows and you don't care about older shows and want to speed up NPL retrieval by limiting # of shows retrieved.
+  * With default setting of 0 all shows are retrieved as normal.
+  * A setting of 1 means limit to 1 fetch (128 most recent shows).
+  * A setting of 2 means limit to 2 fetches (256 most recent shows).
+  etc.
+  NOTE: The *Disk Usage* totals will obviously not be complete if you set this > 0
+
 ==wan http port & wan https port==
   * Allow you to specify the WAN (public) side ports to use when kmttg uses http & https protocols to communicate with TiVos. By configuring your router to port forward to port 80 (http) and port 443 (https) on your home network from WAN side and using these settings you can run kmttg from any internet location and still access Now Playing Lists on your home TiVos and even download shows if you wish (and your ISP upstream bandwidth is high enough to make it feasible).
 
