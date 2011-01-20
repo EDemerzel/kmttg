@@ -14,7 +14,7 @@
    With default setting of 0 all shows are retrieved as normal.
    A setting of 1 means limit to 1 fetch (128 most recent shows).
    A setting of 2 means limit to 2 fetches (256 most recent shows).
-   etc.
+   etc.<br>
    NOTE: The *Disk Usage* totals will obviously not be complete if you set this > 0
    
    * Added configuration option under *Program Options* called *Allow only 1 download at a time*. If enabled then kmttg will only download 1 program at a time no matter how many TiVos you have and how many download tasks are queued up.
