@@ -1,6 +1,11 @@
 #labels Featured
 =RELEASE NOTES=
 
+==v0p7t (02/03/2011)==
+
+*FIXES*
+   * Fix to problem introduced in last release when *{{{.mpg Output Dir}}}* configured differently than *{{{.mpg Cut Dir}}}* kmttg was erroneously appending both paths together when creating the cut file name.
+
 ==v0p7s (01/17/2011)==
 
 *CHANGES*
