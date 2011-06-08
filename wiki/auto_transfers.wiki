@@ -7,6 +7,8 @@ NOTE: If you have {{{VideoRedo}}} configured for use in kmttg consult the [http:
 
 *NOTE: By default the kmttg Windows service is setup as “automatic” startup mode. This means that should you restart your computer the kmttg service will automatically be started on bootup. If you would like to change this behavior see the relevant section below for more details on how to do that.*
 
+*NOTE: BEFORE SETTING UP KMTTG WINDOWS SERVICE YOU MUST FIRST CONFIGURE AUTO TRANSFERS FROM THE GUI. YOU NEED TO HAVE AT LEAST 1 AUTO TRANSFER ENTRY SETUP OR THE SERVICE WILL JUST EXIT WITH AN ERROR (look at auto.log.0 file).*
+
 *NOTE: For Windows users please read section below entitled "CONFIGURING ACCOUNT TO RUN KMTTG WINDOWS SERVICE".*
 
 ===<u>CONFIGURING AUTO TRANSFERS</u>===
