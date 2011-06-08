@@ -126,6 +126,8 @@ In order to prevent transfer of same show over and over in auto mode kmttg creat
 
 In Windows the auto transfer program can be setup to run as a Windows Service called kmttg.
 
+*NOTE: BEFORE SETTING UP KMTTG WINDOWS SERVICE YOU MUST FIRST CONFIGURE AUTO TRANSFERS FROM THE GUI. YOU NEED TO HAVE AT LEAST 1 AUTO TRANSFER ENTRY SETUP OR THE SERVICE WILL JUST EXIT WITH AN ERROR (look at auto.log.0 file).*
+
 You can install, start, stop and remove kmttg service directly from the kmttg GUI:
   * Use *Auto Transfers->Service->Status* to view the status of kmttg service
   * Use *Auto Transfers->Service->Install* to install the kmttg service so as to run auto transfers as a service. NOTE: This only installs the service, you then need to start it using entry below.
