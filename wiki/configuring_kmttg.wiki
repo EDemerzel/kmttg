@@ -33,6 +33,10 @@
 ==Detect with TiVo Beacon instead of Bonjour==
   * If enabled this uses the older Tivo Beacon mechanism for detecting networked TiVos rather than the newer Bonjour method. Useful if Bonjour is not working on your network for some reason.
 
+==Enable iPad style communications with this TiVo==
+  * When enabled kmttg will attempt to communicate with this TiVo using the reverse engineered iPad protocol. This unlocks a lot of extra capabilities, many of which are available using the kmttg Remote Control (File->Remote Control...). Aside from the Remote Control this also enables ability to play and delete shows from kmttg Now Playing List table. Select a show in the table and then you can use the keyboard *space* and *delete* keys to play and delete shows respectively.
+  * *NOTE: This only works with TiVo Premiere units.*
+
 ==limit # of npl fetches==
   * This is useful if your TiVo has a lot recorded shows and you don't care about older shows and want to speed up NPL retrieval by limiting # of shows retrieved.
   * With default setting of 0 all shows are retrieved as normal.
