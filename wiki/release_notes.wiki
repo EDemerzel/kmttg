@@ -6,25 +6,20 @@
 *ENHANCEMENTS*
 
    * Many new enhancements for Premiere owners thanks to some reverse engineering of the iPad protocol by TCF member 'arantius' which allows communicating with TiVo Premiere units using the iPad protocol without needing an iPad, which opens the door to a lot of information which can now be obtained from Premiere units. For this release these are the new features available related to this capability:
-
-       * New "Remote Control" GUI with several tabs to collect information from and interact with Premiere TiVos:
-         * "ToDo" tab which allows you to display To Do List for selected Premiere. Once you have To Do List displayed you can select upcoming recordings in the table and use the keyboard *delete* to cancel them. 
-         
-         * *Season Passes* tab which allows you to display Season Pass list for selected Premiere. *You can also backup Season Passes from a TiVo to a file on your computer and load them back into kmttg*. You can also copy displayed Season Passes to any TiVo Premiere on your network. i.e. You can now backup your Season Pass list and copy Season Passes from one TiVo to another. Finally you can also select SP items in the table and use the keyboard *delete* to unsubscribe them.
-         
-         * *Will Not Record* tab which displays list of all upcoming recordings that TiVo will not record (like View Recording History on your TiVo) and categorizes the shows into different folder names that describe why they won't be recorded. i.e. This is an easier way to find important recordings that won't record without having to wade through many reasons you don't care about (e.g. repeats).
-         
-         * *Advanced Controls* tab which has buttons that allow you to jump precisely user-specified N minutes ahead or backwards or exactly to minute N in currently playing show. i.e. Advanced navigation control. There is also an "HME Jump" button which allows you to choose a TiVo HME application in a list and jump directly to it. (NOTE: This does not include local HME applications).
-         
+      * New "Remote Control" GUI with several tabs to collect information from and interact with Premiere TiVos:
+         * "ToDo" tab which allows you to display To Do List for selected Premiere. Once you have To Do List displayed you can select upcoming recordings in the table and use the keyboard *delete* to cancel them.          
+         * *Season Passes* tab which allows you to display Season Pass list for selected Premiere. *You can also backup Season Passes from a TiVo to a file on your computer and load them back into kmttg*. You can also copy displayed Season Passes to any TiVo Premiere on your network. i.e. You can now backup your Season Pass list and copy Season Passes from one TiVo to another. Finally you can also select SP items in the table and use the keyboard *delete* to unsubscribe them.         
+         * *Will Not Record* tab which displays list of all upcoming recordings that TiVo will not record (like View Recording History on your TiVo) and categorizes the shows into different folder names that describe why they won't be recorded. i.e. This is an easier way to find important recordings that won't record without having to wade through many reasons you don't care about (e.g. repeats).         
+         * *Advanced Controls* tab which has buttons that allow you to jump precisely user-specified N minutes ahead or backwards or exactly to minute N in currently playing show. i.e. Advanced navigation control. There is also an "HME Jump" button which allows you to choose a TiVo HME application in a list and jump directly to it. (NOTE: This does not include local HME applications).         
          * *System Information* tab which allows you to list some system information obtained from selected TiVo: software version, total disk size, used disk space, parental controls state, current background and foreground tuner channel information.
          
-      - Ability to *play* and *delete* shows displayed in Now Playing List for Premiere TiVos using "space" and "delete" keyboard buttons respectively.
+      * Ability to *play* and *delete* shows displayed in Now Playing List for Premiere TiVos using "space" and "delete" keyboard buttons respectively.
       
-      - Ability to setup "iPad delete" tasks for GUI and auto transfers which gives you option to automatically delete show on your Premieres once successfully downloaded and decrypted.
+      * Ability to setup "iPad delete" tasks for GUI and auto transfers which gives you option to automatically delete show on your Premieres once successfully downloaded and decrypted.
       
-      - NOTE: Under kmttg configuration "Tivos" tab there is a new item called *Enable iPad style communications with this TiVo* which when enabled turns on the capabilities listed above - only works for TiVo Premieres or newer, not older units.
+      * NOTE: Under kmttg configuration "Tivos" tab there is a new item called *Enable iPad style communications with this TiVo* which when enabled turns on the capabilities listed above - only works for TiVo Premieres or newer, not older units.
       
-      - NOTE: Also under kmttg configuration "Program Options" tab there is a new item called "Enable iPad style delete task" which when enabled along with the above mentioned option makes a new "iPad delete" task available for use.
+      * NOTE: Also under kmttg configuration "Program Options" tab there is a new item called "Enable iPad style delete task" which when enabled along with the above mentioned option makes a new "iPad delete" task available for use.
    
    * Added capability of using "delete" keyboard button to remove shows on TiVos for TiVo Web Plus enabled TiVos (hacked TiVos).
    
