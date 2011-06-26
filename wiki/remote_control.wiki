@@ -5,14 +5,14 @@
 
 Thanks to some reverse engineering of the iPad protocol by TCF member 'arantius' there is now capability of communicating with TiVo Premiere units using the iPad protocol without needing an iPad, which opens the door to a lot of information which can now be obtained from Premiere units. kmttg Remote Control takes advantage of these capabilities to offer some new features not previously possible to implement. Different features are separated into separate Tabs on the Remote Control. Here is a summary of each:
 
-==ToDo tab==
+==<u>ToDo</u> tab==
   * Allows you to display To Do List for selected Premiere. Select desired TiVo and click on the *Refresh* button to start a kmttg job to collect information from the TiVo. Once the job completes the table will be populated with To Do list entries obtained from the TiVo.
 
   * Once the table is populated you can click on individual items to see additional information about each (information will be displayed in the kmttg main messages window)
 
   * You can also select upcoming recordings in the table and use the keyboard *delete* to cancel them. 
 
-==Season Passes tab==
+==<u>Season Passes</u> tab==
   * Allows you to display Season Pass list for selected Premiere. Select desired TiVo and click on the *Refresh* button to start a kmttg job to collect information from the TiVo. Once the job completes the table will be populated with Season Pass list entries obtained from the TiVo.
 
   * Once the table is populated you can *Save...* button to save your season passes for this TiVo to a file on your computer. i.e. *Season Pass backups!*
