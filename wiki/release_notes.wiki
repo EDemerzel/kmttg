@@ -6,7 +6,8 @@
 *ENHANCEMENTS*
 
    * Many new enhancements for Premiere owners thanks to some reverse engineering of the iPad protocol by TCF member 'arantius' which allows communicating with TiVo Premiere units using the iPad protocol without needing an iPad, which opens the door to a lot of information which can now be obtained from Premiere units. For this release these are the new features available related to this capability:
-      - New "Remote Control" GUI with several tabs to collect information from and interact with Premiere TiVos:
+
+       * New "Remote Control" GUI with several tabs to collect information from and interact with Premiere TiVos:
          * "ToDo" tab which allows you to display To Do List for selected Premiere. Once you have To Do List displayed you can select upcoming recordings in the table and use the keyboard *delete* to cancel them. 
          
          * *Season Passes* tab which allows you to display Season Pass list for selected Premiere. *You can also backup Season Passes from a TiVo to a file on your computer and load them back into kmttg*. You can also copy displayed Season Passes to any TiVo Premiere on your network. i.e. You can now backup your Season Pass list and copy Season Passes from one TiVo to another. Finally you can also select SP items in the table and use the keyboard *delete* to unsubscribe them.
