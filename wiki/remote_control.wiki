@@ -44,4 +44,5 @@ Thanks to some reverse engineering of the iPad protocol by TCF member 'arantius'
   * *HME Jump* - Allows you to choose a TiVo HME application in given list and jump directly to it. (NOTE: This does not include local HME applications).
          
 ==System Information tab==
-  * Allows you to list some system information obtained from selected TiVo: software version, total disk size, used disk space, parental controls state, current background and foreground tuner channel information.
+  * Allows you to list some system information obtained from selected TiVo:<br>
+software version, total disk size, used disk space, parental controls state, current background and foreground tuner channel information.
