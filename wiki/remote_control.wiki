@@ -2,3 +2,31 @@
 
 *NOTE: This documentation is updated to match latest kmttg release only.*
 <br><br>
+
+Thanks to some reverse engineering of the iPad protocol by TCF member 'arantius' there is now capability of communicating with TiVo Premiere units using the iPad protocol without needing an iPad, which opens the door to a lot of information which can now be obtained from Premiere units. kmttg Remote Control takes advantage of these capabilities to offer some new features not previously possible to implement. Different features are separated into separate Tabs on the Remote Control. Here is a summary of each:
+
+==ToDo tab==
+  * Allows you to display To Do List for selected Premiere. Select desired TiVo and click on the *Refresh* button to start a kmttg job to collect information from the TiVo. Once the job completes the table will be populated with To Do list entries obtained from the TiVo.
+
+  * Once the table is populated you can click on individual items to see additional information about each (information will be displayed in the kmttg main messages window)
+
+  * You can also select upcoming recordings in the table and use the keyboard *delete* to cancel them. 
+
+==Season Passes==
+  * Allows you to display Season Pass list for selected Premiere. Select desired TiVo and click on the *Refresh* button to start a kmttg job to collect information from the TiVo. Once the job completes the table will be populated with Season Pass list entries obtained from the TiVo.
+
+  * Once the table is populated you can *Save...* button to save your season passes for this TiVo to a file on your computer. i.e. *Season Pass backups!*
+
+  * Use the *Load...* button to load a previously saved Season Passes file. NOTE: For items loaded from file kmttg will display a *Loaded:* prefix in the SHOW column in order to clarify that these were loaded from file.
+
+  * The *Copy to TiVo* button allows you to copy individual Season Passes to selected TiVo. Select 1 or more entries in the table and the desired destination TiVo and then click this button. NOTE: As part of this operation kmttg will obtain current list of Season Passes from destination TiVo to check against in order to guard against potentially double-scheduling same Season Pass.
+
+  * Finally you can also select Season Pass items in the table and use the keyboard *delete* key to unsubscribe them from selected TiVo.
+
+     
+==Will Not Record tab==
+  * Displays list of all upcoming recordings that TiVo will not record (like View Recording History on your TiVo) and categorizes the shows into different folder names that describe why they won't be recorded. i.e. This is an easier way to find important recordings that won't record without having to wade through many reasons you don't care about (e.g. repeats).
+         
+         * *Advanced Controls* tab which has buttons that allow you to jump precisely user-specified N minutes ahead or backwards or exactly to minute N in currently playing show. i.e. Advanced navigation control. There is also an "HME Jump" button which allows you to choose a TiVo HME application in a list and jump directly to it. (NOTE: This does not include local HME applications).
+         
+         * *System Information* tab which allows you to list some system information obtained from selected TiVo: software version, total disk size, used disk space, parental controls state, current background and foreground tuner channel information.
