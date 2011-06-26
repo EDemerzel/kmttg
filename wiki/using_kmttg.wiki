@@ -7,6 +7,9 @@ NOTE: The first time you start kmttg you may be prompted to allow 3rd party tool
 
 Hopefully, the kmttg GUI is pretty intuitive to use. For more information on the Auto Transfers mode see the section further below. A little guidance is provided for basic usage of the GUI mode:
 
+==Remote Control==
+Starting with version 0.8a kmttg has a new menu entry under *File->Remote Control...* which uses the reverse engineered iPad protocol to communicate with Premiere TiVos (won't work for older TiVos) to unlock several additional ways of communicating with the Premiere. You must first enable at least 1 TiVo Premiere in kmttg configuration for this capability. See the [http://code.google.com/p/kmttg/wiki/remote_control configuring_kmttg] wiki documentation for details on using the remote control GUI.
+
 ==Disk Usage button==
 Starting with version 0.7c kmttg has a *Disk Usage* button for each TiVo tab. Clicking this button brings up a window showing a Pie Chart with a breakdown of how disk space is being used on this TiVo. Also shown at the bottom of the window is a table with an entry for each channel that you have recordings from and a summary of total space consumed per channel as well as the bit rate in Megabits per second (Mbps) and Gigabytes per hour (GB/hour). This is a measure of quality - the higher the bit rate the better the quality.
 
