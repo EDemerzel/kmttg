@@ -1,3 +1,4 @@
+#labels Featured
 =KMTTG REMOTE CONTROL (PREMIERE TIVOS ONLY)=
 
 *NOTE: This documentation is updated to match latest kmttg release only. This capability became available starting with kmttg v0p8.*
