@@ -12,7 +12,7 @@ Thanks to some reverse engineering of the iPad protocol by TCF member 'arantius'
 
   * You can also select upcoming recordings in the table and use the keyboard *delete* to cancel them. 
 
-==Season Passes==
+==Season Passes tab==
   * Allows you to display Season Pass list for selected Premiere. Select desired TiVo and click on the *Refresh* button to start a kmttg job to collect information from the TiVo. Once the job completes the table will be populated with Season Pass list entries obtained from the TiVo.
 
   * Once the table is populated you can *Save...* button to save your season passes for this TiVo to a file on your computer. i.e. *Season Pass backups!*
@@ -22,11 +22,26 @@ Thanks to some reverse engineering of the iPad protocol by TCF member 'arantius'
   * The *Copy to TiVo* button allows you to copy individual Season Passes to selected TiVo. Select 1 or more entries in the table and the desired destination TiVo and then click this button. NOTE: As part of this operation kmttg will obtain current list of Season Passes from destination TiVo to check against in order to guard against potentially double-scheduling same Season Pass.
 
   * Finally you can also select Season Pass items in the table and use the keyboard *delete* key to unsubscribe them from selected TiVo.
-
      
 ==Will Not Record tab==
   * Displays list of all upcoming recordings that TiVo will not record (like View Recording History on your TiVo) and categorizes the shows into different folder names that describe why they won't be recorded. i.e. This is an easier way to find important recordings that won't record without having to wade through many reasons you don't care about (e.g. repeats).
+
+  * Select desired TiVo and click on the *Refresh* button to start a kmttg job to collect information from the TiVo. Once the job completes the table will be populated with Will Not Record list of entries obtained from the TiVo. NOTE: This task can take over a minute to complete, so be patient.
+
+  * In *Top Level View* there all entries are categorized into the different reasons TiVo returned why each recording would not be recorded. kmttg simply makes a folder out of each of the reasons and collects entries into their respective folders. You can then click on a folder in the table to descend into it and view all respective entries. This makes it much easier to only look at folders that you care about to find entries that won't record that you may want to take action on. Click on the *Back* button to return to Top Level View.
+
+  * Inside a folder view you can click on individual items to see additional information about each (information will be displayed in the kmttg main messages window).
+
+==Advanced Controls tab==
+  * Contains some advanced navigation controls not ordinarily found on normal network remotes. (While most remote control functions are available with iPad protocol kmttg only attempts to implement ones not ordinarily available on other remotes).
+
+  * *Jump to minute* - Supply a position in minutes from the start of the show that you wish to jump to for currently playing show. For example, if you enter 22, then playback will jump to that exact minute mark.
+
+  * *Skip minutes ahead* - Supply number of minutes that you want to skip ahead to for currently playing show.
+
+  * *Skip minutes back* - Supply number of minutes that you want to skip back to for currently playing show.
+
+  * *HME Jump* - Allows you to choose a TiVo HME application in given list and jump directly to it. (NOTE: This does not include local HME applications).
          
-         * *Advanced Controls* tab which has buttons that allow you to jump precisely user-specified N minutes ahead or backwards or exactly to minute N in currently playing show. i.e. Advanced navigation control. There is also an "HME Jump" button which allows you to choose a TiVo HME application in a list and jump directly to it. (NOTE: This does not include local HME applications).
-         
-         * *System Information* tab which allows you to list some system information obtained from selected TiVo: software version, total disk size, used disk space, parental controls state, current background and foreground tuner channel information.
+==System Information tab==
+  * Allows you to list some system information obtained from selected TiVo: software version, total disk size, used disk space, parental controls state, current background and foreground tuner channel information.
