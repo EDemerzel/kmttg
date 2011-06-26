@@ -51,6 +51,11 @@
 
    NOTE: In order to save these settings for a TiVo make sure the associated TiVo is selected in the *Tivos* list and then OK the configuration window. Repeat for each TiVo in the list you wish to access over internet.
 
+==wan ipad port==
+  * Allows you to specify a WAN (public) side port to use when kmttg uses iPad protocol to communicate with TiVo Premieres. By configuring your router to port forward to port 1413 on your home network from WAN side and using this setting you can run kmttg from any internet location and use the iPad protocol with your Premiere units.
+
+   NOTE: In order to save these settings for a TiVo make sure the associated TiVo is selected in the *Tivos* list and then OK the configuration window. Repeat for each TiVo in the list you wish to access over internet.
+
 ==<u>File Settings tab</u>==
 
 *NOTE: For Windows users you can use network paths for output folders, but just make sure to use UNC style paths (\\server\share) instead of volumes (h:\share) since Windows services doesn't know about network volumes.*
@@ -250,6 +255,11 @@ The advanced keyword is highlighted in bold and signifies only include `“_Ep#x
 ==Enable TivoWebPlus Delete task==
   * If you have TivoWebPlus configured for your TiVo(s) then if you enable this option an optional *TWP Delete* task is made available in the kmttg GUI or auto transfers task set.
   * When *TWP Delete* task is enabled a TivoWebPlus http call to delete a show on your source TiVo will be issued following a successful decrypt of a downloaded TiVo file.
+  * NOTE: Once you set and save this option you must restart kmttg to see the change. 
+
+==Enable iPad style delete task==
+  * If you have a Premiere and *Enable iPad style communications with this TiVo* option enabled for a Premiere TiVo in kmttg then if you enable this option an optional *iPad Delete* task is made available in the kmttg GUI and auto transfers task set.
+  * When *iPad Delete* task is enabled the iPad communications protocol is used to delete a show on your source TiVo (Premieres only) following a successful decrypt of a downloaded TiVo file.
   * NOTE: Once you set and save this option you must restart kmttg to see the change. 
 
 ==Download TiVo files in Transport Stream format==
