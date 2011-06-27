@@ -2,7 +2,7 @@
 =KMTTG REMOTE CONTROL (PREMIERE TIVOS ONLY)=
 
 *NOTE: This documentation is updated to match latest kmttg release only. This capability became available starting with kmttg v0p8.*
-<br><br>
+<br>
 
 *NOTE: To use this capability make sure you have Network Remote Control enabled on your Premiere(s):<br>
 Settings--Remote, CableCARD & Devices--Network Remote Control--Allow network-based remote controls
