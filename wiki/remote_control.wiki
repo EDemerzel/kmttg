@@ -4,6 +4,9 @@
 *NOTE: This documentation is updated to match latest kmttg release only. This capability became available starting with kmttg v0p8.*
 <br><br>
 
+*NOTE: To use this capability make sure you have Network Remote Control enabled on your Premiere(s):<br>
+Settings--Remote, CableCARD & Devices--Network Remote Control--Allow network-based remote controls
+
 Thanks to some reverse engineering of the iPad protocol by TCF member 'arantius' there is now capability of communicating with TiVo Premiere units using the iPad protocol without needing an iPad, which opens the door to a lot of information which can now be obtained from Premiere units. kmttg Remote Control takes advantage of these capabilities to offer some new features not previously possible to implement. Different features are separated into separate Tabs on the Remote Control. Here is a summary of each:
 
 ==<u>ToDo tab</u>==
