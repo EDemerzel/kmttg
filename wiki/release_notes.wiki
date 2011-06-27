@@ -1,6 +1,13 @@
 #labels Featured
 =RELEASE NOTES=
 
+==v0p8b (06/27/2011)==
+
+*FIXES*
+   * Fix to playback of a show (space bar) from Now Playing List for Premiere units.
+
+   * Set "isEpisode" value to "isEpisodic" value if available in pyTivo metadata file.
+
 ==v0p8a (06/26/2011)==
 
 *ENHANCEMENTS*
