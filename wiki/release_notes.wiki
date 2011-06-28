@@ -1,6 +1,13 @@
 #labels Featured
 =RELEASE NOTES=
 
+==v0p8c (06/28/2011)==
+
+*FIXES*
+   * Remote Control: Changed method of retrieving data using iPad protocol so that it will work for Premieres with a lot of data. Previously for example the "Will Not Record" list would not populate because of truncated data retrieval for TiVos with a lot of season passes.
+
+   * Fix to Now Playing List table when deleting all items in a folder using delete key - previously that would lead to displaying "Back" button at top level view instead of "Refresh" button.
+
 ==v0p8b (06/27/2011)==
 
 *FIXES*
