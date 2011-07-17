@@ -146,7 +146,7 @@ The advanced keyword is highlighted in bold and signifies only include `“_Ep#x
 ==.mpg Cut Dir==
   * REQUIRED if you plan to run the comcut step
   * This defines where the comcut commercial stripped .mpg file will be saved
-  * NOTE: If this is defined as a different directory than *.mpg Output Dir* then the *_cut* suffix is not used for the output mpeg file name for the *Ad Cut* task.
+  * NOTE: If this is defined as a different directory than *.mpg Output Dir* then the *{{{_cut}}}* suffix is not used for the output mpeg file name for the *Ad Cut* task.
   * NOTE: Make sure you have plenty of space here
   * NOTE: This can be same as .TiVo Output Dir
 
