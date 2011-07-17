@@ -36,6 +36,24 @@ Thanks to some reverse engineering of the iPad protocol by TCF member 'arantius'
 
   * Inside a folder view you can click on individual items to see additional information about each (information will be displayed in the kmttg main messages window).
 
+  * *Record* button allows one to select individual shows shown in table to be scheduled to record on a TiVo Premiere. The scheduling attempt uses low priority such that will only record if no conflicts with other recordings exist. i.e. This provides a convenient way of scheduling recordings that were not to record on alternate TiVo Premieres if available.
+  NOTE: In order to allow recording of shows on a different TiVo the table does not refresh when switching TiVo selections in this tab.
+
+==<u>Season Premieres tab</u>==
+  * Search for and display upcoming season & series premieres on selected channels of interest. NOTE: This utility relies heavily on episode information being available in TiVo listings. However not all shows have episode information available from TiVo listings, so those shows will not be identified by this utility. For shows without episode information kmttg will also look for shows with "Pilot" or "Series Premiere" as subtitle to attempt to catch series premieres without episode information.
+
+  * *Update Channels* button should be used first to obtain a list of received channels for selected TiVo. The obtained list of channels will then be displayed in a list to the right of the table. You should then select individual channels in the table that you want to search for Season & Series premieres for. Only selected entries in this list will be used by *Search*, so make sure you select all channels you care about. To add a single channel to selected set hold down the *Ctrl* key and left click on an entry. To add a contiguous range of channels to selected set hold down *Shift* key and left click down to last entry in the list you want to include in selected set.
+  NOTE: The channel list and selections are saved to *tivoName.channels* files in the same folder as *kmttg.jar* file and can be edited manually to trim down to just the channels you care about. You can use the *Update Channels* button again to reset and save full list of channels.
+
+  * *Search* button will initiate a search for Season & Series premieres on all channels selected in the channels list. The search will look at every show scheduled in the next 12 days for every channel selected in the channel list, so it can take several minutes to complete. You should limit which channels are selected in the channel list in order to minimize the amount of time the search takes.
+  NOTE: The search is very CPU intensive and may make the TiVo being used for the search sluggish for the duration of the search, so it's recommended you only do this search when TiVo is not busy recording scheduled shows.
+
+  * *Record* button allows one to schedule Season Passes for selected entries in the table on a TiVo Premiere.
+  NOTE: kmttg will attempt to avoid duplicated season passes on the destination TiVo by checking against the current set of season passes already on the TiVo.
+  NOTE: By default the following settings are used to record Season Passes, so you may want to adjust the SP settings on the TiVo after scheduling:
+  lowest priority, recordingQuality=best, maxRecordings=25, keepBehavior=fifo, first run only
+
+
 ==<u>Advanced Controls tab</u>==
   * Contains some advanced navigation controls not ordinarily found on normal network remotes. (While most remote control functions are available with iPad protocol kmttg only attempts to implement ones not ordinarily available on other remotes).
 
