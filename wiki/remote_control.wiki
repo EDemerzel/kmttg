@@ -50,7 +50,9 @@ Thanks to some reverse engineering of the iPad protocol by TCF member 'arantius'
 
   * *Record* button allows one to schedule Season Passes for selected entries in the table on a TiVo Premiere.
   NOTE: kmttg will attempt to avoid duplicated season passes on the destination TiVo by checking against the current set of season passes already on the TiVo.
+
   NOTE: By default the following settings are used to record Season Passes, so you may want to adjust the SP settings on the TiVo after scheduling:
+
   lowest priority, recordingQuality=best, maxRecordings=25, keepBehavior=fifo, first run only
 
 
