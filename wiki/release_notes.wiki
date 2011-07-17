@@ -6,19 +6,13 @@
 *ENHANCEMENTS*
    * iPad protocol Remote GUI enhancements:
       * Added new *Season Premieres* tab designed to search for and display upcoming season & series premieres on selected channels of interest. There is also a *Record* button available to schedule Season Passes for selected entries in the table.
-      NOTE: Not all shows have episode information available from TiVo listings, so those shows will not be identified by this utility.
-
-      NOTE: The channel list and selections are saved to tivoName.channels files and can be edited to trim down to just the channels you care about.
-      
+      NOTE: Not all shows have episode information available from TiVo listings, so those shows will not be identified by this utility.<br>
+      NOTE: The channel list and selections are saved to tivoName.channels files and can be edited to trim down to just the channels you care about.      
       * Added *Record* button to *Will Not Record* tab. This allows one to select individual shows shown in table to record on a TiVo Premiere. The scheduling attempt uses low priority such that will only record if no conflicts with other recordings exist. i.e. This provides a convenient way of scheduling recordings that were not to record on alternate TiVo Premieres if available.      
-      NOTE: In order to allow recording of shows on a different TiVo the table does not refresh when switching TiVo selections in this tab as used to be the case.
-      
-      * Added disk space percentage used and total disk size in GB to *System Information* tab as part of displayed system information.
-      
-      * Added *Cancel* button to *ToDo* tab to compliment the *Delete* keyboard shortcut for cancelling shows.
-      
-      * Update table columns widths to resize to longest entry and add horizontal scrollbar when needed.
-   
+      NOTE: In order to allow recording of shows on a different TiVo the table does not refresh when switching TiVo selections in this tab as used to be the case.      
+      * Added disk space percentage used and total disk size in GB to *System Information* tab as part of displayed system information.      
+      * Added *Cancel* button to *ToDo* tab to compliment the *Delete* keyboard shortcut for cancelling shows.      
+      * Update table columns widths to resize to longest entry and add horizontal scrollbar when needed.   
       * Job monitor Remote jobs now show more specific job information in *OUTPUT* column of job table to make it obvious which Remote job is running.
 
    * By request, added *[tivoName]* as available keyword in configuration *File Naming* template.
