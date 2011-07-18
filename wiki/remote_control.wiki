@@ -42,6 +42,8 @@ Thanks to some reverse engineering of the iPad protocol by TCF member 'arantius'
 
 
 ==<u>Season Premieres tab</u>==
+  * NOTE: This utility is very CPU intensive and may affect video playback on the TiVo it's running on while in use and/or make it very sluggish, so it's best to use it only when target TiVo is not busy recording scheduled shows.
+
   * Search for and display upcoming season & series premieres on selected channels of interest. NOTE: This utility relies heavily on episode information being available in TiVo listings. However not all shows have episode information available from TiVo listings, so those shows will not be identified by this utility. For shows without episode information kmttg will also look for shows with "Pilot" or "Series Premiere" as subtitle to attempt to catch series premieres without episode information.
 
   * *Update Channels* button should be used first to obtain a list of received channels for selected TiVo. The obtained list of channels will then be displayed in a list to the right of the table. You should then select individual channels in the table that you want to search for Season & Series premieres for. Only selected entries in this list will be used by *Search*, so make sure you select all channels you care about. To add a single channel to selected set hold down the *Ctrl* key and left click on an entry. To add a contiguous range of channels to selected set hold down *Shift* key and left click down to last entry in the list you want to include in selected set.
