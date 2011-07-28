@@ -1,6 +1,26 @@
 #labels Featured
 =RELEASE NOTES=
 
+==v0p8e (07/27/2011)==
+
+*NOTE: This release includes a new "images_rc" folder as part of installation that must be installed for iPad remote to work properly. i.e. If updating from a previous installation be sure to have this folder installed in same folder as kmttg.jar.*
+
+*ENHANCEMENTS*
+   * iPad Remote enhancements:
+      * For *Season Passes* tab added ability to change the order of rows displayed in SP table along with a new *Re-order* button which allows you to change SP priority order of target TiVo. NOTE: Sorting by clicking on column headers is now disabled for this table in order to allow user-defined order changes.
+      
+      * Changed *Advanced Controls* tab name to *Remote Control* and added full set of TiVo remote buttons to the panel. Each button has a keyboard shortcut as well and tooltip for each button indicates the keyboard mapping. In addition to the buttons and their keyboard shortcuts there is keyboard support for A-Z, asterisk, delete, space, back space, comma, underscore and ampersand keys all of which are useful when using a screen with virtual keyboard on the TiVo. The original Advanced Controls set of buttons are still there as well along with new "combo" buttons for on screen clock (SPS9S), clear banner quickly (SPSPS), toggle Standby mode & Toggle Closed Captions. NOTE: Closed Captions toggle actually uses the "telnet" interface and assumes CC is off as initial state. Here is picture of the updated tab:
+http://kmttg.googlecode.com/files/ipad_rc.jpg
+      
+   * Added new configuration option under *Tivos* tab called *Start NPL jobs when starting kmttg GUI*. If enabled then NPL jobs are automatically started when kmttg GUI starts (as has been the case for past kmttg releases). If disabled then NPL jobs will not be started automatically, which means NPL tables will not be populated until you manually start NPL jobs by clicking on *Refresh* button for each TiVo of interest.
+   
+   * With *Start NPL jobs when starting kmttg GUI* option enabled, NPL jobs now start after GUI is created in GUI mode so that job monitor now shows the initial Now Playing jobs. Previously when first starting kmttg GUI the initial NPL tasks were not displayed.
+   
+*CHANGES*
+   
+*FIXES*
+   * Fixed GUI table row removal for cases when column-based sorting is in effect. Previously the wrong row would be removed from table when custom sorting was turned on.
+
 ==v0p8d (07/17/2011)==
 
 *ENHANCEMENTS*
