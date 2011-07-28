@@ -15,9 +15,7 @@ http://kmttg.googlecode.com/files/ipad_rc.jpg
    * Added new configuration option under *Tivos* tab called *Start NPL jobs when starting kmttg GUI*. If enabled then NPL jobs are automatically started when kmttg GUI starts (as has been the case for past kmttg releases). If disabled then NPL jobs will not be started automatically, which means NPL tables will not be populated until you manually start NPL jobs by clicking on *Refresh* button for each TiVo of interest.
    
    * With *Start NPL jobs when starting kmttg GUI* option enabled, NPL jobs now start after GUI is created in GUI mode so that job monitor now shows the initial Now Playing jobs. Previously when first starting kmttg GUI the initial NPL tasks were not displayed.
-   
-*CHANGES*
-   
+      
 *FIXES*
    * Fixed GUI table row removal for cases when column-based sorting is in effect. Previously the wrong row would be removed from table when custom sorting was turned on.
 
