@@ -27,6 +27,11 @@
   * Click on *ADD* button to add the entry to the Tivos list
   * If you want to remove entries, then select them in the Tivos list and click on *DEL* button.
 
+==Start NPL jobs when starting kmttg GUI==
+  * This option became available starting with version 0p8e. If enabled then NPL jobs are automatically started when kmttg GUI starts (as has been the case for past kmttg releases).
+
+  * If disabled then NPL jobs will not be started automatically, which means NPL tables will not be populated until you manually start NPL jobs by clicking on *Refresh* button for each TiVo of interest. This also applies to newly discovered TiVos - a new tab will be displayed with an empty table.
+
 ==Look for Tivos on network==
   * If this option is enabled then kmttg will check for Tivo MDNS (Bonjour) broadcasts to automatically detect Tivos on your network. kmttg will now also detect IP changes and adjust settings automatically for you when this option is enabled. You can optionally choose to disable this feature and add tivos manually to kmttg if you wish.
 
