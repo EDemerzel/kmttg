@@ -63,7 +63,7 @@ Thanks to some reverse engineering of the iPad protocol by TCF member 'arantius'
 
 
 ==<u>Remote Control tab</u>==
-  * Contains a complete set of virtual remote control keys and a few select "combo" buttons in addition to some advanced navigation controls not ordinarily found on other network remotes.
+  * Contains a complete set of virtual remote control buttons similar to the TiVo iPad application and a few select "combo" buttons in addition to some advanced navigation controls not ordinarily found on other network remotes.
 
   * Each button has a keyboard shortcut as well and tooltip for each button indicates the keyboard mapping.
 
