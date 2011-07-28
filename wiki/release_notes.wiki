@@ -7,8 +7,7 @@
 
 *ENHANCEMENTS*
    * iPad Remote enhancements:
-      * For *Season Passes* tab added ability to change the order of rows displayed in SP table along with a new *Re-order* button which allows you to change SP priority order of target TiVo. NOTE: Sorting by clicking on column headers is now disabled for this table in order to allow user-defined order changes.
-      
+      * For *Season Passes* tab added ability to change the order of rows displayed in SP table along with a new *Re-order* button which allows you to change SP priority order of target TiVo. NOTE: Sorting by clicking on column headers is now disabled for this table in order to allow user-defined order changes.      
       * Changed *Advanced Controls* tab name to *Remote Control* and added full set of TiVo remote buttons to the panel. Each button has a keyboard shortcut as well and tooltip for each button indicates the keyboard mapping. In addition to the buttons and their keyboard shortcuts there is keyboard support for A-Z, asterisk, delete, space, back space, comma, underscore and ampersand keys all of which are useful when using a screen with virtual keyboard on the TiVo. The original Advanced Controls set of buttons are still there as well along with new "combo" buttons for on screen clock (SPS9S), clear banner quickly (SPSPS), toggle Standby mode & Toggle Closed Captions. NOTE: Closed Captions toggle actually uses the "telnet" interface and assumes CC is off as initial state. Here is picture of the updated tab:
 http://kmttg.googlecode.com/files/ipad_rc.jpg
       
