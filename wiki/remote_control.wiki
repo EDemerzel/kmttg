@@ -71,7 +71,7 @@ Thanks to some reverse engineering of the iPad protocol by TCF member 'arantius'
 
   * There are "combo" buttons for On Screen Clock toggle (SPS9S), Clear Banner quickly (SPSPS), Standby toggle and Closed Captions toggle. NOTE: Closed Captions toggle actually uses the "telnet" interface and assumes CC is off as initial state.
 
-  * There is also a set of buttons for jumping around in currently playing video:
+  * There is also a set of advanced navigation buttons:
     * *Jump to minute* - Supply a position in minutes from the start of the show that you wish to jump to for currently playing show. For example, if you enter 22, then playback will jump to that exact minute mark.
     * *Skip minutes ahead* - Supply number of minutes that you want to skip ahead to for currently playing show.
     * *Skip minutes back* - Supply number of minutes that you want to skip back to for currently playing show.
