@@ -25,6 +25,8 @@ Thanks to some reverse engineering of the iPad protocol by TCF member 'arantius'
 
   * The *Copy to TiVo* button allows you to copy individual Season Passes to selected TiVo. Select 1 or more entries in the table and the desired destination TiVo and then click this button. NOTE: As part of this operation kmttg will obtain current list of Season Passes from destination TiVo to check against in order to guard against potentially double-scheduling same Season Pass.
 
+  * You also have the ability to change the order of rows displayed in SP table and then press the *Re-order* button to change SP priority order of target TiVo to match the order you define in the table. NOTE: Sorting by clicking on column headers is now disabled for this table in order to allow user-defined order changes. To change order of rows you can drag and drop rows or select a row and use the keyboard up arrow and down arrow to move the selected row up and down. Once happy with the order displayed in the table click on the *Re-order* button to update the order on your TiVo.
+
   * Finally you can also select Season Pass items in the table and use the keyboard *delete* key to unsubscribe them from selected TiVo.
      
 ==<u>Will Not Record tab</u>==
@@ -60,16 +62,20 @@ Thanks to some reverse engineering of the iPad protocol by TCF member 'arantius'
   lowest priority, recordingQuality=best, maxRecordings=25, keepBehavior=fifo, first run only
 
 
-==<u>Advanced Controls tab</u>==
-  * Contains some advanced navigation controls not ordinarily found on normal network remotes. (While most remote control functions are available with iPad protocol kmttg only attempts to implement ones not ordinarily available on other remotes).
+==<u>Remote Control tab</u>==
+  * Contains a complete set of virtual remote control keys and a few select "combo" buttons in addition to some advanced navigation controls not ordinarily found on other network remotes.
 
-  * *Jump to minute* - Supply a position in minutes from the start of the show that you wish to jump to for currently playing show. For example, if you enter 22, then playback will jump to that exact minute mark.
+  * Each button has a keyboard shortcut as well and tooltip for each button indicates the keyboard mapping.
 
-  * *Skip minutes ahead* - Supply number of minutes that you want to skip ahead to for currently playing show.
+  * In addition to the buttons and their keyboard shortcuts there is keyboard support for A-Z, asterisk, delete, space, back space, comma, underscore and ampersand keys all of which are useful when using a screen with virtual keyboard on the TiVo.
 
-  * *Skip minutes back* - Supply number of minutes that you want to skip back to for currently playing show.
+  * There are "combo" buttons for On Screen Clock toggle (SPS9S), Clear Banner quickly (SPSPS), Standby toggle and Closed Captions toggle. NOTE: Closed Captions toggle actually uses the "telnet" interface and assumes CC is off as initial state.
 
-  * *HME Jump* - Allows you to choose a TiVo HME application in given list and jump directly to it. (NOTE: This does not include local HME applications).
+  * There is also a set of buttons for jumping around in currently playing video:
+    * *Jump to minute* - Supply a position in minutes from the start of the show that you wish to jump to for currently playing show. For example, if you enter 22, then playback will jump to that exact minute mark.
+    * *Skip minutes ahead* - Supply number of minutes that you want to skip ahead to for currently playing show.
+    * *Skip minutes back* - Supply number of minutes that you want to skip back to for currently playing show.
+    * *HME Jump* - Allows you to choose a TiVo HME application in given list and jump directly to it. (NOTE: This does not include local HME applications).
          
 ==<u>System Information tab</u>==
   * Allows you to list some system information obtained from selected TiVo:<br>
