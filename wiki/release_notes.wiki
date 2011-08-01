@@ -1,6 +1,24 @@
 #labels Featured
 =RELEASE NOTES=
 
+==v0p8f (07/31/2011)==
+
+*NOTE: Zip file now includes a new "images_rc" folder as part of installation that must be installed for iPad remote to work properly. i.e. If updating from an installation prior to v0p8e be sure to have this folder installed in same folder as kmttg.jar.*
+
+*ENHANCEMENTS*
+   * iPad Remote enhancements:
+      * *Season Premieres* table now indicates with different background color (brown) which entries already have season passes setup on all TiVo Premieres configured for the iPad remote. Hence it is no longer necessary to manually check against Season Passes table for each TiVo.
+      * Save and recall remote tab currently selected when closing and re-starting kmttg GUI.
+
+*CHANGES*
+   * All iPad remote commands, even short ones, are now executed in background/non-blocking mode.
+   
+*FIXES*
+   * iPad Remote fixes:
+      * For *Remote Control* tab previously numbers typed into the "Jump to minute", "Skip minutes back" or "Skip minutes ahead" fields would be executed as number button presses. That is fixed in this release.   
+      * For Season Premiere searches "No show premieres found" message could be displayed for each channel that returned no matches. This was changed to only display if no matches are returned for all channels searched as was the original intent.
+
+
 ==v0p8e (07/27/2011)==
 
 *NOTE: This release includes a new "images_rc" folder as part of installation that must be installed for iPad remote to work properly. i.e. If updating from a previous installation be sure to have this folder installed in same folder as kmttg.jar.*
