@@ -17,7 +17,7 @@
    * iPad Remote fixes:
       * For *Remote Control* tab previously numbers typed into the "Jump to minute", "Skip minutes back" or "Skip minutes ahead" fields would be executed as number button presses. That is fixed in this release.   
       * For Season Premiere searches "No show premieres found" message could be displayed for each channel that returned no matches. This was changed to only display if no matches are returned for all channels searched as was the original intent.
-      * Previously if remote was not opened in a kmttg GUI session, the remote size and location information would be lost/reset.
+      * Previously if remote was not opened in a kmttg GUI session, the remote size and location information would be lost/reset. That is fixed in this release.
 <br>
 
 ==v0p8e (07/27/2011)==
