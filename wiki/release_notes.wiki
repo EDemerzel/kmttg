@@ -19,6 +19,7 @@
       * For Season Premiere searches "No show premieres found" message could be displayed for each channel that returned no matches. This was changed to only display if no matches are returned for all channels searched as was the original intent.
 
 
+
 ==v0p8e (07/27/2011)==
 
 *NOTE: This release includes a new "images_rc" folder as part of installation that must be installed for iPad remote to work properly. i.e. If updating from a previous installation be sure to have this folder installed in same folder as kmttg.jar.*
