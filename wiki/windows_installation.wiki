@@ -22,6 +22,8 @@ http://code.google.com/p/kmttg/downloads/list
 
   * Unpack *kmttg_vxxx.zip* file to your desired location. In this example: c:\kmttg
 
+*NOTE: You must have write access to this folder that contains kmttg.jar since kmttg tries to write configuration file to same folder. Hence for Windows7/Vista you should generally NOT install under c:\Program Files or c:\Program Files (x86) as they have locked down write permissions.
+
 *NOTE: Do NOT browse into the kmttg_vxxx.zip file and launch kmttg.jar from there. Even though that will start kmttg GUI there are other files and folders that are needed for a complete install. Therefore you should make sure to unzip the file fully first and then launch kmttg.jar from that location.*
 
 ===UPGRADE INSTALLATION TIPS===
