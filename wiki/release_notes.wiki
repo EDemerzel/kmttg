@@ -1,6 +1,24 @@
 #labels Featured
 =RELEASE NOTES=
 
+==v0p8g (08/27/2011)==
+
+*NOTE: Zip file now includes a new "images_rc" folder as part of installation that must be installed for iPad remote to work properly. i.e. If updating from an installation prior to v0p8e be sure to have this folder installed in same folder as kmttg.jar.*
+
+*ENHANCEMENTS*
+   * iPad Remote enhancements:
+      * Added capability to modify season pass attributes in *Season Passes* tab with new *Modify* button. (*Copy to TiVo* button text changed to *Copy*).
+      * Added capability to choose season pass attributes when subscribing a new season pass from *Season Premieres* tab.
+
+*CHANGES*
+   * iPad Remote changes:
+      * If iPad Remote enabled now the iPad NPL update is called after the https NPL update completes in order to reduce the load on the TiVo.
+      * Season Passes table is now automatically refreshed following Season Passes re-order.
+      * Prevent Save, Modify, Re-order of loaded Season Passes.
+
+   * By request, added duration in ISO format to pyTivo metadata file. New field name is: *iso_duration*
+
+
 ==v0p8f (07/31/2011)==
 
 *NOTE: Zip file now includes a new "images_rc" folder as part of installation that must be installed for iPad remote to work properly. i.e. If updating from an installation prior to v0p8e be sure to have this folder installed in same folder as kmttg.jar.*
