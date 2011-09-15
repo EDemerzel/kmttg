@@ -7,6 +7,8 @@
 *NOTE: To use this capability make sure you have Network Remote Control enabled on your Premiere(s):<br>
 Settings--Remote, CableCARD & Devices--Network Remote Control--Allow network-based remote controls
 
+*NOTE: Under kmttg configuration "Tivos" tab you need to enable iPad option for each TiVo Premiere you want to use with this remote. While kmttg allows you to enable option for non-Premiere units they won't work.
+
 Thanks to some reverse engineering of the iPad protocol by TCF member 'arantius' there is now capability of communicating with TiVo Premiere units using the iPad protocol without needing an iPad, which opens the door to a lot of information which can now be obtained from Premiere units. kmttg Remote Control takes advantage of these capabilities to offer some new features not previously possible to implement. Different features are separated into separate Tabs on the Remote Control. Here is a summary of each:
 
 ==<u>ToDo tab</u>==
@@ -19,7 +21,7 @@ Thanks to some reverse engineering of the iPad protocol by TCF member 'arantius'
 ==<u>Season Passes tab</u>==
   * Allows you to display Season Pass list for selected Premiere. Select desired TiVo and click on the *Refresh* button to start a kmttg job to collect information from the TiVo. Once the job completes the table will be populated with Season Pass list entries obtained from the TiVo.
 
-  * Once the table is populated you can *Save...* button to save your season passes for this TiVo to a file on your computer. i.e. *Season Pass backups!*
+  * Once the table is populated you can use *Save...* button to save your season passes for this TiVo to a file on your computer. i.e. *Season Pass backups!*
 
   * Use the *Load...* button to load a previously saved Season Passes file. NOTE: For items loaded from file kmttg will display a *Loaded:* prefix in the SHOW column in order to clarify that these were loaded from file.
 
