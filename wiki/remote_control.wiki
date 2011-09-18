@@ -25,7 +25,9 @@ Thanks to some reverse engineering of the iPad protocol by TCF member 'arantius'
 
   * Use the *Load...* button to load a previously saved Season Passes file. NOTE: For items loaded from file kmttg will display a *Loaded:* prefix in the SHOW column in order to clarify that these were loaded from file.
 
-  * The *Copy* button allows you to copy individual Season Passes to selected TiVo. Select 1 or more entries in the table and the desired destination TiVo and then click this button. NOTE: As part of this operation kmttg will obtain current list of Season Passes from destination TiVo to check against in order to guard against potentially double-scheduling same Season Pass.
+  * The *Copy* button allows you to copy individual Season Passes to selected TiVo. Select 1 or more entries in the table and the desired destination TiVo and then click this button.
+    * NOTE: As part of this operation kmttg will obtain current list of Season Passes from destination TiVo to check against in order to guard against potentially double-scheduling same Season Pass.
+    * NOTE: Scheduling Season Passes only works if there is Guide Data present on the destination TiVo related to that show. Attempting to schedule a show for which there currently is no Guide Data will result in error message: "RPC error response: Unknown collection."
 
   * The *Modify* button allows you to modify attributes of Season Passes. Select 1 entry (only supports modifying 1 at a time) in the table and click this button. A popup dialog box with attributes for the Season Pass is displayed. Modify attributes as desired and then click OK to save the changes to your TiVo. Note that the SP list is automatically refreshed by kmttg after you make a modification.
 
