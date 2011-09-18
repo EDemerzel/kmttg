@@ -23,7 +23,8 @@ Thanks to some reverse engineering of the iPad protocol by TCF member 'arantius'
 
   * Once the table is populated you can use *Save...* button to save your season passes for this TiVo to a file on your computer. i.e. *Season Pass backups!*
 
-  * Use the *Load...* button to load a previously saved Season Passes file. NOTE: For items loaded from file kmttg will display a *Loaded:* prefix in the SHOW column in order to clarify that these were loaded from file.
+  * Use the *Load...* button to load a previously saved Season Passes file.
+    * NOTE: For items loaded from file kmttg will display a *Loaded:* prefix in the SHOW column in order to clarify that these were loaded from file.
 
   * The *Copy* button allows you to copy individual Season Passes to selected TiVo. Select 1 or more entries in the table and the desired destination TiVo and then click this button.
     * NOTE: As part of this operation kmttg will obtain current list of Season Passes from destination TiVo to check against in order to guard against potentially double-scheduling same Season Pass.
@@ -31,7 +32,8 @@ Thanks to some reverse engineering of the iPad protocol by TCF member 'arantius'
 
   * The *Modify* button allows you to modify attributes of Season Passes. Select 1 entry (only supports modifying 1 at a time) in the table and click this button. A popup dialog box with attributes for the Season Pass is displayed. Modify attributes as desired and then click OK to save the changes to your TiVo. Note that the SP list is automatically refreshed by kmttg after you make a modification.
 
-  * You also have the ability to change the order of rows displayed in SP table and then press the *Re-order* button to change SP priority order of target TiVo to match the order you define in the table. NOTE: Sorting by clicking on column headers is now disabled for this table in order to allow user-defined order changes. To change order of rows you can drag and drop rows or select a row and use the keyboard up arrow and down arrow to move the selected row up and down. Once happy with the order displayed in the table click on the *Re-order* button to update the order on your TiVo. Note that the SP list is automatically refreshed by kmttg after the re-order request completes.
+  * You also have the ability to change the order of rows displayed in SP table and then press the *Re-order* button to change SP priority order of target TiVo to match the order you define in the table.
+    * NOTE: Sorting by clicking on column headers is now disabled for this table in order to allow user-defined order changes. To change order of rows you can drag and drop rows or select a row and use the keyboard up arrow and down arrow to move the selected row up and down. Once happy with the order displayed in the table click on the *Re-order* button to update the order on your TiVo. Note that the SP list is automatically refreshed by kmttg after the re-order request completes.
 
   * Finally you can also select Season Pass items in the table and use the keyboard *delete* key to unsubscribe them from selected TiVo.
      
@@ -40,7 +42,8 @@ Thanks to some reverse engineering of the iPad protocol by TCF member 'arantius'
 
   * Displays list of all upcoming recordings that TiVo will not record (like View Recording History on your TiVo) and categorizes the shows into different folder names that describe why they won't be recorded. i.e. This is an easier way to find important recordings that won't record without having to wade through many reasons you don't care about (e.g. repeats).
 
-  * Select desired TiVo and click on the *Refresh* button to start a kmttg job to collect information from the TiVo. Once the job completes the table will be populated with Will Not Record list of entries obtained from the TiVo. NOTE: This task can take over a minute to complete, so be patient.
+  * Select desired TiVo and click on the *Refresh* button to start a kmttg job to collect information from the TiVo. Once the job completes the table will be populated with Will Not Record list of entries obtained from the TiVo.
+    * NOTE: This task can take over a minute to complete, so be patient.
 
   * In *Top Level View* there all entries are categorized into the different reasons TiVo returned why each recording would not be recorded. kmttg simply makes a folder out of each of the reasons and collects entries into their respective folders. You can then click on a folder in the table to descend into it and view all respective entries. This makes it much easier to only look at folders that you care about to find entries that won't record that you may want to take action on. Click on the *Back* button to return to Top Level View.
 
@@ -52,18 +55,19 @@ Thanks to some reverse engineering of the iPad protocol by TCF member 'arantius'
 ==<u>Season Premieres tab</u>==
   * *NOTE: This utility is very CPU intensive and may affect video playback on the TiVo it's running on while in use and/or make it very sluggish, so it's best to use it only when target TiVo is not busy recording scheduled shows.*
 
-  * Search for and display upcoming season & series premieres on selected channels of interest. NOTE: This utility relies heavily on episode information being available in TiVo listings. However not all shows have episode information available from TiVo listings, so those shows will not be identified by this utility. For shows without episode information kmttg will also look for shows with "Pilot" or "Series Premiere" as subtitle to attempt to catch series premieres without episode information.
+  * Search for and display upcoming season & series premieres on selected channels of interest.
+    * NOTE: This utility relies heavily on episode information being available in TiVo listings. However not all shows have episode information available from TiVo listings, so those shows will not be identified by this utility. For shows without episode information kmttg will also look for shows with "Pilot" or "Series Premiere" as subtitle to attempt to catch series premieres without episode information.
 
   * Shows in the table that already have Season Passes scheduled on one of the Premieres configured for iPad Remote capability are indicated with a darker (brown) color. This spares you the trouble of having to look at Season Pass tables for each TiVo Premiere to see if you have already scheduled SP for a show.
 
   * *Update Channels* button should be used first to obtain a list of received channels for selected TiVo. The obtained list of channels will then be displayed in a list to the right of the table. You should then select individual channels in the table that you want to search for Season & Series premieres for. Only selected entries in this list will be used by *Search*, so make sure you select all channels you care about. To add a single channel to selected set hold down the *Ctrl* key and left click on an entry. To add a contiguous range of channels to selected set hold down *Shift* key and left click down to last entry in the list you want to include in selected set.
-  NOTE: The channel list and selections are saved to *tivoName.channels* files in the same folder as *kmttg.jar* file and can be edited manually to trim down to just the channels you care about. You can use the *Update Channels* button again to reset and save full list of channels.
+    * NOTE: The channel list and selections are saved to *tivoName.channels* files in the same folder as *kmttg.jar* file and can be edited manually to trim down to just the channels you care about. You can use the *Update Channels* button again to reset and save full list of channels.
 
   * *Search* button will initiate a search for Season & Series premieres on all channels selected in the channels list. The search will look at every show scheduled in the next 12 days for every channel selected in the channel list, so it can take several minutes to complete. You should limit which channels are selected in the channel list in order to minimize the amount of time the search takes.
-  NOTE: The search is very CPU intensive and may make the TiVo being used for the search sluggish for the duration of the search, so it's recommended you only do this search when TiVo is not busy recording scheduled shows.
+    * NOTE: The search is very CPU intensive and may make the TiVo being used for the search sluggish for the duration of the search, so it's recommended you only do this search when TiVo is not busy recording scheduled shows.
 
   * *Record* button allows one to schedule Season Passes for selected entries in the table on a TiVo Premiere. A dialog box will prompt you for Season Pass attributes to use for scheduling the Season Pass so you can adjust them appropriately.
-  NOTE: kmttg will attempt to avoid duplicated season passes on the destination TiVo by checking against the current set of season passes already on the TiVo.
+    * NOTE: kmttg will attempt to avoid duplicated season passes on the destination TiVo by checking against the current set of season passes already on the TiVo.
 
 ==<u>Remote Control tab</u>==
   * Contains a complete set of virtual remote control buttons similar to the TiVo iPad application and a few select "combo" buttons in addition to some advanced navigation controls not ordinarily found on other network remotes.
@@ -72,7 +76,8 @@ Thanks to some reverse engineering of the iPad protocol by TCF member 'arantius'
 
   * In addition to the buttons and their keyboard shortcuts there is keyboard support for A-Z, asterisk, delete, space, back space, comma, underscore and ampersand keys all of which are useful when using a screen with virtual keyboard on the TiVo.
 
-  * There are "combo" buttons for On Screen Clock toggle (SPS9S), Clear Banner quickly (SPSPS), Standby toggle and Closed Captions toggle. NOTE: Closed Captions toggle actually uses the "telnet" interface and assumes CC is off as initial state.
+  * There are "combo" buttons for On Screen Clock toggle (SPS9S), Clear Banner quickly (SPSPS), Standby toggle and Closed Captions toggle.
+    * NOTE: Closed Captions toggle actually uses the "telnet" interface and assumes CC is off as initial state.
 
   * There is also a set of advanced navigation buttons:
     * *Jump to minute* - Supply a position in minutes from the start of the show that you wish to jump to for currently playing show. For example, if you enter 22, then playback will jump to that exact minute mark.
