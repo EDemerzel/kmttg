@@ -11,14 +11,14 @@ Settings--Remote, CableCARD & Devices--Network Remote Control--Allow network-bas
 
 Thanks to some reverse engineering of the iPad protocol by TCF member 'arantius' there is now capability of communicating with TiVo Premiere units using the iPad protocol without needing an iPad, which opens the door to a lot of information which can now be obtained from Premiere units. kmttg Remote Control takes advantage of these capabilities to offer some new features not previously possible to implement. Different features are separated into separate Tabs on the Remote Control. Here is a summary of each:
 
-==<u>ToDo tab</u>==
+==<u>ToDo</u>==
   * Allows you to display To Do List for selected Premiere. Select desired TiVo and click on the *Refresh* button to start a kmttg job to collect information from the TiVo. Once the job completes the table will be populated with To Do list entries obtained from the TiVo.
 
   * Once the table is populated you can click on individual items to see additional information about each (information will be displayed in the kmttg main messages window)
 
   * You can also select upcoming recordings in the table and use the *Cancel* button or keyboard *delete* key to cancel them.
 
-==<u>Season Passes tab</u>==
+==<u>Season Passes</u>==
   * Allows you to display Season Pass list for selected Premiere. Select desired TiVo and click on the *Refresh* button to start a kmttg job to collect information from the TiVo. Once the job completes the table will be populated with Season Pass list entries obtained from the TiVo.
 
   * Once the table is populated you can use *Save...* button to save your season passes for this TiVo to a file on your computer. i.e. *Season Pass backups!*
@@ -37,7 +37,7 @@ Thanks to some reverse engineering of the iPad protocol by TCF member 'arantius'
 
   * Finally you can also select Season Pass items in the table and use the keyboard *delete* key to unsubscribe them from selected TiVo.
      
-==<u>Will Not Record tab</u>==
+==<u>Will Not Record</u>==
   NOTE: Unlike for other tabs in order to allow recording of shows on a different TiVo the table does not refresh when switching TiVo selections in this tab.
 
   * Displays list of all upcoming recordings that TiVo will not record (like View Recording History on your TiVo) and categorizes the shows into different folder names that describe why they won't be recorded. i.e. This is an easier way to find important recordings that won't record without having to wade through many reasons you don't care about (e.g. repeats).
@@ -52,7 +52,7 @@ Thanks to some reverse engineering of the iPad protocol by TCF member 'arantius'
   * *Record* button allows one to select individual shows shown in table to be scheduled to record on a TiVo Premiere. The scheduling attempt uses low priority such that will only record if no conflicts with other recordings exist. i.e. This provides a convenient way of scheduling recordings that were not to record on alternate TiVo Premieres if available.
 
 
-==<u>Season Premieres tab</u>==
+==<u>Season Premieres</u>==
   * *NOTE: This utility is very CPU intensive and may affect video playback on the TiVo it's running on while in use and/or make it very sluggish, so it's best to use it only when target TiVo is not busy recording scheduled shows.*
 
   * Search for and display upcoming season & series premieres on selected channels of interest.
@@ -69,7 +69,7 @@ Thanks to some reverse engineering of the iPad protocol by TCF member 'arantius'
   * *Record* button allows one to schedule Season Passes for selected entries in the table on a TiVo Premiere. A dialog box will prompt you for Season Pass attributes to use for scheduling the Season Pass so you can adjust them appropriately.
     * NOTE: kmttg will attempt to avoid duplicated season passes on the destination TiVo by checking against the current set of season passes already on the TiVo.
 
-==<u>Remote Control tab</u>==
+==<u>Remote Control</u>==
   * Contains a complete set of virtual remote control buttons similar to the TiVo iPad application and a few select "combo" buttons in addition to some advanced navigation controls not ordinarily found on other network remotes.
 
   * Each button has a keyboard shortcut as well and tooltip for each button indicates the keyboard mapping.
@@ -85,6 +85,6 @@ Thanks to some reverse engineering of the iPad protocol by TCF member 'arantius'
     * *Skip minutes back* - Supply number of minutes that you want to skip back to for currently playing show.
     * *HME Jump* - Allows you to choose a TiVo HME application in given list and jump directly to it. (NOTE: This does not include local HME applications).
          
-==<u>System Information tab</u>==
+==<u>System Information</u>==
   * Allows you to list some system information obtained from selected TiVo:<br>
 software version, total disk size (also shows size in GB), used disk space (also shows % disk space used), parental controls state, current background and foreground tuner channel information.
