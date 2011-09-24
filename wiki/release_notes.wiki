@@ -1,6 +1,24 @@
 #labels Featured
 =RELEASE NOTES=
 
+==v0p8h (09/24/2011)==
+
+*NOTE: Zip file now includes a new "images_rc" folder as part of installation that must be installed for iPad remote to work properly. i.e. If updating from an installation prior to v0p8e be sure to have this folder installed in same folder as kmttg.jar.*
+
+*ENHANCEMENTS*
+   * iPad remote enhancements:
+      * Added title status setting for *Season Premieres* and *Will not Record* (if first job in monitor) to allow progress tracking more easily.
+      * Added tsn to System Information display.
+      * Added "SEA" column to *Season Premieres* table to display season number.
+      * Added File Browser ".sp" file filter to only shows files ending in .sp (all files filter also available) for Season Pass Load/Save.
+
+*CHANGES*
+   * User provided update to AtomicParsley run to use "movieYear" if "originalAirDate" not available from metadata.
+   * For iPad Remote *Season Premieres* table don't update table automatically when user switches to a different TiVo. This allows searching for Premieres on 1 TiVo but scheduling on another, instead of having to repeat the search on a different TiVo.
+   
+*FIXES*
+   * Changed iso_duration in metadata file to use "recordedDuration" xml key instead of "duration" so as to account for any recording padding.
+
 ==v0p8g (08/27/2011)==
 
 *NOTE: Zip file now includes a new "images_rc" folder as part of installation that must be installed for iPad remote to work properly. i.e. If updating from an installation prior to v0p8e be sure to have this folder installed in same folder as kmttg.jar.*
