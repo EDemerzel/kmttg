@@ -70,10 +70,20 @@ Thanks to some reverse engineering of the iPad protocol by TCF member 'arantius'
     * NOTE: kmttg will attempt to avoid duplicated season passes on the destination TiVo by checking against the current set of season passes already on the TiVo.
 
 ==<u>Search</u>==
-  * Allows you to enter keywords to search through guide listings. Type in keywords to search for and press Enter (or press Search button) to start a search. 
+  * Allows you to enter keywords to search through guide listings. Type in keywords to search for and press Enter (or press Search button) to start a search. Two or more words are treated as an AND operation so in order to speed up search be as specific as possible with the keywords.
   * You can control maximum number of results to search for to control the amount of time the search takes by adjusting the *Max* number.
   * Once search completes the table will list matching entries. Like entries are categorized inside a folder. Click on folder to descend into it then click on *Back* button to return to top level view. When you click on individual entries you can see a description of the show you clicked on in the kmttg message window.
-  * You can setup an individual recording for any show listed in the table by selecting an entry and using the *Record* button.
+  * You can setup an individual recording for any show listed in the table by selecting an entry and using the *Record* button. kmttg uses lowest priority to schedule the recording so if there is a conflict then it will not be scheduled and kmttg will print a conflict message.
+  * For shows of type "series" you can use the *Season Pass* button to setup a season pass for the show. The season pass will always be created with lowest priority, but you can use the *Season Passes* tab to adjust the priority once you have set it up.
+
+==<u>Guide</u>==
+  * Provides a simple guide interface if you are looking for recordings on specific dates/times.
+  * First step is to click on the *Channels* button to have kmttg obtain full list of channels you receive for selected TiVo. The channels will be listed each as a separate folder entry. You then click on a channel/folder to see listings for that channel.
+  * You can control the *Start* time of the listings as well as the number of hours to display in the listings. If you adjust these settings while inside a channel folder then the listings will automatically update to reflect the change.
+  * If you want to adjust the time range you can simply type in a number (1-12 range) and press return in the *Range* field. If inside a channel folder when you change this setting the guide listings will automatically be refreshed.
+  * You can setup an individual recording for any show listed in the table by selecting an entry inside a channel folder and using the *Record* button. kmttg uses lowest priority to schedule the recording so if there is a conflict then it will not be scheduled and kmttg will print a conflict message.
+  * For shows of type "series" you can use the *Season Pass* button to setup a season pass for the show. The season pass will always be created with lowest priority, but you can use the *Season Passes* tab to adjust the priority once you have set it up.
+
 
 ==<u>Remote</u>==
   * Contains a complete set of virtual remote control buttons similar to the TiVo iPad application and a few select "combo" buttons in addition to some advanced navigation controls not ordinarily found on other network remotes.
