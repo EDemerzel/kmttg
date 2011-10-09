@@ -1,6 +1,28 @@
 #labels Featured
 =RELEASE NOTES=
 
+==v0p8i (10/09/2011)==
+
+*NOTE: Zip file now includes a new "images_rc" folder as part of installation that must be installed for iPad remote to work properly. i.e. If updating from an installation prior to v0p8e be sure to have this folder installed in same folder as kmttg.jar.*
+
+*ENHANCEMENTS*
+   * iPad remote enhancements:
+      * Remote is now integrated into kmttg main window as another tab instead of having to open up a separate window.
+      * Added new tabs:
+         * *Search* tab - Provides capability for basic keyword searching and ability to schedule individual shows and/or season passes for resulting shows.
+         * *Guide* tab - Provides simple guide listings (selecting 1 channel at a time for specified time range) and ability to schedule individual shows and/or season passes from the listings.
+      * Added scheduling options (keep until and start/stop padding) dialog when scheduling individual shows from *Won't Record* table.
+      * Added recording scheduling conflict checking when scheduling individual recordings from any of the tables.
+
+*CHANGES*
+   * Menu entry to bring up iPad Remote is removed since the remote is now integrated into kmttg main window.
+   * For iPad Remote some tab names were shortened to make room for 2 additional tabs added in this version.
+   
+*FIXES*
+   * iPad remote fixes:
+      * For *ToDo* table only allow one show at a time to be cancelled. Previously multiple selections at once were allowed which didn't work properly resulting in improper shows being deleted.
+      * Added missing end of show padding options when scheduling individual recordings and season passes. Previously the options for end time padding beyond 10 minutes were not available.
+
 ==v0p8h (09/24/2011)==
 
 *NOTE: Zip file now includes a new "images_rc" folder as part of installation that must be installed for iPad remote to work properly. i.e. If updating from an installation prior to v0p8e be sure to have this folder installed in same folder as kmttg.jar.*
