@@ -21,11 +21,14 @@ Thanks to some reverse engineering of the iPad protocol by TCF member 'arantius'
 ==<u>Season Passes</u>==
   * Allows you to display Season Pass list for selected Premiere. Select desired TiVo and click on the *Refresh* button to start a kmttg job to collect information from the TiVo. Once the job completes the table will be populated with Season Pass list entries obtained from the TiVo.
 
+===Save===
   * Once the table is populated you can use *Save...* button to save your season passes for this TiVo to a file on your computer. i.e. *Season Pass backups!*
 
+===Load===
   * Use the *Load...* button to load a previously saved Season Passes file.
     * NOTE: For items loaded from file kmttg will display a *Loaded:* prefix in the SHOW column in order to clarify that these were loaded from file.
 
+===Copy===
   * The *Copy* button allows you to copy *loaded* Season Passes to a selected TiVo. To copy from 1 TiVo to another:
     * Select originating TiVo and use *Save* button to save its Season Passes to a file.
     * Switch to destination TiVo
@@ -34,11 +37,14 @@ Thanks to some reverse engineering of the iPad protocol by TCF member 'arantius'
     * NOTE: As part of this operation kmttg will obtain current list of Season Passes from destination TiVo to check against in order to guard against potentially double-scheduling same Season Pass.
     * NOTE: Scheduling Season Passes only works if there is Guide Data present on the destination TiVo related to that show. Attempting to schedule a show for which there currently is no Guide Data will result in error message: "RPC error response: Unknown collection."
 
+===Modify===
   * The *Modify* button allows you to modify attributes of Season Passes. Select 1 entry (only supports modifying 1 at a time) in the table and click this button. A popup dialog box with attributes for the Season Pass is displayed. Modify attributes as desired and then click OK to save the changes to your TiVo. Note that the SP list is automatically refreshed by kmttg after you make a modification.
 
+===Re-order===
   * You also have the ability to change the order of rows displayed in SP table and then press the *Re-order* button to change SP priority order of target TiVo to match the order you define in the table.
     * NOTE: Sorting by clicking on column headers is now disabled for this table in order to allow user-defined order changes. To change order of rows you can drag and drop rows or select a row and use the keyboard up arrow and down arrow to move the selected row up and down. Once happy with the order displayed in the table click on the *Re-order* button to update the order on your TiVo. Note that the SP list is automatically refreshed by kmttg after the re-order request completes.
 
+===Delete===
   * Finally you can also select Season Pass items in the table and use the keyboard *delete* key to unsubscribe them from selected TiVo.
      
 ==<u>Won't Record</u>==
