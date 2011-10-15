@@ -106,10 +106,18 @@ Thanks to some reverse engineering of the iPad protocol by TCF member 'arantius'
 
 ==<u>Guide</u>==
   * Provides a simple guide interface if you are looking for recordings on specific dates/times.
+
+===Channels===
   * First step is to click on the *Channels* button to have kmttg obtain full list of channels you receive for selected TiVo. The channels will be listed each as a separate folder entry. You then click on a channel/folder to see listings for that channel.
+
+===Start & Range===
   * You can control the *Start* time of the listings as well as the number of hours to display in the listings. If you adjust these settings while inside a channel folder then the listings will automatically update to reflect the change.
   * If you want to adjust the time range you can simply type in a number (1-12 range) and press return in the *Range* field. If inside a channel folder when you change this setting the guide listings will automatically be refreshed.
+
+===Record===
   * You can setup an individual recording for any show listed in the table by selecting an entry inside a channel folder and using the *Record* button. kmttg uses lowest priority to schedule the recording so if there is a conflict then it will not be scheduled and kmttg will print a conflict message.
+
+===Season Pass===
   * For shows of type "series" you can use the *Season Pass* button to setup a season pass for the show. The season pass will always be created with lowest priority, but you can use the *Season Passes* tab to adjust the priority once you have set it up.
 
 
