@@ -2,7 +2,7 @@
 =KMTTG REMOTE CONTROL (PREMIERE TIVOS ONLY)=
 
 *NOTE: This documentation is updated to match latest kmttg release only. This capability became available starting with kmttg v0p8.*
-<br><br>
+<br>
 
 *NOTE: To use this capability make sure you have Network Remote Control enabled on your Premiere(s):<br>
 Settings--Remote, CableCARD & Devices--Network Remote Control--Allow network-based remote controls
@@ -26,7 +26,11 @@ Thanks to some reverse engineering of the iPad protocol by TCF member 'arantius'
   * Use the *Load...* button to load a previously saved Season Passes file.
     * NOTE: For items loaded from file kmttg will display a *Loaded:* prefix in the SHOW column in order to clarify that these were loaded from file.
 
-  * The *Copy* button allows you to copy individual Season Passes to selected TiVo. Select 1 or more entries in the table and the desired destination TiVo and then click this button.
+  * The *Copy* button allows you to copy *loaded* Season Passes to a selected TiVo. To copy from 1 TiVo to another:
+    * Select originating TiVo and use *Save* button to save its Season Passes to a file.
+    * Switch to destination TiVo
+    * Use *Load* button to load previously saved Season Pass list
+    * Now select entries in the table and use *Copy* button to copy them to the destination TiVo.
     * NOTE: As part of this operation kmttg will obtain current list of Season Passes from destination TiVo to check against in order to guard against potentially double-scheduling same Season Pass.
     * NOTE: Scheduling Season Passes only works if there is Guide Data present on the destination TiVo related to that show. Attempting to schedule a show for which there currently is no Guide Data will result in error message: "RPC error response: Unknown collection."
 
