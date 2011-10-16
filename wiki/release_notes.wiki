@@ -1,6 +1,27 @@
 #labels Featured
 =RELEASE NOTES=
 
+==v0p8j (10/16/2011)==
+
+*NOTE: Zip file now includes a new "images_rc" folder as part of installation that must be installed for iPad remote to work properly. i.e. If updating from an installation prior to v0p8e be sure to have this folder installed in same folder as kmttg.jar.*
+
+*ENHANCEMENTS*
+   * iPad remote enhancements:
+      * For *Season Passes* table allow multi-row selection for loaded Season Passes so that multiple SPs can be copied to a destination TiVo at once.
+      * *Guide* table entries are now compared vs ToDo lists for all TiVos and marked a different color in the table if scheduled to record. (The ToDo list is obtained only first time the *Channels* button is pressed)
+      * *Search* table entries are also compared vs ToDo lists for all TiVos and marked a different color in the table if scheduled to record. (The ToDo list is obtained during the first search only)
+
+*CHANGES*
+   * iPad remote *ToDo* list now includes currently recording shows as well.
+   
+*FIXES*
+   * iPad remote fixes:
+      * Top level non-folder entries in *Search* table could not be scheduled to record. This is now fixed.
+      * Fixed sorting by date for *Won't Record* table that was previously stack tracing when attempting to sort by date when displaying folders.
+      * Fixed issues with certain keyboard shortcuts no longer working in Remote tab that were broken with the integration of Remote into kmttg main window. Now arrow and space keys again work as expected in Remote tab.
+      * Pressing *START JOBS* button with Remote tab selected no longer stack traces - spits out invalid message instead.
+
+
 ==v0p8i (10/09/2011)==
 
 *NOTE: Zip file now includes a new "images_rc" folder as part of installation that must be installed for iPad remote to work properly. i.e. If updating from an installation prior to v0p8e be sure to have this folder installed in same folder as kmttg.jar.*
