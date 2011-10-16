@@ -94,6 +94,7 @@ Thanks to some reverse engineering of the iPad protocol by TCF member 'arantius'
 ===Search===
   * Type in keywords to search for and press Enter (or press *Search* button) to start a search. Two or more words are treated as an AND operation so in order to speed up search be as specific as possible with the keywords.
   * Once search completes the table will list matching entries. Like entries are categorized inside a folder. Click on folder to descend into it then click on *Back* button to return to top level view. When you click on individual entries you can see a description of the show you clicked on in the kmttg message window.
+  * NOTE: The first time you perform a search kmttg will also obtain ToDo lists for all TiVos setup for iPad remote. This is used to mark entries already scheduled to record in a different color in the table.
 
 ===Max===
   * You can control maximum number of results to search for to control the amount of time the search takes by adjusting the *Max* number.
@@ -109,6 +110,7 @@ Thanks to some reverse engineering of the iPad protocol by TCF member 'arantius'
 
 ===Channels===
   * First step is to click on the *Channels* button to have kmttg obtain full list of channels you receive for selected TiVo. The channels will be listed each as a separate folder entry. You then click on a channel/folder to see listings for that channel.
+  * NOTE: The first time you click on this button kmttg will also obtain ToDo lists for all TiVos setup for iPad remote. This is used to mark entries already scheduled to record in a different color in the table.
 
 ===Start & Range===
   * You can control the *Start* time of the listings as well as the number of hours to display in the listings. If you adjust these settings while inside a channel folder then the listings will automatically update to reflect the change.
