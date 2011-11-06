@@ -76,6 +76,8 @@ Thanks to some reverse engineering of the iPad protocol by TCF member 'arantius'
 
   * Shows in the table that already have Season Passes scheduled on one of the Premieres configured for iPad Remote capability are indicated with a darker (brown) color. This spares you the trouble of having to look at Season Pass tables for each TiVo Premiere to see if you have already scheduled SP for a show.
 
+  * Use the *Record* button to schedule individual shows to record or *Season Pass* button to setup Season Passes for selected shows.
+
 ===Update Channels===
   * *Update Channels* button should be used first to obtain a list of received channels for selected TiVo. The obtained list of channels will then be displayed in a list to the right of the table. You should then select individual channels in the table that you want to search for Season & Series premieres for. Only selected entries in this list will be used by *Search*, so make sure you select all channels you care about. To add a single channel to selected set hold down the *Ctrl* key and left click on an entry. To add a contiguous range of channels to selected set hold down *Shift* key and left click down to last entry in the list you want to include in selected set.
   * NOTE: The channel list and selections are saved to *tivoName.channels* files in the same folder as *kmttg.jar* file and can be edited manually to trim down to just the channels you care about. You can use the *Update Channels* button again to reset and save full list of channels.
