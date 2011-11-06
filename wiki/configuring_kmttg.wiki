@@ -293,6 +293,11 @@ The advanced keyword is highlighted in bold and signifies only include `“_Ep#x
 
 ==<u>Visual tab</u>==
 
+==look and feel==
+  * Choose among different GUI styles supported by your Java installation. The *default* entry uses the *Metal* cross-platform look and feel that has been the default for kmttg.
+  * Mac platform actually uses its own look and feel for default different than *Metal*, so changing to a non-default setting and then changing back to default will result in *Metal* look and feel being selected.
+  * kmttg GUI was created under *Metal* look and feel, so it's possible other choices may not look or behave as intended.
+
 ==GUI Font Size==
   * Sets the text font size for all GUI text components. Should be an integer of reasonable size. Default value is 12.
 
