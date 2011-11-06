@@ -1,6 +1,36 @@
 #labels Featured
 =RELEASE NOTES=
 
+==v0p8k (11/06/2011)==
+
+*NOTE: Zip file now includes a new "images_rc" folder as part of installation that must be installed for iPad remote to work properly. i.e. If updating from an installation prior to v0p8e be sure to have this folder installed in same folder as kmttg.jar.*
+
+*ENHANCEMENTS*
+   * iPad remote enhancements:
+      * For *Season Premieres* tab re-named *Record* button to *Season Pass* and added a *Record* button which allows scheduling individual recording instead of a Season Pass. So now you have option of scheduling individual recordings or season passes.
+      
+   * Added new configuration option under *Visual* tab called *look and feel* to choose between different available GUI looks for your Java installation. The 'default' entry is the traditional kmttg cross-platform look.
+      
+   * Added user-contributed ffmpeg encoding profile *ff_xoom* for Motorola Xoom tablet.
+
+*CHANGES*
+   * ffmpeg task updated to be able to handle newer ffmpeg versions with different time progress format. 
+   
+   * When refreshing Now Playing List in a TiVo tab the table is no longer cleared before retrieving data.
+   
+   * All dates are now displayed in 12 hour format with AM/PM instead of 24 hour format.
+   
+   * Selected table entries for programs now display season & episode number information if available.
+   
+*FIXES*
+   * For combined java download/decrypt job only allow 1 such job at a time per TiVo.
+   
+   * iPad remote fixes:
+      * Allow copying of season passes to TiVo with empty Season Pass list. Previously copy would error out unless there was at least one Season Pass on destination TiVo.
+      * Allow proper display and copying of simple wishlist type season passes. Advanced wishlist season passes have missing information still which makes them impossible to schedule with iPad protocol, but simple title-based wishlists can be scheduled.
+      * Remote tab: Set focus on panel after each button press so that keyboard shortcuts will work.
+
+
 ==v0p8j (10/16/2011)==
 
 *NOTE: Zip file now includes a new "images_rc" folder as part of installation that must be installed for iPad remote to work properly. i.e. If updating from an installation prior to v0p8e be sure to have this folder installed in same folder as kmttg.jar.*
