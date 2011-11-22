@@ -22,8 +22,15 @@ Starting with version 0.6e kmttg uses a separate tab displaying the Now Playing 
 
 NOTE: Shows that are still recording or are copy protected are marked as such and displayed differently by kmttg and cannot be downloaded.
 
+===Resuming Downloads===
+  * Starting with version 0p8l there is a boolean menu item called *Resume Downloads* under *File* menu which when enabled signifies to kmttg to download shows from their pause point instead of from the beginning.
+  * This is useful for example for cases when you only get partial download because of a glitch in the recording. For such cases you can download the first part of the recording to the glitch point, then find the glitch point via playback on the TiVo and advance a little beyond it and then resume download from that point.
+  * This also can be useful if you only want to download a small segment of a recording. You can identify the starting point on the TiVo and set pause point there and then resume download via kmttg and cancel the download at ending point.
+
+===Show Folders===
 You can enable or disable folder display by toggling the *Show Folders* toggle button individually for each Tivo listing. Similar to Tivo listings shows will be categorized by same name, "TiVo Suggestions" and "HD Channels". (Note that "HD Channels" category is intentionally named differently than on TiVo since it contains all recordings from HD channels regardless if they are actually HD or not). Simply single click on a folder to display the shows in the folder and then click on the *Back* button to return back to the top.
 
+===Show sorting===
 NOTE: You can sort shows in the list by clicking on the list headers:
 
     * Clicking on 1st column header button you can sort shows by expiration type.
