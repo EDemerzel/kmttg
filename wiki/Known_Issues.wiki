@@ -6,8 +6,8 @@ If you make your own encoding profiles (name.enc files under encode folder) be s
   * VideoRedo QuickStream Fix won't run from kmttg in either service mode or from GUI.
   * For both above issues consult the [http://code.google.com/p/kmttg/wiki/VideoRedo_configuration VideoRedo_configuration] wiki page for details on how to fix that.
 
-==comcut creates audio/video sync issues==
-If you have comcut step enabled using mencoder to make the cuts very often this results in audio/video sync issues. If you have VideoRedo enabled in kmttg it will be used instead to make the cuts and works much better.
+==Ad Cut creates audio/video sync issues==
+If you have Ad Cut step enabled using mencoder to make the cuts very often this results in audio/video sync issues. If you have VideoRedo enabled in kmttg it will be used instead to make the cuts and works much better. Alternatively if you have ProjectX enabled in kmttg it will be used instead of mencoder which is also a better option.
 
 ==encoding creates audio/video sync issues===
-Recordings originating from Tivos very often have timestamp defects that lead to problems if not corrected before encoding to other video formats. VideoRedo Quick Stream Fix is the only (non-free) tool out there that can reliably correct these defects such that when you encode the faulty recording to other formats it will be perfectly in sync.
+Recordings originating from Tivos very often have timestamp defects that lead to problems if not corrected before encoding to other video formats. Running mpeg2 video through VideoRedo Quick Stream Fix (commercial tool) or ProjectX QS Fix can correct these defects such that when you encode the faulty recording to other formats it will be in sync.
