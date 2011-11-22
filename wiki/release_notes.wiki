@@ -1,6 +1,22 @@
 #labels Featured
 =RELEASE NOTES=
 
+==v0p8l (11/21/2011)==
+
+*NOTE: Tools zip files for Windows and Mac systems now includes "ProjectX" which is a useful tool to have if you do not have VideoRedo available for use with kmttg. This free tool can now be used for QS Fix task and will also be used for Ad Cut task instead of mencoder to help keep A/V sync. If you don't have VideoRedo and want ProjectX based QS Fix utility then you should either download and install ProjectX or install kmttg to a new folder and let it download and install the new zip file automatically.*
+
+*ENHANCEMENTS*
+   * Added new File menu item toggle *Resume Downloads* which when enabled signifies to download a show starting from its pause point instead of from the beginning. This is especially useful for those that sometimes run into trouble transferring a whole show because of glitches at some point in the show that prevent the show from transferring completely.
+   
+   * *VRD QS fix* task re-named to *QS Fix*. If configured for ProjectX tool (included in Windows and Mac tools zip files) kmttg will use ProjectX demux to fix mpeg2 glitches and then remux the fixed streams back to mpeg2 program stream. This provides a viable alternative to VideoRedo for fixing mpeg2 video problems before proceeding to subsequent tasks. (For those with VideoRedo configured it will still be used for QS Fix task). Since ProjectX is a java based tool it will work on any platform that can also run kmttg. NOTE: Unfortunately ProjectX does not preserve Closed Captions in this process.
+   
+   * *Ad Cut* task updated to use ProjectX if available instead of mencoder for mpeg2 commercial cutting. ProjectX does a better job at peforming the cut and preserving A/V sync and fixing timestamp issues. kmttg will automatically set output_projectx=1 in comskip ini file if necessary. Since ProjectX outputs demuxed files it is followed by an ffmeg remux task to produce muxed mpeg2 cut file. VideoRedo will still be used as first choice if available/configured.
+   
+   * Added user-contributed ffmpeg encoding profile *ff_evo* for HTC Evo.
+   
+*FIXES*
+   * For recordings with start time padding kmttg was not able to find recordingId needed for ipad delete. That issue is now fixed in this release.
+
 ==v0p8k (11/06/2011)==
 
 *NOTE: Zip file now includes a new "images_rc" folder as part of installation that must be installed for iPad remote to work properly. i.e. If updating from an installation prior to v0p8e be sure to have this folder installed in same folder as kmttg.jar.*
