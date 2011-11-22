@@ -50,10 +50,11 @@ NOTE: Starting with v0p6g release you can change the column order to be whatever
   * With this option enabled kmttg will use tivodecode to decrypt .TiVo files to unencrypted mpeg2 program files with .mpg extension.
   * Most often you will want this option enabled.
 
-===VRD QS Fix===
-  * This option is short for VideoRedo Quickstream Fix.
-  * If you plan on any further processing of .mpg files such as cutting out commercials or re-encoding to different format it’s useful to run the file through VRD QS fix first to fix any potential glitches in the .mpg file that may cause issues.
+===QS Fix===
+  * This option is short for QuickStream Fix. Traditionally this meant VideoRedo QuickStream fix but as of version v0p8l it now includes alternative of using ProjectX. VideoRedo will be used if configured in kmttg, else ProjectX will be used if configured in kmttg. The Windows and Mac tools zip files now both include ProjectX.
+  * If you plan on any further processing of .mpg files such as cutting out commercials or re-encoding to different format it’s useful to run the file through QS fix first to fix any potential glitches in the .mpg file that may cause issues.
   * Starting with version 0p7c there is now a configuration option called *Enable VideoRedo QS Fix video dimension filter* which is very useful if you ever have run into *Video Dimensions Error* when editing files in VideoRedo.
+  * ProjectX fixes streams by demuxing audio and video streams to separate files. kmttg then uses ffmpeg to mux them back together in mpeg2 program stream format.
 
 ===Ad Detect===
   * This option is for automated commercial segment detection using either comskip or VideoRedo AdScan.
