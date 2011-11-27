@@ -25,7 +25,9 @@ If upgrading from a previous Java kmttg installation you can unzip over the prev
 
 ==PROJECTX INSTALLATION==
 ProjectX which is useful for "QS Fix" and "Ad Cut" tasks should be installed based on this package to make sure there aren't issues with CLASSPATH:
+
 http://kmttg.googlecode.com/files/ProjectX_0_9_1_0.zip
+
 Just unzip the above such that ProjectX directory is in same directory as kmttg.jar and kmttg configuration will then find it automatically.
 
 ==STARTING KMTTG==
