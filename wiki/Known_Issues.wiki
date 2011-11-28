@@ -5,6 +5,7 @@ If you make your own encoding profiles (name.enc files under encode folder) be s
   * VideoRedo won't run properly using the default kmttg service setup.
   * VideoRedo QuickStream Fix won't run from kmttg in either service mode or from GUI.
   * For both above issues consult the [http://code.google.com/p/kmttg/wiki/VideoRedo_configuration VideoRedo_configuration] wiki page for details on how to fix that.
+  * VideoRedo TV Suite custom (user-defined) encoding profiles are not available when running kmttg in service mode. This appears to be a limitation with VideoRedo while running in service mode where it does not see user-created encoding profiles.
 
 ==Ad Cut creates audio/video sync issues==
 If you have Ad Cut step enabled using mencoder to make the cuts very often this results in audio/video sync issues. If you have VideoRedo enabled in kmttg it will be used instead to make the cuts and works much better. Alternatively if you have ProjectX enabled in kmttg it will be used instead of mencoder which is also a better option.
