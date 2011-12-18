@@ -1,6 +1,21 @@
 #labels Featured
 =RELEASE NOTES=
 
+==v0p8m (12/18/2011)==
+
+*NOTE: Tools zip files for Windows and Mac systems now includes "ProjectX" which is a useful tool to have if you do not have VideoRedo available for use with kmttg. This free tool can now be used for QS Fix task and will also be used for Ad Cut task instead of mencoder to help keep A/V sync. If you don't have VideoRedo and want ProjectX based QS Fix utility then you should either download and install ProjectX or install kmttg to a new folder and let it download and install the new zip file automatically.*
+
+*ENHANCEMENTS*
+   * Added new global auto config option: *Do not wait for all jobs to finish before processing new ones*. When enabled kmttg will proceed to find and process new shows without waiting for all previously started or queued tasks to complete. This added by request from several users over the years.
+
+*CHANGES*
+   * Support use of ccextractor executable in place of t2extract if in kmttg configuration->Programs the executable for t2extract is specified as ccextractor. (The prompt was renamed to t2extract/ccextractor to clarify either one can be supplied).
+   
+*FIXES*
+   * Cancel encode task if invalid encoding profile is encountered. Previously kmttg would try to use an invalid profile in service mode resulting in service being shut down.
+   * For iPad remote tables & messages UTF8 encoding is now used for titles & descriptions so that foreign language characters are properly displayed.
+   * "Delete" key from NPL now works properly deciding between TWP delete or iPad delete.
+
 ==v0p8l (11/21/2011)==
 
 *NOTE: Tools zip files for Windows and Mac systems now includes "ProjectX" which is a useful tool to have if you do not have VideoRedo available for use with kmttg. This free tool can now be used for QS Fix task and will also be used for Ad Cut task instead of mencoder to help keep A/V sync. If you don't have VideoRedo and want ProjectX based QS Fix utility then you should either download and install ProjectX or install kmttg to a new folder and let it download and install the new zip file automatically.*
