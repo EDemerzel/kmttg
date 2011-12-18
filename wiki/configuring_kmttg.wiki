@@ -206,8 +206,10 @@ The advanced keyword is highlighted in bold and signifies only include `“_Ep#x
   * REQUIRED if you plan to use comskip.
   * Supply the full path to the comskip.ini file you wish to use. Comskip has many configuration options and you may want to use different .ini files for different shows for best results.
 
-==t2extract==
+==t2extract/ccextractor==
   * For windows systems if you specify the full path to T2Sami *t2extract.exe* program this will enable the *captions* option to extract closed captions from video files.
+  * For windows or other systems you can specify full path to ccextractor executable instead to enable *captions* task in kmttg. Aside from being supported on multiple platforms ccextractor is being currently developed/supported and does a better job than T2Sami at extracting captions.
+  * kmttg will recognize if ccextractor is being used instead of T2Sami by looking for "ccextractor" string in executable name.
 
 ==AtomicParsley==
   * If you specify the full path to AtomicParsley executable then some meta data information will be automatically added to mp4 files following encode step.
