@@ -60,6 +60,9 @@ Here you can specify a channel name or a channel number that you wish to restric
 ===comskip.ini override===
 This only applies if you are using *comskip* in the *Ad Detect* step. This allows you to optionally specify a custom *comskip.ini* file to use for this auto transfer entry. Sometimes comskip needs to be tweaked to work well with certain shows. So this gives you ability to override the main/default kmttg comskip.ini for individual shows corresponding to auto transfer entries.
 
+===enabled===
+You can selectively disable auto transfer entries by unchecking this option. This provides a means of disabling certain auto transfer entries temporarily without having to delete them.
+
 ===Filter out TiVo Suggestions===
 If enabled then kmttg will filter out and not process any TiVo Suggestion recordings for this auto entry. NOTE: If the GLOBAL version of this setting is enabled it will override this setting, so if you want this only to apply to specific auto transfer entries then be sure to not enable the GLOBAL setting.
 
@@ -67,9 +70,6 @@ If enabled then kmttg will filter out and not process any TiVo Suggestion record
   * If enabled then kmttg will generate a unique ProgramId based on ProgramId and recorded time for each recording of this program.
   * This is useful only for programs that do not already have unique ProgramIds for each episode, such as some news programs for example. For such programs kmttg would not ordinarily auto download subsequent episodes because a ProgramId entry already exists in *auto.history* file. By enabling this option kmttg will instead use a time-based ProgramId entry so that future recordings on different dates with same ProgramId will still auto download.
   * NOTE: Enabling this option may lead to repeated downloads of shows so use wisely/sparingly only for shows without unique ProgramId.
-
-===enabled===
-You can selectively disable auto transfer entries by unchecking this option. This provides a means of disabling certain auto transfer entries temporarily without having to delete them.
 
 ===ADD===
 Once you are happy with an entry setup click this button to add the entry to the setup list. Note that if you click on an entry in the setup list then the form options are updated to match  the setup for that entry.
@@ -106,6 +106,10 @@ NOTE: If you don't use KUID feature on the TiVo this gives you a way to initiate
 ===GLOBAL SETTING: Do not process recordings without ProgramId===
 
 Programs that were transferred to your TiVo(s) for example using TiVo Desktop or pyTivo do not have a TiVo assigned *ProgramId* identifier. kmttg auto transfers uses this identifier to prevent shows from downloading more than once in auto transfers mode. For these shows kmttg will generate a fake *ProgramId* which is needed to prevent them from being processed multiple times by Auto Transfers. With this option enabled, these kinds of shows with fake *ProgramId* entries will be automatically filtered out by kmttg auto transfers.
+
+===GLOBAL SETTING: Do not wait for all jobs to finish before processing new ones===
+
+When enabled kmttg will proceed to find and process new shows without waiting for all previously started or queued tasks to complete for each TiVo as has been default kmttg behavior for a long time.
 
 ===<u>RUNNING AUTO TRANSFERS IN GUI MODE</u>===
   * *Auto Transfers->Run Once in GUI* menu entry will run 1 pass of auto transfers in graphical mode so that you can easily monitor what shows are being processed. Note that while this is a convenient way of running and monitoring auto transfers be warned that if you close the kmttg GUI then all actively running jobs will be killed, so don’t use this mode if you plan on terminating the graphical program. If you want to run auto transfers in non-graphical mode consult the sections below.
