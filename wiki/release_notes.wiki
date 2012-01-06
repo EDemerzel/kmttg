@@ -1,6 +1,20 @@
 #labels Featured
 =RELEASE NOTES=
 
+==v0p8n (1/6/2012)==
+
+*NOTE: Tools zip files for Windows and Mac systems now includes "ProjectX" which is a useful tool to have if you do not have VideoRedo available for use with kmttg. This free tool can now be used for QS Fix task and will also be used for Ad Cut task instead of mencoder to help keep A/V sync. If you don't have VideoRedo and want ProjectX based QS Fix utility then you should either download and install ProjectX or install kmttg to a new folder and let it download and install the new zip file automatically.*
+
+*CHANGES*
+   * When ProjectX enabled don't skip "QS Fix" task as was case in previous release when "Ad Cut" is also enabled since "Ad Detect" can benefit from "QS Fix".
+   * Per user suggestion added *-fflags genpts* to ffmpeg command for remux task.
+   * Config item in *Program Options* tab *delay in seconds between multiple downloads* changed to *start delay in seconds for download tasks*
+   
+*FIXES*
+   * Apply download start delay for all download tasks, including *metadata* tasks, in order to avoid failures for consecutive metadata/download tasks. 
+   * Don't strip out indiscriminately single and double quotes from file names in ProjectX demux/remux tasks.
+
+
 ==v0p8m (12/18/2011)==
 
 *NOTE: Tools zip files for Windows and Mac systems now includes "ProjectX" which is a useful tool to have if you do not have VideoRedo available for use with kmttg. This free tool can now be used for QS Fix task and will also be used for Ad Cut task instead of mencoder to help keep A/V sync. If you don't have VideoRedo and want ProjectX based QS Fix utility then you should either download and install ProjectX or install kmttg to a new folder and let it download and install the new zip file automatically.*
