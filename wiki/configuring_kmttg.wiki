@@ -253,8 +253,8 @@ The advanced keyword is highlighted in bold and signifies only include `“_Ep#x
 ==seconds between download retry attempts==
   * Number of seconds to wait between download retry attempts. kmttg will wait at least this number of seconds before trying a download again.
 
-==delay in seconds between download multiple downloads==
-  * This delay between downloads is needed to help relieve stress on TiVo server when there are multiple downloads queued up from same TiVo to help avoid *server busy* error messages. Following first download from TiVo kmttg will wait the configured number of seconds (defaults to 10) before attempting another download from that TiVo.
+==start delay in seconds for download tasks==
+  * This delay applied to all download tasks is needed to help relieve stress on TiVo server when there are multiple downloads queued up from same TiVo to help avoid *server busy* error messages. Before starting a download task kmttg will wait the configured number of seconds (defaults to 10) before initiating the download.
 
 ==metadata files==
   * By default kmttg with *metadata* task enabled will only create a pyTivo metadata file for the last video file in the sequence of tasks you enable for processing an entry. That corresponds to *last* setting of this option. You can change that behavior by using various settings for this option:
