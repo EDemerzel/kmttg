@@ -1,6 +1,13 @@
 #labels Featured
 =RELEASE NOTES=
 
+==v0p8o (1/8/2012)==
+
+*NOTE: Tools zip files for Windows and Mac systems now includes "ProjectX" which is a useful tool to have if you do not have VideoRedo available for use with kmttg. This free tool can now be used for QS Fix task and will also be used for Ad Cut task instead of mencoder to help keep A/V sync. If you don't have VideoRedo and want ProjectX based QS Fix utility then you should either download and install ProjectX or install kmttg to a new folder and let it download and install the new zip file automatically.*
+
+*FIXES*
+   * For auto transfers configuration the *QS Fix* task was greyed out even with ProjectX configured. This has been fixed in this release thus allowing ProjectX-based QS Fix to run in Auto Transfers mode. 
+
 ==v0p8n (1/6/2012)==
 
 *NOTE: Tools zip files for Windows and Mac systems now includes "ProjectX" which is a useful tool to have if you do not have VideoRedo available for use with kmttg. This free tool can now be used for QS Fix task and will also be used for Ad Cut task instead of mencoder to help keep A/V sync. If you don't have VideoRedo and want ProjectX based QS Fix utility then you should either download and install ProjectX or install kmttg to a new folder and let it download and install the new zip file automatically.*
