@@ -70,6 +70,7 @@ Thanks to some reverse engineering of the iPad protocol by TCF member 'arantius'
 ===Refresh ToDo===
   * Refresh ToDo list that is used to highlight shows that are already scheduled to record on another unit configured in kmttg. The ToDo list is only obtained automatically the first time it is needed so if you are modifying the ToDo list on 1 or more units it is useful to periodically use this button to refresh the list.
     * NOTE: A single unified ToDo list is shared among *Search*, *Guide* and *Won't Record* tabs. This avoids obtaining ToDo lists multiple times for different tables.
+    * NOTE: For table entries that are flagged as being in ToDo list when you click on table entry the title printed to kmttg message window will show (to be recorded on tivoName) so that you know which TiVo this show is scheduled to record on without having to run/consult ToDo table.
 
 ==<u>Season Premieres</u>==
   * *NOTE: This utility is very CPU intensive and may affect video playback on the TiVo it's running on while in use and/or make it very sluggish, so it's best to use it only when target TiVo is not busy recording scheduled shows.*
@@ -113,6 +114,7 @@ Thanks to some reverse engineering of the iPad protocol by TCF member 'arantius'
 ===Refresh ToDo===
   * Refresh ToDo list that is used to highlight shows that are already scheduled to record on any Series 4 unit configured in kmttg. The ToDo list is only obtained automatically the first time it is needed so if you are modifying the ToDo list on 1 or more units it is useful to periodically use this button to refresh the list.
     * NOTE: A single unified ToDo list is shared among *Search*, *Guide* and *Won't Record* tabs. This avoids obtaining ToDo lists multiple times for different tables.
+    * NOTE: For table entries that are flagged as being in ToDo list when you click on table entry the title printed to kmttg message window will show (to be recorded on tivoName) so that you know which TiVo this show is scheduled to record on without having to run/consult ToDo table.
 
 ==<u>Guide</u>==
   * Provides a simple guide interface if you are looking for recordings on specific dates/times.
@@ -134,6 +136,7 @@ Thanks to some reverse engineering of the iPad protocol by TCF member 'arantius'
 ===Refresh ToDo===
   * Refresh ToDo list that is used to highlight shows that are already scheduled to record on any Series 4 unit configured in kmttg. The ToDo list is only obtained automatically the first time it is needed so if you are modifying the ToDo list on 1 or more units it is useful to periodically use this button to refresh the list.
     * NOTE: A single unified ToDo list is shared among *Search*, *Guide* and *Won't Record* tabs. This avoids obtaining ToDo lists multiple times for different tables.
+    * NOTE: For table entries that are flagged as being in ToDo list when you click on table entry the title printed to kmttg message window will show (to be recorded on tivoName) so that you know which TiVo this show is scheduled to record on without having to run/consult ToDo table.
 
 
 ==<u>Remote</u>==
