@@ -34,6 +34,9 @@ Thanks to some reverse engineering of the iPad protocol by TCF member 'arantius'
   * Use the *Load...* button to load a previously saved Season Passes file.
     * NOTE: For items loaded from file kmttg will display a *Loaded:* prefix in the SHOW column in order to clarify that these were loaded from file.
 
+===Delete===
+  * Use the *Delete* button to unsubscribe selected Season Pass in the table from the selected TiVo. You can alternatively press the keyboard *delete* key which does the same thing.
+
 ===Copy===
   * The *Copy* button allows you to copy *loaded* Season Passes to a selected TiVo. To copy from 1 TiVo to another:
     * Select originating TiVo and use *Save* button to save its Season Passes to a file.
@@ -49,9 +52,6 @@ Thanks to some reverse engineering of the iPad protocol by TCF member 'arantius'
 ===Re-order===
   * You also have the ability to change the order of rows displayed in SP table and then press the *Re-order* button to change SP priority order of target TiVo to match the order you define in the table.
     * NOTE: Sorting by clicking on column headers is now disabled for this table in order to allow user-defined order changes. To change order of rows you can drag and drop rows or select a row and use the keyboard up arrow and down arrow to move the selected row up and down. Once happy with the order displayed in the table click on the *Re-order* button to update the order on your TiVo. Note that the SP list is automatically refreshed by kmttg after the re-order request completes.
-
-===Delete===
-  * Finally you can also select Season Pass items in the table and use the keyboard *delete* key to unsubscribe them from selected TiVo.
      
 ==<u>Won't Record</u>==
   NOTE: Unlike for other tabs in order to allow recording of shows on a different TiVo the table does not refresh when switching TiVo selections in this tab.
@@ -67,6 +67,9 @@ Thanks to some reverse engineering of the iPad protocol by TCF member 'arantius'
 ===Record===
   * *Record* button allows one to select individual shows shown in table to be scheduled to record on a TiVo Premiere. The scheduling attempt uses low priority such that will only record if no conflicts with other recordings exist. i.e. This provides a convenient way of scheduling recordings that were not to record on alternate TiVo Premieres if available.
 
+===Refresh ToDo===
+  * Refresh ToDo list that is used to highlight shows that are already scheduled to record on another unit configured in kmttg. The ToDo list is only obtained automatically the first time it is needed so if you are modifying the ToDo list on 1 or more units it is useful to periodically use this button to refresh the list.
+    * NOTE: A single unified ToDo list is shared among *Search*, *Guide* and *Won't Record* tabs. This avoids obtaining ToDo lists multiple times for different tables.
 
 ==<u>Season Premieres</u>==
   * *NOTE: This utility is very CPU intensive and may affect video playback on the TiVo it's running on while in use and/or make it very sluggish, so it's best to use it only when target TiVo is not busy recording scheduled shows.*
@@ -107,6 +110,10 @@ Thanks to some reverse engineering of the iPad protocol by TCF member 'arantius'
 ===Season Pass===
   * For shows of type "series" you can use the *Season Pass* button to setup a season pass for the show. The season pass will always be created with lowest priority, but you can use the *Season Passes* tab to adjust the priority once you have set it up.
 
+===Refresh ToDo===
+  * Refresh ToDo list that is used to highlight shows that are already scheduled to record on any Series 4 unit configured in kmttg. The ToDo list is only obtained automatically the first time it is needed so if you are modifying the ToDo list on 1 or more units it is useful to periodically use this button to refresh the list.
+    * NOTE: A single unified ToDo list is shared among *Search*, *Guide* and *Won't Record* tabs. This avoids obtaining ToDo lists multiple times for different tables.
+
 ==<u>Guide</u>==
   * Provides a simple guide interface if you are looking for recordings on specific dates/times.
 
@@ -123,6 +130,10 @@ Thanks to some reverse engineering of the iPad protocol by TCF member 'arantius'
 
 ===Season Pass===
   * For shows of type "series" you can use the *Season Pass* button to setup a season pass for the show. The season pass will always be created with lowest priority, but you can use the *Season Passes* tab to adjust the priority once you have set it up.
+
+===Refresh ToDo===
+  * Refresh ToDo list that is used to highlight shows that are already scheduled to record on any Series 4 unit configured in kmttg. The ToDo list is only obtained automatically the first time it is needed so if you are modifying the ToDo list on 1 or more units it is useful to periodically use this button to refresh the list.
+    * NOTE: A single unified ToDo list is shared among *Search*, *Guide* and *Won't Record* tabs. This avoids obtaining ToDo lists multiple times for different tables.
 
 
 ==<u>Remote</u>==
