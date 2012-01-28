@@ -1,7 +1,7 @@
 #labels Featured
 =RELEASE NOTES=
 
-==v0p8p (1/28/2010)==
+==v0p8p (1/28/2012)==
 
 NOTE: Tools zip files for Windows and Mac systems now includes "ProjectX" which is a useful tool to have if you do not have VideoRedo? available for use with kmttg. This free tool can now be used for QS Fix task and will also be used for Ad Cut task instead of mencoder to help keep A/V sync. For this release the Windows tool zip file was updated to use Handbrake 0.9.5.
 
