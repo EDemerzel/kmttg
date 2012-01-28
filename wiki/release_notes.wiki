@@ -1,6 +1,27 @@
 #labels Featured
 =RELEASE NOTES=
 
+==v0p8p (1/28/2010)==
+
+NOTE: Tools zip files for Windows and Mac systems now includes "ProjectX" which is a useful tool to have if you do not have VideoRedo? available for use with kmttg. This free tool can now be used for QS Fix task and will also be used for Ad Cut task instead of mencoder to help keep A/V sync. For this release the Windows tool zip file was updated to use Handbrake 0.9.5.
+
+*ENHANCEMENTS*
+   * iPad remote enhancements:
+      * Added physical *Delete* button to *Season Passes* tab. Previously could use keyboard *Delete* button to remove Season Passes but most users were not aware of that, so adding the button makes it more obvious.
+      * Added *Refresh ToDo* button to *Search*, *Guide* and *Won't Record* tabs which allows one to refresh ToDo list used to highlight shows that are already scheduled to record in those tables.
+      * The *Won't Record* tab now also obtains ToDo list so as to highlight shows that may be scheduled to record on other TiVos. This makes it easier when handling tuner conflicts to see if you have all shows you want to make sure are recorded on 1 of your TiVos.
+      * A single unified ToDo list is now shared among *Search*, *Guide* and *Won't Record* tabs instead of each one using an independent ToDo list. This avoids obtaining ToDo lists multiple times for different tables as was the case previously.
+      * For table entries that are flagged as being in ToDo list when you click on table entry the title printed to kmttg message window will now show (to be recorded on tivoName) so that you know which TiVo this show is scheduled to record on without having to run/consult ToDo table.
+
+*CHANGES*
+   * For iPad Remote Guide tab the *Channels* button will now queue up a remote job managed by job manager instead of running blindly in the background since obtaining channel list can take quite a long time.
+   * The ProjectX-based *QSFix* and *Ad Cut* tasks now both run demux/remux as a single job rather than queuing up separate demux/remux jobs.
+   
+*FIXES*
+   * For iPad Remote Search task moved obtaining of To Do lists to be part of background search task so as not to hang up kmttg GUI while obtaining the To Do entries.
+   * For iPad Remote Search table eliminated stack trace when column sorting is enabled.
+   * Corrected preset name in *hb_appletv2* encoding profile to be "AppleTV 2" instead of "AppleTV 3" and added user-suggested *hb_tivo_hd_crf* profile which is same as hb_appletv2 plus addition of captions. NOTE: Handbrake does not stop when given a preset name it does not recognize so when attempting to use *hb_appletv2* profile with Handbrake 0.9.4 or earlier you don't get the desired encoding, so make sure to update to latest version of Handbrake (0.9.5) which is now included in kmttg Windows zip file.
+
 ==v0p8o (1/8/2012)==
 
 *NOTE: Tools zip files for Windows and Mac systems now includes "ProjectX" which is a useful tool to have if you do not have VideoRedo available for use with kmttg. This free tool can now be used for QS Fix task and will also be used for Ad Cut task instead of mencoder to help keep A/V sync. If you don't have VideoRedo and want ProjectX based QS Fix utility then you should either download and install ProjectX or install kmttg to a new folder and let it download and install the new zip file automatically.*
