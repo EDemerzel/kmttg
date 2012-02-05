@@ -1,6 +1,16 @@
 #labels Featured
 =RELEASE NOTES=
 
+==v0p8q (2/05/2010)==
+
+NOTE: Tools zip files for Windows and Mac systems now includes "ProjectX" which is a useful tool to have if you do not have VideoRedo? available for use with kmttg. This free tool can now be used for QS Fix task and will also be used for Ad Cut task instead of mencoder to help keep A/V sync.
+
+*ENHANCEMENTS*
+   * To Do list flagging for iPad remote tables now flags programs of same name but slated to record on a different channel. This is primarily useful for *Won't Record* table so that it's easier to see if shows you want to record actually will but on a different channel than the one listed.
+   
+*FIXES*
+   * Fix to avoid null pointer exception errors when *Check Available Disk Space* option is enabled under config-File Settings.
+
 ==v0p8p (1/28/2012)==
 
 NOTE: Tools zip files for Windows and Mac systems now includes "ProjectX" which is a useful tool to have if you do not have VideoRedo? available for use with kmttg. This free tool can now be used for QS Fix task and will also be used for Ad Cut task instead of mencoder to help keep A/V sync. For this release the Windows tool zip file was updated to use Handbrake 0.9.5.
