@@ -53,7 +53,7 @@ By default with *all* setting kmttg will match your auto transfer entries agains
 
 ===Enabling desired options to perform following a download===
 Enable which tasks you want to perform following a download for each entry you define. The same options as are available in GUI mode are available here, just make sure kmttg is properly configured as described above. Note that you can define different tasks for each entry and if you are enabling encode task you can use different encoding profiles for each entry.
-  * Unlike GUI mode you also have option for encoding to more than 1 file at a time. Second entry after *Encoding Name* defaults to *Do not encode twice*. You can change it to an encoding setting and set the file suffix to use in *Second Encoding Suffix* field.
+  * Unlike GUI mode you also have option for encoding to more than 1 file at a time. Second entry after *Encoding Name* defaults to *Do not encode twice*. You can change it to an encoding setting and set the file suffix to use in *Second Encoding Suffix* field if you want to generate 2 encodings from 1 source TiVo file.
 
 ===channel filter===
 Here you can specify a channel name or a channel number that you wish to restrict an individual auto transfer setup to. Thus for example a type title setup with {{{.*}}} keyword and a specified channel will match all recordings from specified channel.
