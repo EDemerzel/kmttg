@@ -297,6 +297,9 @@ The advanced keyword is highlighted in bold and signifies only include `“_Ep#x
 ==Allow only 1 download at a time==
   * If enabled then kmttg will only download 1 program at a time no matter how many TiVos you have and how many download tasks are queued up.
 
+==Automatically restore job queue between sessions==
+  * If enabled kmttg will save any currently queued jobs to a file when terminated and automatically queue up those jobs next time kmttg is started. This is useful in Auto Transfers mode when service is interrupted and you would like queued jobs to resume when service is re-started.
+
 ==<u>Visual tab</u>==
 
 ==look and feel==
