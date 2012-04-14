@@ -1,7 +1,21 @@
 #labels Featured
 =RELEASE NOTES=
 
-==v0p8q (2/05/2010)==
+==v0p8r (4/14/2012)==
+
+NOTE: Tools zip files for Windows and Mac systems now includes "ProjectX" which is a useful tool to have if you do not have VideoRedo available for use with kmttg. This free tool can now be used for QS Fix task and will also be used for Ad Cut task instead of mencoder to help keep A/V sync.
+
+*ENHANCEMENTS*
+   * iPad/RPC Remote
+      * Supports new tightened PKCS12 authentication.
+      * Delete request for a still recording entry shown in Now Playing List table now stops recording instead of deleting it. You can request delete again once it is stopped to delete it.
+   * User-supplied enhancement to Auto Transfers mode to allow a second encoding (to generate 2 separate encodings from 1 source video).
+   * User-supplied enhancement: New configuration option under *Program Options* tab called *Automatically restore job queue between sessions*. When enabled kmttg will save any currently queued jobs to a file when terminated and automatically queue up those jobs next time kmttg is started. This is useful in Auto Transfers mode when service is interrupted and you would like queued jobs to resume when service is re-started.
+   
+*FIXES*
+   * Don't grey out *Ad Cut* task if ProjectX is configured for kmttg. Previously if neither VRD or mencoder were configured the *Ad Cut* task was greyed out.
+
+==v0p8q (2/05/2012)==
 
 NOTE: Tools zip files for Windows and Mac systems now includes "ProjectX" which is a useful tool to have if you do not have VideoRedo? available for use with kmttg. This free tool can now be used for QS Fix task and will also be used for Ad Cut task instead of mencoder to help keep A/V sync.
 
