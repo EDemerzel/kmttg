@@ -1,5 +1,18 @@
 #labels Featured
 =RELEASE NOTES=
+==v0p8s (5/31/2012)==
+
+*ENHANCEMENTS*
+   * NPL table now prints PAUSE POINT (as a percentage) to message window if available when clicking on a show in the table. This provides a way to check if pause point is set and available via kmttg when using 'Resume Downloads' mode.
+
+*CHANGES*
+   * RPC/iPad Remote: Change toggle CC on/off to use newly discovered RPC equivalents instead of telnet interface.
+   * Removed --cpu option from all Hanbrake encoding profiles to be compatible with latest Handbrake CLI release.
+   
+*FIXES*
+   * RPC/iPad Remote:
+     - Fixed *Season Pass* button for *Guide* table to bring up Season Pass dialog instead of Single Recording dialog.
+     - Fixed HME Destinations for Netflix, YouTube, Amazon to work with latest Premiere software. Removed Blockbuster HME destination.
 
 ==v0p8r (4/14/2012)==
 
