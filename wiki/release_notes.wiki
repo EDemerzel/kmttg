@@ -11,8 +11,8 @@
    
 *FIXES*
    * RPC/iPad Remote:
-     - Fixed *Season Pass* button for *Guide* table to bring up Season Pass dialog instead of Single Recording dialog.
-     - Fixed HME Destinations for Netflix, YouTube, Amazon to work with latest Premiere software. Removed Blockbuster HME destination.
+     * Fixed *Season Pass* button for *Guide* table to bring up Season Pass dialog instead of Single Recording dialog.
+     * Fixed HME Destinations for Netflix, YouTube, Amazon to work with latest Premiere software. Removed Blockbuster HME destination.
 
 ==v0p8r (4/14/2012)==
 
