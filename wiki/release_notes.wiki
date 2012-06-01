@@ -7,7 +7,7 @@
 
 *CHANGES*
    * RPC/iPad Remote: Change toggle CC on/off to use newly discovered RPC equivalents instead of telnet interface.
-   * Removed --cpu option from all Hanbrake encoding profiles to be compatible with latest Handbrake CLI release.
+   * Removed --cpu option from all Handbrake encoding profiles to be compatible with latest Handbrake CLI release.
    
 *FIXES*
    * RPC/iPad Remote:
