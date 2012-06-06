@@ -76,6 +76,9 @@ Thanks to some reverse engineering of the iPad protocol by TCF member 'arantius'
   * *NOTE: This utility is very CPU intensive and may affect video playback on the TiVo it's running on while in use and/or make it very sluggish, so it's best to use it only when target TiVo is not busy recording scheduled shows.*
 
   * Search for and display upcoming season & series premieres on selected channels of interest.
+
+  * You can set number of days to search for premieres (defaults to 12).
+
     * NOTE: This utility relies heavily on episode information being available in TiVo listings. However not all shows have episode information available from TiVo listings, so those shows will not be identified by this utility. For shows without episode information kmttg will also look for shows with "Pilot" or "Series Premiere" as subtitle to attempt to catch series premieres without episode information.
 
   * Shows in the table that already have Season Passes scheduled on one of the Premieres configured for iPad Remote capability are indicated with a darker (brown) color. This spares you the trouble of having to look at Season Pass tables for each TiVo Premiere to see if you have already scheduled SP for a show.
@@ -87,12 +90,16 @@ Thanks to some reverse engineering of the iPad protocol by TCF member 'arantius'
   * NOTE: The channel list and selections are saved to *tivoName.channels* files in the same folder as *kmttg.jar* file and can be edited manually to trim down to just the channels you care about. You can use the *Update Channels* button again to reset and save full list of channels.
 
 ===Search===
-  * *Search* button will initiate a search for Season & Series premieres on all channels selected in the channels list. The search will look at every show scheduled in the next 12 days for every channel selected in the channel list, so it can take several minutes to complete. You should limit which channels are selected in the channel list in order to minimize the amount of time the search takes.
+  * *Search* button will initiate a search for Season & Series premieres on all channels selected in the channels list. The search will look at every show scheduled in user-specified number of days (defaults to 12) for every channel selected in the channel list, so it can take several minutes to complete. You should limit which channels are selected in the channel list in order to minimize the amount of time the search takes.
   * NOTE: The search is very CPU intensive and may make the TiVo being used for the search sluggish for the duration of the search, so it's recommended you only do this search when TiVo is not busy recording scheduled shows.
 
 ===Record===
-  * *Record* button allows one to schedule Season Passes for selected entries in the table on a TiVo Premiere. A dialog box will prompt you for Season Pass attributes to use for scheduling the Season Pass so you can adjust them appropriately.
+  * *Record* button allows one to schedule single recording for selected entries in the table on a TiVo Premiere. A dialog box will prompt you for single recording attributes to use for scheduling the show so you can adjust them appropriately.
+
+===Season Pass===
+  * *Season Pass* button allows one to schedule Season Passes for selected entries in the table on a TiVo Premiere. A dialog box will prompt you for Season Pass attributes to use for scheduling the Season Pass so you can adjust them appropriately.
     * NOTE: kmttg will attempt to avoid duplicated season passes on the destination TiVo by checking against the current set of season passes already on the TiVo.
+
 
 ==<u>Search</u>==
   * Allows you to enter keywords to search through guide listings.
