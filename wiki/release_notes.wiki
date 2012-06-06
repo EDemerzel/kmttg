@@ -1,5 +1,17 @@
 #labels Featured
 =RELEASE NOTES=
+
+==v0p8t (6/05/2012)==
+
+*ENHANCEMENTS*
+   * RPC/iPad Season Premieres table: Added configurable # of days (1-12) to search for Season Premieres.
+
+*CHANGES*
+   * RPC/iPad Season Premieres table: Changed Season Premiere finder to search 1 day at a time per channel for selectable number of days instead of 12 days at a time per channel. This reduces the loading on Premiere and also gives better percent complete status updates.
+   
+*FIXES*
+   * Changed RPC data reading to use bytes instead of characters. This fixes long standing issue on Linux platform with frequent read timeout failures that affected Season Premiere, Guide & Search tables for that platform.
+
 ==v0p8s (5/31/2012)==
 
 *ENHANCEMENTS*
