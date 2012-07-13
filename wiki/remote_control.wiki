@@ -1,5 +1,5 @@
 #labels Featured
-=KMTTG REMOTE CONTROL (PREMIERE TIVOS ONLY)=
+=KMTTG RPC (IPAD) REMOTE CONTROL (PREMIERE TIVOS ONLY)=
 
 *NOTE: This documentation is updated to match latest kmttg release only. This capability became available starting with kmttg v0p8.*
 <br>
@@ -36,6 +36,7 @@ Thanks to some reverse engineering of the iPad protocol by TCF member 'arantius'
 
 ===Delete===
   * Use the *Delete* button to unsubscribe selected Season Pass in the table from the selected TiVo. You can alternatively press the keyboard *delete* key which does the same thing.
+  * *NOTE: Season passes that were created via tivo.com web page do not delete via RPC remote despite indications that deletion is possible. Appears to be a bug with TiVo RPC delete functionality. Those season passes can only be deleted on the TiVo itself.
 
 ===Copy===
   * The *Copy* button allows you to copy *loaded* Season Passes to a selected TiVo. To copy from 1 TiVo to another:
