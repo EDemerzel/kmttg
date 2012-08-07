@@ -41,6 +41,9 @@ NOTE: You can sort shows in the list by clicking on the list headers:
     * The *DUR* column is short for *DURATION* and you can also sort by this column.
     * The *Mbps* column is a measure of bit rate in Megabits per second. The higher the bit rate displayed the higher the quality of the recording. You can also sort by this column.
 
+===Turning off sorting===
+If you have enabled sorting by clicking on one of column headers note that you can turn off sorting and restore the original table order by holding down the Shift button while clicking on the column header currently active for sorting.
+
 NOTE: Starting with v0p6g release you can change the column order to be whatever you prefer. Simply hold left button down on a column header and drag the column to new position. kmttg will save and restore column positions for each tab when you start next session.
 
 2. Select 1 or more shows in the SHOW list that you wish to download. You can select multiple entries at once. Ctrl+left click toggles individual selections without losing your selection list.
