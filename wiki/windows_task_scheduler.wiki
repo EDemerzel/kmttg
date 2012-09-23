@@ -1,4 +1,4 @@
-Running kmttg using Windows Task Scheduler
+=Running kmttg using Windows Task Scheduler=
 
 You can setup kmttg to run in the background on a schedule of your choosing using Windows Task Scheduler. In Task Scheduler Actions tab you should set the run up as follows:
 
