@@ -10,3 +10,5 @@ Example:
    * Program = "C:\Program Files (x86)\Java\jre6\bin\javaw.exe"
    * Arguments = -jar "C:\kmttg\kmttg.jar" -b
    * Start in = "C:\kmttg"
+
+NOTE: The -b argument to kmttg.jar signifies to kmttg to run through auto transfers mode in background mode just 1 cycle and then exit.
