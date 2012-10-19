@@ -133,7 +133,7 @@ Thanks to some reverse engineering of the iPad protocol by TCF member 'arantius'
 
 ===Start & Range===
   * You can control the *Start* time of the listings as well as the number of hours to display in the listings. If you adjust these settings while inside a channel folder then the listings will automatically update to reflect the change.
-  * If you want to adjust the time range you can simply type in a number (1-12 range) and press return in the *Range* field. If inside a channel folder when you change this setting the guide listings will automatically be refreshed.
+  * You can select between 6 or 12 hours to display at a time in the guide table. If inside a channel folder when you change this setting the guide listings will automatically be refreshed.
 
 ===Record===
   * You can setup an individual recording for any show listed in the table by selecting an entry inside a channel folder and using the *Record* button. kmttg uses lowest priority to schedule the recording so if there is a conflict then it will not be scheduled and kmttg will print a conflict message.
