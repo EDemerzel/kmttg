@@ -1,6 +1,20 @@
 #labels Featured
 =RELEASE NOTES=
 
+==v0p8v (10/20/2012)==
+
+*ENHANCEMENTS*
+   * atomicParsley job will now add *--artwork imageFile* to run if *image : imageFile* tag exists in metadata file.
+
+*CHANGES*
+   * Added additional stderr messages to some VRDscripts helpful for debugging VRD-related problems.
+   * Updated *hb_tivo_hd_crf* and *hb_tivo_sd_crf* encoding profiles per user input.
+   
+*FIXES*
+   * Improved search for RPC recording ID for play or delete of a title in NPL table. Previously sometimes searches were unable to find the recording ID resulting in *findRecordingId failed to find a match* messages.
+   * Eliminated use of UTF string conversions so that foreign characters display properly in all tables & message window.
+   * Changed *Range* in RPC *Guide* tab to be a simple combobox with 2 choices (6 & 12 hours) to work properly with Java 7.
+
 ==v0p8u (9/03/2012)==
 
 *ENHANCEMENTS*
