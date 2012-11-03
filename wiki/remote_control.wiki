@@ -73,6 +73,9 @@ Thanks to some reverse engineering of the iPad protocol by TCF member 'arantius'
     * NOTE: A single unified ToDo list is shared among *Search*, *Guide* and *Won't Record* tabs. This avoids obtaining ToDo lists multiple times for different tables.
     * NOTE: For table entries that are flagged as being in ToDo list when you click on table entry the title printed to kmttg message window will show (to be recorded on tivoName) so that you know which TiVo this show is scheduled to record on without having to run/consult ToDo table.
 
+===Include History===
+  * When this boolean is enabled past history will be included in the table so that one can explore why certain shows of interest did not record in the past.
+
 ==<u>Season Premieres</u>==
   * *NOTE: This utility is very CPU intensive and may affect video playback on the TiVo it's running on while in use and/or make it very sluggish, so it's best to use it only when target TiVo is not busy recording scheduled shows.*
 
@@ -145,6 +148,15 @@ Thanks to some reverse engineering of the iPad protocol by TCF member 'arantius'
   * Refresh ToDo list that is used to highlight shows that are already scheduled to record on any Series 4 unit configured in kmttg. The ToDo list is only obtained automatically the first time it is needed so if you are modifying the ToDo list on 1 or more units it is useful to periodically use this button to refresh the list.
     * NOTE: A single unified ToDo list is shared among *Search*, *Guide* and *Won't Record* tabs. This avoids obtaining ToDo lists multiple times for different tables.
     * NOTE: For table entries that are flagged as being in ToDo list when you click on table entry the title printed to kmttg message window will show (to be recorded on tivoName) so that you know which TiVo this show is scheduled to record on without having to run/consult ToDo table.
+
+==<u>Deleted</u>==
+  * Lists all Recently Deleted shows with option to restore/undelete shows.
+
+===Refresh===
+  * Select desired TiVo and click on the *Refresh* button to start a kmttg job to collect information from the TiVo. Once the job completes the table will be populated with Recently Deleted list of entries obtained from the TiVo.
+
+===Recover===
+  * Select an item in the table and click on this button to recover/undelete a recording from Recently Deleted folder.
 
 
 ==<u>Remote</u>==
