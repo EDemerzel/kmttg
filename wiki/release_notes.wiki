@@ -1,6 +1,18 @@
 #labels Featured
 =RELEASE NOTES=
 
+==v0p9a (11/03/2012)==
+
+*ENHANCEMENTS*
+   * Added new RPC tab *Deleted* that lists all Recently Deleted shows for Series 4 units with option to restore/undelete shows.
+   * Added *Include History* option to the RPC *Won't Record* tab which if enabled means past history will be included in the table so that one can explore why certain shows of interest did not record in the past.
+
+*CHANGES*
+   * Update to NPL table date column to account for changes in 20.2.2 TiVo series 4 software where <ShowingStartTime> item was introduced in the NPL XML in addition to <CaptureDate>.
+   
+*FIXES*
+   * Eliminated hour range choice in RPC *Guide* tab as it inexplicably was causing exception issues when running kmttg using Java 7. Guide will now always show schedule in 12 hour increments (instead of giving you choice of 6 or 12 hours).
+
 ==v0p8v (10/20/2012)==
 
 *ENHANCEMENTS*
