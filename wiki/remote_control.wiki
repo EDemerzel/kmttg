@@ -134,9 +134,8 @@ Thanks to some reverse engineering of the iPad protocol by TCF member 'arantius'
   * First step is to click on the *Channels* button to have kmttg obtain full list of channels you receive for selected TiVo. The channels will be listed each as a separate folder entry. You then click on a channel/folder to see listings for that channel.
   * NOTE: The first time you click on this button kmttg will also obtain ToDo lists for all TiVos setup for iPad remote. This is used to mark entries already scheduled to record in a different color in the table.
 
-===Start & Range===
-  * You can control the *Start* time of the listings as well as the number of hours to display in the listings. If you adjust these settings while inside a channel folder then the listings will automatically update to reflect the change.
-  * You can select between 6 or 12 hours to display at a time in the guide table. If inside a channel folder when you change this setting the guide listings will automatically be refreshed.
+===Start===
+  * You can control the *Start* time of the listings for which to list 12 hours worth of programming starting from selected time. If you adjust the start time setting while inside a channel folder then the listings will automatically update to reflect the change.
 
 ===Record===
   * You can setup an individual recording for any show listed in the table by selecting an entry inside a channel folder and using the *Record* button. kmttg uses lowest priority to schedule the recording so if there is a conflict then it will not be scheduled and kmttg will print a conflict message.
