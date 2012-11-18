@@ -1,0 +1,29 @@
+Wishlists and kmttg
+
+==WISHLIST RESTRICTIONS==
+  * Via RPC protocol only autorecord wishlists are visible and editable, so if you want to edit non-autorecord wishlists you will need to do in on TiVo itself.
+  * Via RPC protocol even though wishlist titles are mandatory when creating wishlists they will take on a name of their own and you will have to use the TiVo itself to change the name.
+
+==WISHLIST SYNTAX==
+  * You can specify multiple sets of keywords separated by a , (comma).
+  * If keywords start with a - (minus) then that signifies NOT operation.
+  * If keywords are enclosed in parentheses (keywords) that signifies OPTIONAL.
+  * Keywords without a - or enclosed in parentheses are taken as REQUIRED.
+
+==WISHLIST EXAMPLES==
+  * 1. Target: NBA Basketball, Clippers games only
+    * Title Keywords = NBA Basketball
+    * Keywords = Clippers
+
+  * 2. Target: NBA Basketball, all games except Clippers and Lakers
+    * Title Keywords = NBA Basketball
+    * Keywords = -Lakers,-Clippers
+    
+  * 3. Target: All NBA and NFL games
+    * Title Keywords = (NBA Basketball),(NFL Football)
+    
+  * 4. Target: All movies starring Clint Eastwood
+    * Actor = Clint Eastwood
+    
+  * 5. Target: All movies directed by Clint Eastwood
+    * Director = Clint Eastwood
