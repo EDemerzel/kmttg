@@ -22,7 +22,7 @@ Setting this option to 0 also will reset it such that it will display total used
   * You can enable grouping of similar shows by enabling the *Show Folders* option.
   * Left click on a table row showing a folder to display the shows in the folder. Click on the *Back* button to return to top level view.
   * Right click on a show to retrieve extended metadata for the show so that originalAirDate can be retrieved and displayed in message window when you click on a show (if available).
-    * NOTE: You only need to right click once on a show to get metadata - subsequent right clicks won't do anything).
+    * NOTE: You only need to right click once on a show to get metadata - subsequent right clicks won't do anything.
   * Table column widths are automatically adjusted to fit the contents unless you turn off *Auto size NPL columns widths* option under *Configuration-Visual* tab.
 
 ==DOWNLOADING FROM TIVOS==
