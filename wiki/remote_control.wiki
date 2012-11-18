@@ -199,7 +199,7 @@ Thanks to some reverse engineering of the iPad protocol by TCF member 'arantius'
     * userDiskUsed - used disk space (also shows % disk space used)
     * parentalControlsState
     * What's On
-      * idle - Currently showing a GUI, HME or Flash screen
+      * idle - Currently viewing a GUI, HME or Flash screen
       * recording - Viewing a recording
       * liveCache - Viewing live TV
     * current background and foreground tuner channel information.
