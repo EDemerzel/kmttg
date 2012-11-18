@@ -2,7 +2,7 @@ Wishlists and kmttg
 
 ==WISHLIST RESTRICTIONS==
   * RPC protocol limitations impose certain restrictions on what can be done with wishlists via kmttg. Specifically:
-    * Only autorecord wishlists are visible and editable, so if you want to edit non-autorecord wishlists you will need to do in on TiVo itself.
+    * Only autorecord wishlists are visible and editable, so if you want to edit or remove non-autorecord wishlists you will need to do in on TiVo itself.
     * Even though wishlist titles are mandatory when creating wishlists they will take on a name of their own and you will have to use the TiVo itself to change the name.
     * It's not possible to obtain list of category IDs, so adding categories to wishlists is not available.
 
