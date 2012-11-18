@@ -1,6 +1,24 @@
 #labels Featured
 =RELEASE NOTES=
 
+==v0p9b (11/18/2012)==
+
+*ENHANCEMENTS*
+   * Right clicking on a show in NPL table now retrieves extended metadata for the show so that originalAirDate can be retrieved and displayed if available. (Note, you only need to right click once on a show to get metadata - subsequent right clicks won't do anything).
+   * RPC remote enhancements:
+     * Added *Network Connect* button to *Info* tab which is a nice shortcut for initiating a Network Connect (phone home) on selected TiVo without having to do use the GUI on the TiVo to do it.
+     * Added *What's On* line to *Info* display which indicates what the unit is currently displaying. NOTE: Displays "idle" for GUI screens or HME/Flash applications.
+     * Added *WL* buttons to various tabs to allow Wishlist creation.
+       * Note that via RPC there appears to be no way to list and/or modify wishlists that are not set as auto-record, so if necessary those actions will have to be done on the TiVo itself.
+       * Also note that categories in wishlists are not supported since command to obtain available categories and corresponding IDs is not exposed via RPC.
+       * See [http://code.google.com/p/kmttg/wiki/Wishlists Wishlists] Wiki for more information.
+     * Added *Permanently Delete* button to *Deleted* tab which can be used to permanently delete 1 or more selections from Recently Deleted folder.
+     * If you click on *Season Pass* button for a show that already has a Season Pass on the selected TiVo you are now prompted to modify the existing Season Pass instead of just seeing a warning.
+     * Added printing of originalAirDate, if available, to the message window when clicking on a show title in ToDo, Won't Record, Season Premieres, Search, Guide and Deleted tables.
+   
+*FIXES*
+   * Fixed *Recover* in RPC remote *Deleted* tab to work properly when multiple shows are selected.
+
 ==v0p9a (11/03/2012)==
 
 *ENHANCEMENTS*
