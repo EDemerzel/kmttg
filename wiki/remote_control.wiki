@@ -104,6 +104,11 @@ Thanks to some reverse engineering of the iPad protocol by TCF member 'arantius'
   * *Season Pass* button allows one to schedule Season Passes for selected entries in the table on a TiVo Premiere. A dialog box will prompt you for Season Pass attributes to use for scheduling the Season Pass so you can adjust them appropriately.
     * NOTE: kmttg will attempt to avoid duplicated season passes on the destination TiVo by checking against the current set of season passes already on the TiVo.
 
+===WL===
+  * *WL* button can be used to create a wishlist. If a show is selected in table then the title will be set automatically to that title in the wishlist dialog that comes up. You are prompted with wishlist dialog where you can define wishlist with boolean logic for keywords, title keywords, actors and directors.
+  * NOTE: Even though a title is required to be specified, the Wishlist will be named by TiVo according to the search elements you setup.
+  * NOTE: Existing non-autorecord wishlists are not visible or editable via RPC and have to be managed on the TiVo itself.
+  * See [http://code.google.com/p/kmttg/wiki/Wishlists Wishlists] Wiki for more information.
 
 ==<u>Search</u>==
   * Allows you to enter keywords to search through guide listings.
