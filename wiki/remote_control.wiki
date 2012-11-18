@@ -192,5 +192,18 @@ Thanks to some reverse engineering of the iPad protocol by TCF member 'arantius'
     * *HME Jump* - Allows you to choose a TiVo HME application in given list and jump directly to it. (NOTE: This does not include local HME applications).
          
 ==<u>System Information</u>==
-  * Allows you to list some system information obtained from selected TiVo:<br>
-software version, total disk size (also shows size in GB), used disk space (also shows % disk space used), parental controls state, current background and foreground tuner channel information.
+  * Allows you to list some system information obtained from selected TiVo:
+    * tsn
+    * softwareVersion
+    * userDiskSize - total disk size (also shows size in GB)
+    * userDiskUsed - used disk space (also shows % disk space used)
+    * parentalControlsState
+    * What's On
+      * idle - Currently showing a GUI, HME or Flash screen
+      * recording - Viewing a recording
+      * liveCache - Viewing live TV
+    * current background and foreground tuner channel information.
+
+===Network Connect===
+  * A nice shortcut for initiating a Network Connect (phone home) on selected TiVo without having to do use the GUI on the TiVo to do it.
+  * NOTE: Even if there is a net connect currently in progress this operation can be run and always returns success. It will only actually initiate a net connect if there is not one already running and you are not in "pending restart" mode.
