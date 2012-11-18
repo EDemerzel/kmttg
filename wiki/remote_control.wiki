@@ -127,6 +127,12 @@ Thanks to some reverse engineering of the iPad protocol by TCF member 'arantius'
 ===Season Pass===
   * For shows of type "series" you can use the *Season Pass* button to setup a season pass for the show. The season pass will always be created with lowest priority, but you can use the *Season Passes* tab to adjust the priority once you have set it up.
 
+===WL===
+  * *WL* button can be used to create a wishlist. If a show is selected in table then the title will be set automatically to that title in the wishlist dialog that comes up. You are prompted with wishlist dialog where you can define wishlist with boolean logic for keywords, title keywords, actors and directors.
+  * NOTE: Even though a title is required to be specified, the Wishlist will be named by TiVo according to the search elements you setup.
+  * NOTE: Existing non-autorecord wishlists are not visible or editable via RPC and have to be managed on the TiVo itself.
+  * See [http://code.google.com/p/kmttg/wiki/Wishlists Wishlists] Wiki for more information.
+
 ===Refresh ToDo===
   * Refresh ToDo list that is used to highlight shows that are already scheduled to record on any Series 4 unit configured in kmttg. The ToDo list is only obtained automatically the first time it is needed so if you are modifying the ToDo list on 1 or more units it is useful to periodically use this button to refresh the list.
     * NOTE: A single unified ToDo list is shared among *Search*, *Guide* and *Won't Record* tabs. This avoids obtaining ToDo lists multiple times for different tables.
@@ -147,6 +153,12 @@ Thanks to some reverse engineering of the iPad protocol by TCF member 'arantius'
 
 ===Season Pass===
   * For shows of type "series" you can use the *Season Pass* button to setup a season pass for the show. The season pass will always be created with lowest priority, but you can use the *Season Passes* tab to adjust the priority once you have set it up.
+
+===WL===
+  * *WL* button can be used to create a wishlist. If a show is selected in table then the title will be set automatically to that title in the wishlist dialog that comes up. You are prompted with wishlist dialog where you can define wishlist with boolean logic for keywords, title keywords, actors and directors.
+  * NOTE: Even though a title is required to be specified, the Wishlist will be named by TiVo according to the search elements you setup.
+  * NOTE: Existing non-autorecord wishlists are not visible or editable via RPC and have to be managed on the TiVo itself.
+  * See [http://code.google.com/p/kmttg/wiki/Wishlists Wishlists] Wiki for more information.
 
 ===Refresh ToDo===
   * Refresh ToDo list that is used to highlight shows that are already scheduled to record on any Series 4 unit configured in kmttg. The ToDo list is only obtained automatically the first time it is needed so if you are modifying the ToDo list on 1 or more units it is useful to periodically use this button to refresh the list.
