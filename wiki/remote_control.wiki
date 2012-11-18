@@ -192,7 +192,8 @@ Thanks to some reverse engineering of the iPad protocol by TCF member 'arantius'
     * *HME Jump* - Allows you to choose a TiVo HME application in given list and jump directly to it. (NOTE: This does not include local HME applications).
          
 ==<u>System Information</u>==
-  * Allows you to list some system information obtained from selected TiVo:
+===Refresh===
+  * Allows you to list some system information obtained from selected TiVo.
     * tsn
     * softwareVersion
     * userDiskSize - total disk size (also shows size in GB)
