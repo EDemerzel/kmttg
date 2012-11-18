@@ -103,6 +103,7 @@ Thanks to some reverse engineering of the iPad protocol by TCF member 'arantius'
 ===Season Pass===
   * *Season Pass* button allows one to schedule Season Passes for selected entries in the table on a TiVo Premiere. A dialog box will prompt you for Season Pass attributes to use for scheduling the Season Pass so you can adjust them appropriately.
     * NOTE: kmttg will attempt to avoid duplicated season passes on the destination TiVo by checking against the current set of season passes already on the TiVo.
+    * NOTE: If you click on *Season Pass* button for a show that already has a Season Pass on the selected TiVo you are now prompted to modify the existing Season Pass instead of just seeing a warning.
 
 ===WL===
   * *WL* button can be used to create a wishlist. If a show is selected in table then the title will be set automatically to that title in the wishlist dialog that comes up. You are prompted with wishlist dialog where you can define wishlist with boolean logic for keywords, title keywords, actors and directors.
@@ -126,6 +127,7 @@ Thanks to some reverse engineering of the iPad protocol by TCF member 'arantius'
 
 ===Season Pass===
   * For shows of type "series" you can use the *Season Pass* button to setup a season pass for the show. The season pass will always be created with lowest priority, but you can use the *Season Passes* tab to adjust the priority once you have set it up.
+  * NOTE: If you click on *Season Pass* button for a show that already has a Season Pass on the selected TiVo you are now prompted to modify the existing Season Pass instead of just seeing a warning.
 
 ===WL===
   * *WL* button can be used to create a wishlist. If a show is selected in table then the title will be set automatically to that title in the wishlist dialog that comes up. You are prompted with wishlist dialog where you can define wishlist with boolean logic for keywords, title keywords, actors and directors.
@@ -153,6 +155,7 @@ Thanks to some reverse engineering of the iPad protocol by TCF member 'arantius'
 
 ===Season Pass===
   * For shows of type "series" you can use the *Season Pass* button to setup a season pass for the show. The season pass will always be created with lowest priority, but you can use the *Season Passes* tab to adjust the priority once you have set it up.
+  * NOTE: If you click on *Season Pass* button for a show that already has a Season Pass on the selected TiVo you are now prompted to modify the existing Season Pass instead of just seeing a warning.
 
 ===WL===
   * *WL* button can be used to create a wishlist. If a show is selected in table then the title will be set automatically to that title in the wishlist dialog that comes up. You are prompted with wishlist dialog where you can define wishlist with boolean logic for keywords, title keywords, actors and directors.
