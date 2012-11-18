@@ -17,6 +17,14 @@ The first time you bring up this window you will need to set the proper value fo
 
 Setting this option to 0 also will reset it such that it will display total used space thus far. This is in case user does not know in advance how much disk space is available for recordings.
 
+==NOW PLAYING LIST==
+  * Left click on a table row that is not a folder to display more information about the show in the message window.
+  * You can enable grouping of similar shows by enabling the *Show Folders* option.
+  * Left click on a table row showing a folder to display the shows in the folder. Click on the *Back* button to return to top level view.
+  * Right click on a show to retrieve extended metadata for the show so that originalAirDate can be retrieved and displayed in message window when you click on a show (if available).
+    * NOTE: You only need to right click once on a show to get metadata - subsequent right clicks won't do anything).
+  * Table column widths are automatically adjusted to fit the contents unless you turn off *Auto size NPL columns widths* option under *Configuration-Visual* tab.
+
 ==DOWNLOADING FROM TIVOS==
 Starting with version 0.6e kmttg uses a separate tab displaying the Now Playing List of each Tivo on your network. There is also always a *FILES* tab which allows you to find files on your computer to use as a starting point for kmttg (see documentation on this a little further down). Additionally any Tivos you have previously configured for kmttg will show up in their own tab so that you can use shows on your Tivos as starting points for kmttg. Use the *Refresh* button to refresh the Now Playing list for a Tivo.
 
