@@ -25,6 +25,7 @@ Setting this option to 0 also will reset it such that it will display total used
     * NOTE: You only need to right click once on a show to get metadata - subsequent right clicks won't do anything.
   * Table column widths are automatically adjusted to fit the contents unless you turn off *Auto size NPL columns widths* option under *Configuration-Visual* tab.
   * If you have the RPC remote enabled for series 4 TiVos or later (see [http://code.google.com/p/kmttg/wiki/remote_control remote_control] Wiki) you can use the keyboard *delete* button to delete shows from your TiVo or the *play* button to start playback of a show on your TiVo.
+  * Pressing keyboard *j* button on a show will dump all stored information for that show (used primarily for debugging purposes).
 
 ==DOWNLOADING FROM TIVOS==
 Starting with version 0.6e kmttg uses a separate tab displaying the Now Playing List of each Tivo on your network. There is also always a *FILES* tab which allows you to find files on your computer to use as a starting point for kmttg (see documentation on this a little further down). Additionally any Tivos you have previously configured for kmttg will show up in their own tab so that you can use shows on your Tivos as starting points for kmttg. Use the *Refresh* button to refresh the Now Playing list for a Tivo.
