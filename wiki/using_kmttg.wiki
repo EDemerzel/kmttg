@@ -153,6 +153,8 @@ There are comments in the pre-defined *.enc* file which hopefully makes it prett
 
 NOTE: You *MUST* use all lowercase file names with no spaces if creating your own .enc files.
 
+NOTE: Encoding profiles are designed to work with certain versions of encoders, so if you use newest versions of ffmpeg or handbrake they may not work. If you want to use latest versions then you may have to create your own encoding profiles that work with them.
+
 ==KMTTG AUTO TRANSFERS==
 Consult the [http://code.google.com/p/kmttg/wiki/auto_transfers auto_transfers] wiki page for details on setting up and running auto transfers.
 
