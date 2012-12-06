@@ -264,6 +264,11 @@ The advanced keyword is highlighted in bold and signifies only include `“_Ep#x
   * *last* - Generate only for last video file in the task set (the default setting)
   * *all* - Generate for all available video files in the task set (except .TiVo files)
 
+==extra metadata entries (comma separated)==
+  * Allows you to specify one or more key:value pairs to be added by kmttg when creating pyTivo metadata files. This could be useful for example if you want to add "image:folder.jpg" line automatically to every metadata file for cases when you have folder images and you want AtomicParsley to add the image to video metadata as specified in the pyTivo metadata file.
+  * If you have more than 1 entry to add you can do so by separating key:value pairs with a comma character, for example:
+    * name1:value1,name2:value2
+
 ==Enable TivoWebPlus Delete task==
   * If you have TivoWebPlus configured for your TiVo(s) then if you enable this option an optional *TWP Delete* task is made available in the kmttg GUI or auto transfers task set.
   * When *TWP Delete* task is enabled a TivoWebPlus http call to delete a show on your source TiVo will be issued following a successful decrypt of a downloaded TiVo file.
