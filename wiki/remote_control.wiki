@@ -21,6 +21,10 @@ Thanks to some reverse engineering of the iPad protocol by TCF member 'arantius'
 ===Cancel===
   * You can select upcoming recordings in the table and use the *Cancel* button or keyboard *delete* key to cancel them.
 
+===Modify===
+  * Allows you to modify recording options for a selected show in To Do table.
+  * Brings up a *Recording Options* form where you can change recording options: Keep Until, Start recording, Stop recording.
+
 ==<u>Season Passes</u>==
   * Allows you to display and manage your Premiere Season Pass lists.
   * Table shows number of upcoming recordings for each Season Pass after the title name and you can click on *Upcoming* button to list upcoming episodes.
@@ -78,6 +82,10 @@ Thanks to some reverse engineering of the iPad protocol by TCF member 'arantius'
 
 ===Record===
   * *Record* button allows one to select individual shows shown in table to be scheduled to record on a TiVo Premiere. The scheduling attempt uses low priority such that will only record if no conflicts with other recordings exist. i.e. This provides a convenient way of scheduling recordings that were not to record on alternate TiVo Premieres if available.
+
+===Explain===
+  * This button can be used to list all the shows in conflict for entries under *programSourceConflict* folder. Select an individual show under *programSourceConflict* folder and click this button.
+  * This button does nothing for shows in other folders as the reason for not recording for other cases is self-explanatory by the folder name.
 
 ===Refresh ToDo===
   * Refresh ToDo list that is used to highlight shows that are already scheduled to record on another unit configured in kmttg. The ToDo list is only obtained automatically the first time it is needed so if you are modifying the ToDo list on 1 or more units it is useful to periodically use this button to refresh the list.
