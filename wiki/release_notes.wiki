@@ -1,6 +1,14 @@
 #labels Featured
 =RELEASE NOTES=
 
+==v0p9d (12/08/2012)==
+
+*ENHANCEMENTS*
+   * When using *Conflicts* button in *Season Passes* tab kmttg now will obtain ToDo lists if necessary when listing conflicts so as to highlight conflicting recordings that are already set to record on another TiVo.
+   
+*FIXES*
+   * Conflict resolution now considers start and end time padding for show that won't record when clicking on *Explain* button in *Won't Record* tab.
+
 ==v0p9c (12/06/2012)==
 NOTE: Encoding profiles were updated in this release, so if upgrading from a previous version be sure to unzip over your current installation and choose to overwrite existing files in order to update your installation "encode" folder.
 
