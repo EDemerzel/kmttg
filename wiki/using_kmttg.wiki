@@ -105,7 +105,12 @@ NOTE: Following a comskip run you can run comskip with .txt file as an argument 
 ===atomic===
   * This task does not show up explicitly as a choice to run. However if you have AtomicParsley executable specified in kmttg config and you generate an mp4 or m4v file in the *encode* step AND you have a pyTivo metadata file to accompany the encoded file then this step will be run automatically by kmttg once encoding job completes. This takes information from the pyTivo metadata file and adds it to the video file so that programs such as Itunes can display extra information about encoded files.
 
-  * Starting with v0p7l release there is now a *Run AtomicParsley* button available in *FILES* tab which can be used to explicitly run AtomicParsley on selected video files with mp4 or m4v suffix. There must be accompanying pyTivo metadata files to go along with the video files in order for this to work. i.e. If video file is myvideo.mp4 there should also be a myvideo.mp4.txt pyTivo metadata file to go along with it.
+  * There is a *Run AtomicParsley* button available in *FILES* tab which can be used to explicitly run AtomicParsley on selected video files with mp4 or m4v suffix. There must be accompanying pyTivo metadata files to go along with the video files in order for this to work. i.e. If video file is myvideo.mp4 there should also be a myvideo.mp4.txt pyTivo metadata file to go along with it.
+
+  * There is a *pyTivo stream* button available in *FILES* tab if at least 1 TiVo in kmttg config has RPC (iPad style communications) enabled.
+    * This allows you to stream video files to a series 4 or later TiVo using TiVoCast HME Video Player and pyTivo as a video server. You can choose a video file that resides under one of pyTivo video shares in the FILES table and then click on this button to stream it to a specified series 4 or later TiVo.
+    * The advantage of streaming this way vs for example Streambaby is that there is no 1.1GB buffer limitation.
+    * NOTE: This only works for unencrypted mpeg2 program stream and H.264 mp4 files that pyTivo can transfer without having to transcode. If you attempt to stream a non-compliant video that pyTivo transcodes this will not work. .TiVo files also won't work.
 
   NOTE: When using File Browser to add video files to FILES list set *Files of Type* to *video files* in order to be able to see files ending in .mp4 or .m4v suffix.
 
@@ -114,6 +119,8 @@ NOTE: Following a comskip run you can run comskip with .txt file as an argument 
   * This works in conjunction with pyTivo server to initiate pushes of video files to a TiVo. pyTivo server must be running and the file to be pushed should reside in a defined pyTivo share directory.
   * In order for this task to be available you must define path to pyTivo.conf file in kmttg configuration (*pyTivo tab*). The TiVo you want to push to is also defined there. You can also use the *Files to push* configuration option to control which video files you want to push.
   * Video files can reside anywhere below the top level directory of an existing pyTivo video share. If you try and push a video file outside a pyTivo video share it will fail, so make sure to define output directory of files you want to push via kmttg to be under a pyTivo video share somewhere.
+  * The *File* menu contains an entry called *Show pending pyTivo pushes* which you can use to check on pending pyTivo pushes that have not yet started or completed.
+    * First click on the TiVo tab name which is the destination of your pushes and then choose this menu item. kmttg will query the mind.tivo.com server and any pending pushes will be listed in a dialog table from which you can also select queued entries to cancel.
 
 ===custom===
   * You can use this option if you have configured a custom script to run in kmttg configuration. This is always the last task to be performed in the set of enabled tasks and gives you flexibility to do any custom actions you want.
