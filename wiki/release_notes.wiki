@@ -26,7 +26,6 @@
    
 *CHANGES*
    * *projectx*, *projectxcut*, and *comskip* tasks now check for mpeg2 video input since other video types are not supported for these tasks.
-   * *captions* task updated to look for .ts and .mp4 input files as recent ccextractor versions support those types of input files.
    
 *FIXES*
    * RPC Remote *Season Passes* GUI had a bug where after loading SP data all subsequent operations would be treated as loaded data even after using *Refresh* button to load SP data from a TiVo.
