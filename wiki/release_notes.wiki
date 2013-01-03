@@ -1,6 +1,36 @@
 #labels Featured
 =RELEASE NOTES=
 
+==v0p9e (01/02/2013)==
+
+*NOTE: VRDscripts/qsfix.vbs and VRDscripts/adcut.vbs files were updated in this release, so when upgrading make sure to tar over existing installation such that all files get updated, not just kmttg.jar.*
+
+*ENHANCEMENTS*
+   * Added Remote functionality for older TiVo models that don't have direct RPC protocol support. kmttg will use middlemind.tivo.com server for Remote functionality for TiVos that don't have *Enable iPad style communications with this TiVo* option enabled in kmttg config.
+      * Note that not all the functionality is available and various buttons that do not apply are disabled when using middlemind server for a TiVo. Also note that scheduling individual recordings and season passes on this TiVo will have delayed functionality with email confirmations just as if you scheduled them from tivo.com or equivalent online guides.
+      * Related to this enhancement, the config->Tivos tab now has settings where you can supply your tivo.com username & password to use for logging into middlemind server. If you don't specify them directly in config but you configure kmttg for pyTivo.conf and that contains the username & password, kmttg will get them from there.
+   * kmttg now automatically detects and enables RPC functionality for series 4 units known to support RPC.
+   * Added *pyTivo stream* button to FILES tab if at least 1 TiVo in kmttg config has RPC (iPad style communications) enabled.
+      * This allows you to stream video files to a series 4 or later TiVo using TiVoCast HME Video Player and pyTivo as a video server. You can choose a video file that resides under one of pyTivo video shares in the FILES table and then click on this button to stream it to a specified series 4 or later TiVo.
+      * The advantage of streaming this way vs for example Streambaby is that there is no 1.1GB buffer limitation.
+      * NOTE: This only works for unencrypted mpeg2 program stream and H.264 mp4 files that pyTivo can transfer without having to transcode. If you attempt to stream a non-compliant video that pyTivo transcodes this will not work. .TiVo files also won't work.
+   * Added *Show pending pyTivo pushes* File menu item that brings up a dialog box that allows you to view currently queued up pyTivo pushes on TiVo Mind server and to remove selected entries from the queue.
+      * You must first select TiVo tab corresponding to destination TiVo of pushes you want to check on before selecting the menu entry.
+   * VideoRedo *qsfix* job now properly handles input files other than mpeg2 program stream type.
+      * Previously this task would always output type mpeg2 program stream regardless of input file type but now will try and preserve same input container and video type for the output file.
+      * Note that as part of this change *VRDscripts/qsfix.vbs* was updated.
+   * VideoRedo *adcut* job now properly handles input files other than mpeg2 program stream type.
+      * Previously this task would always output type mpeg2 program stream regardless of input file type but now will try and preserve same input container and video type for the output file.
+      * Note that as part of this change *VRDscripts/adcut.vbs* was updated.
+   * RPC Remote ToDo list retrieval for multiple TiVos at a time now is run in parallel instead of sequentially to help speed things up when you have more than 1 TiVo.
+   
+*CHANGES*
+   * *projectx*, *projectxcut*, and *comskip* tasks now check for mpeg2 video input since other video types are not supported for these tasks.
+   * *captions* task updated to look for .ts and .mp4 input files as recent ccextractor versions support those types of input files.
+   
+*FIXES*
+   * RPC Remote *Season Passes* GUI had a bug where after loading SP data all subsequent operations would be treated as loaded data even after using *Refresh* button to load SP data from a TiVo.
+
 ==v0p9d (12/08/2012)==
 
 *ENHANCEMENTS*
