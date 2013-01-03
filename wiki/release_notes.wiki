@@ -5,7 +5,7 @@
 *NOTE: VRDscripts/qsfix.vbs and VRDscripts/adcut.vbs files were recently updated, so when upgrading make sure to tar over existing installation such that all files get updated, not just kmttg.jar.*
 
 *FIXES*
-   * Remote *Won't Record* functionality fix for non-RPC enabled TiVos (series 3 or earlier).
+   * Remote *Won't Record* table fix for non-RPC enabled TiVos (series 3 or earlier).
    * Added proper date sorting for Remote tables with dates for non-RPC enabled TiVos (series 3 or earlier).
 
 ==v0p9e (01/02/2013)==
