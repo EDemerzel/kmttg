@@ -1,5 +1,13 @@
 #labels Featured
 =RELEASE NOTES=
+
+==v0p9g (01/04/2013)==
+
+*NOTE: VRDscripts/qsfix.vbs and VRDscripts/adcut.vbs files were recently updated, so when upgrading make sure to tar over existing installation such that all files get updated, not just kmttg.jar.*
+
+*FIXES*
+   * Updated Remote for non-series 4 units to determine TSN from middlemind server instead of relying on Bonjour/TiVo Beacon for obtaining TSN. This should fix the "Can't determine TSN for TiVo" error messages that some have reported with previous release.
+
 ==v0p9f (01/03/2013)==
 
 *NOTE: VRDscripts/qsfix.vbs and VRDscripts/adcut.vbs files were recently updated, so when upgrading make sure to tar over existing installation such that all files get updated, not just kmttg.jar.*
