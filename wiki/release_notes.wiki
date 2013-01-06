@@ -1,6 +1,13 @@
 #labels Featured
 =RELEASE NOTES=
 
+==v0p9h (01/06/2013)==
+
+*NOTE: VRDscripts/qsfix.vbs and VRDscripts/adcut.vbs files were recently updated, so when upgrading make sure to tar over existing installation such that all files get updated, not just kmttg.jar.*
+
+*FIXES*
+   * Fix to *pyTivo stream* to not rely on pyTivo query debug mode to get video container information. Instead video information is now obtained by kmttg using ffmpeg. Specifically this fixes the issue with error message: *streamFile - JSONObject["vHost"] is not a JSONObject*
+
 ==v0p9g (01/04/2013)==
 
 *NOTE: VRDscripts/qsfix.vbs and VRDscripts/adcut.vbs files were recently updated, so when upgrading make sure to tar over existing installation such that all files get updated, not just kmttg.jar.*
