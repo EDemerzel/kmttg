@@ -4,7 +4,7 @@
 *NOTE: This documentation is updated to match latest kmttg release only. This capability became available starting with kmttg v0p8.*
 <br>
 
-*NOTE: To use this capability make sure you have Network Remote Control enabled on your Premiere(s):<br>
+*NOTE: To use this capability make sure you have Network Remote Control enabled on your TiVo(s):<br>
 Settings--Remote, CableCARD & Devices--Network Remote Control--Allow network-based remote controls*
 
 *NOTE: Under kmttg configuration "Tivos" tab you need to enable iPad option for each TiVo Premiere you want to use with this remote (in recent releases Series 4 units will be enabled automatically). While kmttg allows you to enable option for non-Premiere units they won't work. As soon as you have at least 1 TiVo enabled with this option you will see an additional *Remote* tab in the main kmttg window. For TiVo units older than series 4 there is more limited Remote Control functionality available if you provide your tivo.com username & password in kmttg config "TiVos" tab*
