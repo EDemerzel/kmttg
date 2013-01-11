@@ -38,6 +38,7 @@ Thanks to some reverse engineering of the iPad protocol by TCF member 'arantius'
 
 ===Load===
   * Use the *Load...* button to load a previously saved Season Passes file.
+  * If you intend to copy a Season Pass to a particular TiVo then you should 1st select that destination TiVo and then use the Load button to load in Season Passes, then you can use the Copy button to copy a season pass to the currently selected TiVo.
     * NOTE: For items loaded from file kmttg will display a *Loaded:* prefix in the SHOW column in order to clarify that these were loaded from file.
 
 ===Delete===
