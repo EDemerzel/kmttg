@@ -1,6 +1,17 @@
 #labels Featured
 =RELEASE NOTES=
 
+==v0p9i (01/20/2013)==
+
+*ENHANCEMENTS*
+   * For AtomicParsley runs, add --longdesc, --hdvideo true, --contentRating where relevant and if AtomicParsley binary being used supports them (default binary in kmttg Win32 zip package does not).
+   
+*FIXES*
+   * Update to *ToDo*, *Won't Record* and *Deleted* entry retrieval to work properly with middlemind server for series 3 and earlier TiVos.
+   * Previously *iPad Delete* task would only work in GUI mode. This is now fixed to work in batch/auto mode.
+   * Check for empty genre setting added during AtomicParsley runs.
+   * auto.log.* file no longer gets created if starting kmttg in GUI mode.
+
 ==v0p9h (01/06/2013)==
 
 *NOTE: VRDscripts/qsfix.vbs and VRDscripts/adcut.vbs files were recently updated, so when upgrading make sure to tar over existing installation such that all files get updated, not just kmttg.jar.*
