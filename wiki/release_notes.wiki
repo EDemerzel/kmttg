@@ -12,7 +12,7 @@
    * For AtomicParsley runs, add --longdesc, --hdvideo true, --contentRating where relevant and if AtomicParsley binary being used supports them (default binary in kmttg Win32 zip package does not).
    
 *FIXES*
-   * Update to *ToDo*, *Won't Record* and *Deleted* entry retrieval to work properly with middlemind server for series 3 and earlier TiVos.
+   * Update to *ToDo*, *Won't Record* and *Deleted* entry retrieval to work properly with middlemind server for series 3 TiVos.
    * Previously *iPad Delete* task would only work in GUI mode. This is now fixed to work in batch/auto mode.
    * Check for empty genre setting added during AtomicParsley runs.
    * {{{auto.log.*}}} file no longer gets created if starting kmttg in GUI mode.
@@ -29,22 +29,22 @@
 *NOTE: VRDscripts/qsfix.vbs and VRDscripts/adcut.vbs files were recently updated, so when upgrading make sure to tar over existing installation such that all files get updated, not just kmttg.jar.*
 
 *FIXES*
-   * Updated Remote for non-series 4 units to determine TSN from middlemind server instead of relying on Bonjour/TiVo Beacon for obtaining TSN. This should fix the "Can't determine TSN for TiVo" error messages that some have reported with previous release.
+   * Updated Remote for series 3 units to determine TSN from middlemind server instead of relying on Bonjour/TiVo Beacon for obtaining TSN. This should fix the "Can't determine TSN for TiVo" error messages that some have reported with previous release.
 
 ==v0p9f (01/03/2013)==
 
 *NOTE: VRDscripts/qsfix.vbs and VRDscripts/adcut.vbs files were recently updated, so when upgrading make sure to tar over existing installation such that all files get updated, not just kmttg.jar.*
 
 *FIXES*
-   * Remote *Won't Record* table fix for non-RPC enabled TiVos (series 3 or earlier).
-   * Added proper date sorting for Remote tables with dates for non-RPC enabled TiVos (series 3 or earlier).
+   * Remote *Won't Record* table fix for non-RPC enabled TiVos (series 3 units).
+   * Added proper date sorting for Remote tables with dates for non-RPC enabled TiVos (series 3 units).
 
 ==v0p9e (01/02/2013)==
 
 *NOTE: VRDscripts/qsfix.vbs and VRDscripts/adcut.vbs files were updated in this release, so when upgrading make sure to tar over existing installation such that all files get updated, not just kmttg.jar.*
 
 *ENHANCEMENTS*
-   * Added Remote functionality for older TiVo models that don't have direct RPC protocol support. kmttg will use middlemind.tivo.com server for Remote functionality for TiVos that don't have *Enable iPad style communications with this TiVo* option enabled in kmttg config.
+   * Added Remote functionality for series 3 TiVo models that don't have direct RPC protocol support. kmttg will use middlemind.tivo.com server for Remote functionality for TiVos that don't have *Enable iPad style communications with this TiVo* option enabled in kmttg config.
       * Note that not all the functionality is available and various buttons that do not apply are disabled when using middlemind server for a TiVo. Also note that scheduling individual recordings and season passes on this TiVo will have delayed functionality with email confirmations just as if you scheduled them from tivo.com or equivalent online guides.
       * Related to this enhancement, the config->Tivos tab now has settings where you can supply your tivo.com username & password to use for logging into middlemind server. If you don't specify them directly in config but you configure kmttg for pyTivo.conf and that contains the username & password, kmttg will get them from there.
    * kmttg now automatically detects and enables RPC functionality for series 4 units known to support RPC.
