@@ -1,6 +1,11 @@
 #labels Featured
 =RELEASE NOTES=
 
+==v0p9j (01/20/2013)==
+
+*FIXES*
+   * Fix to RPC Remote *Season Passes* table. Previous release broke upcoming of recordings per Season Pass as well as indication of Season Passes with conflicts.
+
 ==v0p9i (01/20/2013)==
 
 *ENHANCEMENTS*
