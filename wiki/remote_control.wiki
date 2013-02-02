@@ -83,6 +83,8 @@ Thanks to some reverse engineering of the iPad protocol by TCF member 'arantius'
 
 ===Record===
   * *Record* button allows one to select individual shows shown in table to be scheduled to record on a TiVo Premiere. The scheduling attempt uses low priority such that will only record if no conflicts with other recordings exist. i.e. This provides a convenient way of scheduling recordings that were not to record on alternate TiVo Premieres if available.
+  * When you press this button a *Recording Options* dialog will appear giving you option to set *Keep until* property as well as initial or end time padding to use for the recording.
+  * There is also a *Try scheduling on all TiVos* option. If option is enabled then kmttg will successively try and schedule the selected recording on all available remote-enabled TiVos. Thus if scheduling fails on originally targeted TiVo due to conflicts, then successively try scheduling on other available TiVos instead.
 
 ===Explain===
   * This button can be used to list all the shows in conflict for entries under *programSourceConflict* folder. Select an individual show under *programSourceConflict* folder and click this button.
@@ -118,7 +120,9 @@ Thanks to some reverse engineering of the iPad protocol by TCF member 'arantius'
   * NOTE: The search is very CPU intensive and may make the TiVo being used for the search sluggish for the duration of the search, so it's recommended you only do this search when TiVo is not busy recording scheduled shows.
 
 ===Record===
-  * *Record* button allows one to schedule single recording for selected entries in the table on a TiVo Premiere. A dialog box will prompt you for single recording attributes to use for scheduling the show so you can adjust them appropriately.
+  * *Record* button allows one to select individual shows shown in table to be scheduled to record on a TiVo Premiere. The scheduling attempt uses low priority such that will only record if no conflicts with other recordings exist. i.e. This provides a convenient way of scheduling recordings that were not to record on alternate TiVo Premieres if available.
+  * When you press this button a *Recording Options* dialog will appear giving you option to set *Keep until* property as well as initial or end time padding to use for the recording.
+  * There is also a *Try scheduling on all TiVos* option. If option is enabled then kmttg will successively try and schedule the selected recording on all available remote-enabled TiVos. Thus if scheduling fails on originally targeted TiVo due to conflicts, then successively try scheduling on other available TiVos instead.
 
 ===Season Pass===
   * *Season Pass* button allows one to schedule Season Passes for selected entries in the table on a TiVo Premiere. A dialog box will prompt you for Season Pass attributes to use for scheduling the Season Pass so you can adjust them appropriately.
@@ -143,7 +147,9 @@ Thanks to some reverse engineering of the iPad protocol by TCF member 'arantius'
   * You can control maximum number of results to search for to control the amount of time the search takes by adjusting the *Max* number.
 
 ===Record===
-  * You can setup an individual recording for any show listed in the table by selecting an entry and using the *Record* button. kmttg uses lowest priority to schedule the recording so if there is a conflict then it will not be scheduled and kmttg will print a conflict message.
+  * *Record* button allows one to select individual shows shown in table to be scheduled to record on a TiVo Premiere. The scheduling attempt uses low priority such that will only record if no conflicts with other recordings exist. i.e. This provides a convenient way of scheduling recordings that were not to record on alternate TiVo Premieres if available.
+  * When you press this button a *Recording Options* dialog will appear giving you option to set *Keep until* property as well as initial or end time padding to use for the recording.
+  * There is also a *Try scheduling on all TiVos* option. If option is enabled then kmttg will successively try and schedule the selected recording on all available remote-enabled TiVos. Thus if scheduling fails on originally targeted TiVo due to conflicts, then successively try scheduling on other available TiVos instead.
 
 ===Season Pass===
   * For shows of type "series" you can use the *Season Pass* button to setup a season pass for the show. The season pass will always be created with lowest priority, but you can use the *Season Passes* tab to adjust the priority once you have set it up.
@@ -171,7 +177,9 @@ Thanks to some reverse engineering of the iPad protocol by TCF member 'arantius'
   * You can control the *Start* time of the listings for which to list 12 hours worth of programming starting from selected time. If you adjust the start time setting while inside a channel folder then the listings will automatically update to reflect the change.
 
 ===Record===
-  * You can setup an individual recording for any show listed in the table by selecting an entry inside a channel folder and using the *Record* button. kmttg uses lowest priority to schedule the recording so if there is a conflict then it will not be scheduled and kmttg will print a conflict message.
+  * *Record* button allows one to select individual shows shown in table to be scheduled to record on a TiVo Premiere. The scheduling attempt uses low priority such that will only record if no conflicts with other recordings exist. i.e. This provides a convenient way of scheduling recordings that were not to record on alternate TiVo Premieres if available.
+  * When you press this button a *Recording Options* dialog will appear giving you option to set *Keep until* property as well as initial or end time padding to use for the recording.
+  * There is also a *Try scheduling on all TiVos* option. If option is enabled then kmttg will successively try and schedule the selected recording on all available remote-enabled TiVos. Thus if scheduling fails on originally targeted TiVo due to conflicts, then successively try scheduling on other available TiVos instead.
 
 ===Season Pass===
   * For shows of type "series" you can use the *Season Pass* button to setup a season pass for the show. The season pass will always be created with lowest priority, but you can use the *Season Passes* tab to adjust the priority once you have set it up.
