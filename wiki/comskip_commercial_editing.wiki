@@ -1,5 +1,3 @@
-#Tips on using comskip visual commercial editor
-
 In kmttg if you are using *comskip* for *Ad Detect* task you can enable visual review of detected commercials in kmttg by enabling a configuration option:
 
 *File->Configure... Program Options->Use comskip GUI to review detected commercials*
