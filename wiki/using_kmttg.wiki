@@ -88,7 +88,6 @@ NOTE: Starting with v0p6g release you can change the column order to be whatever
 
 NOTE: comskip can be configured to output several other files too such as a bookmark .mls file for Womble Mpeg Video Wizard or a cut file for VideoRedo. Consult comskip documentation for details.<br>
 NOTE: Accuracy varies greatly depending on the show. Comskip is most useful to use as an initial guess as to where cut points should be made. Ideally you should then use Womble, VRD or similar editor to adjust the cut points as needed.<br>
-NOTE: Following a comskip run you can run comskip with .txt file as an argument to manually review and edit the cut points. Press "F1" key in the comskip video window to see list of keyboard shortcuts available.
 
 ===Ad Cut===
   * This option is for automated commercial segment removal based on commercials detected in the *Ad Detect* stage.
