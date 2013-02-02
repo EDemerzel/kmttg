@@ -79,8 +79,12 @@ NOTE: Starting with v0p6g release you can change the column order to be whatever
 ===Ad Detect===
   * This option is for automated commercial segment detection using either comskip or VideoRedo AdScan.
   * comskip is a public domain program that can scan an mpeg2 file and detect commercials.
-  * With default configuration it will produce a .edl file which can be fed to *mencoder* to cut out detected commercial segments.
-  * If you have VRD enabled then the comskip job will run with --videoredo option which will create a .VPrj file which contains the cut sections for VideoRedo to be used in the Ad Cut stage.
+  * When using comskip, if you have ProjectX configured in kmttg a .Xcl file is produced which can be fed to *ProjectX* to cut out detected commercial segments.
+  * When using comskip, if you have VideoRedo enabled then the comskip job will run with --videoredo option which will create a .VPrj file which contains the cut sections for VideoRedo to be used in the *Ad Cut* stage.
+  * Without either ProjectX or VideoRedo configuration the *Ad Detect* task will produce a .edl file which can be fed to *mencoder* to cut out detected commercial segments. This is the least desirable option as mencoder can cause A/V sync problems in resulting cut video.
+  * If you have VideoRedo configured in kmttg you can enable option in kmttg to be able to manually review/edit detected commercials using VideoRedo GUI. To turn this on in kmttg configuration, *VideoRedo* section enable *Use VideoRedo GUI to review detected commercials*.
+  * Otherwise if you don't use VideoRedo, in kmttg configuration, *Program Options* section, there is an option called *Use comskip GUI to review detected commercials*. If you enable this option then when running kmttg GUI and following the *Ad Detect* task, kmttg will run a *comskip_review* task which brings up comskip visual editor. You can use that editor to review/modify detected commercial segments. Consult [http://code.google.com/p/kmttg/wiki/comskip_commercial_editing comskip_commercial_editing] Wiki page for a summary of how to use the comskip visual editor.
+
 NOTE: comskip can be configured to output several other files too such as a bookmark .mls file for Womble Mpeg Video Wizard or a cut file for VideoRedo. Consult comskip documentation for details.<br>
 NOTE: Accuracy varies greatly depending on the show. Comskip is most useful to use as an initial guess as to where cut points should be made. Ideally you should then use Womble, VRD or similar editor to adjust the cut points as needed.<br>
 NOTE: Following a comskip run you can run comskip with .txt file as an argument to manually review and edit the cut points. Press "F1" key in the comskip video window to see list of keyboard shortcuts available.
