@@ -1,6 +1,27 @@
 #labels Featured
 =RELEASE NOTES=
 
+==v0p9k (2/2/2013)==
+
+*ENHANCEMENTS*
+   * Added *Use comskip GUI to review detected commercials* option to *Program Options* configuration. When this is enabled following *Ad Detect* task that uses comskip kmttg will bring up comskip GUI that allows you to review and make modifications to the detected commercials visually. Consult [http://code.google.com/p/kmttg/wiki/comskip_commercial_editing comskip_commercial_editing] Wiki page for a summary of how to use the comskip visual editor.
+   * For RPC Remote *Record* button added *Try scheduling on all TiVos* option. If option is enabled then kmttg will successively try and schedule the selected recording on all available RPC-enabled TiVos. Thus if scheduling fails on originally targeted TiVo due to conflicts, then successively try scheduling on other available TiVos instead.
+   * Added *Combine Ad Cut & Encode* VideoRedo configuration option which if enabled means kmttg will combine the *Ad Cut* and *encode* tasks into 1 by using the selected VideoRedo encoding profile during the *Ad Cut* step. Note that this only works if you have a VideoRedo encoding profile selected, otherwise an error is generated and the Ad Cut task is aborted.
+   * Added *Force QS Fix output to always be mpeg2 Program Stream* VideoRedo configuration option which will force VideoRedo to output mpeg2 program stream format regardless of the input video file format. This is useful for example if you have TS downloads enabled but want to get mpeg2 program stream format output instead of mpeg2 transport stream.
+   * Added movieYear if available to description printed to message window when clicking on a show for various tables.
+   * Added *{{{[originalAirDate]}}}* as an available keyword for *File Naming* in kmttg config. This will use originalAirDate if available, else uses the equivalent of *{{{[year]-[monthNum]-[mday]}}}* of recording otherwise.
+   
+*CHANGES*
+   * RPC Remote *Won't Record* table now will indicate if an entry that won't record is scheduled to record at an alternate time slot on all TiVos.
+   * Made *video files* default file filter for File Browser to show all video files by default instead of just ts, mpg, tivo.
+   
+*FIXES*
+   * Fixed NullPointerException problem when attempting to create a Wishlist using *WL* button from RPC Remote tabs.
+   * When encountering a scheduling conflict while using RPC Remote *Record* button, the conflicting programs were not being listed by kmttg.
+   * RPC Remote *Info* tab had an issue handling channels without callSign which has now been fixed.
+   * Fixes for AtomicParsley --contentRating and --hdvideo flags (for newer AtomicParsley binaries that support those options).
+   * If you quit kmttg with a VRD encoding profile as current selection now kmttg will restore that selection next time kmttg is started and VRD profiles are obtained.
+
 ==v0p9j (01/20/2013)==
 
 *FIXES*
