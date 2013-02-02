@@ -86,8 +86,7 @@ NOTE: Starting with v0p6g release you can change the column order to be whatever
   * If you have VideoRedo configured in kmttg you can enable option in kmttg to be able to manually review/edit detected commercials using VideoRedo GUI. To turn this on in kmttg configuration, *VideoRedo* section enable *Use VideoRedo GUI to review detected commercials*.
   * Otherwise if you don't use VideoRedo, in kmttg configuration, *Program Options* section, there is an option called *Use comskip GUI to review detected commercials*. If you enable this option then when running kmttg GUI and following the *Ad Detect* task, kmttg will run a *comskip_review* task which brings up comskip visual editor. You can use that editor to review/modify detected commercial segments. Consult [http://code.google.com/p/kmttg/wiki/comskip_commercial_editing comskip_commercial_editing] Wiki page for a summary of how to use the comskip visual editor.
 
-NOTE: comskip can be configured to output several other files too such as a bookmark .mls file for Womble Mpeg Video Wizard or a cut file for VideoRedo. Consult comskip documentation for details.<br>
-NOTE: Accuracy varies greatly depending on the show. Comskip is most useful to use as an initial guess as to where cut points should be made. Ideally you should then use Womble, VRD or similar editor to adjust the cut points as needed.<br>
+NOTE: Accuracy varies greatly depending on the show. Comskip is most useful to use as an initial guess as to where cut points should be made. Ideally you should then use VideoRedo or comskip editor to adjust the cut points as needed.<br>
 
 ===Ad Cut===
   * This option is for automated commercial segment removal based on commercials detected in the *Ad Detect* stage.
