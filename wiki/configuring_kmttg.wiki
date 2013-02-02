@@ -376,6 +376,12 @@ The advanced keyword is highlighted in bold and signifies only include `“_Ep#x
   * When enabled this option will add built in and/or custom VideoRedo encoding profiles to the list of encoding options available for the *encode* task. kmttg queries VideoRedo for all the available encoding profiles to build this list but this only works with recent versions of TVSuite 4 as mentioned in bullet above.
   * NOTE: Starting with version v0p7n the procedure to obtain profiles from VideoRedo runs in the background and the Encoding Profile list in the GUI is only updated once that procedure has completed. It may take several seconds for the encoding profiles list in the GUT to be updated as a result. Previously kmttg would just hang while waiting for this procedure to complete resulting in a long start up time for kmttg GUI.
 
+==Combine Ad Cut & Encode==
+  * If enabled kmttg will combine the *Ad Cut* and *encode* tasks into 1 by using the selected VideoRedo encoding profile during the *Ad Cut* step. Note that this only works if you have a VideoRedo encoding profile selected, otherwise an error is generated and the Ad Cut task is aborted.
+
+==Force QS Fix output to always be mpeg2 Program Stream==
+  * If enabled this will force VideoRedo to output mpeg2 program stream format regardless of the input video file format. This is useful for example if you have TS downloads enabled but want to get mpeg2 program stream format output instead of mpeg2 transport stream.
+
 ==Allow multiple VideoRedo jobs at once==
   * If enabled allows multiple VideoRedo tasks to run at the same time. Enabling this option works around a bug in VideoRedo which does not allow more than 1 "silent" version of VideoRedo to run at once. With this option disabled VideoRedo tasks are restricted to one at a time only.
   * NOTE: Side effect of enabling this option is for each VideoRedo task the initial GUI will popup momentarily before hiding itself from view if you are running kmttg in GUI mode.
