@@ -79,6 +79,7 @@ NOTE: Starting with v0p6g release you can change the column order to be whatever
 ===Ad Detect===
   * This option is for automated commercial segment detection using either comskip or VideoRedo AdScan.
   * comskip is a public domain program that can scan an mpeg2 file and detect commercials.
+  * If you are using VideoRedo you have option to use VideoRedo AdScan instead of comskip for commercial detection. Look at kmttg configuration under VideoRedo tab to turn on that option.
   * When using comskip, if you have ProjectX configured in kmttg a .Xcl file is produced which can be fed to *ProjectX* to cut out detected commercial segments.
   * When using comskip, if you have VideoRedo enabled then the comskip job will run with --videoredo option which will create a .VPrj file which contains the cut sections for VideoRedo to be used in the *Ad Cut* stage.
   * Without either ProjectX or VideoRedo configuration the *Ad Detect* task will produce a .edl file which can be fed to *mencoder* to cut out detected commercial segments. This is the least desirable option as mencoder can cause A/V sync problems in resulting cut video.
