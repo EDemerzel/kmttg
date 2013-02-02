@@ -13,8 +13,8 @@ At very top of the window there is a "timeline". You can move around the timelin
   * Regions with a white background indicate segments that will be included.
   * The red bar indicates current cursor position.
   * The number shown on top left indicates the current frame position.
-  * You can use left/right arrows to move the cursor left/right 1 frame at a time.
-  * You can left click with mouse anywhere in the timeline to move the cursor to that location.
+  * You can use *left* and *right* arrows to move the cursor left/right 1 frame at a time.
+  * You can *left click with mouse* anywhere in the timeline to move the cursor to that location.
   * Press *n* to jump to the end of next commercial segment.
   * Press *p* to jump to the start of previous commercial segment.
     
