@@ -1,6 +1,20 @@
 #labels Featured
 =RELEASE NOTES=
 
+==v0p9l (2/16/2013)==
+
+*ENHANCEMENTS*
+   * Auto transfers mode enhanced to use extra RPC remote data for RPC enabled TiVos if available. This means possibly more complete episode & originalAirDate information being available to auto transfers. Previously only kmttg GUI had access to this data.
+   * Added *Export* button to RPC Remote *Season Passes* tab which can be used to export Season Passes to comma-separated-values (csv) format for easy viewing in Excel or similar programs.
+   * Add movieYear to title name for movies in various tables if available.
+   
+*CHANGES*
+   * Changed default setting *Start NPL jobs when starting kmttg GUI* to be off for kmttg without prior config.
+   * RPC data such as EpisodeNumber & originalAirDate now overrides XML data for RPC enabled TiVos in kmttg.
+   
+*FIXES*
+   * Changed to use alternative cookie handling for downloads using curl to workaround recent TiVo http server issue of handing out expired session id cookie.
+
 ==v0p9k (2/2/2013)==
 
 *ENHANCEMENTS*
