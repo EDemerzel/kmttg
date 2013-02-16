@@ -41,6 +41,9 @@ Thanks to some reverse engineering of the iPad protocol by TCF member 'arantius'
   * If you intend to copy a Season Pass to a particular TiVo then you should 1st select that destination TiVo and then use the Load button to load in Season Passes, then you can use the Copy button to copy a season pass to the currently selected TiVo.
     * NOTE: For items loaded from file kmttg will display a *Loaded:* prefix in the SHOW column in order to clarify that these were loaded from file.
 
+===Export===
+  * Export Season Passes to comma-separated-values (csv) format for easy viewing in Excel or similar programs.
+
 ===Delete===
   * Use the *Delete* button to unsubscribe selected Season Pass in the table from the selected TiVo. You can alternatively press the keyboard *delete* key which does the same thing.
   * *NOTE: Season passes that were created via tivo.com web page do not delete via RPC remote despite indications that deletion is possible. Appears to be a bug with TiVo RPC delete functionality. Those season passes can only be deleted on the TiVo itself.*
