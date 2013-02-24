@@ -28,6 +28,6 @@ Tooltips show the keyboard shortcut associated with each button, so shortcuts fo
 || space || Space character ||
 || backspace || Backspace ||
 || shift 8 || {{{*}}} character ||
-|| shift - || _ character ||
-|| shift 7 || & character ||
+|| shift - || {{{_}}} character ||
+|| shift 7 || {{{&}}} character ||
 || comma || {{{,}}} character ||
