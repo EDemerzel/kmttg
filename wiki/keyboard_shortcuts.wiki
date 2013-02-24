@@ -6,16 +6,20 @@
 || Space || Start playing a show on TiVo (only for RPC enabled TiVos) ||
 || j || Dump information on currently selected row to message window ||
 || q || IMDB query to web browser for currently selected show ||
+|| Up arrow || Move selection up 1 row ||
+|| Down arrow || Move selection down 1 row ||
 
 ===General Remote Tables===
 || *KEY* || *FUNCTION* ||
 || j || Dump information on currently selected row to message window ||
 || q || IMDB query to web browser for currently selected show ||
+|| Up arrow || Move selection up 1 row ||
+|| Down arrow || Move selection down 1 row ||
 
 ===Season Passes Remote Table===
 || *KEY* || *FUNCTION* ||
-|| Up || Move selected show up in priority (click on Re-order button once desired order is set) ||
-|| Down || Move selected show down in priority (click on Re-order button once desired order is set) ||
+|| Up arrow || Move selected show up in priority (click on Re-order button once desired order is set) ||
+|| Down arrow || Move selected show down in priority (click on Re-order button once desired order is set) ||
 || Delete || Remove selected season pass (same as clicking on Delete button) ||
 || j || Dump information on currently selected row to message window ||
 || q || IMDB query to web browser for currently selected season pass ||
