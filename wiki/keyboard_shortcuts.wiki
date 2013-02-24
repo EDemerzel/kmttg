@@ -6,15 +6,15 @@
 || Space || Start playing a show on TiVo (only for RPC enabled TiVos) ||
 || j || Dump information on currently selected row to message window ||
 || q || IMDB query to web browser for currently selected show ||
-|| Up arrow || Move selection up 1 row ||
-|| Down arrow || Move selection down 1 row ||
+|| Up arrow || Move row selection up 1 row ||
+|| Down arrow || Move row selection down 1 row ||
 
 ===General Remote Tables===
 || *KEY* || *FUNCTION* ||
 || j || Dump information on currently selected row to message window ||
 || q || IMDB query to web browser for currently selected show ||
-|| Up arrow || Move selection up 1 row ||
-|| Down arrow || Move selection down 1 row ||
+|| Up arrow || Move row selection up 1 row ||
+|| Down arrow || Move row selection down 1 row ||
 
 ===Season Passes Remote Table===
 || *KEY* || *FUNCTION* ||
