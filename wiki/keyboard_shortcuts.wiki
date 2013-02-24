@@ -19,3 +19,11 @@
 || Delete || Remove selected season pass (same as clicking on Delete button) ||
 || j || Dump information on currently selected row to message window ||
 || q || IMDB query to web browser for currently selected season pass ||
+
+===TiVo Remote===
+Tooltips show the keyboard shortcut associated with each button, so shortcuts for buttons are not show here. Summarized here are other keyboard shortcuts not associated with any button that are useful for virtual keyboard screens:
+|| *KEY* || *FUNCTION* ||
+|| 0-9 || Characters 0-9 ||
+|| a-z || Characters a-z ||
+|| space || Space character ||
+|| backspace || Backspace ||
