@@ -27,3 +27,7 @@ Tooltips show the keyboard shortcut associated with each button, so shortcuts fo
 || a-z || Characters a-z ||
 || space || Space character ||
 || backspace || Backspace ||
+|| shift 8 || * Character ||
+|| shift - || Underscore character ||
+|| shift 7 || & character ||
+|| comma || , character ||
