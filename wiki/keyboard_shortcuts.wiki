@@ -4,5 +4,10 @@
 || *KEY* || *FUNCTION* ||
 || Delete || Delete a show from TiVo (only for TWP or RPC enabled TiVos) ||
 || Space || Start playing a show on TiVo (only for RPC enabled TiVos) ||
-|| j || Dump information on currently selected show to message window ||
+|| j || Dump information on currently selected row to message window ||
+|| q || IMDB query to web browser for currently selected show ||
+
+===Remote Tables===
+|| *KEY* || *FUNCTION* ||
+|| j || Dump information on currently selected row to message window ||
 || q || IMDB query to web browser for currently selected show ||
