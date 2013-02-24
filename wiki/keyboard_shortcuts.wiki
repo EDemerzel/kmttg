@@ -1,5 +1,5 @@
 ==SUMMARY OF KEYBOARD SHORTCUTS==
 
 ===Now Playing List Table===
-||*KEY*||*FUNCTION*
-||Delete||Delete a show from TiVo (only for TWP or RPC enabled TiVos)
+||*KEY*||*FUNCTION*||
+||Delete||Delete a show from TiVo (only for TWP or RPC enabled TiVos)||
