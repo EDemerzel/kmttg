@@ -30,4 +30,4 @@ Tooltips show the keyboard shortcut associated with each button, so shortcuts fo
 || shift 8 || {{{*}}} character ||
 || shift - || _ character ||
 || shift 7 || & character ||
-|| comma || , character ||
+|| comma || {{{,}}} character ||
