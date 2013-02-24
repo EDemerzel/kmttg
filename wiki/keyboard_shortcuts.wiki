@@ -22,12 +22,12 @@
 
 ===TiVo Remote===
 Tooltips show the keyboard shortcut associated with each button, so shortcuts for buttons are not show here. Summarized here are other keyboard shortcuts not associated with any button that are useful for virtual keyboard screens:
-|| *KEY* || *FUNCTION* ||
-|| 0-9 || Characters 0-9 ||
-|| a-z || Characters a-z ||
-|| space || Space character ||
+|| *KEY* || *VIRTUAL KEYBOARD FUNCTION/CHARACTER* ||
+|| 0-9 || 0-9 ||
+|| a-z || a-z ||
+|| space || space ||
 || backspace || Backspace ||
-|| shift 8 || {{{*}}} character ||
-|| shift - || {{{_}}} character ||
-|| shift 7 || {{{&}}} character ||
-|| comma || {{{,}}} character ||
+|| shift 8 || {{{*}}} ||
+|| shift - || {{{_}}} ||
+|| shift 7 || {{{&}}} ||
+|| comma || {{{,}}} ||
