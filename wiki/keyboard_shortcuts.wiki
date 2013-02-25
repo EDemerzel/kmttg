@@ -29,6 +29,7 @@ Tooltips show the keyboard shortcut associated with each button, so shortcuts fo
 || *KEY* || *VIRTUAL KEYBOARD FUNCTION/CHARACTER* ||
 || 0-9 || 0-9 ||
 || a-z || a-z ||
+|| shift a-z || A-Z ||
 || space || space ||
 || backspace || Backspace ||
 || shift 8 || {{{*}}} ||
