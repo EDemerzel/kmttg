@@ -216,10 +216,10 @@ Thanks to some reverse engineering of the iPad protocol by TCF member 'arantius'
 
   * Each button has a keyboard shortcut as well and tooltip for each button indicates the keyboard mapping.
 
-  * In addition to the buttons and their keyboard shortcuts there is keyboard support for A-Z, asterisk, delete, space, back space, comma, underscore and ampersand keys all of which are useful when using a screen with virtual keyboard on the TiVo.
+  * In addition to the buttons and their keyboard shortcuts there is keyboard support for a-z (lowercase), A-Z (uppercase), asterisk, delete, space, back space, comma, underscore and ampersand keys all of which are useful when using a screen with virtual keyboard on the TiVo.
 
-  * There are "combo" buttons for On Screen Clock toggle (SPS9S), Clear Banner quickly (SPSPS), Standby toggle and Closed Captions toggle.
-    * NOTE: Closed Captions toggle actually uses the "telnet" interface and assumes CC is off as initial state.
+  * There are "combo" buttons for On Screen Clock toggle (SPS9S), Clear Banner quickly (SPSPS), Standby toggle, Closed Captions toggle and My Shows.
+    * NOTE: Closed Captions toggle assumes CC is off as initial state when first used in kmttg.
 
   * There is also a set of advanced navigation buttons:
     * *Jump to minute* - Supply a position in minutes from the start of the show that you wish to jump to for currently playing show. For example, if you enter 22, then playback will jump to that exact minute mark.
