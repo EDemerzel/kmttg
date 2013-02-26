@@ -1,6 +1,25 @@
 #labels Featured
 =RELEASE NOTES=
 
+==v0p9m (2/26/2013)==
+
+*ENHANCEMENTS*
+   * If tivo.com username & password is available kmttg will augment local Now Playing data with RPC data from middlemind.tivo.com for series 3 units where possible (for episode and/or movie year information as well as original air date). Similar to RPC enabled TiVos you will see a *Remote* job run following NPL retrieval.
+   * Added *"q"* keyboard shortcut that by default will perform an imdb web query on currently selected title in any table listing shows.
+     * There is an associated new configuration option under *Visual* tab called *web query base url (bindkey q)* which specifies the base web query url to use (defaults to http://www.imdb.com/find?s=all&q=).
+     * For the config option if you want to reset to default entry simply empty the field and OK the form.
+   * The *"j"* keyboard shortcut for Now Playing table to print information to message window about currently selected show is now available for all TiVos (previously only RPC enabled TiVos worked).
+   * Added *My Shows* button to TiVo remote.
+   * Added uppercase and lowercase a-z keyboard support to TiVo remote (previously only uppercase was available).
+   * New Wiki [http://code.google.com/p/kmttg/wiki/keyboard_shortcuts keyboard_shortcuts] Wiki entry added to summarize list of available keyboard shortcuts for various kmttg tables.
+   
+*CHANGES*
+   * *Remote* jobs are no longer considered as *cpu active* so are no longer affected by the kmttg configuration *active job limit* setting. i.e. If you have other active jobs running in kmttg you can now run Remote jobs without them queuing.
+   * *autotune* jobs are also no longer considered as *cpu active* so are no longer affected by the kmttg configuration *active job limit* setting.
+   
+*FIXES*
+   * *Remote* jobs for non-RPC enabled TiVos (using middlemind.tivo.com) are now available only to series 3 units. Previously it was assumed that it would work with series 2 units as well which apparently is not the case.
+
 ==v0p9l (2/16/2013)==
 
 *ENHANCEMENTS*
