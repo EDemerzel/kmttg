@@ -346,6 +346,14 @@ The advanced keyword is highlighted in bold and signifies only include `“_Ep#x
 ==Auto size NPL column widths==
   * If this option is enabled then NPL table column widths are automatically sized to fit text. If disabled then column widths are not auto sized and user can set their preferred fixed widths, and the column widths are saved between GUI sessions.
 
+==web query base url (bindkey q)==
+  * Specifies the base web query url to use (defaults to http://www.imdb.com/find?s=all&q=) when keyboard *q* is pressed with a table row selected.
+  * kmttg takes this base url plus and adds "title - subtitle" to the end of the url and sends resulting url to a web browser.
+  * If you want to revert back to the default url just completely empty out this field.
+
+==web browser binary (Linux only)==
+  * Specifies the web browser command to use (such as firefox). If not specified kmttg will try a series of the most popular web browsers in a certain order. But to make sure you get the one you normally use you should specify it here.
+
 ==<u>VideoRedo tab (Windows only)</u>==
 
 ==VideoRedo path==
