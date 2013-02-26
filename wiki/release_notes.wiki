@@ -6,7 +6,7 @@
 *ENHANCEMENTS*
    * If tivo.com username & password is available kmttg will augment local Now Playing data with RPC data from middlemind.tivo.com for series 3 units where possible (for episode and/or movie year information as well as original air date). Similar to RPC enabled TiVos you will see a *Remote* job run following NPL retrieval.
    * Added *"q"* keyboard shortcut that by default will perform an imdb web query on currently selected title in any table listing shows.
-     * There is an associated new configuration option under *Visual* tab called *web query base url (bindkey q)* which specifies the base web query url to use (defaults to http://www.imdb.com/find?s=all&q=).
+     * There is an associated new configuration option under *Visual* tab called *web query base url (bindkey q)* which specifies the base web query url to use (defaults to {{{http://www.imdb.com/find?s=all&q=}}}).
      * For the config option if you want to reset to default entry simply empty the field and OK the form.
    * The *"j"* keyboard shortcut for Now Playing table to print information to message window about currently selected show is now available for all TiVos (previously only RPC enabled TiVos worked).
    * Added *My Shows* button to TiVo remote.
