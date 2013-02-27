@@ -351,7 +351,7 @@ The advanced keyword is highlighted in bold and signifies only include `“_Ep#x
   * kmttg takes this base url plus and adds "title - subtitle" to the end of the url and sends resulting url to a web browser.
   * If you want to revert back to the default url just completely empty out this field.
 
-==web browser binary (Except on Windows platform)==
+==web browser binary (Linux platform)==
   * Specifies the web browser command to use (such as firefox). If not specified kmttg will try a series of the most popular web browsers in a certain order. But to make sure you get the one you normally use you should specify it here.
 
 ==<u>VideoRedo tab (Windows only)</u>==
