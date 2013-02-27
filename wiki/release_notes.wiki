@@ -1,6 +1,12 @@
 #labels Featured
 =RELEASE NOTES=
 
+==v0p9n (2/26/2013)==
+
+*FIXES*
+   * Fix to auto transfers mode to prevent double processing for mind-enabled series 3 units when retrieving NPL.
+   * Web browser call on Mac platform now uses same method as for Linux and the web browser executable can be explicitly set under *Visual* tab option *web browser binary*.
+
 ==v0p9m (2/26/2013)==
 
 *ENHANCEMENTS*
