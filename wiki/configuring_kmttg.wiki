@@ -223,6 +223,10 @@ The advanced keyword is highlighted in bold and signifies only include `“_Ep#x
   * As an alternative to using the commercial VideoRedo software for *QS Fix* task you can configure kmttg to use ProjectX for that task. If you plan on any further processing of .mpg files such as cutting out commercials or re-encoding to different format it’s useful to run the file through QS fix first to fix any potential glitches in the .mpg file that may cause issues. By configuring kmttg for ProjectX it will also be used instead of mencoder for the *Ad Cut* task. ProjectX does a much better job of cutting out commercials while keeping proper audio/video sync.
   * NOTE: ProjectX is included in the Windows and Mac kmttg tools zip file along with other tools used by kmttg but can also easily be found on the web. You need to configure the full path to ProjectX.jar file that is part of ProjectX installation.
 
+==mediainfo cli==
+  * This optional program is the *CLI* version of mediainfo, not the GUI version. The default Windows Helper tools zip package used by kmttg was updated to include mediainfo cli version.
+  * If available, kmttg will use mediainfo cli executable to determine video information for various tasks instead of using ffmpeg. There are some cases where using ffmpeg to determine video information on .TiVo files doesn't work properly where mediainfo does.
+
 ==custom command==
   * Here you can setup any script you want to run as a post-processing step to all other tasks. You can use certain pre-defined keywords in square brackets as arguments to your script if you wish which kmttg will replace with the associated full path file names. The supported keywords are listed in the *Available file args* cyclic.
 
