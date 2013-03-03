@@ -1,6 +1,26 @@
 #labels Featured
 =RELEASE NOTES=
 
+==v0p9o (3/3/2013)==
+
+*ENHANCEMENTS*
+   * Remote *SP* buttons for scheduling a new season pass now check against existing Season Passes on destination TiVo much quicker than in previous releases since they now bypass obtaining information about upcoming shows and conflicts.
+   * Added *mediainfo cli* under configuration *Programs* tab as an optional utility.
+      * NOTE: This needs to be the *CLI* version of mediainfo, not the GUI version. The default Windows Helper tools zip package used by kmttg was updated to include mediainfo cli version.
+      * If available, kmttg will use mediainfo cli executable to determine video information for various tasks instead of using ffmpeg. There are some cases where using ffmpeg to determine video information on .TiVo files doesn't work properly where mediainfo does.
+   
+*CHANGES*
+   * Updated default Windows Helper tools package to [http://kmttg.googlecode.com/files/kmttg_win32_tools_v0p9o.zip kmttg_win32_tools_v0p9o.zip]
+      * comskip updated to version 0.81.051
+      * handbrake updated to version 0.9.8
+      * ffmpeg updated to Nov 2012 version
+      * AtomicParsley updated
+      * mediainfo cli added
+   * *hb_psp* encoding profile removed as it doesn't work with latest Handbrake releases.
+   
+*FIXES*
+   * Updated Mac web browser launch method.
+
 ==v0p9n (2/26/2013)==
 
 *FIXES*
