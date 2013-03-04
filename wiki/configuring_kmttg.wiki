@@ -135,7 +135,7 @@ By request some more advanced keyword processing was introduced to allow for con
   * If the keyword evaluates to null then the entire advanced keyword becomes null. 
   * For example:
 {{{
-`[mainTitle]`*`["_Ep#" EpisodeNumber]`*`_[wday]_[month]_[mday]`
+[mainTitle]["_Ep#" EpisodeNumber]_[wday]_[month]_[mday]
 }}}
 
 The advanced keyword is highlighted in bold and signifies only include `“_Ep#xxx”` if `EpisodeNumber` exists for the show in question. `“_Ep#”` is literal string to which the evaluated contents of `EpisodeNumber` keyword are appended. If `EpisodeNumber` does not exist then the whole advanced keyword evaluates to empty string.
