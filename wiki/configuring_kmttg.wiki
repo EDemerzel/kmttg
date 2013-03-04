@@ -125,8 +125,8 @@ The `.TiVo` file name would become (using Windows folder structure note the resu
 The Big Bang Theory\2008_03_24 The Loobenfeld Decay.TiVo
 }}}
 
-   * *originalAirDate NOTE:* For titles for which kmttg does not have originalAirDate, kmttg will use *{{{[year]-[monthNum]-[mday]}}}* construct instead.
-   * *startTime NOTE:* This is available only from extended metadata information and represents the actual start time of a recording. So, for example for partial recordings it will reflect the actual start time of the recording instead of the scheduled start time for that show.
+   * *{{{[originalAirDate]}}}* For titles for which kmttg does not have originalAirDate, kmttg will use *{{{[year]-[monthNum]-[mday]}}}* construct instead.
+   * *{{{[startTime]}}}* This is available only from extended metadata information and represents the actual start time of a recording. So, for example for partial recordings it will reflect the actual start time of the recording instead of the scheduled start time for that show.
       * The syntax used for startTime is *{{{yyyy-MM-dd_HHmm}}}*
       * So for example for a recording starting 10:21 am it would become something like: *{{{2013-02-17-1021}}}*
 
