@@ -229,6 +229,12 @@ The advanced keyword is highlighted in bold and signifies only include `“_Ep#x
 
 ==custom command==
   * Here you can setup any script you want to run as a post-processing step to all other tasks. You can use certain pre-defined keywords in square brackets as arguments to your script if you wish which kmttg will replace with the associated full path file names. The supported keywords are listed in the *Available file args* cyclic.
+  * As a simple example for Windows, here's a setup that will copy an encoded file created by kmttg encode step to an iTunes folder:
+    * 1. Create a C:\kmttg\copy.bat script with following contents:
+{{{@echo off}}}
+{{{copy "%~f1" "G:\Music\Automatically Add to iTunes\"}}}
+    * 2. In kmttg config->Programs custom command set it as follows:
+{{{C:\kmttg\copy.bat [encodeFile]}}}
 
 ==<u>Program Options tab</u>==
 
