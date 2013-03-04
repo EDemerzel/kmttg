@@ -123,7 +123,7 @@ The `.TiVo` file name would become (using Windows folder structure note the resu
 {{{
 * " ' : ; ! ? \ $ [ ] ` ^
 }}}
-*In addition the following characters are mapped as:*
+*In addition the following characters are mapped as indicated:*
 {{{
 / < > | map to _
 }}}
