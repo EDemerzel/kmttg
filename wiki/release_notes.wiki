@@ -8,6 +8,10 @@
    * Added *mediainfo cli* under configuration *Programs* tab as an optional utility.
       * NOTE: This needs to be the *CLI* version of mediainfo, not the GUI version. The default Windows Helper tools zip package used by kmttg was updated to include mediainfo cli version.
       * If available, kmttg will use mediainfo cli executable to determine video information for various tasks instead of using ffmpeg. There are some cases where using ffmpeg to determine video information on .TiVo files doesn't work properly where mediainfo does.
+   * Added *{{{[startTime]}}}* as an available keyword for *File Naming*.
+      * This is available only from extended metadata information and represents the actual start time of a recording. So, for example for partial recordings it will reflect the actual start time of the recording instead of the scheduled start time for that show.
+      * The syntax used for startTime is {{{yyyy-MM-dd_HHmm}}}
+      * So for example for a recording starting 10:21 am it would become something like: {{{2013-02-17-1021}}}
    
 *CHANGES*
    * Updated default Windows Helper tools package to [http://kmttg.googlecode.com/files/kmttg_win32_tools_v0p9o.zip kmttg_win32_tools_v0p9o.zip]
