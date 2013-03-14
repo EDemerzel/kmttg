@@ -266,7 +266,6 @@ C:\kmttg\copy.bat [encodeFile]
     * 1. Create an /Applications/kmttg/iTunes_copy.sh bash script with following contents:
 {{{
 #!/bin/bash
-cd "/Volumes/USBdisk/VideoDir/Video_Files/"
 cp "${1}" "/Users/myMac/Music/iTunes/iTunes Media/Automatically Add to iTunes.localized"
 }}}
     * 2. Give execute permissions to the script:
