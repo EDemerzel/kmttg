@@ -1,6 +1,26 @@
 #labels Featured
 =RELEASE NOTES=
 
+==v0p9p (3/30/2013)==
+
+*ENHANCEMENTS*
+   * Added *Autoresolve* button to Remote *Won't Record* tab. Searches for all conflicts of type 'programSourceConflict' on all RPC or Mind enabled TiVos and tries to automatically schedule them to record on alternate TiVos.
+      * Associated with the above kmttg now supports a new command line argument *-c* which can be used to run kmttg in batch mode to run the auto conflict resolver. That way you can setup a script to run it in batch mode and add the script to a scheduler to periodically run it automatically (say once a week) without having to run from the GUI.
+   * By request *{{{[SeriesEpNumber]}}}* field was added as an option for TiVo File Naming which is Episode number in Plex Media Manager format: *s#e#* Note that it is assumed the episode number is 2 digits which is not always the case for every series.
+   * For Remote tables that indicate ToDo recordings there is now a 15 minute window after which kmttg automatically refreshes ToDo list. Previously ToDo list would only update 1st time and you would have to refresh manually, so if you left kmttg GUI open for a long time that became inconvenient.
+   * For Remote *Season Premieres* table when a show is clicked on that is already scheduled as a Season Pass the message window now indicates which TiVo the Season Pass is on.
+   * Added *Hulu Plus*, *AOL On* and *Launchpad* HME destinations to Remote.
+   
+*CHANGES*
+   * Percent complete indicator for *ToDo*, *Won't Record* and *Deleted* Remote tasks is implemented when querying series 4 units.
+   * Added note when Remote *Info* tab *Network Connect* button fails that the reason is likely that box is in "Pending Restart" mode and thus cannot net connect until after reboot and software update.
+   
+*FIXES*
+   * When folders are selected when clicking on *START* button kmttg will now properly queue up tasks including items inside the folders. Previously with folders as part of selection they were discarded along with any subsequent selections.
+   * Fix to Remote Season Passes *Modify* button to update upcoming & conflicts. In previous release after using Modify button that information was not being included in the displayed table.
+   * Updated Save Jobs to skip any *remote* job types since they are not serializable and hence cannot be saved/restored.
+   * For both *TWP Delete* and *iPad Delete* tasks kmttg now checks if the task is relevant for the TiVo for which the delete is requested. This avoids trying to perform a delete when both options are enabled but not necessarily relevant for a TiVo unit. Thus, for example TWP Delete is no longer attempted for series 4 units.
+
 ==v0p9o (3/3/2013)==
 
 *ENHANCEMENTS*
