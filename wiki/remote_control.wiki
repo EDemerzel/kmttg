@@ -97,6 +97,12 @@ Thanks to some reverse engineering of the iPad protocol by TCF member 'arantius'
   * Refresh ToDo list that is used to highlight shows that are already scheduled to record on another unit configured in kmttg. The ToDo list is only obtained automatically the first time it is needed so if you are modifying the ToDo list on 1 or more units it is useful to periodically use this button to refresh the list.
     * NOTE: A single unified ToDo list is shared among *Search*, *Guide* and *Won't Record* tabs. This avoids obtaining ToDo lists multiple times for different tables.
     * NOTE: For table entries that are flagged as being in ToDo list when you click on table entry the title printed to kmttg message window will show (to be recorded on tivoName) so that you know which TiVo this show is scheduled to record on without having to run/consult ToDo table.
+    * NOTE: The unified ToDo list will be refreshed automatically when needed if it has been at least 15 minutes since the last time it was refreshed. This avoids having to manually use this button to periodically refresh ToDo list if you have the kmttg GUI up for a long time.
+
+===Autoresolve===
+  * Searches for all conflicts of type *programSourceConflict* on all RPC or Mind enabled TiVos and tries to automatically schedule them to record on alternate TiVos.
+  * Will attempt to record on RPC enabled (series 4 or later) units first, else Mind enabled (series 3) units otherwise.
+  * Associated with the above kmttg also supports a command line argument *-c* which can be used to run kmttg in batch mode to run the auto conflict resolver. That way you can setup a script to run it in batch mode and add the script to a scheduler to periodically run it automatically (say once a week) without having to run from the GUI.
 
 ===Include History===
   * When this boolean is enabled past history will be included in the table so that one can explore why certain shows of interest did not record in the past.
@@ -168,6 +174,7 @@ Thanks to some reverse engineering of the iPad protocol by TCF member 'arantius'
   * Refresh ToDo list that is used to highlight shows that are already scheduled to record on any Series 4 unit configured in kmttg. The ToDo list is only obtained automatically the first time it is needed so if you are modifying the ToDo list on 1 or more units it is useful to periodically use this button to refresh the list.
     * NOTE: A single unified ToDo list is shared among *Search*, *Guide* and *Won't Record* tabs. This avoids obtaining ToDo lists multiple times for different tables.
     * NOTE: For table entries that are flagged as being in ToDo list when you click on table entry the title printed to kmttg message window will show (to be recorded on tivoName) so that you know which TiVo this show is scheduled to record on without having to run/consult ToDo table.
+    * NOTE: The unified ToDo list will be refreshed automatically when needed if it has been at least 15 minutes since the last time it was refreshed. This avoids having to manually use this button to periodically refresh ToDo list if you have the kmttg GUI up for a long time.
 
 ==<u>Guide</u>==
   * Provides a simple guide interface if you are looking for recordings on specific dates/times.
@@ -198,6 +205,7 @@ Thanks to some reverse engineering of the iPad protocol by TCF member 'arantius'
   * Refresh ToDo list that is used to highlight shows that are already scheduled to record on any Series 4 unit configured in kmttg. The ToDo list is only obtained automatically the first time it is needed so if you are modifying the ToDo list on 1 or more units it is useful to periodically use this button to refresh the list.
     * NOTE: A single unified ToDo list is shared among *Search*, *Guide* and *Won't Record* tabs. This avoids obtaining ToDo lists multiple times for different tables.
     * NOTE: For table entries that are flagged as being in ToDo list when you click on table entry the title printed to kmttg message window will show (to be recorded on tivoName) so that you know which TiVo this show is scheduled to record on without having to run/consult ToDo table.
+    * NOTE: The unified ToDo list will be refreshed automatically when needed if it has been at least 15 minutes since the last time it was refreshed. This avoids having to manually use this button to periodically refresh ToDo list if you have the kmttg GUI up for a long time.
 
 ==<u>Deleted</u>==
   * Lists all Recently Deleted shows with option to restore/undelete shows.
