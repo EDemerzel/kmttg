@@ -116,7 +116,7 @@ Thanks to some reverse engineering of the iPad protocol by TCF member 'arantius'
 
     * NOTE: This utility relies heavily on episode information being available in TiVo listings. However not all shows have episode information available from TiVo listings, so those shows will not be identified by this utility. For shows without episode information kmttg will also look for shows with "Pilot" or "Series Premiere" as subtitle to attempt to catch series premieres without episode information.
 
-  * Shows in the table that already have Season Passes scheduled on one of the Premieres configured for iPad Remote capability are indicated with a darker (brown) color. This spares you the trouble of having to look at Season Pass tables for each TiVo Premiere to see if you have already scheduled SP for a show.
+  * Shows in the table that already have Season Passes scheduled on one of the Premieres configured for iPad Remote capability are indicated with a darker (brown) color. This spares you the trouble of having to look at Season Pass tables for each TiVo Premiere to see if you have already scheduled SP for a show. If you click on the show in the table that is already scheduled as a Season Pass, the message window indicates which TiVo the Season Pass is on.
 
   * Use the *Record* button to schedule individual shows to record or *Season Pass* button to setup Season Passes for selected shows.
 
