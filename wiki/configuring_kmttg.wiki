@@ -104,7 +104,11 @@ Keywords in this example are:
 [monthNum] = 03
 [year] = 2008
 [originalAirDate] = 2007-11-20
+[season] = 03
+[episode] = 02
 [EpisodeNumber] = 302
+[SeriesEpNumber] = s03e02
+[startTime] = 2008-03-24-2000
 }}}
 
 So continuing with above example, if I set:
