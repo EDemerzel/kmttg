@@ -1,6 +1,17 @@
 #labels Featured
 =RELEASE NOTES=
 
+==v0p9q (4/27/2013)==
+
+*ENHANCEMENTS*
+   * Added {{{[season]}}} and {{{[episode]}}} keywords as options for *File Naming* setting.
+   * RPC Remote *Record* and *Season Pass* dialog settings are now saved across GUI sessions such that last used settings will be the default for next time the dialogs are opened.
+
+*FIXES*
+   * download_decrypt task which uses curl & tivodecode in a .bat script on Windows platform fixed to properly deal with international character sets (tildes, etc).
+   * When *Resume Downloads* option is enabled TS .TiVo download option is ignored since resume doesn't work for TS .TiVo downloads.
+   * For Remote Season Passes *Conflicts* button, properly handle case when there are zero conflicts indicated and no programs set to record for that SP as a result. Previously this would end up as a stack trace and kmttg in a bad state that required re-starting.
+
 ==v0p9p (3/30/2013)==
 
 *ENHANCEMENTS*
