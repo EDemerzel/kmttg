@@ -1,6 +1,21 @@
 #labels Featured
 =RELEASE NOTES=
 
+==v0p9r (5/?/2013)==
+
+*ENHANCEMENTS*
+   * Added *SPS backdoor* button to Remote with a pulldown selection of SPS codes still relevant for series 3 and/or 4 TiVos:
+      * Quick clear banner: SPSPS - Toggle 'clear trickplay banner quickly' setting
+      * Clock: SPS9S - Toggle on screen clock
+      * 30 sec skip: SPS30S - Toggle 30 sec skip binding of advance button
+      * Information: SPSRS - Toggle display of some video information on the screen
+      * Calibration: SPS7S (Series 3 TiVos only) - Toggle display of calibration map for centering and overscan
+      * 4x FF: SPS88S (Series 4 TiVos only) - Toggle '4th FF press returns to play speed' setting
+   * By request added {{{[movieYear]}}} keyword to *File Naming* setting.
+   
+*FIXES*
+   * Remote Season Passes *Copy* button now works for loaded Season Passes with accents and/or special characters  in the title. Previously it would fail to copy such Season Passes.
+
 ==v0p9q (4/27/2013)==
 
 *ENHANCEMENTS*
