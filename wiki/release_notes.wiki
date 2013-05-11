@@ -1,7 +1,7 @@
 #labels Featured
 =RELEASE NOTES=
 
-==v0p9r (5/?/2013)==
+==v0p9r (5/11/2013)==
 
 *ENHANCEMENTS*
    * Added *SPS backdoor* button to Remote with a pulldown selection of SPS codes still relevant for series 3 and/or 4 TiVos:
