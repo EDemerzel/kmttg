@@ -226,7 +226,7 @@ Thanks to some reverse engineering of the iPad protocol by TCF member 'arantius'
 
   * In addition to the buttons and their keyboard shortcuts there is keyboard support for a-z (lowercase), A-Z (uppercase), asterisk, delete, space, back space, comma, underscore and ampersand keys all of which are useful when using a screen with virtual keyboard on the TiVo.
 
-  * There are "combo" buttons for On Screen Clock toggle (SPS9S), Clear Banner quickly (SPSPS), Standby toggle, Closed Captions toggle and My Shows.
+  * There are "combo" buttons for Standby toggle, Closed Captions toggle and My Shows.
     * NOTE: Closed Captions toggle assumes CC is off as initial state when first used in kmttg.
 
   * There is also a set of advanced navigation buttons:
@@ -234,6 +234,7 @@ Thanks to some reverse engineering of the iPad protocol by TCF member 'arantius'
     * *Skip minutes ahead* - Supply number of minutes that you want to skip ahead to for currently playing show.
     * *Skip minutes back* - Supply number of minutes that you want to skip back to for currently playing show.
     * *HME Jump* - Allows you to choose a TiVo HME application in given list and jump directly to it. (NOTE: This does not include local HME applications).
+    * *SPS backdoor* - All known Select-Play-Select backdoors for series 3 and later units are available here. You can select the desired backdoor in the pulldown menu and then click on this button to execute it. The meaning of each backdoor is listed as a tooltip as part of the pulldown menu when you select a specific item.
          
 ==<u>System Information</u>==
 ===Refresh===
