@@ -21,6 +21,7 @@ http://code.google.com/p/kmttg/downloads/list
 ==3. UNPACK ZIP FILE==
 
   * Unpack *kmttg_vxxx.zip* file to your desired location. In this example: c:\kmttg
+  * In Windows you can right click on a zip file and ask it to extract to a specific folder. Make a new folder and extract to that folder if this is your 1st kmttg installation, otherwise extract to an existing folder and tell Winzip to allow overriding existing files.
 
 *NOTE: You must have write access to this folder that contains kmttg.jar since kmttg tries to write configuration file to same folder. Hence for Windows7/Vista you should generally NOT install under c:\Program Files or c:\Program Files (x86) as they have locked down write permissions that may prevent proper file writing.
 
