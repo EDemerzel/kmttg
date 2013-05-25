@@ -20,7 +20,10 @@ http://code.google.com/p/kmttg/downloads/list
 
   * Unpack *kmttg_vxxx.zip* file to your desired location. In this example: /home/moyekj/kmttg
 
-===TIP===
+===UPGRADE INSTALLATION TIPS (Version v1p0a or later)===
+   * Starting with version v1p0a you can now update kmttg installation to latest official version automatically using *Help-Update kmttg...* menu entry. kmttg will check your installed version against the latest available official version and prompt to update if they are different.
+
+===UPGRADE INSTALLATION TIPS (older versions of kmttg)===
 If upgrading from a previous Java kmttg installation you can normally unzip over the previous installation. That way you can preserve the kmttg configuration and avoid having to re-configure. NOTE: In some cases there are other files and folders aside from kmttg.jar updated as part of a release, so you should unzip the zip file over the top of your previous installation to make sure you overwrite all files that make up an installation. When unzipping be sure to let system overwrite previous files. If you want to install to same location and make sure to get a clean new installation then remove everything except {{{*.ini}}} files. That way you get a full new installation but preserve all your previous settings.
 
 ==PROJECTX INSTALLATION==
