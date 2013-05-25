@@ -9,6 +9,10 @@ See also [http://code.google.com/p/kmttg/wiki/keyboard_shortcuts keyboard_shortc
 
 Hopefully, the kmttg GUI is pretty intuitive to use. For more information on the Auto Transfers mode see the section further below. A little guidance is provided for basic usage of the GUI mode:
 
+==Updating kmttg==
+   * Starting with version v1p0a you can now update kmttg installation to latest official version automatically using *Help-Update kmttg...* menu entry. kmttg will check your installed version against the latest available official version and prompt to update if they are different.
+   * You can also update helper tools now automatically using *Help-Update tools...* menu entry if running on Windows or Mac platforms. Note that there is no tools version check so this can be used to install the latest available tools zip package regardless if you have installed it before or not.
+
 ==Remote==
 Starting with version v0p8i kmttg has a *Remote* tab which uses the reverse engineered iPad protocol to communicate with Premiere TiVos (won't work for older TiVos) to unlock several additional ways of communicating with the Premiere. You must first enable at least 1 TiVo Premiere in kmttg configuration TiVo tab: "Enable iPad style communications with this TiVo" in order for the *Remote* tab to be visible. See the [http://code.google.com/p/kmttg/wiki/remote_control remote_control] wiki documentation for details on using the remote control GUI.
 
