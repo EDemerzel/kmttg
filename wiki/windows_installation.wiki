@@ -27,7 +27,11 @@ http://code.google.com/p/kmttg/downloads/list
 
 *NOTE: Do NOT browse into the kmttg_vxxx.zip file and launch kmttg.jar from there. Even though that will start kmttg GUI there are other files and folders that are needed for a complete install. Therefore you should make sure to unzip the file fully first and then launch kmttg.jar from that location.*
 
-===UPGRADE INSTALLATION TIPS===
+===UPGRADE INSTALLATION TIPS (Version v1p0a or later)===
+   * Starting with version v1p0a you can now update kmttg installation to latest official version automatically using *Help-Update kmttg...* menu entry. kmttg will check your installed version against the latest available official version and prompt to update if they are different.
+   * You can also update helper tools now automatically using *Help-Update tools...* menu entry if running on Windows or Mac platforms. Note that there is no tools version check so this can be used to install the latest available tools zip package regardless if you have installed it before or not.
+
+===UPGRADE INSTALLATION TIPS (older versions of kmttg)===
   * If upgrading from a previous Java kmttg installation you can normally unzip *over* the previous installation. That way you can preserve the kmttg configuration and avoid having to re-configure. NOTE: In some cases there are other files and folders aside from kmttg.jar updated as part of a release, so you should unzip the zip file over the top of your previous installation to make sure you overwrite all files that make up an installation. When unzipping instruct Windows to overwrite previous files. If you want to install to same location and make sure to get a clean new installation then remove everything except {{{*.ini}}} files. That way you get a full new installation but preserve all your previous settings.
   * For some releases the 3rd party tools are also updated. To force kmttg to download and install the accompanying 3rd party tools simply remove the *tivodecode* folder. Then when you start kmttg GUI allow it to download and install the tools package (it will overwrite the files in current installation). 
 
