@@ -1,9 +1,0 @@
-#labels Featured
-=Automated pushes of video files from PC to your Tivos=
-
-The following program gives you ability to setup auto watch folders where deposited video files are automatically pushed to Tivos of your choosing:
-http://code.google.com/p/pytivo-auto-push/
-
-Starting with version 0p7d kmttg includes a *push* task to automatically push video files to your Tivo(s) via pyTivo.
-
-Previously this Wiki page detailed a means of accomplishing this functionality using kmttg *custom* task, but that is now deprecated.
