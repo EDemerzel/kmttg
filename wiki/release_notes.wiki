@@ -1,6 +1,32 @@
 #labels Featured
 =RELEASE NOTES=
 
+===v1p0a (5/25/2013)===
+
+*ENHANCEMENTS*
+   * Added *Help->Update kmttg...* menu entry which can be used to update kmttg installation to the latest version automatically.
+   * Added *Help->Update tools...* menu entry which can be used to update kmttg helper tools for Windows and Mac platforms instead of having to manually download and install the tools zip file when updating.
+   * For Remote *Guide* tab previously when returning to this tab from a different tab the *Start* selection would always reset to the 1st entry when the time range was updated. This has now been updated to return to previous selection if still relevant.
+   
+*CHANGES*
+   * For Remote *Season Passes* table when you delete a Season Pass the selection now moves to the row above the one you deleted. Previously you would simply lose selection completely.
+   * For Now Playing List table when you delete 1 or more shows the row selection is now set to the row above the lowest selection when possible. Previously you would simply lose selection completely.
+   * Removed -bug argument not compatible with recent ffmpeg builds for ffmpeg encoding profiles:
+      * ff_droid
+      * ff_h264_high_rate
+      * ff_h264_med_rate
+   * Windows tools package update (kmttg_win32_tools_v0p9s):
+      * ffmpeg updated to May 2013 version
+      * handbrake cli updated to 0.9.9
+   * Added *-v* command line option for printing out current kmttg version.
+   * Added *--cookie-jar cookieFile* option back to curl-based download tasks.
+   
+*FIXES*
+   * Updated AtomicParsley run such that --TVEpisodeNum argument is just the episode # without season # for correct display by AppleTV and the like.
+   * Strip out leading 0s from ProgramId numbers when checking against auto.history file to see if a program has been downloaded before. This is to workaround cases when TiVo XML data doesn't have leading 0s in ProgramId number which has been reported to happen sometimes.
+   * Removed *chcp* command from Mac/Linux scripts for curl-based combined download/decrypt. That command is only supposed to be included in Windows scripts for proper international character support in file names.
+   * When *Allow only 1 download at a time* option was enabled it would block non-download jobs from running as well if more than 1 download was queued up.
+
 ==v0p9r (5/11/2013)==
 
 *ENHANCEMENTS*
