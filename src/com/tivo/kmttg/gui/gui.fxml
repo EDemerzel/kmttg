@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?scenebuilder-preview-i18n-resource gui.properties?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.web.WebView?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.CheckMenuItem?>
+
+<!--  NOTE original has VBox outside of this which is contained in the Scene of the Stage id=dialog -->
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tivo.kmttg.gui.gui">
+<MenuBar>
+	<Menu fx:id="fileMenu" text="%fileMenu">
+		<MenuItem fx:id="configureMenuItem" onAction="#configureMenuItemCB" text="%configureMenuItem" accelerator="Ctrl+O"/>
+		<MenuItem fx:id="refreshEncodingsMenuItem" onAction="#refreshEncodingsMenuItemCB" text="%refreshEncodingsMenuItem" accelerator="Ctrl+E" />
+		<MenuItem fx:id="saveMessagesMenuItem" onAction="#saveMessagesMenuItemCB" text="%saveMessagesMenuItem" accelerator="Ctrl+M" />
+		<MenuItem fx:id="clearMessagesMenuItem" onAction="#clearMessagesMenuItemCB" text="%clearMessagesMenuItem" accelerator="Ctrl+L" />
+		<!--  if config.getTivoUsername != null -->
+		<MenuItem fx:id="pushesMenuItem" onAction="#pushesMenuItemCB" text="%pushesMenuItem" />
+		<CheckMenuItem fx:id="resumeDownloadsMenuItem" onAction="#resumeDownloadsMenuItemCB" text="%resumeDownloadsMenuItem" />
+		<Menu fx:id="jobMenu" text="%jobMenu">
+			<CheckMenuItem fx:id="toggleLaunchingJobsMenuItem" onAction="#toggleLaunchingJobsMenuItemCB" text="%toggleLaunchingJobsMenuItem" />
+			<MenuItem fx:id="saveJobsMenuItem" onAction="#saveJobsMenuItemCB" text="%saveJobsMenuItem" />
+			<MenuItem fx:id="loadJobsMenuItem" onAction="#loadJobsMenuItemCB" text="%loadJobsMenuItem" />
+		</Menu>
+		<MenuItem fx:id="searchMenuItem" onAction="#searchMenuItemCB" text="%searchMenuItem" accelerator="Ctrl+S" />
+		<!-- if config.rpcEnabled() && SkipMode.skipEnabled() -->
+			<MenuItem fx:id="skipModeMenuItem" onAction="#skipModeMenuItemCB" text="%skipModeMenuItem" />
+			<CheckMenuItem fx:id="skipServiceMenuItem" onAction="#skipServiceMenuItemCB" text="%skipServiceMenuItem" />
+<!-- this menu item gets detached no matter what -->
+<MenuItem fx:id="thumbsMenuItem" onAction="#thumbsMenuItemCB" text="%thumbsMenuItem" accelerator="Ctrl+T" />
+		<MenuItem fx:id="exitMenuItem" onAction="#exitMenuItemCB" text="%exitMenuItem" />
+	</Menu>
+	<Menu fx:id="autoMenu" text="%autoMenu">
+		<MenuItem fx:id="autoConfigMenuItem" onAction="#autoConfigMenuItemCB" text="%autoConfigMenuItem" />
+		<!-- config.OS.equals windows -->
+		<Menu fx:id="serviceMenuService" text="%serviceMenuService">
+			<MenuItem fx:id="serviceStatusMenuItem" onAction="#serviceStatusMenuItemCB" text="%serviceStatusMenuItem" />
+			<MenuItem fx:id="serviceInstallMenuItem" onAction="#serviceInstallMenuItemCB" text="%serviceInstallMenuItem" />
+			<MenuItem fx:id="serviceStartMenuItem" onAction="#serviceStartMenuItemCB" text="%serviceStartMenuItem" />
+			<MenuItem fx:id="serviceStopMenuItem" onAction="#serviceStopMenuItemCB" text="%serviceStopMenuItem" />
+			<MenuItem fx:id="serviceRemoveMenuItem" onAction="#serviceRemoveMenuItemCB" text="%serviceRemoveMenuItem" />
+		</Menu>
+		<!--  else -->
+		<Menu fx:id="serviceMenuBackground" text="%serviceMenuBackground">
+			<MenuItem fx:id="backgroundJobStatusMenuItem" onAction="#backgroundJobStatusMenuItemCB" text="%backgroundJobStatusMenuItem" />
+			<MenuItem fx:id="backgroundJobEnableMenuItem" onAction="#backgroundJobEnableMenuItemCB" text="%backgroundJobEnableMenuItem" />
+			<MenuItem fx:id="backgroundJobDisableMenuItem" onAction="#backgroundJobDisableMenuItemCB" text="%backgroundJobDisableMenuItem" />
+		</Menu>
+		<MenuItem fx:id="addSelectedTitlesMenuItem" onAction="#addSelectedTitlesMenuItemCB" text="%addSelectedTitlesMenuItem" />
+		<MenuItem fx:id="addSelectedHistoryMenuItem" onAction="#addSelectedHistoryMenuItemCB" text="%addSelectedHistoryMenuItem" />
+		<MenuItem fx:id="logFileMenuItem" onAction="#logFileMenuItemCB" text="%logFileMenuItem" />
+		<MenuItem fx:id="runInGuiMenuItem" onAction="#runInGuiMenuItemCB" text="%runInGuiMenuItem" />
+		<CheckMenuItem fx:id="loopInGuiMenuItem" onAction="#loopInGuiMenuItemCB" text="%loopInGuiMenuItem" />
+	</Menu>
+	<Menu fx:id="helpMenu" text="%helpMenu">
+		<MenuItem fx:id="helpAboutMenuItem" onAction="#helpAboutMenuItemCB" text="%helpAboutMenuItem" />
+		<MenuItem fx:id="helpUpdateMenuItem" onAction="#helpUpdateMenuItemCB" text="%helpUpdateMenuItem" />
+		<!--  if config.OS is windows or mac -->
+		<MenuItem fx:id="helpToolsUpdateMenuItem" onAction="#helpToolsUpdateMenuItemCB" text="%helpToolsUpdateMenuItem" />
+	</Menu>
+</MenuBar>
+<VBox spacing="5">
+<SplitPane fx:id="jContentPane" orientation="VERTICAL">
+		<!--  FIXME
+<dividers><Divider position="0.57"/></dividers>
+-->
+	<VBox>
+		<HBox HBox.hgrow="ALWAYS" alignment="CENTER_LEFT" spacing="5"><!-- tasks_panel -->
+		<padding><Insets top="0" right="0" bottom="0" left="5"/></padding>
+			<Button fx:id="start" onAction="#startCB" id="button_job_start" text="%start" >
+			<padding><Insets top="1" right="2" bottom="1" left="2"/></padding>
+			</Button>
+			<HBox minWidth="5" prefWidth="5"/>
+			<CheckBox fx:id="metadata" text="%metadata" selected="false" />
+			<CheckBox fx:id="decrypt" text="%decrypt" selected="true" />
+			<CheckBox fx:id="qsfix" onAction="#qsfixCB" text="%qsfix" selected="false" />
+			<!-- if config.twpDeleteEnabled -->
+			<CheckBox fx:id="twpdelete" text="%twpdelete" selected="false" />
+			<!-- if config.rpcDeleteEnabled -->
+			<CheckBox fx:id="rpcdelete" text="%rpcdelete" selected="false" />
+			<CheckBox fx:id="comskip" text="%comskip" selected="false" />
+			<CheckBox fx:id="comcut" text="%comcut" selected="false" />
+			<CheckBox fx:id="captions" text="%captions" selected="false" />
+			<CheckBox fx:id="encode" text="%encode" selected="false" />
+			<CheckBox fx:id="custom" text="%custom" selected="false" />
+			<CheckBox fx:id="push" text="%push" selected="false" />
+		</HBox>
+		<HBox alignment="CENTER_LEFT" spacing="5"><!-- encoding_panel -->
+		<padding><Insets top="0" right="0" bottom="0" left="5"/></padding>
+			<Label fx:id="encoding_label" text="%encoding_label" textAlignment="CENTER"/>
+			<ChoiceBox fx:id="encoding" onAction="#encodingCB">
+			</ChoiceBox>
+			<Label fx:id="encoding_description_label"/>
+	  	</HBox>
+		<TabPane fx:id="tabbed_panel" VBox.vgrow="ALWAYS" tabClosingPolicy="UNAVAILABLE">
+			<Tab text="%tab_files">
+				<!--  new tivoTab("FILES").getPanel() -->
+			</Tab>
+			<!--  if config.GUIDMODE && remote_gui == null -->
+			<Tab text="%tab_remote">
+				<!--  (remote_gui = new remotegui(jFrame)).getPanel() -->
+			</Tab>
+			<!-- during refreshOptions  if config.slingBox == 1 (actively remove if 0)-->
+			<Tab text="%tab_slingbox">
+				<!--  (slingbox_gui = new slingboxgui(jFrame)).getPanel() -->
+			</Tab>
+			<!-- Tivo-titled tabs are dynamically added/removed -->
+			<!-- 
+			<Tab text="name">
+			new tivoTab(name).getPanel()
+			</Tab>
+			 -->
+		</TabPane>
+	</VBox>
+	<VBox>
+		<HBox spacing="5">
+	  	<padding><Insets top="0" right="0" bottom="0" left="5"/></padding>
+	  		<Button fx:id="cancel" id="button_job_cancel" text="%cancel" minWidth="100"
+	  		onAction="#cancelCB" >
+	  		<!-- TODO also sets minWidth as Button.USE_PREF_SIZE -->
+		  	<padding><Insets top="1" right="2" bottom="1" left="2"/></padding>
+	  		</Button>
+	  		<HBox HBox.hgrow="ALWAYS">
+	  			<ProgressBar fx:id="progressBar" id="progressbar_job" progress="0" />
+	  		</HBox>
+		</HBox>
+		<SplitPane fx:id="splitBottom" orientation="VERTICAL">
+		<!-- FIXME
+		<dividers><Divider position="0.55"/></dividers>
+		-->
+			<ScrollPane fx:id="jobPane" fitToHeight="true" fitToWidth="true">
+			</ScrollPane>
+			<WebView fx:id="text">
+			</WebView>
+		</SplitPane>
+	</VBox>
+</SplitPane>
+</VBox>
+</VBox>

@@ -41,6 +41,7 @@
         <delete file="${release}/kmttg.jar"/>
 	<jar destfile="${release}/kmttg.jar">
 		<fileset dir="${main}/bin"/>
+		<fileset dir="${main}/src" excludes="**/*.java"/><!-- include .fxml or any other resources -->
 		<fileset dir="${main}/images"/>
                 <zipgroupfileset dir="${lib}" includes="jmdns.jar"/>
                 <zipgroupfileset dir="${lib}" includes="tivo-libre.jar"/>
