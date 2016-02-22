@@ -112,10 +112,15 @@ public class help {
       dialog.show();         
    }
    
+   public static String getSvnURLOrigin() {
+//	   return "http://svn.code.sf.net/p/kmttg/code/trunk/";
+	   return "http://svn.code.sf.net/p/kmttg/code/branches/david/";
+   }
+   
    public static String getVersion() {
       debug.print("");
       String version = null;
-      String version_url = "http://svn.code.sf.net/p/kmttg/code/trunk/version";
+      String version_url = getSvnURLOrigin() + "version";
       try {
          URL url = new URL(version_url);
          URLConnection con = url.openConnection();
