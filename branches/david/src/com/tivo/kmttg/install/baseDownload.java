@@ -5,13 +5,14 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 
+import com.tivo.kmttg.gui.help;
 import com.tivo.kmttg.util.debug;
 
 public class baseDownload {
    public static String getBase() {
       debug.print("");
       String base = null;
-      String base_url = "http://svn.code.sf.net/p/kmttg/code/trunk/baseDownload";
+      String base_url = help.getSvnURLOrigin() + "baseDownload";
       try {
          URL url = new URL(base_url);
          URLConnection con = url.openConnection();
