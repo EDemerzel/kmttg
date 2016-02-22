@@ -1,0 +1,3 @@
+#!/bin/sh
+DIRNAME=`dirname "$0"`
+java -Djava.net.preferIPv4Stack=true -jar "$DIRNAME/kmttg.jar" $@
