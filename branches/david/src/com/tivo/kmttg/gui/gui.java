@@ -16,6 +16,7 @@ import java.util.Hashtable;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Optional;
+import java.util.ResourceBundle;
 import java.util.Stack;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -27,13 +28,13 @@ import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.geometry.Insets;
-import javafx.geometry.Orientation;
-import javafx.geometry.Pos;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -57,14 +58,10 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import javafx.scene.text.TextAlignment;
 import javafx.scene.web.WebView;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
@@ -101,75 +98,77 @@ import com.tivo.kmttg.util.file;
 import com.tivo.kmttg.util.log;
 import com.tivo.kmttg.util.string;
 
-public class gui extends Application {
+public class gui implements Initializable {
 
-   private Stage jFrame = null;
-   private configAuto config_auto = null;
-   private String title = config.kmttg;
-   private SplitPane jContentPane = null;
-   private SplitPane splitBottom = null;
-   private TabPane tabbed_panel = null;
-   private MenuBar menuBar = null;
-   private Menu fileMenu = null;
-   private Menu jobMenu = null;
-   private Menu autoMenu = null;
-   private Menu serviceMenu = null;
-   private Menu helpMenu = null;
-   private MenuItem helpAboutMenuItem = null;
-   private MenuItem helpUpdateMenuItem = null;
-   private MenuItem helpToolsUpdateMenuItem = null;
-   private MenuItem exitMenuItem = null;
-   private MenuItem autoConfigMenuItem = null;
-   private MenuItem runInGuiMenuItem = null;
-   private CheckMenuItem loopInGuiMenuItem = null;
-   private CheckMenuItem resumeDownloadsMenuItem = null;
-   private CheckMenuItem toggleLaunchingJobsMenuItem = null;
-   public  MenuItem addSelectedTitlesMenuItem = null;
-   public  MenuItem addSelectedHistoryMenuItem = null;
-   private MenuItem logFileMenuItem = null;
-   private MenuItem configureMenuItem = null;
-   private MenuItem refreshEncodingsMenuItem = null;
-   private MenuItem serviceStatusMenuItem = null;
-   private MenuItem serviceInstallMenuItem = null;
-   private MenuItem serviceStartMenuItem = null;
-   private MenuItem serviceStopMenuItem = null;
-   private MenuItem serviceRemoveMenuItem = null;
-   private MenuItem backgroundJobStatusMenuItem = null;
-   private MenuItem backgroundJobEnableMenuItem = null;
-   private MenuItem backgroundJobDisableMenuItem = null;
-   private MenuItem saveMessagesMenuItem = null;
-   private MenuItem clearMessagesMenuItem = null;
-   //private MenuItem resetServerMenuItem = null;
-   private MenuItem pushesMenuItem = null;
-   private MenuItem saveJobsMenuItem = null;
-   private MenuItem loadJobsMenuItem = null;
-   public MenuItem searchMenuItem = null;
-   public MenuItem skipModeMenuItem = null;
-   public CheckMenuItem skipServiceMenuItem = null;
-   public Boolean skipServiceMenuItem_cb = true;
-   public MenuItem thumbsMenuItem = null;
+   public ResourceBundle bundle;
    
-   private ChoiceBox<String> encoding = null;
-   private Label encoding_label = null;
-   private Label encoding_description_label = null;
-   public Button start = null;
-   public Button cancel = null;
-   public CheckBox metadata = null;
-   public CheckBox decrypt = null;
-   public CheckBox qsfix = null;
-   public CheckBox twpdelete = null;
-   public CheckBox rpcdelete = null;
-   public CheckBox comskip = null;
-   public CheckBox comcut = null;
-   public CheckBox captions = null;
-   public CheckBox encode = null;
-   public CheckBox push = null;
-   public CheckBox custom = null;
-   private WebView text = null;
+   @FXML private Stage jFrame = null;
+   private String title = config.kmttg;
+   @FXML private SplitPane jContentPane = null;
+   @FXML private SplitPane splitBottom = null;
+   @FXML private TabPane tabbed_panel = null;
+   @FXML private MenuBar menuBar = null;
+   @FXML private Menu fileMenu = null;
+   @FXML private Menu jobMenu = null;
+   @FXML private Menu autoMenu = null;
+   @FXML private Menu serviceMenuService = null;
+   @FXML private Menu serviceMenuBackground = null;
+   @FXML private Menu helpMenu = null;
+   @FXML private MenuItem helpAboutMenuItem = null;
+   @FXML private MenuItem helpUpdateMenuItem = null;
+   @FXML private MenuItem helpToolsUpdateMenuItem = null;
+   @FXML private MenuItem exitMenuItem = null;
+   @FXML private MenuItem autoConfigMenuItem = null;
+   @FXML private MenuItem runInGuiMenuItem = null;
+   @FXML private CheckMenuItem loopInGuiMenuItem = null;
+   @FXML private CheckMenuItem resumeDownloadsMenuItem = null;
+   @FXML private CheckMenuItem toggleLaunchingJobsMenuItem = null;
+   @FXML public  MenuItem addSelectedTitlesMenuItem = null;
+   @FXML public  MenuItem addSelectedHistoryMenuItem = null;
+   @FXML private MenuItem logFileMenuItem = null;
+   @FXML private MenuItem configureMenuItem = null;
+   @FXML private MenuItem refreshEncodingsMenuItem = null;
+   @FXML private MenuItem serviceStatusMenuItem = null;
+   @FXML private MenuItem serviceInstallMenuItem = null;
+   @FXML private MenuItem serviceStartMenuItem = null;
+   @FXML private MenuItem serviceStopMenuItem = null;
+   @FXML private MenuItem serviceRemoveMenuItem = null;
+   @FXML private MenuItem backgroundJobStatusMenuItem = null;
+   @FXML private MenuItem backgroundJobEnableMenuItem = null;
+   @FXML private MenuItem backgroundJobDisableMenuItem = null;
+   @FXML private MenuItem saveMessagesMenuItem = null;
+   @FXML private MenuItem clearMessagesMenuItem = null;
+   //private MenuItem resetServerMenuItem = null;
+   @FXML private MenuItem pushesMenuItem = null;
+   @FXML private MenuItem saveJobsMenuItem = null;
+   @FXML private MenuItem loadJobsMenuItem = null;
+   @FXML public MenuItem searchMenuItem = null;
+   @FXML public MenuItem skipModeMenuItem = null;
+   @FXML public CheckMenuItem skipServiceMenuItem = null;
+   @FXML public Boolean skipServiceMenuItem_cb = true;
+   @FXML public MenuItem thumbsMenuItem = null;
+   
+   @FXML private ChoiceBox<String> encoding = null;
+   @FXML private Label encoding_label = null;
+   @FXML private Label encoding_description_label = null;
+   @FXML public Button start = null;
+   @FXML public Button cancel = null;
+   @FXML public CheckBox metadata = null;
+   @FXML public CheckBox decrypt = null;
+   @FXML public CheckBox qsfix = null;
+   @FXML public CheckBox twpdelete = null;
+   @FXML public CheckBox rpcdelete = null;
+   @FXML public CheckBox comskip = null;
+   @FXML public CheckBox comcut = null;
+   @FXML public CheckBox captions = null;
+   @FXML public CheckBox encode = null;
+   @FXML public CheckBox push = null;
+   @FXML public CheckBox custom = null;
+   @FXML private WebView text = null;
    private textpane textp = null;
    private jobTable jobTab = null;
-   private ProgressBar progressBar = null;
-   public  ScrollPane jobPane = null;
+   @FXML private ProgressBar progressBar = null;
+   @FXML public  ScrollPane jobPane = null;
    
    private Hashtable<String,tivoTab> tivoTabs = new Hashtable<String,tivoTab>();
    public static Hashtable<String,Image> Images;
@@ -189,30 +188,64 @@ public class gui extends Application {
       return tivoTabs.get(tabName);
    }
    
-   public void Launch() {
+public static class guiApp extends Application {
+   /**
+    * A wrapper for {@link Application#launch(String...)} that, when
+    * called, ensures this class is the one that is launched.
+    */
+   public static void Launch() {
       debug.print("");
       launch();
    }
    
    @Override
    public void start(Stage stage) {
+	   try {
       debug.print("stage=" + stage);
-      jFrame = stage;
-      Scene scene = new Scene(new VBox());
-      MenuBar menubar = getMenuBar();
       
-      // Build main canvas components
-      getContentPane();
+    	  FXMLLoader loader = new FXMLLoader(gui.class.getResource(
+    			  "gui.fxml"));
+    	  ResourceBundle bundle = ResourceBundle.getBundle("com.tivo.kmttg.gui.gui");
+    	  loader.setResources(bundle);
+    	  Parent gui_fxml = loader.<Parent>load();
+    	  
+    	  // all the adjustments are done in the initialize method
+    	  // automatically called by FXMLLoader
+    	  // config.gui is set to the controller instance during that initialize
+    	  
+    	  Scene scene = new Scene(gui_fxml);
+    	  config.gui.jFrame = stage;
+//    	  Scene scene = new Scene(new VBox());
+
+    	  // .. but the scene and stage are not available to the controller's initialize.
+    	  config.gui.initializeScene(stage, scene);
+
+	   } catch (Exception e1) {
+		   // TODO Auto-generated catch block
+		   e1.printStackTrace();
+		   config.gui = null;
+		   config.gui.jFrame = null;
+	   }
+   }
+}
+      
+   @Override
+   public void initialize(URL location, ResourceBundle resources) {
+      bundle = resources;
       config.gui = this;
-            
-      VBox main_canvas = new VBox();
-      main_canvas.setSpacing(5);
-      main_canvas.getChildren().add(jContentPane);
-      ((VBox) scene.getRoot()).getChildren().addAll(menubar, main_canvas);
       
+      // adjust the menubar as needed
+      MenuBar menubar = initMenuBar();
+      
+      // adjust the main canvas components
+      getContentPane();
+   }
+   
+   public void initializeScene(Stage stage, Scene scene) {
+            
       // Add additional rpc remote tab
       remote_gui = new remotegui(jFrame);
-      addTabPane("Remote", tabbed_panel, remote_gui.getPanel());
+      addTabPane(bundle.getString("tab_remote"), tabbed_panel, remote_gui.getPanel());
       
       // Init TableMap utility class
       TableMap.init();
@@ -240,6 +273,9 @@ public class gui extends Application {
          }
       });
       
+      // Set master flag indicating that kmttg is running in GUI mode
+      config.GUIMODE = true;
+      
       // Restore last GUI run settings from file
       readSettings();
       
@@ -249,9 +285,6 @@ public class gui extends Application {
       // Create and enable/disable component tooltips
       MyTooltip.enableToolTips(config.toolTips);
       setToolTips();
-      
-      // Set master flag indicating that kmttg is running in GUI mode
-      config.GUIMODE = true;
       
       jFrame.show();
       
@@ -269,8 +302,6 @@ public class gui extends Application {
             }
          });
       }
-      
-      config.gui = this;
       
       setLookAndFeel(config.lookAndFeel);
       
@@ -307,9 +338,9 @@ public class gui extends Application {
       scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
          public void handle(KeyEvent e) {
             String tabName = getCurrentTabName();
-            if (tabName.equals("Remote")) {
+            if (tabName.equals(bundle.getString("tab_remote"))) {
                String subTabName = config.gui.remote_gui.getCurrentTabName();
-               if (subTabName.equals("Remote")) {
+               if (subTabName.equals(bundle.getString("tab_remote_remote"))) {
                   // For Remote-Remote tab don't want to interfere with anything
                   return;
                }
@@ -444,128 +475,56 @@ public class gui extends Application {
    
    private SplitPane getContentPane() {
       debug.print("");
-      if (jContentPane == null) {
+//      if (jContentPane == null) {
                   
          // CANCEL JOBS button
-         cancel = new Button("CANCEL JOBS");
-         cancel.setPadding(new Insets(1,2,1,2));
          cancel.setTooltip(getToolTip("cancel"));
-         cancel.setMinWidth(100);
-         cancel.setId("button_job_cancel");
-         cancel.setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent e) {
-               cancelCB();
-            }
-         });
 
          // START JOBS button
-         start = new Button("START JOBS");
-         start.setPadding(new Insets(1,2,1,2));
          start.setTooltip(getToolTip("start"));
-         start.setId("button_job_start");
-         start.setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent e) {
-               String tivoName = getCurrentTabName();
-               if (tivoName.equals("Remote"))
-                  log.error("START JOBS invalid with Remote tab selected.");
-               else
-                  tivoTabs.get(tivoName).startCB();
-            }
-         });
          
          // Tasks
-         metadata = new CheckBox("metadata"); metadata.setSelected(false);
-         decrypt = new CheckBox("decrypt"); decrypt.setSelected(true);        
-         qsfix = new CheckBox("QS Fix"); qsfix.setSelected(false);        
-         qsfix.setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent e) {
-               refreshOptions(false);
-            }
-         });
-         twpdelete = new CheckBox("TWP Delete"); twpdelete.setSelected(false);        
-         rpcdelete = new CheckBox("rpc Delete");  rpcdelete.setSelected(false);       
-         comskip = new CheckBox("Ad Detect"); comskip.setSelected(false);        
-         comcut = new CheckBox("Ad Cut"); comcut.setSelected(false);        
-         captions = new CheckBox("captions"); captions.setSelected(false);        
-         encode = new CheckBox("encode"); encode.setSelected(false);
-         push = new CheckBox("push"); push.setSelected(false);
-         custom = new CheckBox("custom"); custom.setSelected(false);
          
          // Tasks row
-         HBox tasks_panel = new HBox();
-         tasks_panel.setAlignment(Pos.CENTER_LEFT);
-         tasks_panel.setPadding(new Insets(0,0,0,5));
-         tasks_panel.setSpacing(5);
-         tasks_panel.getChildren().add(start);
-         tasks_panel.getChildren().add(util.space(5));
-         tasks_panel.getChildren().add(metadata);
-         tasks_panel.getChildren().add(decrypt);
-         tasks_panel.getChildren().add(qsfix);
          if (config.twpDeleteEnabled()) {
-            tasks_panel.getChildren().add(twpdelete);            
+//            tasks_panel.getChildren().add(twpdelete);            
+         } else {
+        	 twpdelete.setVisible(false);
+        	 twpdelete.setManaged(false);
          }
          if (config.rpcDeleteEnabled()) {
-            tasks_panel.getChildren().add(rpcdelete);            
+//            tasks_panel.getChildren().add(rpcdelete);            
+         } else {
+        	 rpcdelete.setVisible(false);
+        	 rpcdelete.setManaged(false);
          }
-         tasks_panel.getChildren().add(comskip);
-         tasks_panel.getChildren().add(comcut);
-         tasks_panel.getChildren().add(captions);
-         tasks_panel.getChildren().add(encode);
-         tasks_panel.getChildren().add(custom);
-         tasks_panel.getChildren().add(push);
          
          // Encoding row
          // Encoding label
-         encoding_label = new Label("Encoding Profile:");
-         encoding_label.setTextAlignment(TextAlignment.CENTER);
- 
-         // Encoding names combo box
-         encoding = new ChoiceBox<String>();
+// 
+//         // Encoding names combo box
          SetEncodings(encodeConfig.getValidEncodeNames());
-         encoding.valueProperty().addListener(new ChangeListener<String>() {
-            @Override public void changed(ObservableValue<? extends String> ov, String oldVal, String newVal) {
-               if (newVal != null) {
-                  encodingCB(encoding);
-               }
-            }
-         });
 
          // Encoding description label
          String description = "";
          if (encodeConfig.getValidEncodeNames().size() > 0) {
             description = "  " + encodeConfig.getDescription(encodeConfig.getEncodeName());
          }
-         encoding_description_label = new Label(description);
-
-         HBox encoding_panel = new HBox();
-         encoding_panel.setAlignment(Pos.CENTER_LEFT);
-         encoding_panel.setPadding(new Insets(0,0,0,5));
-         encoding_panel.setSpacing(5);
-         encoding_panel.getChildren().add(encoding_label);
-         encoding_panel.getChildren().add(encoding);
-         encoding_panel.getChildren().add(encoding_description_label);
+         encoding_description_label.setText(description);
          
          // Job Monitor table
          jobTab = new jobTable();
-         jobPane = new ScrollPane(jobTab.JobMonitor);
-         jobPane.setFitToHeight(true);
-         jobPane.setFitToWidth(true);
+         jobPane.setContent(jobTab.JobMonitor);
          
          // Progress Bar
-         progressBar = new ProgressBar();
-         progressBar.setId("progressbar_job");
-         progressBar.setProgress(0);
 
          // Message area
-         text = new WebView();
          textp = new textpane(text);
                   
          // Tabbed panel
-         tabbed_panel = new TabPane();
-         tabbed_panel.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
          tabbed_panel.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Tab>() {
             @Override public void changed(ObservableValue<? extends Tab> ov, Tab oldVal, Tab newVal) {
-               if (getCurrentTabName() != null && getCurrentTabName().equals("Remote")) {
+               if (getCurrentTabName() != null && getCurrentTabName().equals(bundle.getString("tab_remote"))) {
                   // Set focus on remote pane
                   remote_gui.tabbed_panel.requestFocus();
                }
@@ -573,217 +532,114 @@ public class gui extends Application {
          });
 
          // Add permanent tabs
-         tivoTabs.put("FILES", new tivoTab("FILES"));
-         addTabPane("FILES", tabbed_panel, tivoTabs.get("FILES").getPanel());
+         tivoTabs.put(bundle.getString("tab_files"), new tivoTab(bundle.getString("tab_files")));
+         addTabPane(bundle.getString("tab_files"), tabbed_panel, tivoTabs.get(bundle.getString("tab_files")).getPanel());
          
          // Add Tivo tabs
          SetTivos(config.TIVOS);
          
          // Cancel pane
-         HBox cancel_pane_stretch = new HBox();
-         cancel_pane_stretch.getChildren().add(progressBar);
-         //cancel_pane_stretch.setAlignment(Pos.CENTER_LEFT);
-         HBox cancel_pane = new HBox();
-         cancel_pane.setPadding(new Insets(0,0,0,5));
-         cancel_pane.setSpacing(5);
-         cancel_pane.getChildren().addAll(cancel, cancel_pane_stretch);
          cancel.setMinWidth(Button.USE_PREF_SIZE); // Don't truncate button text
-         HBox.setHgrow(cancel_pane_stretch, Priority.ALWAYS);  // stretch horizontally
          // Bind progressBar width to cancel_pane_stretch width so it will grow horizontally
          progressBar.prefWidthProperty().bind(
-            cancel_pane.widthProperty().subtract(cancel.widthProperty())
+//            cancel_pane.
+            ((HBox)progressBar.getParent().getParent()).
+            widthProperty().subtract(cancel.widthProperty())
          );
          
          // Create a split pane between job & messages pane
-         splitBottom = new SplitPane();
-         splitBottom.setOrientation(Orientation.VERTICAL);
-         splitBottom.getItems().add(jobPane);
-         splitBottom.getItems().add(text);
          splitBottom.setDividerPosition(0, 0.55);
-         
-         // bottomPane will consist of cancel_pane & splitBottom
-         VBox bottomPane = new VBox();         
-         bottomPane.getChildren().add(cancel_pane);
-         bottomPane.getChildren().add(splitBottom);
-         
-         // topPane will consist of tasks & tabbed_panel
-         VBox topPane = new VBox();
-         topPane.getChildren().add(tasks_panel);
-         HBox.setHgrow(tasks_panel, Priority.ALWAYS);  // stretch horizontally
-         topPane.getChildren().add(encoding_panel);         
-         topPane.getChildren().add(tabbed_panel);
-         VBox.setVgrow(tabbed_panel, Priority.ALWAYS); // stretch vertically
-         
-         // Put all panels together
-         jContentPane = new SplitPane();
-         jContentPane.setOrientation(Orientation.VERTICAL);
-         jContentPane.getItems().add(topPane);
-         jContentPane.getItems().add(bottomPane);
+//         
+//         // Put all panels together
          jContentPane.setDividerPosition(0, 0.57);
-      }
+//      }
       
       return jContentPane;
    }
    
-   private MenuBar getMenuBar() {
+   @FXML public void startCB() {
+       String tivoName = getCurrentTabName();
+       if (tivoName.equals(bundle.getString("tab_remote")))
+          log.error("START JOBS invalid with Remote tab selected.");
+       else
+          tivoTabs.get(tivoName).startCB();
+   }
+
+   @FXML public void qsfixCB() {
+       refreshOptions(false);
+   }
+   
+   private MenuBar initMenuBar() {
       debug.print("");
-      if (menuBar == null) {
-         menuBar = new MenuBar();
-         menuBar.getMenus().addAll(getFileMenu(), getAutoTransfersMenu());
-         menuBar.getMenus().add(getHelpMenu());
-      }
+      initFileMenu();
+      initAutoTransfersMenu();
+      initHelpMenu();
       return menuBar;
    }
 
-   private Menu getFileMenu() {
+   private Menu initFileMenu() {
       debug.print("");
-      if (fileMenu == null) {
-         fileMenu = new Menu("File");
-         fileMenu.getItems().add(getConfigureMenuItem());
-         fileMenu.getItems().add(getRefreshEncodingsMenuItem());
-         fileMenu.getItems().add(getSaveMessagesMenuItem());
-         fileMenu.getItems().add(getClearMessagesMenuItem());
-         //fileMenu.getItems().add(getResetServerMenuItem());
          if (config.getTivoUsername() != null)
-            fileMenu.getItems().add(getPushesMenuItem());
-         fileMenu.getItems().add(getResumeDownloadsMenuItem());
-         fileMenu.getItems().add(getJobMenu());
-         fileMenu.getItems().add(getSearchMenuItem());
+//            fileMenu.getItems().add(getPushesMenuItem());
+        	 ; else fileMenu.getItems().remove(pushesMenuItem);
          if (config.rpcEnabled() && SkipMode.skipEnabled()) {
-            fileMenu.getItems().add(getSkipModeMenuItem());
-            fileMenu.getItems().add(getSkipServiceMenuItem());
+//            fileMenu.getItems().add(getSkipModeMenuItem());
+//            fileMenu.getItems().add(getSkipServiceMenuItem());
          }
-         //fileMenu.add(getThumbsMenuItem());
-         // Create thumbs menu item but don't add to File menu
-         getThumbsMenuItem();
-         fileMenu.getItems().add(getExitMenuItem());
-      }
+         else {
+        	 fileMenu.getItems().remove(skipModeMenuItem);
+        	 fileMenu.getItems().remove(skipServiceMenuItem);
+         }
+//         //fileMenu.add(getThumbsMenuItem());
+//         // Create thumbs menu item but don't add to File menu
+//         getThumbsMenuItem();
+         fileMenu.getItems().remove(thumbsMenuItem);
       return fileMenu;
    }
    
-   private Menu getJobMenu() {
+   private Menu initAutoTransfersMenu() {
       debug.print("");
-      if (jobMenu == null) {
-         jobMenu = new Menu("Jobs");
-         jobMenu.getItems().add(getToggleLaunchingJobsMenuItem());
-         jobMenu.getItems().add(getSaveJobsMenuItem());
-         jobMenu.getItems().add(getLoadJobsMenuItem());
-      }
-      return jobMenu;
-   }
-
-   private Menu getAutoTransfersMenu() {
-      debug.print("");
-      if (autoMenu == null) {
-         autoMenu = new Menu("Auto Transfers");
-         autoMenu.getItems().add(getAutoConfigMenuItem());
          if (config.OS.equals("windows"))
-            autoMenu.getItems().add(getServiceMenu());
-         else
-            autoMenu.getItems().add(getBackgroundJobMenu());
-         autoMenu.getItems().add(getAddSelectedTitlesMenuItem());
-         autoMenu.getItems().add(getAddSelectedHistoryMenuItem());
-         autoMenu.getItems().add(getLogFileMenuItem());
-         autoMenu.getItems().add(getRunInGuiMenuItem());
-         autoMenu.getItems().add(getLoopInGuiMenuItem());
-      }
+//            autoMenu.getItems().add(getServiceMenu());
+         {
+        	 autoMenu.getItems().remove(serviceMenuBackground);
+         }else{
+        	 autoMenu.getItems().remove(serviceMenuService);
+         }
+//            autoMenu.getItems().add(getBackgroundJobMenu());
       return autoMenu;
    }
 
-   private Menu getHelpMenu() {
+   private Menu initHelpMenu() {
       debug.print("");
-      if (helpMenu == null) {
-         helpMenu = new Menu("Help");
-         helpMenu.getItems().add(getHelpAboutMenuItem());
-         helpMenu.getItems().add(getHelpUpdateMenuItem());
          if (config.OS.equals("windows") || config.OS.equals("mac"))
-            helpMenu.getItems().add(getHelpToolsUpdateMenuItem());
-      }
+;//            helpMenu.getItems().add(getHelpToolsUpdateMenuItem());
+         else helpMenu.getItems().remove(helpToolsUpdateMenuItem);
       return helpMenu;
    }
 
-   private MenuItem getHelpAboutMenuItem() {
-      debug.print("");
-      if (helpAboutMenuItem == null) {
-         helpAboutMenuItem = new MenuItem();
-         helpAboutMenuItem.setText("About...");
-         helpAboutMenuItem.setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent e) {
+   @FXML public void helpAboutMenuItemCB() {
                help.showHelp();
-            }
-         });
-      }
-      return helpAboutMenuItem;
    }
 
-   private MenuItem getHelpUpdateMenuItem() {
-      debug.print("");
-      if (helpUpdateMenuItem == null) {
-         helpUpdateMenuItem = new MenuItem();
-         helpUpdateMenuItem.setText("Update kmttg...");
-         helpUpdateMenuItem.setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent e) {
+   @FXML public void helpUpdateMenuItemCB() {
                update.update_kmttg_background();
-            }
-         });
-      }
-      return helpUpdateMenuItem;
    }
 
-   private MenuItem getHelpToolsUpdateMenuItem() {
-      debug.print("");
-      if (helpToolsUpdateMenuItem == null) {
-         helpToolsUpdateMenuItem = new MenuItem();
-         helpToolsUpdateMenuItem.setText("Update tools...");
-         helpToolsUpdateMenuItem.setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent e) {
+   @FXML public void helpToolsUpdateMenuItemCB() {
                update.update_tools_background();
-            }
-         });
-      }
-      return helpToolsUpdateMenuItem;
    }
-
-   private MenuItem getExitMenuItem() {
-      debug.print("");
-      if (exitMenuItem == null) {
-         exitMenuItem = new MenuItem();
-         exitMenuItem.setText("Exit");
-         exitMenuItem.setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent e) {
+   @FXML public void exitMenuItemCB() {
                saveSettings();
                System.exit(0);
-            }
-         });
-      }
-      return exitMenuItem;
    }
 
-   private MenuItem getAutoConfigMenuItem() {
-      debug.print("");
-      if (autoConfigMenuItem == null) {
-         autoConfigMenuItem = new MenuItem();
-         autoConfigMenuItem.setText("Configure...");
-         autoConfigMenuItem.setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent e) {
-               if (config_auto == null)
-                  config_auto = new configAuto();
-               config_auto.display(jFrame);
-            }
-         });
-      }
-      return autoConfigMenuItem;
+   @FXML public void autoConfigMenuItemCB() {
+               configAuto.display(jFrame);
    }
-
-   private MenuItem getSaveMessagesMenuItem() {
-      debug.print("");
-      if (saveMessagesMenuItem == null) {
-         saveMessagesMenuItem = new MenuItem();
-         saveMessagesMenuItem.setText("Save messages to file");
-         saveMessagesMenuItem.setAccelerator(KeyCombination.keyCombination("Ctrl+M"));
-         saveMessagesMenuItem.setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent e) {
+   @FXML public void saveMessagesMenuItemCB() {
                String file = config.programDir + File.separator + "kmttg.log";
+//               String eol = System.lineSeparator();
                String eol = "\n";
                if (config.OS.equals("windows"))
                   eol = "\r\n";
@@ -805,25 +661,10 @@ public class gui extends Application {
                } catch (IOException ex) {
                   log.error("Problem writing to file: " + file);
                }
-            }
-         });
-      }
-      return saveMessagesMenuItem;
    }
 
-   private MenuItem getClearMessagesMenuItem() {
-      debug.print("");
-      if (clearMessagesMenuItem == null) {
-         clearMessagesMenuItem = new MenuItem();
-         clearMessagesMenuItem.setText("Clear all messages");
-         clearMessagesMenuItem.setAccelerator(KeyCombination.keyCombination("Ctrl+L"));
-         clearMessagesMenuItem.setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent e) {
+   @FXML public void clearMessagesMenuItemCB() {
                textp.clear();
-            }
-         });
-      }
-      return clearMessagesMenuItem;
    }
 
    /*private MenuItem getResetServerMenuItem() {
@@ -857,13 +698,7 @@ public class gui extends Application {
       return resetServerMenuItem;
    }*/
 
-   private MenuItem getPushesMenuItem() {
-      debug.print("");
-      if (pushesMenuItem == null) {
-         pushesMenuItem = new MenuItem();
-         pushesMenuItem.setText("Show pending pyTivo pushes");
-         pushesMenuItem.setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent e) {
+   @FXML public void pushesMenuItemCB() {
                log.print(config.pyTivo_mind);
                String tivoName = getSelectedTivoName();
                if (tivoName == null)
@@ -875,109 +710,44 @@ public class gui extends Application {
                   log.warn("Querying middlemind host: " + config.middlemind_host);
                   new Pushes(tivoName, getFrame());
                }
-            }
-         });
-      }
-      return pushesMenuItem;
    }
-   
-   private MenuItem getToggleLaunchingJobsMenuItem() {
-      debug.print("");
-      if (toggleLaunchingJobsMenuItem == null) {
-         toggleLaunchingJobsMenuItem = new CheckMenuItem();
-         toggleLaunchingJobsMenuItem.setText("Do not launch queued jobs");
-         toggleLaunchingJobsMenuItem.selectedProperty().addListener(new ChangeListener<Boolean>() {
-            public void changed(ObservableValue<? extends Boolean> e, Boolean oldVal, Boolean newVal) {
-               if (newVal) {
+
+   @FXML public void toggleLaunchingJobsMenuItemCB() {
+                 if (toggleLaunchingJobsMenuItem.isSelected()) {
+//               if (newVal) {
                   jobMonitor.NoNewJobs = true;
                   log.warn("Launching queued jobs disabled. Queued jobs will not be launched.");
                } else {
                   jobMonitor.NoNewJobs = false;
                   log.warn("Launching queued jobs enabled. Resuming normal job processing.");
                }
-            }
-         });
-      }
-      return toggleLaunchingJobsMenuItem;
    }
 
-   private MenuItem getSaveJobsMenuItem() {
-      debug.print("");
-      if (saveJobsMenuItem == null) {
-         saveJobsMenuItem = new MenuItem();
-         saveJobsMenuItem.setText("Save queued jobs");
-         saveJobsMenuItem.setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent e) {
+   @FXML public void saveJobsMenuItemCB() {
                jobMonitor.saveQueuedJobs();
-            }   
-         });
-      }
-      return saveJobsMenuItem;
    }
 
-   private MenuItem getLoadJobsMenuItem() {
-      debug.print("");
-      if (loadJobsMenuItem == null) {
-         loadJobsMenuItem = new MenuItem();
-         loadJobsMenuItem.setText("Load queued jobs");
-         loadJobsMenuItem.setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent e) {
+   @FXML public void loadJobsMenuItemCB() {
                jobMonitor.loadQueuedJobs();
-            }
-         });
-      }
-      return loadJobsMenuItem;
    }
    
-   private MenuItem getRunInGuiMenuItem() {
-      debug.print("");
-      if (runInGuiMenuItem == null) {
-         runInGuiMenuItem = new MenuItem();
-         runInGuiMenuItem.setText("Run Once in GUI");
-         runInGuiMenuItem.setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent e) {
+   @FXML public void runInGuiMenuItemCB() {
                autoRunInGUICB();
-            }
-         });
-      }
-      return runInGuiMenuItem;
    }
    
-   private MenuItem getLoopInGuiMenuItem() {
-      debug.print("");
-      if (loopInGuiMenuItem == null) {
-         loopInGuiMenuItem = new CheckMenuItem();
-         loopInGuiMenuItem.setText("Loop in GUI");
-         loopInGuiMenuItem.selectedProperty().addListener(new ChangeListener<Boolean>() {
-            public void changed(ObservableValue<? extends Boolean> e, Boolean oldVal, Boolean newVal) {
-               autoLoopInGUICB(newVal);
-            }
-         });
-      }
-      return loopInGuiMenuItem;
+   @FXML public void loopInGuiMenuItemCB() {
+               autoLoopInGUICB(
+//            		   newVal);
+            		   loopInGuiMenuItem.isSelected());
    }
    
-   private MenuItem getResumeDownloadsMenuItem() {
-      debug.print("");
-      if (resumeDownloadsMenuItem == null) {
-         resumeDownloadsMenuItem = new CheckMenuItem();
-         resumeDownloadsMenuItem.setText("Resume Downloads");
-         resumeDownloadsMenuItem.selectedProperty().addListener(new ChangeListener<Boolean>() {
-            public void changed(ObservableValue<? extends Boolean> e, Boolean oldVal, Boolean newVal) {
-               config.resumeDownloads = newVal;
-            }
-         });
-      }
-      return resumeDownloadsMenuItem;
+   @FXML public void resumeDownloadsMenuItemCB() {
+               config.resumeDownloads = 
+            		   //newVal;
+            		   resumeDownloadsMenuItem.isSelected();
    }
    
-   private MenuItem getAddSelectedTitlesMenuItem() {
-      debug.print("");
-      if (addSelectedTitlesMenuItem == null) {
-         addSelectedTitlesMenuItem = new MenuItem();
-         addSelectedTitlesMenuItem.setText("Add selected titles");
-         addSelectedTitlesMenuItem.setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent e) {
+   @FXML public void addSelectedTitlesMenuItemCB() {
                TableMap tmap = TableMap.getCurrent();
                if (tmap == null || (tmap != null && ! tmap.isRemote())) {
                   // Non remote table
@@ -1003,113 +773,37 @@ public class gui extends Application {
                      return;                        
                   }
                }
-            }
-         });
-      }
-      return addSelectedTitlesMenuItem;
    }
 
-   private MenuItem getAddSelectedHistoryMenuItem() {
-      debug.print("");
-      if (addSelectedHistoryMenuItem == null) {
-         addSelectedHistoryMenuItem = new MenuItem();
-         addSelectedHistoryMenuItem.setText("Add selected to history file");
-         addSelectedHistoryMenuItem.setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent e) {
+   @FXML public void addSelectedHistoryMenuItemCB() {
                String tivoName = getSelectedTivoName();
                if (tivoName != null) {
                   tivoTabs.get(tivoName).autoSelectedHistoryCB();
                } else {
                   log.error("This command must be run from a TiVo tab with selected tivo shows.");
                }
-            }
-         });
-      }
-      return addSelectedHistoryMenuItem;
    }
 
-   private MenuItem getLogFileMenuItem() {
-      debug.print("");
-      if (logFileMenuItem == null) {
-         logFileMenuItem = new MenuItem();
-         logFileMenuItem.setText("Examine log file...");
-         logFileMenuItem.setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent e) {
+   @FXML public void logFileMenuItemCB() {
                new autoLogView(jFrame);
-            }
-         });
-      }
-      return logFileMenuItem;
    }
 
-   private MenuItem getConfigureMenuItem() {
-      debug.print("");
-      if (configureMenuItem == null) {
-         configureMenuItem = new MenuItem();
-         configureMenuItem.setText("Configure...");
-         configureMenuItem.setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent e) {
+   @FXML public void configureMenuItemCB() {
                configMain.display(jFrame);
-            }
-         });
-         configureMenuItem.setAccelerator(KeyCombination.keyCombination("Ctrl+O"));
-      }
-      return configureMenuItem;
    }
 
-   private MenuItem getRefreshEncodingsMenuItem() {
-      debug.print("");
-      if (refreshEncodingsMenuItem == null) {
-         refreshEncodingsMenuItem = new MenuItem();
-         refreshEncodingsMenuItem.setText("Refresh Encoding Profiles");
-         refreshEncodingsMenuItem.setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent e) {
+   @FXML public void refreshEncodingsMenuItemCB() {
                refreshEncodingProfilesCB();
-            }
-         });
-         refreshEncodingsMenuItem.setAccelerator(KeyCombination.keyCombination("Ctrl+E"));
-      }
-      return refreshEncodingsMenuItem;
    }
 
-   private Menu getServiceMenu() {
-      debug.print("");
-      if (serviceMenu == null) {
-         serviceMenu = new Menu();
-         serviceMenu.setText("Service");
-         serviceMenu.getItems().add(getServiceStatusMenuItem());
-         serviceMenu.getItems().add(getServiceInstallMenuItem());
-         serviceMenu.getItems().add(getServiceStartMenuItem());
-         serviceMenu.getItems().add(getServiceStopMenuItem());
-         serviceMenu.getItems().add(getServiceRemoveMenuItem());
-      }
-      return serviceMenu;
-   }
-
-   private MenuItem getServiceStatusMenuItem() {
-      debug.print("");
-      if (serviceStatusMenuItem == null) {
-         serviceStatusMenuItem = new MenuItem();
-         serviceStatusMenuItem.setText("Status");
-         serviceStatusMenuItem.setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent e) {
+   @FXML public void serviceStatusMenuItemCB() {
                String query = auto.serviceStatus();
                if (query != null) {
                   log.warn(query);
                }
-            }
-         });
-      }
-      return serviceStatusMenuItem;
    }
 
-   private MenuItem getServiceInstallMenuItem() {
-      debug.print("");
-      if (serviceInstallMenuItem == null) {
-         serviceInstallMenuItem = new MenuItem();
-         serviceInstallMenuItem.setText("Install");
-         serviceInstallMenuItem.setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent e) {
+   @FXML public void serviceInstallMenuItemCB() {
                String query = auto.serviceStatus();
                if (query != null) {                  
                   if (query.matches("^.+STATUS.+$")) {
@@ -1118,19 +812,9 @@ public class gui extends Application {
                   }
                   auto.serviceCreate();
                }
-            }
-         });
-      }
-      return serviceInstallMenuItem;
    }
 
-   private MenuItem getServiceStartMenuItem() {
-      debug.print("");
-      if (serviceStartMenuItem == null) {
-         serviceStartMenuItem = new MenuItem();
-         serviceStartMenuItem.setText("Start");
-         serviceStartMenuItem.setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent e) {
+   @FXML public void serviceStartMenuItemCB() {
                String query = auto.serviceStatus();
                if (query != null) {                  
                   if (query.matches("^.+RUNNING$")) {
@@ -1139,19 +823,9 @@ public class gui extends Application {
                   }
                }
                auto.serviceStart();
-            }
-         });
-      }
-      return serviceStartMenuItem;
    }
 
-   private MenuItem getServiceStopMenuItem() {
-      debug.print("");
-      if (serviceStopMenuItem == null) {
-         serviceStopMenuItem = new MenuItem();
-         serviceStopMenuItem.setText("Stop");
-         serviceStopMenuItem.setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent e) {
+   @FXML public void serviceStopMenuItemCB() {
                String query = auto.serviceStatus();
                if (query != null) {                  
                   if (query.matches("^.+STOPPED$")) {
@@ -1160,19 +834,9 @@ public class gui extends Application {
                   }
                }
                auto.serviceStop();
-            }
-         });
-      }
-      return serviceStopMenuItem;
    }
 
-   private MenuItem getServiceRemoveMenuItem() {
-      debug.print("");
-      if (serviceRemoveMenuItem == null) {
-         serviceRemoveMenuItem = new MenuItem();
-         serviceRemoveMenuItem.setText("Remove");
-         serviceRemoveMenuItem.setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent e) {
+   @FXML public void serviceRemoveMenuItemCB() {
                String query = auto.serviceStatus();
                if (query != null) {
                   if (query.matches("^.+not been created.+$")) {
@@ -1181,103 +845,31 @@ public class gui extends Application {
                   }
                   auto.serviceDelete();
                }
-            }
-         });
-      }
-      return serviceRemoveMenuItem;
    }
 
-   private Menu getBackgroundJobMenu() {
-      debug.print("");
-      if (serviceMenu == null) {
-         serviceMenu = new Menu();
-         serviceMenu.setText("Background Job");
-         serviceMenu.getItems().add(getBackgroundJobStatusMenuItem());
-         serviceMenu.getItems().add(getBackgroundJobEnableMenuItem());
-         serviceMenu.getItems().add(getBackgroundJobDisableMenuItem());
-      }
-      return serviceMenu;
-   }
-
-   private MenuItem getBackgroundJobStatusMenuItem() {
-      debug.print("");
-      if (backgroundJobStatusMenuItem == null) {
-         backgroundJobStatusMenuItem = new MenuItem();
-         backgroundJobStatusMenuItem.setText("Status");
-         backgroundJobStatusMenuItem.setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent e) {
+   @FXML public void backgroundJobStatusMenuItemCB() {
                auto.unixAutoIsRunning(true);
-            }
-         });
-      }
-      return backgroundJobStatusMenuItem;
    }
 
-   private MenuItem getBackgroundJobEnableMenuItem() {
-      debug.print("");
-      if (backgroundJobEnableMenuItem == null) {
-         backgroundJobEnableMenuItem = new MenuItem();
-         backgroundJobEnableMenuItem.setText("Enable");
-         backgroundJobEnableMenuItem.setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent e) {
+   @FXML public void backgroundJobEnableMenuItemCB() {
                auto.unixAutoStart();
-            }
-         });
-      }
-      return backgroundJobEnableMenuItem;
    }
 
-   private MenuItem getBackgroundJobDisableMenuItem() {
-      debug.print("");
-      if (backgroundJobDisableMenuItem == null) {
-         backgroundJobDisableMenuItem = new MenuItem();
-         backgroundJobDisableMenuItem.setText("Disable");
-         backgroundJobDisableMenuItem.setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent e) {
+   @FXML public void backgroundJobDisableMenuItemCB() {
                auto.unixAutoKill();
-            }
-         });
-      }
-      return backgroundJobDisableMenuItem;
    }
 
-   private MenuItem getSearchMenuItem() {
-      debug.print("");
-      if (searchMenuItem == null) {
-         searchMenuItem = new MenuItem();
-         searchMenuItem.setText("Search Table...");
-         searchMenuItem.setAccelerator(KeyCombination.keyCombination("Ctrl+S"));
-         searchMenuItem.setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent e) {
+   @FXML public void searchMenuItemCB() {
                TableUtil.SearchGUI();
-            }
-         });
-      }
-      return searchMenuItem;
    }
 
-   private MenuItem getSkipModeMenuItem() {
-      debug.print("");
-      if (skipModeMenuItem == null) {
-         skipModeMenuItem = new MenuItem();
-         skipModeMenuItem.setText("SkipMode Table...");
-         skipModeMenuItem.setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent e) {
+   @FXML public void skipModeMenuItemCB() {
                new SkipDialog(config.gui.getFrame());
-            }
-         });
-      }
-      return skipModeMenuItem;
    }
 
-   private MenuItem getSkipServiceMenuItem() {
-      debug.print("");
-      if (skipServiceMenuItem == null) {
-         skipServiceMenuItem = new CheckMenuItem();
-         skipServiceMenuItem.setText("SkipMode service...");
-         skipServiceMenuItem.selectedProperty().addListener(new ChangeListener<Boolean>() {
-            public void changed(ObservableValue<? extends Boolean> e, Boolean oldVal, Boolean newVal) {
-               if ( ! newVal ) {
+   @FXML public void skipServiceMenuItemCB() {
+	             if ( ! skipServiceMenuItem.isSelected() ) {
+//               if ( ! newVal ) {
                   // Turn off service
                   config.skipService.stop();
                   return;
@@ -1294,8 +886,8 @@ public class gui extends Application {
                
                // Prompt user to choose a TiVo
                ChoiceDialog<String> dialog = new ChoiceDialog<String>(all.get(0), all);
-               dialog.setTitle("Choose which TiVo to monitor");
-               dialog.setContentText("TiVo:");
+               dialog.setTitle(bundle.getString("dialog_title"));
+               dialog.setContentText(bundle.getString("dialog_content"));
                String tivoName = null;
                Optional<String> result = dialog.showAndWait();
                if (result.isPresent())
@@ -1305,25 +897,10 @@ public class gui extends Application {
                   config.skipService = new SkipService(tivoName);
                   config.skipService.start();
                }
-            }
-         });
-      }
-      return skipServiceMenuItem;
    }
 
-   private MenuItem getThumbsMenuItem() {
-      debug.print("");
-      if (thumbsMenuItem == null) {
-         thumbsMenuItem = new MenuItem();
-         thumbsMenuItem.setText("Set Thumbs rating...");
-         thumbsMenuItem.setAccelerator(KeyCombination.keyCombination("Ctrl+T"));
-         thumbsMenuItem.setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent e) {
+   @FXML public void thumbsMenuItemCB() {
                TableUtil.ThumbsGUI();
-            }
-         });
-      }
-      return thumbsMenuItem;
    }
 
    // This will decide which options are enabled based on current config settings
@@ -1399,19 +976,22 @@ public class gui extends Application {
       if (config.GUIMODE && refreshProfiles) refreshEncodingProfilesCB();
       
       // Add remote tab if appropriate
-      if (config.GUIMODE && remote_gui == null) {
+      if (config.GUIMODE) {
+        if (remote_gui == null) {
          remote_gui = new remotegui(jFrame);
-         addTabPane("Remote", tabbed_panel, remote_gui.getPanel());
+        }
+        addTabPane(bundle.getString("tab_remote"), tabbed_panel, remote_gui.getPanel());
+      } else {
+    	  tabbed_panel.getTabs().removeIf((t) -> t.getText().equals(bundle.getString("tab_remote")));
       }
       
       // Add slingbox tab if appropriate
       if (config.slingBox == 1) {
          if (slingbox_gui == null)
             slingbox_gui = new slingboxgui(jFrame);
-         addTabPane("Slingbox", tabbed_panel, slingbox_gui.getPanel());
-      }
-      if (config.slingBox == 0 && slingbox_gui != null) {
-         tabbed_panel.getTabs().remove(slingbox_gui.getPanel());
+         addTabPane(bundle.getString("tab_slingbox"), tabbed_panel, slingbox_gui.getPanel());
+      } else {
+    	  tabbed_panel.getTabs().removeIf((t) -> t.getText().equals(bundle.getString("tab_slingbox")));
       }
    }
    
@@ -1466,15 +1046,15 @@ public class gui extends Application {
             String query = auto.serviceStatus();
             if (query != null && query.matches("^.+RUNNING$")) {
                auto_running = true;
-               question = "kmttg service is currently running. Stop the service?";
+               question = bundle.getString("question_stop_service");
             }
          } else {
             auto_running = auto.unixAutoIsRunning(false);            
-            question = "kmttg background job is currently running. Stop the job?";
+            question = bundle.getString("question_stop_background");
          }
          if (auto_running) {
             Alert alert = new Alert(AlertType.CONFIRMATION);
-            alert.setTitle("Confirm");
+            alert.setTitle(bundle.getString("question_title"));
             setFontSize(alert, config.FontSize);
             alert.setContentText(question);
             Optional<ButtonType> result = alert.showAndWait();
@@ -1500,9 +1080,13 @@ public class gui extends Application {
    
    // Encoding cyclic change callback
    // Set the description according to selected item
-   private void encodingCB(ChoiceBox<String> combo) {
+   @FXML private void encodingCB() {
+      ChoiceBox<String> combo = encoding;
       debug.print("combo=" + combo);
       String encodeName = combo.getValue();
+      if (encodeName == null) {
+    	  return;
+      }
       config.encodeName = encodeName;
       String description = encodeConfig.getDescription(encodeName);
       // Set encoding_description_label accordingly
@@ -1511,7 +1095,7 @@ public class gui extends Application {
  
    // Cancel button callback
    // Kill and remove selected jobs from job monitor
-   private void cancelCB() {
+   @FXML private void cancelCB() {
       debug.print("");
       int[] rows = TableUtil.GetSelectedRows(jobTab.JobMonitor);
 
@@ -1528,18 +1112,20 @@ public class gui extends Application {
    // Add a new tab pane
    private void addTabPane(String name, TabPane pane, Node content) {
       debug.print("name=" + name + " pane=" + pane + " content=" + content);
-      // Prevent duplicates
-      Boolean add = true;
       for (Tab t : pane.getTabs()) {
          if (t.getText().equals(name))
-            add = false;
+         {
+        	 // Prevent duplicates
+        	 if(t.getContent() == null)
+        		 t.setContent(content);
+        	 return;
+         }
       }
-      if (add) {
+      // Tab didn't exist.  Create it.
          Tab tab = new Tab();
          tab.setContent(content);
          tab.setText(name);
          pane.getTabs().add(tab);
-      }
    }
 
    // Create tivo tabs as needed
@@ -1549,7 +1135,7 @@ public class gui extends Application {
          String[] names = new String[values.size()-1];
          int i = 0;         
          for (String value : values.keySet()) {
-            if (! value.equals("FILES") && ! value.equals("Remote")) {
+            if (! value.equals(bundle.getString("tab_files")) && ! value.equals(bundle.getString("tab_remote"))) {
                if (config.nplCapable(value)) {
                   names[i] = value;
                   i++;
@@ -1572,7 +1158,7 @@ public class gui extends Application {
       } else {
          // Remove all tivo tabs
          String itemName = tabbed_panel.getTabs().get(0).getText();
-         while(! itemName.equals("FILES") && ! itemName.equals("Remote")) {
+         while(! itemName.equals(bundle.getString("tab_files")) && ! itemName.equals(bundle.getString("tab_remote"))) {
             tivoTabRemove(itemName);
          }
       }
@@ -1582,7 +1168,7 @@ public class gui extends Application {
    public void initialNPL(LinkedHashMap<String,String> values) {
       debug.print("values=" + values);
       for (String value : values.keySet()) {
-         if (! value.equals("FILES") && ! value.equals("Remote") && config.nplCapable(value)) {
+         if (! value.equals(bundle.getString("tab_files")) && ! value.equals(bundle.getString("tab_remote")) && config.nplCapable(value)) {
             jobMonitor.getNPL(value);
          }
       }
@@ -1596,7 +1182,7 @@ public class gui extends Application {
    public String getSelectedTivoName() {
       debug.print("");
       String tabName = getCurrentTabName();
-      if (! tabName.equals("FILES") && ! tabName.equals("Remote") && ! tabName.equals("Slingbox")) {
+      if (! tabName.equals(bundle.getString("tab_files")) && ! tabName.equals(bundle.getString("tab_remote")) && ! tabName.equals(bundle.getString("tab_slingbox"))) {
          return tabName;
       }
       return null;
@@ -1604,14 +1190,14 @@ public class gui extends Application {
    
    public String getCurrentRemoteTivoName() {
       debug.print("");
-      if (getCurrentTabName().equals("Remote"))
+      if (getCurrentTabName().equals(bundle.getString("tab_remote")))
          return config.gui.remote_gui.getTivoName(config.gui.remote_gui.getCurrentTabName());
       return null;
    }
    
    public JSONObject getCurrentRemoteJson() {
       debug.print("");
-      if (getCurrentTabName().equals("Remote"))
+      if (getCurrentTabName().equals(bundle.getString("tab_remote")))
          return config.gui.remote_gui.getSelectedJSON(config.gui.remote_gui.getCurrentTabName());         
       return null;
    }
@@ -1660,7 +1246,7 @@ public class gui extends Application {
          Boolean remove;
          for (int i=0; i<numTabs; i++) {
             tabName = tabbed_panel.getTabs().get(i).getText();
-            if (tabName != null && ! tabName.equals("FILES") && ! tabName.equals("Remote")) {
+            if (tabName != null && ! tabName.equals(bundle.getString("tab_files")) && ! tabName.equals(bundle.getString("tab_remote"))) {
                remove = true;
                for (int j=0; j<names.length; j++) {
                   if (names[j] != null && names[j].equals(tabName)) {
@@ -1863,7 +1449,7 @@ public class gui extends Application {
             ofp.write("<showFolders>\n");
             for (Enumeration<String> e=tivoTabs.keys(); e.hasMoreElements();) {
                name = e.nextElement();
-               if ( ! name.equals("FILES") && ! name.equals("Remote") ) {
+               if ( ! name.equals(bundle.getString("tab_files")) && ! name.equals(bundle.getString("tab_remote")) ) {
                   if (tivoTabs.get(name).showFolders()) {
                      ofp.write(name + "=" + 1 + "\n");
                   } else {
@@ -2359,223 +1945,17 @@ public class gui extends Application {
    public Tooltip getToolTip(String component) {
       debug.print("component=" + component);
       String text = "";
-      if (component.equals("tivos")) {
-         text =  "<b>TIVOS</b><br>";
-         text += "Select <b>FILES</b> mode or a <b>TiVo</b> on your network.<br>";
-         text += "<b>FILES</b> mode allows you to select existing TiVo or mpeg2 files on your computer.<br>";
-         text += "<b>TiVo</b> mode allows you to get a listing of all shows for a TiVo on your home network.";
-      }
-      else if (component.equals("add")) {
-         text =  "<b>Add...</b><br>";
-         text += "Brings up a file browser for selecting video files to process.<br>";
-         text += "Selected files are added to files table below.<br>";
-         text += "NOTE: For Mac OS you can get to other disk volumes by browsing to<br>";
-         text += "<b>/Volumes</b> with the browser.";
-      }
-      else if (component.equals("remove")) {
-         text =  "<b>Remove</b><br>";
-         text += "Removes selected file entries from files table below.";
-      }
-      else if (component.equals("atomic")) {
-         text =  "<b>Run AtomicParsley</b><br>";
-         text += "Run AtomicParsley on files selected in table below.<br>";
-         text += "This is only supported for mp4/m4v files ending in .mp4 or .m4v suffix.<br>";
-         text += "Change <b>Files of Type</b> to <b>All Files</b> in File browser to see all file types.<br>";
-         text += "NOTE: There must be accompanying pyTivo metadata .txt file for this command to work.";
-      }
-      else if (component.equals("partiallyViewed")) {
-         text = "<b>Partially Viewed</b><br>";
-         text += "If enabled then only shows that have been partially watched will be obtained on Refresh.<br>";
-         text += "If you refresh with this option turned off then this can be used to toggle between full<br>";
-         text += "listings and only partially watched show listings.<br>";
-         text += "If you refresh with this option turned on, it's a quick way to get only partially viewed<br>";
-         text += "shows compared to retrieving full list of shows.<br>";
-         text += "NOTE: This option only applies when <b>Use RPC to get NPL when possible</b> option is enabled.";
-      }
-      else if (component.equals("pyTivo_stream")) {
-         text =  "<b>pyTivo stream</b><br>";
-         text += "Use TiVoCast HME app with pyTivo as a video server to stream a video file to<br>";
-         text += "a series 4 or later TiVo. pyTivo.conf must be configured in kmttg and the video<br>";
-         text += "file must be within a pyTivo video share folder structure.<br>";
-         text += "NOTE: You must have at least 1 series 4 or later TiVo with rpc style communications<br>";
-         text += "enabled to use as a destination TiVo.<br>";
-         text += "VIDEO RESTRICTIONS: Source video must be either:<br>";
-         text += "<b>Unencrypted mpeg2 program stream</b> (.TiVo files won't work).<br>";
-         text += "<b>mp4 container with H.264 video and either AC3 or AAC audio</b><br>";
-         text += "Any other type of video won't work, and transcoding pyTivo videos won't work.";
-      }
-      else if (component.equals("refresh")) {
-         text =  "<b>Refresh List</b><br>";
-         text += "Refresh Now Playing List for this TiVo.";
-      }
-      else if (component.equals("back")) {
-         text =  "<b>Back</b><br>";
-         text += "Exit folder view and return to top level Now Playing List for this TiVo.";
-      }
-      else if (component.equals("metadata")) {
-         text =  "<b>metadata</b><br>";
-         text += "Creates a <b>pyTivo</b> compatible metadata file.<br>";
-         text += "This is a text file that accompanies video file that contains<br>";
-         text += "extended program information about the video file.<br>";
-         text += "Useful if you use pyTivo to copy video files back to your Tivos.<br>";
-         text += "Under configuration <b>Program Options</b> tab there is an option<br>";
-         text += "called <b>metadata files</b> where you can specify which video files<br>";
-         text += "to create metadata files for.";
-      }
-      else if (component.equals("decrypt")) {
-         text =  "<b>decrypt</b><br>";
-         text += "Decrypts encrypted TiVo files that were downloaded from TiVos.<br>";
-         text += "Converts video file to normal unencrypted mpeg2 program stream format<br>";
-         text += "which can be played back by most video players without need to have Tivo<br>";
-         text += "Desktop installed. NOTE: This is quick and does not affect video quality.<br>";
-         text += "This is also necessary before doing any further video file processing<br>";
-         text += "with kmttg, so most often you should leave this option enabled.";
-      }
-      else if (component.equals("qsfix")) {
-         text =  "<b>QS Fix</b><br>";
-         text += "If you have VideoRedo available and configured in kmttg, this<br>";
-         text += "runs the extremely useful <b>VideoRedo Quick Stream Fix</b> utility.<br>";
-         text += "Without VideoRedo this will run mpeg through <b>ffmpeg</b> remux.<br>";
-         text += "If neither tool is configured then this task is unavailable.<br>";
-         text += "This task cleans up any potential glitches/errors in mpeg2 video files.<br>";
-         text += "Highly recommended step if you have VideoRedo and/or ffmpeg installed.<br>";
-         text += "Very highly recommended step if you will be further processing mpeg2 files<br>";
-         text += "for cutting out commercials and/or encoding to new formats.";
-      }
-      else if (component.equals("twpdelete")) {
-         text =  "<b>TWP Delete</b><br>";
-         text += "If you have TivoWebPlus configured on your TiVo(s) then if you enable this task<br>";
-         text += "a TivoWebPlus http call to delete show on TiVo will be issued following<br>";
-         text += "successful decrypt of a downloaded .TiVo file.";
-      }
-      else if (component.equals("rpcdelete")) {
-         text =  "<b>rpc Delete</b><br>";
-         text += "If you have Series 4 (Premiere) TiVo or later with Network Remote setting enabled<br>";
-         text += "then if you enable this task, rpc style communications will be used to<br>";
-         text += "delete show on TiVo following successful decrypt of a downloaded .TiVo file.";
-      }
-      else if (component.equals("comskip")) {
-         text =  "<b>Ad Detect</b><br>";
-         text += "Automated commercials detection tool (defaults to <b>comskip</b> tool).<br>";
-         text += "NOTE: Typically automated commercial detection is NOT very accurate.<br>";
-         text += "NOTE: If you have <b>VideoRedo</b> enabled you can choose to use.<br>";
-         text += "VideoRedo <b>AdScan</b> instead of comskip if you wish.<br>";
-         text += "With VideoRedo configured you can also use this step to create a <b>.VPrj</b><br>";
-         text += "file that you can open up in VideoRedo as a starting point for manual<br>";
-         text += "commercial editing. See documentation for more details.";
-      }
-      else if (component.equals("comcut")) {
-         text =  "<b>Ad Cut</b><br>";
-         text += "Automatically cut out commercials detected in <b>Ad Detect</b> step.<br>";
-         text += "NOTE: By default uses <b>ffmpeg</b> program to make the cuts if available/configured<br>";
-         text += "in kmttg and VideoRedo not available/configured.<br>";
-         text += "If you have <b>VideoRedo</b> enabled then this step uses VideoRedo for making<br>";
-         text += "the cuts which is a better solution than ffmpeg for preserving proper audio/video sync.";
-      }
-      else if (component.equals("captions")) {
-         text =  "<b>captions</b><br>";
-         text += "Generates a <b>.srt</b> captions file which is a text file containing<br>";
-         text += "closed captioning text. This file can be used with several<br>";
-         text += "video playback tools to display closed captions during playback.<br>";
-         text += "Also for example <b>streambaby</b> can use this file.";
-      }
-      else if (component.equals("encode")) {
-         text =  "<b>encode</b><br>";
-         text += "Encode mpeg2 video file to a different video format.<br>";
-         text += "Select video format desired using <b>Encoding Profile</b>.<br>";
-         text += "Useful to create videos compatible with portable devices or<br>";
-         text += "to reduce file sizes.";
-      }
-      else if (component.equals("push")) {
-         text =  "<b>push</b><br>";
-         text += "Contact pyTivo server to initiate a push of a video file to a TiVo.<br>";
-         text += "pyTivo server must be running and the file to be pushed should<br>";
-         text += "reside in a defined pyTivo share directory. In order for this task<br>";
-         text += "to be available you must define path to pyTivo.conf file in kmttg<br>";
-         text += "configuration. The TiVo you want to push to is also defined there.";
-      }
-      else if (component.equals("custom")) {
-         text =  "<b>custom</b><br>";
-         text += "Run a custom script/program that you define in kmttg configuration.<br>";
-         text += "This task is always the last task to run in set of tasks<br>";
-         text += "and is useful for post-processing purposes.";
-      }
-      else if (component.equals("encoding")) {
-         text =  "<b>Encoding Profile</b><br>";
-         text += "Choose one of the pre-defined encoding profiles to<br>";
-         text += "use when running <b>encode</b> step to encode to a<br>";
-         text += "different video format. By convention there are 2 different<br>";
-         text += "prefix names used for encoding profiles by kmttg:<br>";
-         text += "<b>ff_</b> indicates <b>ffmpeg</b> encoding tool is used.<br>";
-         text += "<b>hb_</b> indicates <b>handbrake</b> encoding tool is used.<br>";
-         text += "NOTE: You can create your own custom encoding profiles.";
-      }
-      else if (component.equals("encoding2")) {
-          text =  "<b>2nd Encoding Profile</b><br>";
-          text += "This will let you select a second encoding profile to use<br>";
-          text += "that will create a second file.<br>";
-          text += "Choose one of the pre-defined encoding profiles to<br>";
-          text += "use when running <b>encode</b> step to encode to a<br>";
-          text += "different video format. By convention there are 2 different<br>";
-          text += "prefix names used for encoding profiles by kmttg:<br>";
-          text += "<b>ff_</b> indicates <b>ffmpeg</b> encoding tool is used.<br>";
-          text += "<b>hb_</b> indicates <b>handbrake</b> encoding tool is used.<br>";
-          text += "NOTE: You can create your own custom encoding profiles.";
-       }
-      else if (component.equals("encoding2_suffix")) {
-          text =  "<b>Second Encoding Suffix</b><br>";
-          text += "This will add a suffix to your second encoding file to <br>";
-          text += "differentiate it from the first encoding. It will only be used<br>";
-          text += "if you select an encoding profile for a second encoding.<br>";
-          text += "If you enter 'iPhone' here then your second encoding will turn<br>";
-          text += "out being named 'filename_iPhone.ext'";
-       }
-      else if (component.equals("start")) {
-         text =  "<b>START JOBS</b><br>";
-         text += "Run selected tasks for all selected items in the programs/files table below.<br>";
-         text += "First select 1 or more items in the list below to process.<br>";
-         text += "NOTE: You can press <b>s</b> on keyboard when focus is in NPL table to activate this button";
-      }
-      else if (component.equals("cancel")) {
-         text =  "<b>CANCEL JOBS</b><br>";
-         text += "Cancel selected jobs in <b>JOB MONITOR</b> table below.<br>";
-         text += "First select 1 or more running or queued jobs in list below to abort/cancel.<br>";
-         text += "NOTE: You can press <b>c</b> on keyboard when focus is in JOBS table to activate this button";
-      }
-      else if (component.equals("JobMonitor")) {
-         text =  "<b>JOB</b><br>";
-         text += "Double click on a running job to see program output.";
-      }
-      else if (component.equals("disk_usage")) {
-         text =  "<b>Disk Usage</b><br>";
-         text += "Display disk usage statistics and channel bit rate information for this TiVo";
-      }
-      else if (component.equals("total_disk_space")) {
-         text =  "<b>Total Disk Space (GB)</b><br>";
-         text += "Enter total disk space capacity in GB for this TiVo and then press <b>Enter</b><br>";
-         text += "to update this window and save the value.";
-      }
-      else if (component.equals("export_npl")) {
-         text =  "<b>Export</b><br>";
-         text += "Export NPL entries to a csv file which can be easily imported into an Excel<br>";
-         text += "spreadsheet or equivalent.<br>";
-         text += "NOTE: The list is exported as displayed, so if you want all individual entries<br>";
-         text += "in the spreadsheet then disable <b>Show Folders</b> before exporting.";
-      }
-      else if (component.equals("prune_skipTable")) {
-         text =  "<b>Prune skipTable</b><br>";
-         text += "Remove entries in SkipMode table that are deleted from this TiVo.<br>";
-         text += "Instead of manually having to prune SkipMode table this is useful to automatically<br>";
-         text += "remove entries that are no longer useful.";
-      }
-      else if (component.equals("import_skip")) {
-         text =  "<b>Import skip</b><br>";
-         text += "For selected entries in the table import skip information from comskip or VideoRedo project<br>";
-         text += "files into skip table. Files are attempted to be located automatically based on the current<br>";
-         text += "naming template and the defined locations for <b>.TiVo Output Dir</b> and/or <b>.mpg Output Dir</b>.<br>";
-         text += "If no file is located automatically then you are prompted to provide one.";
-      }
       
+      try {
+	      // we set up tooltip text for most component ids with "tooltip_" in front of them.
+	      String tip = bundle.getString("tooltip_"+component);
+	      if(tip != null && tip.length() > 0) {
+	    	  text = tip;
+	      }
+      } catch (Exception e) {
+    	  text = "";
+      }
+
       return MyTooltip.make(text);
    }
    

@@ -6,7 +6,7 @@ import java.util.Timer;
 
 import com.tivo.kmttg.rpc.rnpl;
 import com.tivo.kmttg.util.*;
-import com.tivo.kmttg.gui.gui;
+import com.tivo.kmttg.gui.gui.guiApp;
 import com.tivo.kmttg.httpserver.kmttgServer;
 
 public class kmttg {
@@ -59,7 +59,6 @@ public class kmttg {
       
       if (gui_mode) {
          // GUI mode
-         config.gui = new gui();
          config.parse();
          
          // Start web server if configured
@@ -68,7 +67,7 @@ public class kmttg {
          
          // All uncaught exceptions go to message window in GUI
          Thread.setDefaultUncaughtExceptionHandler(new myExceptionHandler());
-         config.gui.Launch();
+         guiApp.Launch();
       } else {         
          // Batch/auto mode
     	   config.parse();	// persist queue held in main config file

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?scenebuilder-preview-i18n-resource configAuto.properties?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
+
+<?import java.lang.String?>
+
+<!--  NOTE original has VBox outside of this which is contained in the Scene of the Stage id=dialog -->
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" 
+fx:id="content" spacing="3" fx:controller="com.tivo.kmttg.gui.dialog.configAuto">
+	<padding><Insets bottom="5" top="5" left="5" right="5"/></padding>
+	<ScrollPane fx:id="table_scroll" fitToHeight="true" fitToWidth="true" prefHeight="150">
+		<!--  table goes here -->
+	</ScrollPane>
+	<Label fx:id="text" text="%text"/>
+    <GridPane hgap="5"><!-- row3 -->
+	    <columnConstraints>
+		    <ColumnConstraints hgrow="NEVER"/>
+		    <ColumnConstraints hgrow="NEVER"/>
+		    <ColumnConstraints hgrow="NEVER"/>
+		    <ColumnConstraints hgrow="NEVER"/>
+		    <ColumnConstraints hgrow="ALWAYS"/>
+	    </columnConstraints>
+	    <Label text="Type" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+	    <ChoiceBox GridPane.columnIndex="1" GridPane.rowIndex="0" fx:id="type" value="%type_title">
+    	<!--  loading from bundle via code
+            <String fx:value="title"/>
+            <String fx:value="keywords"/>
+            -->
+	    </ChoiceBox>
+	    <Label text="%tivo_label" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+	    <ChoiceBox  GridPane.columnIndex="3" GridPane.rowIndex="0" fx:id="tivo">
+	    <!-- filled, value set from code -->
+	    </ChoiceBox>
+	    <TextField GridPane.columnIndex="4" GridPane.rowIndex="0" fx:id="title" />    
+    </GridPane>
+    <HBox spacing="5"><!-- row4 -->
+    	<CheckBox fx:id="metadata" text="%metadata"/>
+    	<CheckBox fx:id="decrypt" text="%decrypt"/>
+    	<CheckBox fx:id="qsfix" text="%qsfix" onAction="#refreshOptions" />
+    	<CheckBox fx:id="twpdelete" text="%twpdelete"/>
+    	<CheckBox fx:id="rpcdelete" text="%rpcdelete"/>
+    	<CheckBox fx:id="comskip" text="%comskip"/>
+    	<CheckBox fx:id="comcut" text="%comcut"/>
+    	<CheckBox fx:id="captions" text="%captions"/>
+    	<CheckBox fx:id="encode" text="%encode"/>
+    	<CheckBox fx:id="custom" text="%custom"/>
+    	<CheckBox fx:id="push" text="%push"/>
+    </HBox>
+    <GridPane hgap="5" fx:id="row5" alignment="CENTER_LEFT"><!-- row5 -->
+    	<columnConstraints>
+    	    <ColumnConstraints hgrow="NEVER"/>
+    	    <ColumnConstraints hgrow="NEVER"/>
+	    	<ColumnConstraints hgrow="ALWAYS"/>
+    	</columnConstraints>
+	    <ChoiceBox fx:id="encoding_name" GridPane.columnIndex="0" GridPane.rowIndex="0">
+		    <!-- filled in code --></ChoiceBox>
+	    <ChoiceBox fx:id="encoding_name2" GridPane.columnIndex="1" GridPane.rowIndex="0">
+	    	<!-- filled in code --></ChoiceBox>
+	    <TextField fx:id="encoding_name2_suffix" GridPane.columnIndex="2" GridPane.rowIndex="0" minWidth="15"/>
+    </GridPane>
+    <GridPane><!-- gp -->
+    	<columnConstraints>
+    	    <ColumnConstraints hgrow="NEVER"/>
+	    	<ColumnConstraints hgrow="ALWAYS"/>
+    	</columnConstraints>
+    	<Label text="%encoding_name" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+    	<fx:reference source="row5" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+    	<Label text="%comskipIni" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+    	<TextField fx:id="comskipIni" minWidth="30" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+    	<Label text="%channelFilter" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+    	<TextField fx:id="channelFilter" minWidth="30" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+    	<Label text="%tivoFileNameFormat" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+    	<TextField fx:id="tivoFileNameFormat" minWidth="30" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+    	
+    </GridPane>
+    <HBox spacing="5"><!--  row_misc -->
+    	<CheckBox fx:id="enabled" text="enabled" selected="true"/>
+    	<CheckBox fx:id="suggestionsFilter_single" text="Filter out TiVo Suggestions" />
+    	<CheckBox fx:id="useProgramId_unique" text="Treat each recording as unique" />
+    </HBox>
+    
+    <HBox spacing="5" alignment="CENTER"><!-- buttons -->
+    	<Button fx:id="add" text="%add" onAction="#addCB"/>
+    	<Button fx:id="update" text="%update" onAction="#updateCB"/>
+    	<Button fx:id="del" text="%del" onAction="#delCB"/>
+    </HBox>
+    
+    <Separator orientation="HORIZONTAL"/>
+    
+    <Label text="%global_settings" />
+    
+    <HBox spacing="10" alignment="CENTER_LEFT"><!-- row_dry_run -->
+	    <CheckBox fx:id="dry_run" text="%dry_run"/>
+	    <Label text="%check_interval"/>
+	    <TextField fx:id="check_interval" prefWidth="50" text="#autoConfig.CHECK_TIVOS_INTERVAL"/>
+    </HBox>
+    
+    <HBox alignment="CENTER_LEFT" spacing="5"><!-- date -->
+    	<CheckBox fx:id="dateFilter" text="%dateFilter"/>
+    	<ChoiceBox fx:id="dateOperator" value="%date_morethan">
+    	<!--  loading from bundle via code
+	    	<String fx:value="more than"/>
+	    	<String fx:value="less than"/>
+	    	-->
+    	</ChoiceBox>
+    	<TextField fx:id="dateHours" prefWidth="50" text="48"/>
+    	<Label text="%dateHours" />
+    </HBox>
+    
+    <HBox alignment="CENTER_LEFT" spacing="5"><!-- filter_panel -->
+    	<CheckBox fx:id="suggestionsFilter" text="%suggestionsFilter"/>
+    	<CheckBox fx:id="kuidFilter" text="%kuidFilter"/>
+    	<CheckBox fx:id="programIdFilter" text="%programIdFilter"/>
+    </HBox>
+    
+    <CheckBox fx:id="noJobWait" text="%noJobWait"/>
+    
+    <HBox spacing="50" alignment="CENTER"><!-- last -->
+    	<Button fx:id="OK" id="button_autoconfig_ok" text="%OK" prefWidth="200" onAction="#okCB"/>
+    	<Button fx:id="CANCEL" id="button_autoconfig_cancel" text="%CANCEL" prefWidth="200" onAction="#cancelCB"/>
+    </HBox>
+    
+</VBox>
+

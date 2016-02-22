@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?scenebuilder-preview-i18n-resource configMain.properties?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TabPane?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Tab?>
+
+<!--  NOTE original has VBox outside of this which is contained in the Scene of the Stage id=dialog -->
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" 
+ spacing="5" fx:controller="com.tivo.kmttg.gui.dialog.configMain">
+ <TabPane fx:id="tabbed_panel" tabClosingPolicy="UNAVAILABLE">
+  <Tab text="%tab_file_settings">
+  	<GridPane alignment="CENTER" vgap="5" hgap="5">
+	  	<CheckBox text="%remove_tivo" fx:id="remove_tivo" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+	  	<CheckBox text="%remove_comcut" fx:id="remove_comcut" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+	  	
+	  	<CheckBox text="%remove_comcut_mpeg" fx:id="remove_comcut_mpeg" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+	  	<CheckBox text="%remove_mpeg" fx:id="remove_mpeg" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+	  	
+	  	<CheckBox text="%QSFixBackupMpegFile" fx:id="QSFixBackupMpegFile" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+	  	<CheckBox text="%download_check_length" fx:id="download_check_length" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+	  	
+	  	<CheckBox text="%check_space" fx:id="check_space" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+	  	<HBox GridPane.columnIndex="1" GridPane.rowIndex="3" spacing="5">
+	  		<Label text="%disk_space"/>
+	  		<TextField fx:id="disk_space"/><!-- FIXME finish HBox.setHgrow ALWAYS, and init -->
+	  	</HBox>
+	  	
+  		<Label text="%file_naming" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+  		<TextField fx:id="file_naming" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+  		
+  		<Label text="%keywords" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+  		<ChoiceBox fx:id="keywords" GridPane.columnIndex="1" GridPane.rowIndex="5">
+  		</ChoiceBox>
+  		
+  		<Label text="%files_path" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
+  		<TextField fx:id="files_path" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+  		
+  		<Label text="%tivo_output_dir" GridPane.columnIndex="0" GridPane.rowIndex="7"/>
+  		<TextField fx:id="tivo_output_dir" GridPane.columnIndex="1" GridPane.rowIndex="7"/>
+  		
+  		<Label text="%mpeg_output_dir" GridPane.columnIndex="0" GridPane.rowIndex="8"/>
+  		<TextField fx:id="mpeg_output_dir" GridPane.columnIndex="1" GridPane.rowIndex="8"/>
+  		
+  		<Label text="%qsfixDir" GridPane.columnIndex="0" GridPane.rowIndex="9"/>
+  		<TextField fx:id="qsfixDir" GridPane.columnIndex="1" GridPane.rowIndex="9"/>
+  		
+  		<Label text="%mpeg_cut_dir" GridPane.columnIndex="0" GridPane.rowIndex="10"/>
+  		<TextField fx:id="mpeg_cut_dir" GridPane.columnIndex="1" GridPane.rowIndex="10"/>
+  		
+  		<Label text="%encode_output_dir" GridPane.columnIndex="0" GridPane.rowIndex="11"/>
+  		<TextField fx:id="encode_output_dir" GridPane.columnIndex="1" GridPane.rowIndex="11"/>
+  		
+  		<Label text="%autoLogSizeMB" GridPane.columnIndex="0" GridPane.rowIndex="12"/>
+  		<TextField fx:id="autoLogSizeMB" GridPane.columnIndex="1" GridPane.rowIndex="12"/>
+  		
+		<CheckBox text="%OverwriteFiles" fx:id="OverwriteFiles" GridPane.columnIndex="0" GridPane.rowIndex="13"/>
+		<CheckBox text="%DeleteFailedDownloads" fx:id="DeleteFailedDownloads" GridPane.columnIndex="1" GridPane.rowIndex="13"/>
+	  		
+  	</GridPane>
+  </Tab>
+  
+  <Tab text="%tab_programs">
+  	<GridPane alignment="CENTER" vgap="5" hgap="5">
+  	<columnConstraints>
+  		<ColumnConstraints hgrow="NEVER"/>
+  		<ColumnConstraints hgrow="ALWAYS"/>
+	</columnConstraints>
+  	<padding><Insets top="5" right="5" bottom="5" left="5"/></padding>
+  	
+	  	<Label text="%tivodecode" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+	  	<TextField fx:id="tivodecode" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+		
+		  	<Label fx:id="dsd_label" text="%dsd" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+		  	<TextField fx:id="dsd" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+		
+	  	<Label text="%mencoder" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+	  	<TextField fx:id="mencoder" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+		
+	  	<Label text="%ffmpeg" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+	  	<TextField fx:id="ffmpeg" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+		
+	  	<Label text="%handbrake" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+	  	<TextField fx:id="handbrake" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+		
+	  	<Label text="%comskip" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
+	  	<TextField fx:id="comskip" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+		
+	  	<Label text="%comskip_ini" GridPane.columnIndex="0" GridPane.rowIndex="7"/>
+	  	<TextField fx:id="comskip_ini" GridPane.columnIndex="1" GridPane.rowIndex="7"/>
+		
+	  	<Label text="%t2extract" GridPane.columnIndex="0" GridPane.rowIndex="8"/>
+	  	<TextField fx:id="t2extract" GridPane.columnIndex="1" GridPane.rowIndex="8"/>
+
+<!-- TODO this one is always hidden currently - and is using the same row as the next item -->
+	  	<Label fx:id="ccextractor_label" text="%ccextractor" GridPane.columnIndex="0" GridPane.rowIndex="9"/>
+	  	<TextField fx:id="ccextractor" GridPane.columnIndex="1" GridPane.rowIndex="9"/>
+	  	
+	  	<Label text="%AtomicParsley" GridPane.columnIndex="0" GridPane.rowIndex="9"/>
+	  	<TextField fx:id="AtomicParsley" GridPane.columnIndex="1" GridPane.rowIndex="9"/>
+		
+	  	<Label text="%mediainfo" GridPane.columnIndex="0" GridPane.rowIndex="10"/>
+	  	<TextField fx:id="mediainfo" GridPane.columnIndex="1" GridPane.rowIndex="10"/>
+		
+	  	<Label text="%customCommand" GridPane.columnIndex="0" GridPane.rowIndex="11"/>
+	  	<TextField fx:id="customCommand" GridPane.columnIndex="1" GridPane.rowIndex="11"/>
+		
+	  	<Label text="%customFiles" GridPane.columnIndex="0" GridPane.rowIndex="12"/>
+	  	<ChoiceBox fx:id="customFiles" GridPane.columnIndex="1" GridPane.rowIndex="12"/>
+		
+  	</GridPane>
+  </Tab>
+  
+  <Tab text="%tab_program_options">
+  	<GridPane alignment="CENTER" vgap="5" hgap="5">
+  	<padding><Insets top="0" right="5" bottom="0" left="5"/></padding>
+
+	  	<Label text="%MAK" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+	  	<TextField fx:id="MAK" prefWidth="15" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+		
+	  	<Label text="%active_job_limit" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+	  	<TextField fx:id="active_job_limit" prefWidth="15" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+		
+	  	<Label text="%cpu_cores" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+	  	<TextField fx:id="cpu_cores" prefWidth="15" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+		
+	  	<Label text="%download_tries" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+	  	<TextField fx:id="download_tries" prefWidth="15" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+		
+	  	<Label text="%download_retry_delay" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+	  	<TextField fx:id="download_retry_delay" prefWidth="15" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+		
+	  	<Label text="%download_delay" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+	  	<TextField fx:id="download_delay" prefWidth="15" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+		
+	  	<Label text="%metadata_files" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
+	  	<ChoiceBox fx:id="metadata_files" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+		
+	  	<Label text="%metadata_entries" GridPane.columnIndex="0" GridPane.rowIndex="7"/>
+	  	<TextField fx:id="metadata_entries" prefWidth="15" GridPane.columnIndex="1" GridPane.rowIndex="7"/>
+		
+		<CheckBox text="%TivoWebPlusDelete" fx:id="TivoWebPlusDelete" GridPane.columnIndex="0" GridPane.rowIndex="8"/>
+		<CheckBox text="%rpcDelete" fx:id="rpcDelete" GridPane.columnIndex="1" GridPane.rowIndex="8"/>
+
+        <CheckBox text="%TSDownload" fx:id="TSDownload" GridPane.columnIndex="0" GridPane.rowIndex="9"/>
+        <CheckBox text="%rpcOld" fx:id="rpcOld" GridPane.columnIndex="1" GridPane.rowIndex="9"/>
+
+		<CheckBox text="%download_time_estimate" fx:id="download_time_estimate" GridPane.columnIndex="0" GridPane.rowIndex="10"/>
+		<CheckBox text="%combine_download_decrypt" fx:id="combine_download_decrypt" GridPane.columnIndex="1" GridPane.rowIndex="10"/>
+		
+		<CheckBox text="%single_download" fx:id="single_download" GridPane.columnIndex="0" GridPane.rowIndex="11"/>
+		<CheckBox text="%rpcnpl" fx:id="rpcnpl" GridPane.columnIndex="1" GridPane.rowIndex="11"/>
+		
+		<CheckBox text="%persistQueue" fx:id="persistQueue" GridPane.columnIndex="0" GridPane.rowIndex="12"/>
+		<CheckBox text="%comskip_review" fx:id="comskip_review" GridPane.columnIndex="1" GridPane.rowIndex="12"/>
+		
+        <CheckBox text="%tivolibreDecrypt" fx:id="tivolibreDecrypt" GridPane.columnIndex="0" GridPane.rowIndex="13"/>
+        <CheckBox text="%tivolibreCompat" fx:id="tivolibreCompat" GridPane.columnIndex="1" GridPane.rowIndex="13"/>
+			<CheckBox text="%DsdDecrypt" fx:id="DsdDecrypt" GridPane.columnIndex="0" GridPane.rowIndex="14"/>
+			
+  	</GridPane>
+  </Tab>
+  
+  <Tab text="%tab_tivos">
+  	<GridPane alignment="CENTER" vgap="5" hgap="5">
+	  	<CheckBox text="%npl_when_started" fx:id="npl_when_started" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+	
+	  	<CheckBox text="%beacon" fx:id="beacon" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+	
+	  	<CheckBox text="%UseOldBeacon" fx:id="UseOldBeacon" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+	
+	  	<Label text="%tivos" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+	  	<ChoiceBox fx:id="tivos" GridPane.columnIndex="1" GridPane.rowIndex="3">
+	  	</ChoiceBox>
+	
+	  	<Button text="%del" fx:id="del" GridPane.columnIndex="4" GridPane.rowIndex="3" onAction="#delCB"/>
+	
+	  	<Label text="%tivo_name" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+	  	<TextField prefWidth="20" fx:id="tivo_name" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+	  	
+	  	<Button text="%add" fx:id="add" GridPane.columnIndex="4" GridPane.rowIndex="4" onAction="#addCB"/>
+	
+	  	<Label text="%tivo_ip" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+	  	<TextField prefWidth="20" fx:id="tivo_ip" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+	
+		<!-- vertical space via empty label -->
+	  	<Label text=" " GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+	
+	  	<CheckBox text="%enableRpc" fx:id="enableRpc" GridPane.columnIndex="1" GridPane.rowIndex="7"/>
+	
+	  	<Label text="%limit_npl_fetches" GridPane.columnIndex="0" GridPane.rowIndex="8"/>
+	  	<TextField prefWidth="15" fx:id="limit_npl_fetches" GridPane.columnIndex="1" GridPane.rowIndex="8"/>
+	
+	  	<Label text="%wan_http_port" GridPane.columnIndex="0" GridPane.rowIndex="9"/>
+	  	<TextField prefWidth="15" fx:id="wan_http_port" GridPane.columnIndex="1" GridPane.rowIndex="9"/>
+	
+	  	<Label text="%wan_https_port" GridPane.columnIndex="0" GridPane.rowIndex="10"/>
+	  	<TextField prefWidth="15" fx:id="wan_https_port" GridPane.columnIndex="1" GridPane.rowIndex="10"/>
+	
+	  	<Label text="%wan_rpc_port" GridPane.columnIndex="0" GridPane.rowIndex="11"/>
+	  	<TextField prefWidth="15" fx:id="wan_rpc_port" GridPane.columnIndex="1" GridPane.rowIndex="11"/>
+	
+	  	<Label text="%tivo_username" GridPane.columnIndex="0" GridPane.rowIndex="12"/>
+	  	<TextField prefWidth="30" fx:id="tivo_username" GridPane.columnIndex="1" GridPane.rowIndex="12"/>
+	
+	  	<Label text="%tivo_password" GridPane.columnIndex="0" GridPane.rowIndex="13"/>
+	  	<TextField prefWidth="30" fx:id="tivo_password" GridPane.columnIndex="1" GridPane.rowIndex="13"/>
+
+  	</GridPane>
+  </Tab>
+  
+  <Tab text="%tab_visual">
+  	<GridPane alignment="CENTER" vgap="5" hgap="5">
+  	<columnConstraints>
+  		<ColumnConstraints hgrow="NEVER"/>
+  		<ColumnConstraints hgrow="ALWAYS"/>
+	</columnConstraints>
+  	<padding><Insets top="5" right="5" bottom="5" left="5"/></padding>
+  	
+	  	<Label text="%lookAndFeel" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+	  	<ChoiceBox fx:id="lookAndFeel" GridPane.columnIndex="1" GridPane.rowIndex="0"
+	  	value="%lookAndFeel_default" >
+	  	</ChoiceBox>
+	  	
+	  	<Label text="%FontSize" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+	  	<TextField fx:id="FontSize" prefWidth="5" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+	  	
+	  	<Label text="%toolTipsDelay" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+	  	<TextField fx:id="toolTipsDelay" prefWidth="15" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+	  	
+	  	<Label text="%toolTipsTimeout" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+	  	<TextField fx:id="toolTipsTimeout" prefWidth="15" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+	  	
+	  	<Label text="%MinChanDigits" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+	  	<ChoiceBox fx:id="MinChanDigits" GridPane.columnIndex="1" GridPane.rowIndex="4" 
+	  	value="1">
+            <String fx:value="1"/>
+            <String fx:value="2"/>
+            <String fx:value="3"/>
+            <String fx:value="4"/>
+	  	</ChoiceBox>
+	  	
+	  	<CheckBox text="%toolTips" fx:id="toolTips" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+	
+	  	<CheckBox text="%jobMonitorFullPaths" fx:id="jobMonitorFullPaths" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
+	  	
+	  	<CheckBox text="%HideProtectedFiles" fx:id="HideProtectedFiles" GridPane.columnIndex="0" GridPane.rowIndex="7"/>
+
+	  	<CheckBox text="%tableColAutoSize" fx:id="tableColAutoSize" GridPane.columnIndex="0" GridPane.rowIndex="8"/>
+
+	  	<CheckBox text="%showHistoryInTable" fx:id="showHistoryInTable" GridPane.columnIndex="0" GridPane.rowIndex="9"/>
+
+	  	<CheckBox text="%slingBox" fx:id="slingBox" GridPane.columnIndex="0" GridPane.rowIndex="10"/>
+
+	  	<Label text="%web_query" GridPane.columnIndex="0" GridPane.rowIndex="11"/>
+	  	<TextField fx:id="web_query" prefWidth="30" GridPane.columnIndex="1" GridPane.rowIndex="11"/>
+	  	
+		  	<Label fx:id="web_browser_label" text="%web_browser" GridPane.columnIndex="0" GridPane.rowIndex="12"/>
+		  	<TextField fx:id="web_browser" prefWidth="30" GridPane.columnIndex="1" GridPane.rowIndex="12"/>
+	  	
+  	</GridPane>
+  </Tab>
+  
+  <Tab text="%tab_web">
+  	<GridPane alignment="CENTER" vgap="5" hgap="5">
+  	<columnConstraints>
+  		<ColumnConstraints hgrow="NEVER"/>
+  		<ColumnConstraints hgrow="ALWAYS"/>
+	</columnConstraints>
+  	<padding><Insets top="5" right="5" bottom="5" left="5"/></padding>
+  	
+	  	<CheckBox text="%httpserver_enable" fx:id="httpserver_enable" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+	
+	  	<Label text="%httpserver_port" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+	  	<TextField fx:id="httpserver_port" prefWidth="15" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+	  	
+	  	<Label text="%httpserver_cache" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+	  	<TextField fx:id="httpserver_cache" prefWidth="15" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+	  	
+	  	<CheckBox text="%httpserver_share_filter" fx:id="httpserver_share_filter" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+	
+	  	<Label text="%shares" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+	  	<ChoiceBox fx:id="shares" GridPane.columnIndex="1" GridPane.rowIndex="4">
+	  	</ChoiceBox>
+	  	<Button text="%share_del" fx:id="share_del" GridPane.columnIndex="4" GridPane.rowIndex="4"
+	  	onAction="#share_delCB"/>
+
+	  	<Label text="%share_name" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+	  	<TextField fx:id="share_name" prefWidth="20" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+	  	<Button text="%share_add" fx:id="share_add" GridPane.columnIndex="4" GridPane.rowIndex="5"
+	  	onAction="#share_addCB"/>
+	  	
+	  	<Label text="%share_dir" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
+	  	<TextField fx:id="share_dir" prefWidth="20" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+	  	
+  	</GridPane>
+  </Tab>
+
+  <!-- if OS is windows -->
+  <Tab text="%tab_videoredo">
+  	<GridPane alignment="CENTER" vgap="5" hgap="5">
+	  	<CheckBox text="%VRD" fx:id="VRD" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+	  	
+	  	<Label text="%VRDexe" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+	  	<TextField fx:id="VRDexe" prefWidth="20" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+	  	
+	  	<CheckBox text="%UseAdscan" fx:id="UseAdscan" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+	  	
+	  	<CheckBox text="%VrdReview" fx:id="VrdReview" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+	  	
+	  	<CheckBox text="%VrdReview_noCuts" fx:id="VrdReview_noCuts" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+	  	
+	  	<CheckBox text="%VrdQsFilter" fx:id="VrdQsFilter" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+	  	
+	  	<CheckBox text="%VrdDecrypt" fx:id="VrdDecrypt" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+	  	
+	  	<CheckBox text="%VrdEncode" fx:id="VrdEncode" GridPane.columnIndex="1" GridPane.rowIndex="7"/>
+	  	
+	  	<CheckBox text="%VrdCombineCutEncode" fx:id="VrdCombineCutEncode" GridPane.columnIndex="1" GridPane.rowIndex="8"/>
+	  	
+	  	<CheckBox text="%VrdQsfixMpeg2ps" fx:id="VrdQsfixMpeg2ps" GridPane.columnIndex="1" GridPane.rowIndex="9"/>
+	  	
+	  	<CheckBox text="%VrdAllowMultiple" fx:id="VrdAllowMultiple" GridPane.columnIndex="1" GridPane.rowIndex="10"/>
+	  	
+	  	<CheckBox text="%VrdOneAtATime" fx:id="VrdOneAtATime" GridPane.columnIndex="1" GridPane.rowIndex="11"/>
+	  	
+  	</GridPane>
+  </Tab>
+  
+  <Tab text="%tab_pytivo">
+   <GridPane alignment="CENTER" vgap="5" hgap="5">
+  	<columnConstraints>
+  		<ColumnConstraints hgrow="NEVER"/>
+  		<ColumnConstraints hgrow="ALWAYS"/>
+	</columnConstraints>
+  	<padding><Insets top="5" right="5" bottom="5" left="5"/></padding>
+	  	<Label text="%pyTivo_config" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+	  	<TextField fx:id="pyTivo_config" prefWidth="30" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+	  	
+	  	<Label text="%pyTivo_host" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+	  	<TextField fx:id="pyTivo_host" prefWidth="20" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+	  	<Label text="%pyTivo_tivo" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+	  	<ChoiceBox fx:id="pyTivo_tivo" GridPane.columnIndex="1" GridPane.rowIndex="2">
+	  	</ChoiceBox>
+	  	
+	  	<Label text="%pyTivo_files" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+	  	<ChoiceBox fx:id="pyTivo_files" GridPane.columnIndex="1" GridPane.rowIndex="3">
+	  	</ChoiceBox>
+	  	
+   </GridPane>
+  </Tab>
+  
+  <Tab text="%tab_autotune">
+  	<GridPane alignment="CENTER" vgap="5" hgap="5">
+  	
+	  	<Label text="%autotune_tivoName" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+	  	<ChoiceBox fx:id="autotune_tivoName" GridPane.columnIndex="1" GridPane.rowIndex="0">
+	  	</ChoiceBox>
+	  	
+	  	<CheckBox text="%autotune_enabled" fx:id="autotune_enabled" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+	  	
+	  	<Label text="%autotune_chan1" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+	  	<TextField fx:id="autotune_chan1" prefWidth="20" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+	  	
+	  	<Label text="%autotune_chan2" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+	  	<TextField fx:id="autotune_chan2" prefWidth="20" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+	  	
+	  	<Label text="%autotune_channel_interval" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+	  	<TextField fx:id="autotune_channel_interval" prefWidth="20" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+	  	
+	  	<Label text="%autotune_button_interval" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+	  	<TextField fx:id="autotune_button_interval" prefWidth="20" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+	  	
+	  	<Button text="%autotune_test" fx:id="autotune_test" GridPane.columnIndex="1" GridPane.rowIndex="6"
+	  	onAction="#autotune_testCB"/>
+	  	
+  	</GridPane>
+  </Tab>
+ </TabPane>
+ <!--  common_panel -->
+ <HBox alignment="CENTER" spacing="50">
+ 	<Button text="%OK" fx:id="OK" id="button_config_ok" prefWidth="200" onAction="#okCB"/>
+ 	<Button text="%CANCEL" fx:id="CANCEL" id="button_config_cancel" prefWidth="200"/>
+ </HBox>
+</VBox>
+

@@ -3,33 +3,31 @@ package com.tivo.kmttg.gui.dialog;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ResourceBundle;
 import java.util.Stack;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.geometry.Insets;
-import javafx.geometry.Orientation;
-import javafx.geometry.Pos;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.Separator;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
 import com.tivo.kmttg.gui.MyTooltip;
-import com.tivo.kmttg.gui.remote.util;
 import com.tivo.kmttg.gui.table.autoTable;
 import com.tivo.kmttg.gui.table.autoTable.Tabentry;
 import com.tivo.kmttg.main.autoConfig;
@@ -41,88 +39,99 @@ import com.tivo.kmttg.util.file;
 import com.tivo.kmttg.util.log;
 import com.tivo.kmttg.util.string;
 
-public class configAuto {
-   private static Stack<TextField> errors = new Stack<TextField>();
-   private static String textbg_default = "";
-   private static double pos_x = -1;
-   private static double pos_y = -1;
+/**
+ * The controller class for configAuto.fxml, includes static method that loads
+ * the fxml and resource bundle.
+ */
+public class configAuto implements Initializable {
+	
+   private Stack<TextField> errors = new Stack<TextField>();
+   private String textbg_default = "";
+   private double pos_x = -1;
+   private double pos_y = -1;
    
+   private static configAuto singleton = null;
+   private static ResourceBundle bundle;
    private static Stage dialog = null;
-   private static VBox content = null;
-   private static Button add = null;
-   private static Button del = null;
-   private static Button update = null;
-   private static Label text = null;
-   private static autoTable table = null;
-   private static ScrollPane table_scroll = null;
-   private static ChoiceBox<String> type = null;
-   private static ChoiceBox<String> tivo = null;
-   private static ChoiceBox<String> encoding_name = null;
-   private static ChoiceBox<String> encoding_name2 = null;
-   private static TextField encoding_name2_suffix = null;
-   private static CheckBox enabled = null;
-   private static CheckBox metadata = null;
-   private static CheckBox decrypt = null;
-   private static CheckBox qsfix = null;
-   private static CheckBox twpdelete = null;
-   private static CheckBox rpcdelete = null;
-   private static CheckBox comskip = null;
-   private static CheckBox comcut = null;
-   private static CheckBox captions = null;
-   private static CheckBox encode = null;
-   private static CheckBox push = null;
-   private static CheckBox custom = null;
-   private static CheckBox dry_run = null;
-   private static CheckBox noJobWait = null;
-   private static TextField title = null;
-   private static TextField check_interval = null;
-   private static TextField comskipIni = null;
-   private static TextField channelFilter = null;
-   private static TextField tivoFileNameFormat = null;
-   private static CheckBox dateFilter = null;
-   private static CheckBox suggestionsFilter = null;
-   private static CheckBox suggestionsFilter_single = null;
-   private static CheckBox useProgramId_unique = null;
-   private static CheckBox kuidFilter = null;
-   private static CheckBox programIdFilter = null;
-   private static ChoiceBox<String> dateOperator = null;
-   private static TextField dateHours = null;
-   private static Button OK = null;
-   private static Button CANCEL = null;
-   
-   private static final String _noSecondEncodingTxt = "Do not encode twice";
+   @FXML private VBox content;
+   @FXML private Button add;
+   @FXML private Button del;
+   @FXML private Button update;
+   @FXML private Label text;
+   private autoTable table = null;
+   @FXML private ScrollPane table_scroll;
+   @FXML private ChoiceBox<String> type;
+   @FXML private ChoiceBox<String> tivo;
+   @FXML private ChoiceBox<String> encoding_name;
+   @FXML private ChoiceBox<String> encoding_name2;
+   @FXML private TextField encoding_name2_suffix;
+   @FXML private CheckBox enabled;
+   @FXML private CheckBox metadata;
+   @FXML private CheckBox decrypt;
+   @FXML private CheckBox qsfix;
+   @FXML private CheckBox twpdelete;
+   @FXML private CheckBox rpcdelete;
+   @FXML private CheckBox comskip;
+   @FXML private CheckBox comcut;
+   @FXML private CheckBox captions;
+   @FXML private CheckBox encode;
+   @FXML private CheckBox push;
+   @FXML private CheckBox custom;
+   @FXML private CheckBox dry_run;
+   @FXML private CheckBox noJobWait;
+   @FXML private TextField title;
+   @FXML private TextField check_interval;
+   @FXML private TextField comskipIni;
+   @FXML private TextField channelFilter;
+   @FXML private TextField tivoFileNameFormat;
+   @FXML private CheckBox dateFilter;
+   @FXML private CheckBox suggestionsFilter;
+   @FXML private CheckBox suggestionsFilter_single;
+   @FXML private CheckBox useProgramId_unique;
+   @FXML private CheckBox kuidFilter;
+   @FXML private CheckBox programIdFilter;
+   @FXML private ChoiceBox<String> dateOperator;
+   @FXML private TextField dateHours;
+   @FXML private Button OK;
+   @FXML private Button CANCEL;
+   /** needed to use the reference to the row in two places in the fxml */
+   @FXML private GridPane row5;
 
-   public void display(Stage frame) {
+   
+   private String _noSecondEncodingTxt;
+   private String _TivosAll;
+
+   public static void display(Stage frame) {
       debug.print("frame=" + frame);
+      // Controller/fxml instantiation has to be done from outside the
+      // controller, so we do it in static code and save the controller as a
+      // singleton.
       // Create dialog if not already created
       if (dialog == null) {
          create(frame);
-         // Set component tooltips
-         setToolTips();
+         
+         // all other basic initialization is done when "initialize" is
+         // automatically called when the fxml file is loaded.
       }
       
       // Parse auto.ini file to define current configuration
       autoConfig.parseAuto(config.autoIni);
       
       // Clear out any error highlights
-      clearTextFieldErrors();
+      singleton.clearTextFieldErrors();
       
       // Update component settings to current configuration
-      update();
+      singleton.update();
       
       // Refresh available options based on settings
-      refreshOptions();
+      singleton.refreshOptions();
       
       // Display the dialog
-      if (pos_x != -1)
-         dialog.setX(pos_x);
-      if (pos_y != -1)
-         dialog.setY(pos_y);
+      if (singleton.pos_x != -1)
+         dialog.setX(singleton.pos_x);
+      if (singleton.pos_y != -1)
+         dialog.setY(singleton.pos_y);
       dialog.show();
-   }
-   
-   public static Stage getDialog() {
-      return dialog;
    }
    
    private void textFieldError(TextField f, String message) {
@@ -142,86 +151,82 @@ public class configAuto {
       }
    }
   
-   private void create(Stage frame) {
+   private static void create(Stage frame) {
       debug.print("frame=" + frame);
       
       // Create all the components of the dialog
-      table = new autoTable();
-      table.TABLE.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Tabentry>() {
-         @Override
-         public void changed(ObservableValue<? extends Tabentry> obs, Tabentry oldSelection, Tabentry newSelection) {
-            if (newSelection != null) {
-               TableRowSelected(newSelection.getType().entry);
-            }
-         }
-      });
-      table_scroll = new ScrollPane(table.TABLE);
-      table_scroll.setPrefHeight(150);
-      table_scroll.setFitToHeight(true);
-      table_scroll.setFitToWidth(true);
+      Parent configAuto_fxml;
+      try {
+    	  FXMLLoader loader = new FXMLLoader(configAuto.class.getResource(
+    					  "configAuto.fxml"));
+    	  bundle = ResourceBundle.getBundle("com.tivo.kmttg.gui.dialog.configAuto");
+    	  loader.setResources(bundle);
+    	  configAuto_fxml = loader.<Parent>load();
+      	  Scene scene = new Scene(configAuto_fxml);
+      	  // save our official instance of configAuto
+      	  singleton = loader.<configAuto>getController();
+      	  
+      	  // all the controller adjustments are done in the initialize method
+      	  // automatically called by FXMLLoader
+      	  
+          // create dialog window
+          dialog = new Stage();
+          dialog.setOnCloseRequest(new EventHandler<WindowEvent>() {
+             @Override
+             public void handle(WindowEvent arg0) {
+                singleton.pos_x = dialog.getX(); singleton.pos_y = dialog.getY();
+             }
+          });
+          dialog.initOwner(frame);
+          dialog.initModality(Modality.NONE);
+          dialog.setTitle(bundle.getString("dialog_title"));
+          
+//          Scene scene = new Scene(new VBox());
+//          
+//          ((VBox) scene.getRoot()).getChildren().add(content);
+      	  
+            config.gui.setFontSize(scene, config.FontSize);
             
-      text = new Label();
-      String message = "for Type=keywords: Multiple keywords are allowed separated by '| character";
-      message += "\nkeyword=>AND  (keyword)=>OR  -keyword=>NOT";
-      message += "\nEXAMPLE: Type=keywords  keywords=(basketball)|(football)|!new york";
-      message += "\n  => football OR basketball NOT new york";
-      text.setText(message);
-      
-      add = new Button("ADD");
-      add.setOnAction(new EventHandler<ActionEvent>() {
-         public void handle(ActionEvent e) {
-            addCB();
-         }
-      });
+            dialog.setScene(scene);
+            
+        } catch (IOException e1) {
+      	  // TODO Auto-generated catch block
+      	  e1.printStackTrace();
+      	  dialog = null;
+      	  singleton = null;
+        }
+   }
+   
+   /**
+    * Automatically called after the fxml file is loaded.  
+    * Most initialization is done in the fxml file, though.
+    */
+   public void initialize(java.net.URL location, java.util.ResourceBundle resources) {
+	   _noSecondEncodingTxt = resources.getString("_noSecondEncodingTxt");
+	   _TivosAll = resources.getString("_TivosAll");
+	   
+       table = new autoTable();
+       table.TABLE.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Tabentry>() {
+          @Override
+          public void changed(ObservableValue<? extends Tabentry> obs, Tabentry oldSelection, Tabentry newSelection) {
+             if (newSelection != null) {
+                TableRowSelected(newSelection.getType().entry);
+             }
+          }
+       });
+       
 
-      update = new Button("UPDATE");
-      update.setOnAction(new EventHandler<ActionEvent>() {
-         public void handle(ActionEvent e) {
-            updateCB();
-         }
-      });
+	   table_scroll.setContent(table.TABLE);
 
-      del = new Button("DEL");
-      del.setOnAction(new EventHandler<ActionEvent>() {
-         public void handle(ActionEvent e) {
-            delCB();
-         }
-      });
+      // choicebox values can't be filled in fxml when you're using a bundle 
+      type.getItems().addAll(resources.getString("type_title"), resources.getString("type_keywords"));
 
-      Label type_label = new Label("Type");
-      type = new ChoiceBox<String>();
-      type.getItems().addAll("title", "keywords");
-      type.setValue(type.getItems().get(0));
-      
-      Label tivo_label = new Label("TiVo");
-      tivo = new ChoiceBox<String>();
       for (String s : getTivoFilterNames()) {
          tivo.getItems().add(s);
       }
       if (tivo.getItems().size() > 0)
          tivo.setValue(tivo.getItems().get(0));
       
-      title = new TextField();
-            
-      enabled   = new CheckBox("enabled"); enabled.setSelected(true);
-      metadata  = new CheckBox("metadata");
-      decrypt   = new CheckBox("decrypt");
-      qsfix     = new CheckBox("QS Fix");
-      twpdelete = new CheckBox("TWP Delete");
-      rpcdelete = new CheckBox("rpc Delete");
-      comskip   = new CheckBox("Ad Detect");
-      comcut    = new CheckBox("Ad Cut");
-      captions  = new CheckBox("captions");
-      qsfix.setOnAction(new EventHandler<ActionEvent>() {
-         // Call refreshOptions whenever this is toggled
-         public void handle(ActionEvent e) {
-            refreshOptions();
-         }
-      });
-      encode    = new CheckBox("encode");
-      push      = new CheckBox("push");
-      suggestionsFilter_single = new CheckBox("Filter out TiVo Suggestions");
-      useProgramId_unique = new CheckBox("Treat each recording as unique");
       // This intentionally disabled for now
       //encode.addActionListener(new ActionListener() {
       //   public void actionPerformed(ActionEvent e) {
@@ -239,200 +244,39 @@ public class configAuto {
       //      }
       //   }
       //});
-      custom   = new CheckBox("custom");
       
-      Label comskipIni_label = new Label("comskip.ini override: ");
-      comskipIni = new TextField(); comskipIni.setMinWidth(30);
-      
-      Label channelFilter_label = new Label("channel filter: ");
-      channelFilter = new TextField(); channelFilter.setMinWidth(30);
-      
-      Label tivoFileNameFormat_label = new Label("file name override: ");
-      tivoFileNameFormat = new TextField(); tivoFileNameFormat.setMinWidth(30);
-      
-      Label encoding_name_label = new Label("Encoding Name: ");
-      
-      encoding_name = new ChoiceBox<String>();
-      encoding_name2 = new ChoiceBox<String>();
-      encoding_name2_suffix = new TextField(); encoding_name2_suffix.setMinWidth(15);
       SetEncodings(encodeConfig.getValidEncodeNames());
       
-      Label global_settings = new Label("GLOBAL SETTINGS:");
-      
-      Label check_interval_label = new Label("Check Tivos Interval (mins)");
-      
-      check_interval = new TextField(); check_interval.setPrefWidth(50);
-      check_interval.setText("" + autoConfig.CHECK_TIVOS_INTERVAL);
-      
-      dry_run = new CheckBox("Dry Run Mode (test keywords only)");
       dry_run.setSelected((Boolean)(autoConfig.dryrun == 1));
       
-      noJobWait = new CheckBox("Do not wait for all jobs to finish before processing new ones");
       noJobWait.setSelected((Boolean)(autoConfig.noJobWait == 1));
       
-      dateFilter = new CheckBox("Date Filter");
-      dateOperator = new ChoiceBox<String>();
-      dateOperator.getItems().add("more than");
-      dateOperator.getItems().add("less than");
-      dateOperator.setValue(dateOperator.getItems().get(0));
-      dateHours = new TextField("48");
-      dateHours.setPrefWidth(50);
-      Label dateHours_label = new Label("hours old");
+      // choicebox values can't be filled in fxml when you're using a bundle 
+      dateOperator.getItems().addAll(resources.getString("date_morethan"), resources.getString("date_lessthan"));
       
-      suggestionsFilter = new CheckBox("Filter out TiVo Suggestions");
-      
-      kuidFilter = new CheckBox("Only process KUID recordings");
-      
-      programIdFilter = new CheckBox("Do not process recordings without ProgramId");
-      
-      OK = new Button("OK");
-      OK.setPrefWidth(200);
-      OK.setId("button_autoconfig_ok");
-      OK.setOnAction(new EventHandler<ActionEvent>() {
-         public void handle(ActionEvent e) {
-            okCB();
-         }
-      });
-      
-      CANCEL = new Button("CANCEL");
-      CANCEL.setPrefWidth(200);
-      CANCEL.setId("button_autoconfig_cancel");
-      CANCEL.setOnAction(new EventHandler<ActionEvent>() {
-         public void handle(ActionEvent e) {
-            pos_x = dialog.getX(); pos_y = dialog.getY();
-            dialog.hide();
-         }
-      });
-      
-      content = new VBox();
-      content.setSpacing(3);
-      content.setPadding(new Insets(5,5,5,5));
-      
-      // table
-      content.getChildren().add(table_scroll);
-
-      // text pane
-      content.getChildren().add(text);
-
-      // row 3 items
-      GridPane row3 = new GridPane();
-      row3.setHgap(5);
-      row3.getColumnConstraints().addAll(
-         util.cc_none(), util.cc_none(), util.cc_none(), util.cc_none(), util.cc_stretch()
-      );
-      row3.add(type_label, 0, 0);
-      row3.add(type, 1, 0);
-      row3.add(tivo_label, 2, 0);
-      row3.add(tivo, 3, 0);
-      row3.add(title, 4, 0);
-      content.getChildren().add(row3);
-      
-      // row4
-      HBox row4 = new HBox();
-      row4.setSpacing(5);
-      row4.getChildren().addAll(metadata, decrypt, qsfix);
       if (config.twpDeleteEnabled()) {
-         row4.getChildren().add(twpdelete);         
+    	  // keep it
+      } else {
+    	  // hide it
+    	  twpdelete.setManaged(false);
+    	  twpdelete.setVisible(false);
       }
       if (config.rpcDeleteEnabled()) {
-         row4.getChildren().add(rpcdelete);         
+    	  // keep it
       }
-      row4.getChildren().addAll(comskip, comcut, captions, encode, custom, push);
-      content.getChildren().add(row4);
-      
-      // row5
-      GridPane row5 = new GridPane();
-      row5.setHgap(5);
-      row5.getColumnConstraints().addAll(
-         util.cc_none(), util.cc_none(), util.cc_stretch()
-      );
-      row5.setAlignment(Pos.CENTER_LEFT);
-      row5.setHgap(5);
-      row5.add(encoding_name, 0, 0);
-      row5.add(encoding_name2, 1, 0);
-      row5.add(encoding_name2_suffix, 2, 0);
-      content.getChildren().add(row5);
-      
-      // Put these items in a grid for better alignment
-      GridPane gp = new GridPane();
-      gp.getColumnConstraints().addAll(util.cc_none(), util.cc_stretch());
-      gp.add(encoding_name_label, 0, 0); gp.add(row5, 1, 0);
-      gp.add(comskipIni_label, 0, 1); gp.add(comskipIni, 1, 1);
-      gp.add(channelFilter_label, 0, 2); gp.add(channelFilter, 1, 2);
-      gp.add(tivoFileNameFormat_label, 0, 3); gp.add(tivoFileNameFormat, 1, 3);
-      content.getChildren().add(gp); 
-            
-      // row_misc
-      HBox row_misc = new HBox();
-      row_misc.setSpacing(5);
-      row_misc.getChildren().addAll(enabled, suggestionsFilter_single, useProgramId_unique);
-      content.getChildren().add(row_misc);
-      
-      // Add, Update, Del
-      HBox buttons = new HBox();
-      buttons.setSpacing(5);
-      buttons.getChildren().addAll(add, update, del);
-      buttons.setAlignment(Pos.CENTER);
-      content.getChildren().add(buttons); 
-            
-      // separator
-      Separator sep = new Separator();
-      sep.setOrientation(Orientation.HORIZONTAL);
-      content.getChildren().add(sep);
-                        
-      // global_settings
-      content.getChildren().add(global_settings);
-      
-      // row_dry_run
-      HBox row_dry_run = new HBox();
-      row_dry_run.setSpacing(10);
-      row_dry_run.getChildren().addAll(dry_run, check_interval_label, check_interval);
-      row_dry_run.setAlignment(Pos.CENTER_LEFT);
-      content.getChildren().add(row_dry_run);
-      
-      // date filter row
-      HBox date = new HBox();
-      date.setAlignment(Pos.CENTER_LEFT);
-      date.setSpacing(5);
-      date.getChildren().addAll(dateFilter, dateOperator, dateHours, dateHours_label);
-      content.getChildren().add(date);
+      else {
+    	  // hide it
+    	  rpcdelete.setManaged(false);
+    	  rpcdelete.setVisible(false);
+      }
 
-      HBox filter_panel = new HBox();
-      filter_panel.setSpacing(5);
-      filter_panel.getChildren().addAll(suggestionsFilter, kuidFilter, programIdFilter);
-      filter_panel.setAlignment(Pos.CENTER_LEFT);
-      content.getChildren().add(filter_panel);
-      
-      // noJobWait
-      content.getChildren().add(noJobWait);
-            
-      // OK & CANCEL
-      HBox last = new HBox();
-      last.setSpacing(50);
-      last.setAlignment(Pos.CENTER);
-      last.getChildren().addAll(OK, CANCEL);
-      content.getChildren().add(last);
-                 
-      // create dialog window
-      dialog = new Stage();
-      dialog.setOnCloseRequest(new EventHandler<WindowEvent>() {
-         @Override
-         public void handle(WindowEvent arg0) {
-            pos_x = dialog.getX(); pos_y = dialog.getY();
-         }
-      });
-      dialog.initOwner(frame);
-      dialog.initModality(Modality.NONE);
-      dialog.setTitle("kmttg auto transfers configuration");
-      Scene scene = new Scene(new VBox());
-      config.gui.setFontSize(scene, config.FontSize);
-      ((VBox) scene.getRoot()).getChildren().add(content);
-      dialog.setScene(scene);
+      setToolTips();
    }
    
-   // Component tooltip setup
+   /** Component tooltip setup */
    public void setToolTips() {
       enabled.setTooltip(getToolTip("enabled"));
+      
       metadata.setTooltip(config.gui.getToolTip("metadata"));
       decrypt.setTooltip(config.gui.getToolTip("decrypt"));
       qsfix.setTooltip(config.gui.getToolTip("qsfix"));
@@ -447,6 +291,7 @@ public class configAuto {
       encoding_name.setTooltip(config.gui.getToolTip("encoding"));
       encoding_name2.setTooltip(config.gui.getToolTip("encoding2"));
       encoding_name2_suffix.setTooltip(config.gui.getToolTip("encoding2_suffix"));
+      
       table.TABLE.setTooltip(getToolTip("table"));
       type.setTooltip(getToolTip("type"));
       tivo.setTooltip(getToolTip("tivo"));
@@ -474,158 +319,15 @@ public class configAuto {
    
    public Tooltip getToolTip(String component) {
       String text = "";
-      if (component.equals("table")) {
-         text =  "<b>auto transfers entries</b><br>";
-         text += "Click on an entry to select it. Form settings will update to match<br>";
-         text += "the current settings for that entry. You can then change settings as<br>";
-         text += "desired and then use <b>UPDATE</b> button to apply form settings to the entry.<br>";
-         text += "Use <b>ADD</b> button to add a new entry<br>";
-         text += "Use <b>DEL</b> button to remove selected entries<br>";
-         text += "Use <b>up</b> and <b>down</b> arrows to move selected row up and down in priority.<br>";
-         text += "NOTE: Entry updates are only saved after you <b>OK</b> this form.";
-      }
-      else if (component.equals("type")) {
-         text =  "<b>Type</b><br>";
-         text += "<b>title</b> means exact title matching (case insensitive).<br>";
-         text += "<b>keywords</b> means keyword matching (case insensitive) with<br>";
-         text += "optional logical operations as illustrated above. Consult the<br>";
-         text += "documentation for all the details.";
-      }
-      else if (component.equals("tivo")) {
-         text =  "<b>TiVo</b><br>";
-         text += "Restrict transfers to be from this TiVo only.<br>";
-         text += "<b>all</b> means all TiVos currently configured in kmttg.";
-      }
-      else if (component.equals("enabled")) {
-         text =  "<b>enabled</b><br>";
-         text += "You can use this option to enable or disable an Auto Transfer entry.<br>";
-         text += "This is useful to temporarily disable Auto Transfer entries without having<br>";
-         text += "to delete them.";
-      }
-      else if (component.equals("dry_run")) {
-         text =  "<b>Dry Run Mode (test keywords only)</b><br>";
-         text += "With this option enabled kmttg will exercise the auto transfers setup<br>";
-         text += "and will print messages about what shows match your setup, but will<br>";
-         text += "not actually run any transfers. This is useful for testing your auto<br>";
-         text += "transfers setup to ensure it will do what you want.<br>";
-         text += "<b>NOTE: Use Auto Transfers->Run Once in GUI with this option set to test</b>.";
-      }
-      else if (component.equals("noJobWait")) {
-         text =  "<b>Do not wait for all jobs to finish before processing new ones</b><br>";
-         text += "With this option enabled kmttg will not wait for all jobs to complete<br>";
-         text += "to check TiVos for new potential shows to process. The default behavior of<br>";
-         text += "kmttg (this option off) is to wait until all tasks have completed for a TiVo<br>";
-         text += "before looking for new shows to process for that TiVo.";
-      }
-      else if (component.equals("title")) {
-         text =  "<b>title/keywords</b><br>";
-         text += "Type in or update title or keywords for this entry here.<br>";
-         text += "Consult example above and documentation for details on keywords setup.<br>";
-         text += "NOTE: title and keywords are all case insensitive.";
-      }
-      else if (component.equals("comskipIni")) {
-         text =  "<b>comskip.ini override</b><br>";
-         text += "If you wish to use a specific comskip.ini file to use with <b>comcut</b> for<br>";
-         text += "this auto transfer then specify the full path to the file here.<br>";
-         text += "This will override the comskip.ini file specified in main kmttg configuration.";
-      }
-      else if (component.equals("channelFilter")) {
-         text =  "<b>channel filter</b><br>";
-         text += "If you wish to filter out by channel number or name for this auto transfer<br>";
-         text += "then enter either channel number or name in this field. Leave it empty if you<br>";
-         text += "do not want to filter by channel number or name.";
-      }
-      else if (component.equals("tivoFileNameFormat")) {
-         text =  "<b>file name override</b><br>";
-         text += "If you wish to use a custom file name format for this auto entry that overrides<br>";
-         text += "the global <b>File Naming</b> setting then do so here. Else leave this field blank.";
-      }
-      else if (component.equals("check_interval")) {
-         text =  "<b>Check Tivos Interval (mins)</b><br>";
-         text += "Once you start the Auto Transfers service or background job kmttg<br>";
-         text += "will run in a loop matching your Auto Transfers entries to shows<br>";
-         text += "on your Tivos and performing all the selected tasks for each match.<br>";
-         text += "Once all matches have been processed kmttg will sleep for this specified<br>";
-         text += "amount of time before checking again.<br>";
-         text += "<b>NOTE: Setting this too low will overburden your network and Tivos.</b>";
-      }
-      else if (component.equals("add")) {
-         text =  "<b>ADD</b><br>";
-         text += "Add a new Auto Transfers entry based on current form choices.<br>";
-         text += "NOTE: Additions won't be saved until you <b>OK</b> this form.";
-      }
-      else if (component.equals("update")) {
-         text =  "<b>UPDATE</b><br>";
-         text += "Update the currently selected Auto Transfers entry with current form settings.<br>";
-         text += "NOTE: Updates won't be saved until you <b>OK</b> this form.";
-      }
-      else if (component.equals("del")) {
-         text =  "<b>DEL</b><br>";
-         text += "Remove currently selected Auto Transfers entries.<br>";
-         text += "NOTE: Removals won't be saved until you <b>OK</b> this form.";
-      }
-      else if (component.equals("dateFilter")) {
-         text =  "<b>Date Filter</b><br>";
-         text += "If enabled then only process shows earlier or later than the specified<br>";
-         text += "number of hours old. Examples:<br>";
-         text += "<b>less than 48</b> means only process shows earlier than 2 days old.<br>";
-         text += "<b>more than 24</b> means only process shows later than 1 day old.";
-      }
-      else if (component.equals("dateOperator")) {
-         text =  "<b>Date Filter Operator</b><br>";
-         text += "Operator for Date Filter setting.";
-      }
-      else if (component.equals("dateHours")) {
-         text =  "<b>Date Filter Hours</b><br>";
-         text += "Number of hours to use for filtering by date. Examples:<br>";
-         text += "<b>less than 48</b> means only process shows earlier than 2 days old.<br>";
-         text += "<b>more than 24</b> means only process shows later than 1 day old.";
-      }
-      else if (component.equals("suggestionsFilter")) {
-         text =  "<b>Filter out TiVo Suggestions</b><br>";
-         text += "If enabled then do not process any TiVo Suggestions recordings.<br>";
-         text += "NOTE: If enabled this filter overrides any individual suggestions filter settings.";
-      }
-      else if (component.equals("suggestionsFilter_single")) {
-         text =  "<b>Filter out TiVo Suggestions</b><br>";
-         text += "If enabled then do not process any TiVo Suggestions recordings for this entry.";
-      }
-      else if (component.equals("useProgramId_unique")) {
-         text =  "<b>Treat each recording as unique</b><br>";
-         text += "If enabled then kmttg will generate a unique ProgramId based on ProgramId and recorded<br>";
-         text += "time for each recording of this program. This is useful only for programs that do not<br>";
-         text += "already have unique ProgramIds for each episode, such as some news programs for example.<br>";
-         text += "For such programs kmttg would not ordinarily auto download subsequent episodes because<br>";
-         text += "a ProgramId entry already exists in <b>auto.history</b> file. By enabling this option<br>";
-         text += "kmttg will instead use a time-based ProgramId entry so that future recordings on different<br>";
-         text += "dates with same ProgramId will still auto download<br>";
-         text += "<b>NOTE: Enabling this option may lead to repeated downloads of shows so use wisely/sparingly</b><br>";
-         text += "<b>only for shows without unique ProgramId</b>";
-      }
-      else if (component.equals("kuidFilter")) {
-         text =  "<b>Only process KUID recordings</b><br>";
-         text += "If enabled then only process recordings that are marked as<br>";
-         text += "Keep Until I Delete (KUID).";
-      }
-      else if (component.equals("programIdFilter")) {
-         text =  "<b>Do not process recordings without ProgramId</b><br>";
-         text += "If enabled then do not process recordings without ProgramId.<br>";
-         text += "Typically, these are programs that were transferred to your TiVo(s)<br>";
-         text += "from a PC or other source other than a recorded TV station or MRV,<br>";
-         text += "such as pyTivo or TiVo Desktop transfers.";
-      }
-      else if (component.equals("OK")) {
-         text =  "<b>OK</b><br>";
-         text += "Save all changes made in this form and close the form.<br>";
-         text += "NOTE: You need to setup and run kmttg service on Windows for Auto Transfers to run.<br>";
-         text += "For non-windows platforms you need to setup a background job for Auto Transfers to run.<br>";
-         text += "You can use <b>Auto Transfers->Service</b> or <b>Auto Transfers->Background Job</b><br>";
-         text += "menus to do this. Consult documentation for more details.<br>";
-         text += "NOTE: Settings are saved to <b>auto.ini</b> file which resides by <b>kmttg.jar</b> file.<br>";
-      }
-      else if (component.equals("CANCEL")) {
-         text =  "<b>CANCEL</b><br>";
-         text += "Do not save any changes made in this form and close the form.<br>";
+      
+      try {
+	      // we set up tooltip text for most component ids with "tooltip_" in front of them.
+	      String tip = bundle.getString("tooltip_"+component);
+	      if(tip != null && tip.length() > 0) {
+	    	  text = tip;
+	      }
+      } catch (Exception e) {
+    	  text = "";
       }
       return MyTooltip.make(text);
    }
@@ -640,10 +342,10 @@ public class configAuto {
          tivo.setValue(tivo.getItems().get(0));
    }
    
-   // Defines choices for tivo name filtering
+   /** Defines choices for tivo name filtering */
    private String[] getTivoFilterNames() {
       Stack<String> names = config.getNplTivoNames();
-      names.add(0, "all");
+      names.add(0, _TivosAll);
       String[] tivoNames = new String[names.size()];
       for (int i=0; i<names.size(); ++i) {
          tivoNames[i] = names.get(i);
@@ -651,9 +353,9 @@ public class configAuto {
       return tivoNames;
    }
 
-   // Checks given tivo name against current valid names and resets to all if not valid
+   /** Checks given tivo name against current valid names and resets to all if not valid */
    private String validateTivoName(String tivoName) {
-      if ( ! tivoName.equals("all") ) {
+      if ( ! tivoName.equals(_TivosAll) ) {
          Stack<String> names = config.getNplTivoNames();
          for (int i=0; i<names.size(); ++i) {
             if (tivoName.equals(names.get(i)))
@@ -661,11 +363,12 @@ public class configAuto {
          }
          log.error("TiVo '" + tivoName + "' currently not configured in kmttg - resetting to all");
       }
-      return "all";
+      return _TivosAll;
    }
    
-   // This will decide which options are enabled based on current config settings
-   // Options are disabled when associated config entry is not setup
+   /** This will decide which options are enabled based on current config settings.
+    Options are disabled when associated config entry is not setup */
+   @FXML
    public void refreshOptions() {
       if (config.VRD == 0 && ! file.isFile(config.ffmpeg)) {
          qsfix.setSelected(false);
@@ -761,12 +464,12 @@ public class configAuto {
       return rows;
    }
      
-   // Return autoEntry instance of selected entry
+   /** Return autoEntry instance of selected entry */
    public autoEntry GetRowData(int row) {
       return table.GetRowData(row);
    }
    
-   // Update dialog settings based on autoConfig current settings
+   /** Update dialog settings based on autoConfig current settings */
    public void update() {
       SetKeywords(autoConfig.KEYWORDS);
       SetEncodings(encodeConfig.getValidEncodeNames());
@@ -782,7 +485,7 @@ public class configAuto {
       programIdFilter.setSelected((Boolean)(autoConfig.programIdFilter == 1));
    }
    
-   // Set encoding_name ChoiceBox choices
+   /** Set encoding_name ChoiceBox choices */
    public void SetEncodings(Stack<String> values) {
       debug.print("values=" + values);
       
@@ -802,7 +505,7 @@ public class configAuto {
          encoding_name2.setValue(encoding_name2.getItems().get(0));      
    }
    
-   // Set table entries according to auto config setup
+   /** Set table entries according to auto config setup */
    public void SetKeywords(Stack<autoEntry> entries) {
       debug.print("entries=" + entries);
       clearTable();
@@ -813,8 +516,9 @@ public class configAuto {
       }
    }   
    
-   // Callback for ADD button
-   // Add type & keywords as a table entry
+   /** Callback for ADD button.
+   Add type & keywords as a table entry */
+   @FXML
    private void addCB() {
       debug.print("");
       String ktype = type.getValue();
@@ -851,8 +555,9 @@ public class configAuto {
       addTableRow(entry);
    }
    
-   // Callback for UPDATE button
-   // Update selected table entry with dialog settings
+   /** Callback for UPDATE button.
+   Update selected table entry with dialog settings */
+   @FXML
    private void updateCB() {
       debug.print("");
       int[] rows = getTableSelectedRows();
@@ -879,8 +584,9 @@ public class configAuto {
       log.warn("Updated auto transfers entry # " + (row+1));
    }
    
-   // Callback for DEL button
-   // Remove selected table entries
+   /** Callback for DEL button.
+   Remove selected table entries */
+   @FXML
    private void delCB() {
       debug.print("");
       int[] rows = getTableSelectedRows();
@@ -888,9 +594,16 @@ public class configAuto {
          removeTableRow(rows[i]);
       }      
    }
+
+   @FXML
+   private void cancelCB() {
+       pos_x = dialog.getX(); pos_y = dialog.getY();
+       dialog.hide();
+   }
    
-   // Callback for OK button
-   // Save table settings to auto.ini and hide the dialog
+   /** Callback for OK button.
+   Save table settings to auto.ini and hide the dialog */
+   @FXML
    private void okCB() {
       debug.print("");
       clearTextFieldErrors();
@@ -1019,8 +732,8 @@ public class configAuto {
       autoConfig.parseAuto(config.autoIni);
    }
    
-   // Callback when user clicks on a table row
-   // This will update component settings according to selected row data
+   /** Callback when user clicks on a table row
+   This will update component settings according to selected row data */
    private void TableRowSelected(autoEntry entry) {
       enabled.setSelected((Boolean)(entry.enabled == 1));
       metadata.setSelected((Boolean)(entry.metadata == 1));
