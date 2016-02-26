@@ -156,7 +156,7 @@ public class tivoTab {
             disk_usage.setTooltip(config.gui.getToolTip("disk_usage"));
             disk_usage.setOnAction(new EventHandler<ActionEvent>() {
                public void handle(ActionEvent e) {
-                  new freeSpace(tivoName, config.gui.getFrame());
+                  freeSpace.display(tivoName, config.gui.getFrame());
                }
             });
             row.getChildren().add(disk_usage);
