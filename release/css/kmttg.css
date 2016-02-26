@@ -40,6 +40,19 @@
 }
 
 .piechart_shows {-fx-font-size: 13pt;}
+/* square symbols */
+.piechart_shows .pie-legend-symbol.chart-pie {
+   -fx-background-radius: 0;
+}
+/* Keep Until I Delete */
+.piechart_shows .default-color0.chart-pie { -fx-pie-color: green; }
+/* Keep Until Space Needed */
+.piechart_shows .default-color1.chart-pie { -fx-pie-color: yellow; }
+/* Suggestions */
+.piechart_shows .default-color2.chart-pie { -fx-pie-color: orange; }
+/* Free Space */
+.piechart_shows .default-color3.chart-pie { -fx-pie-color: blue; }
+
 .show_details_bg {-fx-background-color: #10004C;} /* dark blue */
 .show_details_actor {-fx-background-color: #10004C; -fx-text-fill: #00E9FF; -fx-font-weight: bold;} /* light blue */
 .show_details_title {-fx-background-color: #10004C; -fx-text-fill: #FFFF00; -fx-font-weight: bold;} /* yellow */

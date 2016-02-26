@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?scenebuilder-preview-i18n-resource freeSpace.properties?>
+
+<?import java.net.URL?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" 
+ alignment="CENTER" spacing="1"><!-- fx:controller="com.tivo.kmttg.gui.dialog.freeSpace" -->
+    <HBox spacing="5">
+        <Label text="%space_label"/>
+        <TextField fx:id="space" onKeyPressed="#spaceCB"/>
+    </HBox>
+    <PieChart fx:id="chart" prefHeight="300" legendSide="RIGHT" labelsVisible="false"
+     styleClass="piechart_shows" title="%chart">
+        <!-- prefWidth = frame.getWidth -->
+    </PieChart>
+    <Label fx:id="totals1" alignment="CENTER_LEFT"
+     styleClass="piechart_shows"/>
+    <Label fx:id="totals2" alignment="CENTER_LEFT"
+     styleClass="piechart_shows"/>
+    
+    <ScrollPane fx:id="tabScroll" prefHeight="200" fitToHeight="true" fitToWidth="true">
+        <!-- filled with bitrateTable.TABLE -->
+    </ScrollPane>
+    
+</VBox>
+
