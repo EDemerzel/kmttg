@@ -292,7 +292,7 @@ public static class guiApp extends Application {
       CreateImages();
       
       // Init show_details dialog
-      show_details = new ShowDetails(jFrame, null);
+      show_details = ShowDetails.load(jFrame);
       
       // Start NPL jobs
       if (config.npl_when_started == 1) {

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?scenebuilder-preview-i18n-resource ShowDetails.properties?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+
+<!--  NOTE original has VBox outside of this which is contained in the Scene of the Stage id=dialog -->
+
+<HBox xmlns:fx="http://javafx.com/fxml/1" 
+ spacing="0" fx:controller="com.tivo.kmttg.gui.dialog.ShowDetails">
+  <VBox styleClass="show_details_bg" spacing="2">
+  <padding><Insets top="0" right="0" bottom="0" left="3" /></padding>
+    <Label fx:id="mainTitle" minWidth="400" maxWidth="400" wrapText="true" styleClass="show_details_title"/>
+    <Label fx:id="subTitle" minWidth="400" maxWidth="400" wrapText="true" styleClass="show_details_title"/>
+    <Label fx:id="time" styleClass="show_details_other"/>
+    <Label fx:id="channel" styleClass="show_details_other"/>
+    <Label fx:id="description" minWidth="400" maxWidth="400" wrapText="true" styleClass="show_details_text"/>
+    <Label fx:id="otherInfo" minWidth="400" maxWidth="400" wrapText="true" styleClass="show_details_other"/>
+    <Label fx:id="actorInfo" minWidth="400" maxWidth="400" wrapText="true" styleClass="show_details_actor"/>
+  </VBox>
+  <VBox alignment="CENTER" styleClass="show_details_bg" spacing="2">
+    <Label fx:id="image" styleClass="show_details_title"/>
+  </VBox>
+</HBox>
+
