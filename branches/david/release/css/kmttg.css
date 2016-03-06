@@ -91,3 +91,7 @@
     -fx-background-color: -fx-background;
 }
 
+/* don't hover-highlight this titled-pane since it doesn't do anything on click */ 
+#startPane:hover > .title {
+    -fx-color: -fx-base;
+}

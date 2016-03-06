@@ -6,7 +6,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Serializable;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.Hashtable;
 import java.util.Stack;
@@ -16,8 +15,8 @@ import java.util.regex.Pattern;
 import com.tivo.kmttg.main.config;
 import com.tivo.kmttg.main.jobData;
 import com.tivo.kmttg.main.jobMonitor;
+import com.tivo.kmttg.rpc.AutoSkip;
 import com.tivo.kmttg.rpc.SkipImport;
-import com.tivo.kmttg.rpc.SkipMode;
 import com.tivo.kmttg.util.backgroundProcess;
 import com.tivo.kmttg.util.debug;
 //import com.tivo.kmttg.util.ffmpeg;
@@ -224,26 +223,18 @@ public class comskip extends baseTask implements Serializable {
                // NOTE: Only delete a file ending in one of extensions
                if (f.endsWith(extensions[i]) && file.isFile(f)) file.delete(f);
             }
-            if (job.SkipPoint != null && file.isFile(job.edlFile)) {
-               // Analyze edl file
-               long closest = getClosestStart(job.edlFile, job.SkipPoint);
-               if (closest != -1)
-                  SkipMode.saveWithOffset(job.tivoName, job.contentId, job.offerId, job.title, closest);
-               else
-                  log.warn(job.title + ": Sorry, commercial point not found using automatic method - use z and pause method instead");
-            }
             if (job.SkipPoint != null) {
                String prefix = string.replaceSuffix(string.basename(job.mpegFile), "");
                file.cleanUpFiles(prefix);
             }
             
-            if (job.skipmode && config.VrdReview == 0 && config.comskip_review == 0 && file.isFile(job.edlFile)) {
+            if (job.autoskip && config.VrdReview == 0 && config.comskip_review == 0 && file.isFile(job.edlFile)) {
                // Skip table entry creation
                Stack<Hashtable<String,Long>> cuts = SkipImport.edlImport(job.edlFile, job.duration, false);
                if (cuts != null && cuts.size() > 0) {
-                  if (SkipMode.hasEntry(job.contentId))
-                     SkipMode.removeEntry(job.contentId);
-                  SkipMode.saveEntry(job.contentId, job.offerId, 0L, job.title, job.tivoName, cuts);
+                  if (AutoSkip.hasEntry(job.contentId))
+                     AutoSkip.removeEntry(job.contentId);
+                  AutoSkip.saveEntry(job.contentId, job.offerId, 0L, job.title, job.tivoName, cuts);
                }
                String prefix = string.replaceSuffix(string.basename(job.mpegFile), "");
                file.cleanUpFiles(prefix);               
@@ -251,31 +242,6 @@ public class comskip extends baseTask implements Serializable {
          }
       }
       return false;
-   }
-   
-   private long getClosestStart(String edlFile, String SkipPointStr) {
-      long closest = -1;
-      try {
-         Long SkipPoint = (long)Float.parseFloat(SkipPointStr);
-         BufferedReader ifp = new BufferedReader(new FileReader(edlFile));
-         String line = null;
-         float diff = SkipPoint;
-         while (( line = ifp.readLine()) != null) {
-            if (line.matches("^\\d+.+$")) {
-               String[] l = line.split("\\s+");
-               float start = Float.parseFloat(l[0])*1000;
-               if (Math.abs(start - SkipPoint) < diff) {
-                  diff = Math.abs(start - SkipPoint);
-                  closest = (long)start;
-               }
-            }
-         }
-         ifp.close();
-      } catch (Exception e) {
-         log.error("comskip getClosestStart - " + e.getMessage());
-         log.error(Arrays.toString(e.getStackTrace()));
-      }
-      return closest;
    }
    
    // Obtain pct complete from comskip stderr
