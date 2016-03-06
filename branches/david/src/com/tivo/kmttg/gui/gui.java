@@ -879,7 +879,8 @@ public static class guiApp extends Application {
 	             if ( ! skipServiceMenuItem.isSelected() ) {
 //               if ( ! newVal ) {
                   // Turn off service
-                  config.skipService.stop();
+                  if (config.skipService != null)
+                     config.skipService.stop();
                   return;
                }
                if (! skipServiceMenuItem_cb)
@@ -889,6 +890,7 @@ public static class guiApp extends Application {
                JSONArray skipData = AutoSkip.getEntries();
                if (skipData == null || skipData.length() == 0) {
                   log.warn("No skip table data available - ignoring skip service request");
+                  skipServiceMenuItem.setSelected(false);
                   return;
                }
                
@@ -911,6 +913,8 @@ public static class guiApp extends Application {
                   // Start service for selected TiVo
                   config.skipService = new SkipService(tivoName);
                   config.skipService.start();
+               } else {
+                  skipServiceMenuItem.setSelected(false);
                }
    }
 
