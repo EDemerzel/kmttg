@@ -28,7 +28,9 @@ import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
+import javafx.event.Event;
 import javafx.event.EventHandler;
+import javafx.event.EventTarget;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -43,10 +45,10 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.CheckMenuItem;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ChoiceDialog;
+import javafx.scene.control.Control;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ScrollPane;
@@ -57,9 +59,9 @@ import javafx.scene.control.Tooltip;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.image.Image;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.web.WebView;
@@ -68,6 +70,7 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
 import com.sun.javafx.css.StyleManager;
+import com.tivo.kmttg.JSON.JSONArray;
 import com.tivo.kmttg.JSON.JSONException;
 import com.tivo.kmttg.JSON.JSONObject;
 import com.tivo.kmttg.gui.dialog.Pushes;
@@ -91,12 +94,13 @@ import com.tivo.kmttg.main.encodeConfig;
 import com.tivo.kmttg.main.jobData;
 import com.tivo.kmttg.main.jobMonitor;
 import com.tivo.kmttg.main.kmttg;
-import com.tivo.kmttg.rpc.SkipMode;
+import com.tivo.kmttg.rpc.AutoSkip;
 import com.tivo.kmttg.rpc.SkipService;
 import com.tivo.kmttg.util.debug;
 import com.tivo.kmttg.util.file;
 import com.tivo.kmttg.util.log;
 import com.tivo.kmttg.util.string;
+import javafx.scene.control.TitledPane;
 
 public class gui implements Initializable {
 
@@ -107,45 +111,30 @@ public class gui implements Initializable {
    @FXML private SplitPane jContentPane = null;
    @FXML private SplitPane splitBottom = null;
    @FXML private TabPane tabbed_panel = null;
-   @FXML private MenuBar menuBar = null;
    @FXML private Menu fileMenu = null;
    @FXML private Menu jobMenu = null;
    @FXML private Menu autoMenu = null;
+   // alternates with Background depending on OS
    @FXML private Menu serviceMenuService = null;
+   // alternates with Service depending on OS
    @FXML private Menu serviceMenuBackground = null;
    @FXML private Menu helpMenu = null;
-   @FXML private MenuItem helpAboutMenuItem = null;
-   @FXML private MenuItem helpUpdateMenuItem = null;
+   // removed in linux
    @FXML private MenuItem helpToolsUpdateMenuItem = null;
-   @FXML private MenuItem exitMenuItem = null;
-   @FXML private MenuItem autoConfigMenuItem = null;
-   @FXML private MenuItem runInGuiMenuItem = null;
    @FXML private CheckMenuItem loopInGuiMenuItem = null;
    @FXML private CheckMenuItem resumeDownloadsMenuItem = null;
    @FXML private CheckMenuItem toggleLaunchingJobsMenuItem = null;
    @FXML public  MenuItem addSelectedTitlesMenuItem = null;
    @FXML public  MenuItem addSelectedHistoryMenuItem = null;
-   @FXML private MenuItem logFileMenuItem = null;
-   @FXML private MenuItem configureMenuItem = null;
-   @FXML private MenuItem refreshEncodingsMenuItem = null;
-   @FXML private MenuItem serviceStatusMenuItem = null;
-   @FXML private MenuItem serviceInstallMenuItem = null;
-   @FXML private MenuItem serviceStartMenuItem = null;
-   @FXML private MenuItem serviceStopMenuItem = null;
-   @FXML private MenuItem serviceRemoveMenuItem = null;
-   @FXML private MenuItem backgroundJobStatusMenuItem = null;
-   @FXML private MenuItem backgroundJobEnableMenuItem = null;
-   @FXML private MenuItem backgroundJobDisableMenuItem = null;
-   @FXML private MenuItem saveMessagesMenuItem = null;
-   @FXML private MenuItem clearMessagesMenuItem = null;
-   //private MenuItem resetServerMenuItem = null;
+   // removed if no tivo username
    @FXML private MenuItem pushesMenuItem = null;
-   @FXML private MenuItem saveJobsMenuItem = null;
-   @FXML private MenuItem loadJobsMenuItem = null;
    @FXML public MenuItem searchMenuItem = null;
-   @FXML public MenuItem skipModeMenuItem = null;
+   // removed if feature disabled or no rpc
+   @FXML private MenuItem autoSkipMenuItem = null;
+   // removed if feature disabled or no rpc
    @FXML public CheckMenuItem skipServiceMenuItem = null;
    @FXML public Boolean skipServiceMenuItem_cb = true;
+   // always removed from menu, just there for the shortcut.
    @FXML public MenuItem thumbsMenuItem = null;
    
    @FXML private ChoiceBox<String> encoding = null;
@@ -169,14 +158,22 @@ public class gui implements Initializable {
    private jobTable jobTab = null;
    @FXML private ProgressBar progressBar = null;
    @FXML public  ScrollPane jobPane = null;
+   @FXML SplitPane helpSplit;
+   @FXML TabPane helpTabPane;
+   @FXML TitledPane progressPane;
    
    private Hashtable<String,tivoTab> tivoTabs = new Hashtable<String,tivoTab>();
    public static Hashtable<String,Image> Images;
    
    public remotegui remote_gui = null;
    public slingboxgui  slingbox_gui = null;
-   
+
+   @FXML public StackPane show_details_stack = null;
+   @FXML private HBox showDetails = null;
+   @FXML private ShowDetails showDetailsController = null;
    public ShowDetails show_details = null;
+   @FXML private WebView plain_show_details_view = null;
+   public textpane plain_show_details = null;
    
    public Stage getFrame() {
       debug.print("");
@@ -233,15 +230,32 @@ public static class guiApp extends Application {
    public void initialize(URL location, ResourceBundle resources) {
       bundle = resources;
       config.gui = this;
+      show_details = showDetailsController;
+      plain_show_details = new textpane(plain_show_details_view);
       
       // adjust the menubar as needed
-      MenuBar menubar = initMenuBar();
+      initMenuBar();
       
       // adjust the main canvas components
       getContentPane();
    }
    
    public void initializeScene(Stage stage, Scene scene) {
+	   // new help tooltip handler
+	   scene.addEventFilter(MouseEvent.MOUSE_ENTERED_TARGET, new EventHandler<MouseEvent>() {
+		    @Override
+		    public void handle(MouseEvent mouseEvent) {
+		    	if (helpTabPane != null && helpTabPane.getTabs().size() > 0) {
+		    		EventTarget target = mouseEvent.getTarget();
+		    		if (target != null && target instanceof Control) {
+		    			Tooltip tooltip = ((Control) target).getTooltip();
+		    			if (tooltip != null) {
+		    				helpTabPane.getTabs().get(0).setContent(tooltip.getGraphic());
+		    			}
+		    		}
+		    	}
+		    }
+		});	   
             
       // Add additional rpc remote tab
       remote_gui = new remotegui(jFrame);
@@ -291,8 +305,8 @@ public static class guiApp extends Application {
       // Create NowPlaying icons
       CreateImages();
       
-      // Init show_details dialog
-      show_details = ShowDetails.load(jFrame);
+//      // Init show_details dialog
+//      show_details = ShowDetails.load(jFrame);
       
       // Start NPL jobs
       if (config.npl_when_started == 1) {
@@ -335,50 +349,62 @@ public static class guiApp extends Application {
    // Adds a universal key listener so that menu shortcuts work as expected
    public void addGlobalKeyListener(Scene scene) {
       debug.print("scene=" + scene);
-      scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
-         public void handle(KeyEvent e) {
-            String tabName = getCurrentTabName();
-            if (tabName.equals(bundle.getString("tab_remote"))) {
-               String subTabName = config.gui.remote_gui.getCurrentTabName();
-               if (subTabName.equals(bundle.getString("tab_remote_remote"))) {
-                  // For Remote-Remote tab don't want to interfere with anything
-                  return;
-               }
-            }
-            
-            // Proceed with handling menu keyboard accelerators
-            if (e.getEventType() == KeyEvent.KEY_PRESSED && e.isControlDown()) {
-               if (e.getCode() == KeyCode.L) {
-                  clearMessagesMenuItem.fire();
-                  e.consume();
-               }
-               if (e.getCode() == KeyCode.E) {
-                  refreshEncodingsMenuItem.fire();
-                  e.consume();
-               }
-               if (e.getCode() == KeyCode.M) {
-                  saveMessagesMenuItem.fire();
-                  e.consume();
-               }
-               if (e.getCode() == KeyCode.O) {
-                  configureMenuItem.fire();
-                  e.consume();
-               }
-               /*if (e.getCode() == KeyCode.R) {
-                  resetServerMenuItem.fire();
-                  return true;
-               }*/
-               if (e.getCode() == KeyCode.S) {
-                  searchMenuItem.fire();
-                  e.consume();
-               }
-               if (e.getCode() == KeyCode.T) {
-                  thumbsMenuItem.fire();
-                  e.consume();
-               }
-            }
-         }
-      });           
+      
+      // thumbsMenuItem is special - it's removed from the menu because it's not always valid, 
+      // but that prevents the menuitem accelerator from automatically working.
+      scene.getAccelerators().put(
+    		  thumbsMenuItem.getAccelerator(),
+    		  new Runnable() {
+    		    @Override public void run() {
+    		    	thumbsMenuItem.fire();
+    		    }
+    		  }
+    		);
+      
+//      scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
+//         public void handle(KeyEvent e) {
+//            String tabName = getCurrentTabName();
+//            if (tabName.equals(bundle.getString("tab_remote"))) {
+//               String subTabName = config.gui.remote_gui.getCurrentTabName();
+//               if (subTabName.equals(bundle.getString("tab_remote_remote"))) {
+//                  // For Remote-Remote tab don't want to interfere with anything
+//                  return;
+//               }
+//            }
+//            
+//            // Proceed with handling menu keyboard accelerators
+//            if (e.getEventType() == KeyEvent.KEY_PRESSED && e.isControlDown()) {
+//               if (e.getCode() == KeyCode.L) {
+//                  clearMessagesMenuItem.fire();
+//                  e.consume();
+//               }
+//               if (e.getCode() == KeyCode.E) {
+//                  refreshEncodingsMenuItem.fire();
+//                  e.consume();
+//               }
+//               if (e.getCode() == KeyCode.M) {
+//                  saveMessagesMenuItem.fire();
+//                  e.consume();
+//               }
+//               if (e.getCode() == KeyCode.O) {
+//                  configureMenuItem.fire();
+//                  e.consume();
+//               }
+//               /*if (e.getCode() == KeyCode.R) {
+//                  resetServerMenuItem.fire();
+//                  return true;
+//               }*/
+//               if (e.getCode() == KeyCode.S) {
+//                  searchMenuItem.fire();
+//                  e.consume();
+//               }
+//               if (e.getCode() == KeyCode.T) {
+//                  thumbsMenuItem.fire();
+//                  e.consume();
+//               }
+//            }
+//         }
+//      });           
    }
 
    public void setFontSize(Scene scene, int fontSize) {
@@ -475,7 +501,6 @@ public static class guiApp extends Application {
    
    private SplitPane getContentPane() {
       debug.print("");
-//      if (jContentPane == null) {
                   
          // CANCEL JOBS button
          cancel.setTooltip(getToolTip("cancel"));
@@ -501,8 +526,8 @@ public static class guiApp extends Application {
          
          // Encoding row
          // Encoding label
-// 
-//         // Encoding names combo box
+ 
+         // Encoding names combo box
          SetEncodings(encodeConfig.getValidEncodeNames());
 
          // Encoding description label
@@ -538,22 +563,6 @@ public static class guiApp extends Application {
          // Add Tivo tabs
          SetTivos(config.TIVOS);
          
-         // Cancel pane
-         cancel.setMinWidth(Button.USE_PREF_SIZE); // Don't truncate button text
-         // Bind progressBar width to cancel_pane_stretch width so it will grow horizontally
-         progressBar.prefWidthProperty().bind(
-//            cancel_pane.
-            ((HBox)progressBar.getParent().getParent()).
-            widthProperty().subtract(cancel.widthProperty())
-         );
-         
-         // Create a split pane between job & messages pane
-         splitBottom.setDividerPosition(0, 0.55);
-//         
-//         // Put all panels together
-         jContentPane.setDividerPosition(0, 0.57);
-//      }
-      
       return jContentPane;
    }
    
@@ -569,12 +578,11 @@ public static class guiApp extends Application {
        refreshOptions(false);
    }
    
-   private MenuBar initMenuBar() {
+   private void initMenuBar() {
       debug.print("");
       initFileMenu();
       initAutoTransfersMenu();
       initHelpMenu();
-      return menuBar;
    }
 
    private Menu initFileMenu() {
@@ -582,16 +590,16 @@ public static class guiApp extends Application {
          if (config.getTivoUsername() != null)
 //            fileMenu.getItems().add(getPushesMenuItem());
         	 ; else fileMenu.getItems().remove(pushesMenuItem);
-         if (config.rpcEnabled() && SkipMode.skipEnabled()) {
-//            fileMenu.getItems().add(getSkipModeMenuItem());
+         if (config.rpcEnabled() && AutoSkip.skipEnabled()) {
+//            fileMenu.getItems().add(getAutoSkipMenuItem());
 //            fileMenu.getItems().add(getSkipServiceMenuItem());
          }
          else {
-        	 fileMenu.getItems().remove(skipModeMenuItem);
+        	 fileMenu.getItems().remove(autoSkipMenuItem);
         	 fileMenu.getItems().remove(skipServiceMenuItem);
          }
 //         //fileMenu.add(getThumbsMenuItem());
-//         // Create thumbs menu item but don't add to File menu
+         // Create thumbs menu item but don't add to File menu
 //         getThumbsMenuItem();
          fileMenu.getItems().remove(thumbsMenuItem);
       return fileMenu;
@@ -863,7 +871,7 @@ public static class guiApp extends Application {
                TableUtil.SearchGUI();
    }
 
-   @FXML public void skipModeMenuItemCB() {
+   @FXML public void autoSkipMenuItemCB() {
                new SkipDialog(config.gui.getFrame());
    }
 
@@ -876,6 +884,13 @@ public static class guiApp extends Application {
                }
                if (! skipServiceMenuItem_cb)
                   return;
+               
+               // Don't do anything if no skip data available
+               JSONArray skipData = AutoSkip.getEntries();
+               if (skipData == null || skipData.length() == 0) {
+                  log.warn("No skip table data available - ignoring skip service request");
+                  return;
+               }
                
                // Build list of eligible TiVos
                Stack<String> all = config.getTivoNames();
@@ -1303,7 +1318,10 @@ public static class guiApp extends Application {
                   if (current != null && current.equals(names[i]))
                      valid = true;
                }
-               combobox.SetValues(encoding, names);
+               encoding.getItems().clear();
+               for (int i=0; i<names.length; i++) {
+            	   encoding.getItems().add(names[i]);
+               }
                if (! valid)
                   current = null;
                if (current != null)
@@ -1357,8 +1375,14 @@ public static class guiApp extends Application {
          if (slingbox_gui != null)
             slingbox_gui.updateConfig();
          try {
-            double centerDivider = jContentPane.getDividerPositions()[0];
+            double centerDivider0 = jContentPane.getDividerPositions()[0];
+            double centerDivider = jContentPane.getDividerPositions()[1];
             double bottomDivider = splitBottom.getDividerPositions()[0];
+            double helpDisplay = -1;
+            if (helpSplit.getItems().contains(helpTabPane)) {
+            	helpDisplay = helpSplit.getDividerPositions()[0];
+            }
+            progressPane.isExpanded();
             String tabName = tabbed_panel.getSelectionModel().getSelectedItem().getText();
             int width = (int)jFrame.getWidth(); if (width <0) width = 0;
             int height = (int)jFrame.getHeight(); if (height <0) height = 0;
@@ -1397,8 +1421,11 @@ public static class guiApp extends Application {
             ofp.write("<height>\n"              + height                     + "\n");
             ofp.write("<x>\n"                   + x                          + "\n");
             ofp.write("<y>\n"                   + y                          + "\n");
+            ofp.write("<centerDivider0>\n"      + centerDivider0             + "\n");
             ofp.write("<centerDivider>\n"       + centerDivider              + "\n");
             ofp.write("<bottomDivider>\n"       + bottomDivider              + "\n");
+            ofp.write("<progressExpanded>\n"    + (progressPane.isExpanded()?1:0) + "\n");
+            ofp.write("<helpDisplay>\n"         + helpDisplay                + "\n");
             if (remote_gui != null) {
                int tabIndex_r = remote_gui.tabbed_panel.getSelectionModel().getSelectedIndex();
                ofp.write("<tab_remote>\n"       + tabIndex_r                 + "\n");
@@ -1555,7 +1582,8 @@ public static class guiApp extends Application {
          int x = -1;
          int y = -1;
          int value;
-         double centerDivider = -1, bottomDivider = -1;
+         double centerDivider0 = -1, centerDivider = -1, bottomDivider = -1;
+         double helpDisplay = 0.75;
          BufferedReader ifp = new BufferedReader(new FileReader(config.gui_settings));
          String line = null;
          String key = null;
@@ -1743,6 +1771,13 @@ public static class guiApp extends Application {
                if (remote_gui != null)
                   remote_gui.getPanel().getSelectionModel().select(value);
             }
+            if (key.equals("centerDivider0")) {
+                try {
+                   centerDivider0 = Double.parseDouble(line);
+                } catch (NumberFormatException e) {
+                   centerDivider0 = -1;
+                }
+             }
             if (key.equals("centerDivider")) {
                try {
                   centerDivider = Double.parseDouble(line);
@@ -1756,6 +1791,19 @@ public static class guiApp extends Application {
                } catch (NumberFormatException e) {
                   bottomDivider = -1;
                }
+            }
+            if (key.equals("helpDisplay")) {
+                try {
+                   helpDisplay = Double.parseDouble(line);
+                } catch (NumberFormatException e) {
+                   helpDisplay = -1;
+                }
+            }
+            if (key.equals("progressExpanded")) {
+                if (line.matches("1"))
+                   progressPane.setExpanded(true);
+                else
+                   progressPane.setExpanded(false);
             }
             if (key.equals("tab")) {
                SetTivo(line);
@@ -1905,20 +1953,30 @@ public static class guiApp extends Application {
          }
          
          class backgroundRun implements Runnable {
-            double centerDivider, bottomDivider;
-            public backgroundRun(double centerDivider, double bottomDivider) {
+            double centerDivider0, centerDivider, bottomDivider, helpDisplay;
+            public backgroundRun(double centerDivider0,double centerDivider, double bottomDivider, double helpDisplay) {
+               this.centerDivider0 = centerDivider0;
                this.centerDivider = centerDivider;
                this.bottomDivider = bottomDivider;
+               this.helpDisplay = helpDisplay;
             }
             @Override public void run() {
-               if (centerDivider > 0 && centerDivider < 1)
-                  jContentPane.setDividerPosition(0, centerDivider);
+                if (centerDivider0 > 0 && centerDivider0 < 1)
+                    jContentPane.setDividerPosition(0, centerDivider0);
+                if (centerDivider > 0 && centerDivider < 1)
+                    jContentPane.setDividerPosition(1, centerDivider);
                
                if (bottomDivider > 0 && bottomDivider < 1)
                   splitBottom.setDividerPosition(0, bottomDivider);
+               
+               if (helpDisplay > 0 && helpDisplay < 1) {
+            	   helpSplit.setDividerPosition(0, helpDisplay);
+               } else if(helpDisplay < 0) {
+        		   helpSplit.getItems().remove(helpTabPane);
+               }
             }
          }
-         Platform.runLater(new backgroundRun(centerDivider, bottomDivider));
+         Platform.runLater(new backgroundRun(centerDivider0, centerDivider, bottomDivider, helpDisplay));
       }         
       catch (Exception ex) {
          log.warn("Problem parsing config file: " + config.gui_settings);
@@ -1965,6 +2023,12 @@ public static class guiApp extends Application {
       Platform.runLater(new Runnable() {
          @Override public void run() {
             jFrame.setTitle(s);
+            // also show status in the jobs pane title
+            if(s == null || s.equals(config.kmttg)) {
+            	progressPane.setText(bundle.getString("progressPane"));
+            } else {
+            	progressPane.setText(s);
+            }
          }
       });
    }
@@ -2156,5 +2220,21 @@ public static class guiApp extends Application {
       return(c);
    }
 
+   @FXML
+   public void helpToggleDisplayMenuItemCB() {
+	   if (!helpSplit.getItems().contains(helpTabPane)) {
+		   helpSplit.getItems().add(helpTabPane);
+		   helpSplit.setDividerPosition(0, 0.75);
+	   } else {
+		   helpSplit.getItems().remove(helpTabPane);
+	   }
+   }
+
+   @FXML
+   public void closeHelpCB(Event event) {
+	   helpSplit.getItems().remove(helpTabPane);
+	   // prevent the actual close of the tab
+	   event.consume();
+   }
 
 }

@@ -75,8 +75,8 @@ public class MyTooltip {
    public static Tooltip make(String text) {
       if (! initialized)
          init();
-      if (config.toolTips == 0)
-         return null;
+//      if (config.toolTips == 0)
+//         return null;
       Tooltip  tip = new Tooltip();
       tip.setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
       TextFlow tf = new TextFlow();
@@ -155,7 +155,9 @@ public class MyTooltip {
           }
           constructor.setAccessible(true);
           Object newTTBehaviour = constructor.newInstance(
-                  new Duration(openDelayInMillis), new Duration(visibleDurationInMillis), 
+//                  new Duration(openDelayInMillis),
+        		  Duration.INDEFINITE, // disable tooltip behavior permanently
+                  new Duration(visibleDurationInMillis), 
                   new Duration(closeDelayInMillis), false);
           if (newTTBehaviour == null) {
               // abort

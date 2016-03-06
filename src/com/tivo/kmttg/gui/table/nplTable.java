@@ -20,9 +20,11 @@ import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.SortEvent;
 import javafx.scene.control.TreeItem;
@@ -36,6 +38,7 @@ import javafx.scene.input.DragEvent;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.TransferMode;
+import javafx.scene.web.WebView;
 import javafx.util.Callback;
 
 import com.tivo.kmttg.JSON.JSONArray;
@@ -59,10 +62,9 @@ import com.tivo.kmttg.gui.sortable.sortableShow;
 import com.tivo.kmttg.gui.sortable.sortableSize;
 import com.tivo.kmttg.main.auto;
 import com.tivo.kmttg.main.config;
-import com.tivo.kmttg.main.jobData;
 import com.tivo.kmttg.main.jobMonitor;
+import com.tivo.kmttg.rpc.AutoSkip;
 import com.tivo.kmttg.rpc.Remote;
-import com.tivo.kmttg.rpc.SkipMode;
 import com.tivo.kmttg.rpc.rnpl;
 import com.tivo.kmttg.util.createMeta;
 import com.tivo.kmttg.util.debug;
@@ -678,13 +680,15 @@ public class nplTable extends TableMap {
          createMeta.getExtendedMetadata(tivoName, s.data, true);
       } else if (keyCode == KeyCode.T) {
          TableUtil.toggleTreeState(NowPlaying);
-      } else if (keyCode == KeyCode.X) {
-         if (SkipMode.isMonitoring()) {
+      }
+      /*else if (keyCode == KeyCode.X) {
+         if (AutoSkip.isMonitoring()) {
             log.print("Requested skip to 1st commercial point...");
-            SkipMode.jumpTo1st();
+            AutoSkip.jumpTo1st();
          }
-      } else if (keyCode == KeyCode.C) {
-         if (SkipMode.skipEnabled()) {
+      }
+      else if (keyCode == KeyCode.C) {
+         if (AutoSkip.skipEnabled()) {
             int[] selected = GetSelectedRows();
             if (selected == null || selected.length < 1)
                return;
@@ -701,11 +705,12 @@ public class nplTable extends TableMap {
                jobMonitor.submitNewJob(job);
             }
          }
-      } else if (keyCode == KeyCode.Z) {
-         if (SkipMode.skipEnabled()) {
-            if (SkipMode.isMonitoring()) {
-               log.print("Scheduling SkipMode disable");
-               SkipMode.disable();
+      }*/
+      else if (keyCode == KeyCode.Z) {
+         if (AutoSkip.skipEnabled()) {
+            if (AutoSkip.isMonitoring()) {
+               log.print("Scheduling AutoSkip disable");
+               AutoSkip.disable();
                return;
             }
             if (config.rpcEnabled(tivoName)) {
@@ -714,8 +719,8 @@ public class nplTable extends TableMap {
                   return;
                int row = selected[0];
                sortableDate s = NowPlaying.getTreeItem(row).getValue().getDATE();
-               log.print("Starting SkipMode");
-               SkipMode.skipPlay(tivoName, s.data);
+               log.print("Starting AutoSkip");
+               AutoSkip.skipPlay(tivoName, s.data);
             }
          }
       }
@@ -805,8 +810,18 @@ public class nplTable extends TableMap {
             log.warn("\n" + s.data.get("title"));
             log.print(message);
             
-            if (config.gui.show_details.isShowing() && s.data.containsKey("recordingId"))
+        	config.gui.plain_show_details.clear();
+        	config.gui.plain_show_details.warn(s.data.get("title"));
+        	config.gui.plain_show_details.print(message);
+        	
+            ObservableList<Node> children = config.gui.show_details_stack.getChildren();
+        	WebView simpleDetails = config.gui.plain_show_details.getPane();
+			if (config.gui.show_details.isShowing() && s.data.containsKey("recordingId")) {
+			   simpleDetails.setVisible(false);
                config.gui.show_details.update(NowPlaying, tivoName, s.data.get("recordingId"));
+            } else{
+               simpleDetails.setVisible(true);
+            }
          }
       }
    }
@@ -889,8 +904,8 @@ public class nplTable extends TableMap {
       if (h == null) return;
       
       // Update skipEntries
-      if (SkipMode.skipEnabled()) {
-         skipEntries = SkipMode.getEntries();
+      if (AutoSkip.skipEnabled()) {
+         skipEntries = AutoSkip.getEntries();
       }
       
       if (showFolders())
@@ -1512,8 +1527,8 @@ public class nplTable extends TableMap {
    // Identify NPL table items containing skip data
    public void updateSkipStatus(String contentId) {
       UpdatingNPL = true;
-      if (SkipMode.skipEnabled()) {
-         skipEntries = SkipMode.getEntries();
+      if (AutoSkip.skipEnabled()) {
+         skipEntries = AutoSkip.getEntries();
       }
       for (int row=0; row<NowPlaying.getExpandedItemCount(); row++) {
          sortableDate s = NowPlaying.getTreeItem(row).getValue().getDATE();
@@ -1552,13 +1567,13 @@ public class nplTable extends TableMap {
          }
       }
       
-      // If this offerId has an entry in skipmode.ini then mark with an asterisk
+      // If this offerId has an entry in AutoSkip.ini then mark with an S
       if (data.containsKey("offerId") && skipEntries != null) {
          for (int i=0; i<skipEntries.length(); ++i) {
             try {
                if (data.containsKey("offerId") && skipEntries.getJSONObject(i).has("offerId")) {
                   if (skipEntries.getJSONObject(i).getString("offerId").equals(data.get("offerId"))) {
-                     pct = "* " + pct;
+                     pct = "S " + pct;
                   }
                }
             } catch (JSONException e) {

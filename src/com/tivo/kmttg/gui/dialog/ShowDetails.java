@@ -33,7 +33,7 @@ import com.tivo.kmttg.util.log;
 
 public class ShowDetails implements Initializable {
    private ResourceBundle bundle = null;
-   private Stage dialog = null;
+//   private Stage dialog = null;
    @FXML private Label mainTitle = null;
    @FXML private Label subTitle = null;
    @FXML private Label time = null;
@@ -44,50 +44,50 @@ public class ShowDetails implements Initializable {
    @FXML private Label image = null;
    private double x=-1, y=-1;
 
-   private static ShowDetails singleton;
-   public static ShowDetails load(Stage frame) {
-	   if(singleton == null) {
-		   singleton = create(frame);
-	   }
-	   return singleton;
-   }
-   
-   private static ShowDetails create(Stage frame) {
-	   try {
-		   FXMLLoader loader = new FXMLLoader(configMain.class.getResource(
-				   "ShowDetails.fxml"));
-		   ResourceBundle bundle = ResourceBundle.getBundle("com.tivo.kmttg.gui.dialog.ShowDetails");
-		   loader.setResources(bundle);
-		   HBox content = loader.<HBox>load();
-		   
-		   // "initialize" fires here.
-		   
-		   Scene scene = new Scene(content);
-		   // save our official instance of configAuto
-		   ShowDetails controller = loader.<ShowDetails>getController();
-	      	  
-	     Stage dialog;
-         dialog = new Stage();
-		 controller.dialog = dialog;
-         dialog.setResizable(false);
-         dialog.setTitle(bundle.getString("dialog_title"));
-         dialog.initOwner(frame);
-         // This so we can restore original dialog position when re-opened
-         dialog.setOnCloseRequest(new EventHandler<WindowEvent>() {
-            @Override
-            public void handle(WindowEvent arg0) {
-               singleton.x = dialog.getX(); singleton.y = dialog.getY();
-            }
-         });
-         config.gui.setFontSize(scene, config.FontSize);
-         dialog.setScene(scene);
-         return controller;
-	   } catch (IOException e1) {
-		   // TODO Auto-generated catch block
-		   e1.printStackTrace();
-	   }
-	   return null;
-   }
+//   private static ShowDetails singleton;
+//   public static ShowDetails load(Stage frame) {
+//	   if(singleton == null) {
+//		   singleton = create(frame);
+//	   }
+//	   return singleton;
+//   }
+//   
+//   private static ShowDetails create(Stage frame) {
+//	   try {
+//		   FXMLLoader loader = new FXMLLoader(configMain.class.getResource(
+//				   "ShowDetails.fxml"));
+//		   ResourceBundle bundle = ResourceBundle.getBundle("com.tivo.kmttg.gui.dialog.ShowDetails");
+//		   loader.setResources(bundle);
+//		   HBox content = loader.<HBox>load();
+//		   
+//		   // "initialize" fires here.
+//		   
+//		   Scene scene = new Scene(content);
+//		   // save our official instance of configAuto
+//		   ShowDetails controller = loader.<ShowDetails>getController();
+//	      	  
+//	     Stage dialog;
+//         dialog = new Stage();
+////		 controller.dialog = dialog;
+//         dialog.setResizable(false);
+//         dialog.setTitle(bundle.getString("dialog_title"));
+//         dialog.initOwner(frame);
+//         // This so we can restore original dialog position when re-opened
+//         dialog.setOnCloseRequest(new EventHandler<WindowEvent>() {
+//            @Override
+//            public void handle(WindowEvent arg0) {
+//               singleton.x = dialog.getX(); singleton.y = dialog.getY();
+//            }
+//         });
+//         config.gui.setFontSize(scene, config.FontSize);
+//         dialog.setScene(scene);
+//         return controller;
+//	   } catch (IOException e1) {
+//		   // TODO Auto-generated catch block
+//		   e1.printStackTrace();
+//	   }
+//	   return null;
+//   }
    
    @Override
    public void initialize(URL location, ResourceBundle resources) {
@@ -365,11 +365,11 @@ public class ShowDetails implements Initializable {
                      log.error("ShowDetails update - " + e.getMessage());
                      return;
                   }
-                  dialog.sizeToScene();
-                  if (x != -1 && ! dialog.isShowing()) {
-                     dialog.setX(x); dialog.setY(y);
-                  }
-                  dialog.show();
+//                  dialog.sizeToScene();
+//                  if (x != -1 && ! dialog.isShowing()) {
+//                     dialog.setX(x); dialog.setY(y);
+//                  }
+//                  dialog.show();
                   Platform.runLater(new Runnable() {
                      @Override public void run() {
                         node.requestFocus();
@@ -401,7 +401,8 @@ public class ShowDetails implements Initializable {
    }
    
    public Boolean isShowing() {
-      return dialog.isShowing();
+	   return true;
+//      return dialog.isShowing();
    }
    
    private void setImage(JSONArray imageArray) {
