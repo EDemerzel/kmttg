@@ -1,10 +1,10 @@
 /* kmttg only changes to default settings */
-#button_job_start {-fx-background-color: #90EE90;} /* COLOR.LIGHTGREEN */
-#button_job_cancel {-fx-background-color: #FABEBE;} /* COLOR.LIGHTRED */
-#button_config_ok {-fx-background-color: #90EE90;} /* COLOR.LIGHTGREEN */
-#button_config_cancel {-fx-background-color: #FABEBE;} /* COLOR.LIGHTRED */
-#button_autoconfig_ok {-fx-background-color: #90EE90;} /* COLOR.LIGHTGREEN */
-#button_autoconfig_cancel {-fx-background-color: #FABEBE;} /* COLOR.LIGHTRED */
+#button_job_start {-fx-background-color: #409940, #409940, #90EE90;} /* COLOR.LIGHTGREEN */
+#button_job_cancel {-fx-background-color: #905959, #905959, #FABEBE;} /* COLOR.LIGHTRED */
+#button_config_ok {-fx-background-color: #409940, #409940, #90EE90;} /* COLOR.LIGHTGREEN */
+#button_config_cancel {-fx-background-color: #905959, #905959, #FABEBE;} /* COLOR.LIGHTRED */
+#button_autoconfig_ok {-fx-background-color: #409940, #409940, #90EE90;} /* COLOR.LIGHTGREEN */
+#button_autoconfig_cancel {-fx-background-color: #905959, #905959, #FABEBE;} /* COLOR.LIGHTRED */
 #progressbar_job {-fx-accent: #90EE90; -fx-background-color: gray;}
 
 .check-box .box {
@@ -60,6 +60,16 @@
 .show_details_other {-fx-background-color: #10004C; -fx-text-fill: #CCCCCC; -fx-font-weight: bold;} /* light grey */
 
 .tooltips {-fx-background-color: #fff7c8;} /* beige */
+/* color the tab to match the tooltip content */
+.tooltips .tab {
+    -fx-background-color: #a3a7a8,#fff7c8;
+} /* except this isn't working in david's exe, just in the preview */
+
+/* give a content top border to all tabs */
+.tab-header-background {
+    -fx-border-color: #a3a7a8;  
+    -fx-border-width: 0 0 1 0;  
+}
 
 /* TreeTableView border colors and even/odd background coloring */
 .tree-table-row-cell {
@@ -91,7 +101,14 @@
     -fx-background-color: -fx-background;
 }
 
-/* don't hover-highlight this titled-pane since it doesn't do anything on click */ 
+/* Don't hover-highlight this titled-pane since it doesn't do anything on click.
+ * Also, display it more subtly, less like a basic titled-pane.
+ */ 
 #startPane:hover > .title {
     -fx-color: -fx-base;
+}
+#startPane > .title {
+    -fx-font-size: 8;
+    -fx-alignment: center;
+    -fx-background-color:-fx-base,#90EE90,-fx-base;
 }
