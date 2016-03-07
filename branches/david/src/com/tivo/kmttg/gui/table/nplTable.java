@@ -814,13 +814,13 @@ public class nplTable extends TableMap {
         	config.gui.plain_show_details.warn(s.data.get("title"));
         	config.gui.plain_show_details.print(message);
         	
-            ObservableList<Node> children = config.gui.show_details_stack.getChildren();
         	WebView simpleDetails = config.gui.plain_show_details.getPane();
 			if (config.gui.show_details.isShowing() && s.data.containsKey("recordingId")) {
-			   simpleDetails.setVisible(false);
+			   // the null case of showDetails is the main show_details node.
+			   config.gui.showDetails(null);
                config.gui.show_details.update(NowPlaying, tivoName, s.data.get("recordingId"));
             } else{
-               simpleDetails.setVisible(true);
+			   config.gui.showDetails(simpleDetails);
             }
          }
       }

@@ -168,7 +168,7 @@ public class gui implements Initializable {
    public remotegui remote_gui = null;
    public slingboxgui  slingbox_gui = null;
 
-   @FXML public StackPane show_details_stack = null;
+   @FXML private StackPane show_details_stack = null;
    @FXML private HBox showDetails = null;
    @FXML private ShowDetails showDetailsController = null;
    public ShowDetails show_details = null;
@@ -2240,5 +2240,32 @@ public static class guiApp extends Application {
 	   // prevent the actual close of the tab
 	   event.consume();
    }
+
+   	/**
+	 * Show details area can show the fancy {@link ShowDetails}, a plain web
+	 * view details, or a particular tivo's free space. This method will
+	 * actually add any arbitrary content if not present, show that content and
+	 * hide the rest of it.
+	 * 
+	 * @param content
+	 *            if null, uses the showDetails instance.
+	 */
+	public void showDetails(Node content) {
+		if (content == null) {
+			content = showDetails;
+		}
+		boolean foundChild = false;
+		for (Node child : show_details_stack.getChildren()) {
+			if (child == content) {
+				foundChild = true;
+			} else {
+				child.setVisible(false);
+			}
+		}
+		if(!foundChild) {
+			show_details_stack.getChildren().add(content);
+		}
+		content.setVisible(true);
+	}
 
 }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?scenebuilder-preview-i18n-resource gui.properties?>
+<?scenebuilder-stylesheet ../../../../../release/css/kmttg.css?>
 
 <?import javafx.scene.layout.VBox?>
 <?import javafx.geometry.Insets?>
@@ -80,10 +81,11 @@
 <SplitPane orientation="HORIZONTAL" dividerPositions=".75" fx:id="helpSplit">
 <SplitPane fx:id="jContentPane" dividerPositions=".5,1.00" orientation="VERTICAL">
     <HBox>
-     <StackPane fx:id="show_details_stack" HBox.hgrow="SOMETIMES">
+     <StackPane fx:id="show_details_stack" HBox.hgrow="SOMETIMES" maxWidth="600">
         <fx:include fx:id="showDetails" source="dialog/ShowDetails.fxml" />
         <!-- resources="com.tivo.kmttg.gui.dialog.ShowDetails"  buggy javafx feature - instead we're including its properties content in the gui.properties ??? -->
         <WebView fx:id="plain_show_details_view" />
+        <!-- Tivo-specific graphs are dynamically added -->
      </StackPane>
     <TitledPane id="startPane" text="%startPane" collapsible="false" expanded="true" HBox.hgrow="SOMETIMES">
       <VBox>
@@ -135,7 +137,7 @@
         </VBox>
      </ScrollPane>
      <HBox>
-     <padding><Insets top="1" right="5" bottom="1" left="5"/></padding>
+     <padding><Insets top="2" right="5" bottom="2" left="5"/></padding>
             <Button fx:id="start" onAction="#startCB" id="button_job_start" text="%start" prefWidth="1000">
             <padding><Insets top="1" right="2" bottom="1" left="2"/></padding>
             </Button>
@@ -181,8 +183,7 @@
         <SplitPane fx:id="splitBottom" dividerPositions="0.55" orientation="VERTICAL">
             <ScrollPane fx:id="jobPane" fitToHeight="true" fitToWidth="true">
             </ScrollPane>
-            <WebView fx:id="text">
-            </WebView>
+            <WebView fx:id="text" />
         </SplitPane>
         </VBox>
     </TitledPane>

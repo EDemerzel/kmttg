@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.net.URL;
 import java.text.MessageFormat;
+import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.ResourceBundle;
 import java.util.Stack;
@@ -14,6 +15,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Label;
@@ -34,7 +36,7 @@ import com.tivo.kmttg.util.string;
 public class freeSpace implements Initializable {
    private String tivoName = null;
    private Stage frame = null;
-   private Stage dialog = null;
+//   private Stage dialog = null;
    @FXML private TextField space = null;
    private bitrateTable tab = null;
    @FXML private Label totals1 = null;
@@ -46,29 +48,49 @@ public class freeSpace implements Initializable {
    @FXML private ScrollPane tabScroll = null;
    
    private ResourceBundle bundle;
+   private static HashMap<String, ScrollPane> graphs = new HashMap<String, ScrollPane>();
    
-   public static freeSpace display(String tivoName, Stage frame) {
-	   freeSpace result;
-	   
+   public static void display(String tivoName, Stage frame) {
 	   try {
-		   FXMLLoader loader = new FXMLLoader(freeSpace.class.getResource(
-				   "freeSpace.fxml"));
-		   // this controller must be instantiated here to initialize key information.
-		   result = new freeSpace(tivoName, frame);
-		   loader.setController(result);
-		   
-		   ResourceBundle bundle = ResourceBundle.getBundle("com.tivo.kmttg.gui.dialog.freeSpace");
-		   loader.setResources(bundle);
-		   VBox content = loader.<VBox>load();
+		   ScrollPane scrollContent;
+		   synchronized(graphs) {
+			   if (graphs.get(tivoName) == null) {
+				   // don't do anything if the data isn't loaded yet.
+				   Stack<Hashtable<String,String>> entries = config.gui.getTab(tivoName).getTable().getEntries();
+				   if (entries == null) {
+					   scrollContent = null;
+				   } else {
 
-		   // create and display dialog window
-		   Stage dialog = new Stage();
-		   dialog.initOwner(frame);
-		   dialog.setTitle(MessageFormat.format(bundle.getString("dialog_title"), tivoName));
-		   dialog.setScene(new Scene(content));
-		   config.gui.setFontSize(dialog.getScene(), config.FontSize);
-		   result.dialog = dialog;
-		   result.dialog.show();
+					   FXMLLoader loader = new FXMLLoader(freeSpace.class.getResource(
+							   "freeSpace.fxml"));
+					   // this controller must be instantiated here to initialize key information.
+					   freeSpace controller = new freeSpace(tivoName, frame);
+					   loader.setController(controller);
+
+					   ResourceBundle bundle = ResourceBundle.getBundle("com.tivo.kmttg.gui.dialog.freeSpace");
+					   loader.setResources(bundle);
+					   VBox content = loader.<VBox>load();
+
+					   scrollContent = new ScrollPane(content);
+					   scrollContent.setFitToWidth(true);
+					   graphs.put(tivoName, scrollContent);
+				   }
+			   } else {
+				   scrollContent = graphs.get(tivoName);
+			   }
+		   }
+		   if(scrollContent != null) {
+			   config.gui.showDetails(scrollContent);
+		   }
+		   
+//		   // create and display dialog window
+//		   Stage dialog = new Stage();
+//		   dialog.initOwner(frame);
+//		   dialog.setTitle(MessageFormat.format(bundle.getString("dialog_title"), tivoName));
+//		   dialog.setScene(new Scene(content));
+//		   config.gui.setFontSize(dialog.getScene(), config.FontSize);
+//		   result.dialog = dialog;
+//		   result.dialog.show();
 	   } catch (IOException e1) {
 		   final StringWriter sw = new StringWriter();
 		   final PrintWriter pw = new PrintWriter(sw, true);
@@ -76,9 +98,7 @@ public class freeSpace implements Initializable {
 		   config.gui.text_error(sw.getBuffer().toString());
 		   // TODO Auto-generated catch block
 		   e1.printStackTrace();
-		   result = null;
 	   }
-	   return result;
    }
    private freeSpace(String tivoName, Stage frame) {
       this.tivoName = tivoName;
@@ -272,7 +292,7 @@ public class freeSpace implements Initializable {
    }  
    
    public void destroy() {
-      if (dialog != null) dialog.close();
+//      if (dialog != null) dialog.close();
       chanData.clear();
       totalsData.clear();
    }

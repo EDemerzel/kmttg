@@ -19,9 +19,9 @@
      styleClass="piechart_shows" title="%chart">
         <!-- prefWidth = frame.getWidth -->
     </PieChart>
-    <Label fx:id="totals1" alignment="CENTER_LEFT"
+    <Label fx:id="totals1" alignment="CENTER_LEFT" wrapText="true"
      styleClass="piechart_shows"/>
-    <Label fx:id="totals2" alignment="CENTER_LEFT"
+    <Label fx:id="totals2" alignment="CENTER_LEFT" wrapText="true"
      styleClass="piechart_shows"/>
     
     <ScrollPane fx:id="tabScroll" prefHeight="200" fitToHeight="true" fitToWidth="true">
