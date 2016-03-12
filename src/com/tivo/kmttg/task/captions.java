@@ -2,6 +2,7 @@ package com.tivo.kmttg.task;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Hashtable;
 import java.util.Stack;
 
 import com.tivo.kmttg.main.config;
@@ -11,6 +12,7 @@ import com.tivo.kmttg.util.backgroundProcess;
 import com.tivo.kmttg.util.debug;
 import com.tivo.kmttg.util.file;
 import com.tivo.kmttg.util.log;
+import com.tivo.kmttg.util.mediainfo;
 import com.tivo.kmttg.util.string;
 
 public class captions extends baseTask implements Serializable {
@@ -19,6 +21,7 @@ public class captions extends baseTask implements Serializable {
    private backgroundProcess process;
    private jobData job;
    private String executable;
+   private Boolean try_again = false;
 
    // constructor
    public captions(jobData job) {
@@ -133,6 +136,26 @@ public class captions extends baseTask implements Serializable {
     	  command.add(config.ccextractor);
     	  log.print(">> Running ccextractor on " + job.videoFile + " ...");
       }
+      if (executable.equals("ccextractor")) {
+         // Collect mediainfo information when possible to add arguments if only EIA-708 captions present
+         if (file.isFile(config.mediainfo)) {
+            Hashtable<String,String> info = mediainfo.getVideoInfo(job.videoFile);
+            if (info != null) {
+               if (try_again || (! info.containsKey("EIA-608") && info.containsKey("EIA-708"))) {
+                  try_again = true;
+                  // EIA-708 captions require special options
+                  // -autoprogram  -out=srt -bom -latin1 --nofontcolor -svc 1
+                  command.add("-autoprogram");
+                  command.add("-out=srt");
+                  command.add("-bom");
+                  command.add("-latin1");
+                  command.add("--nofontcolor");
+                  command.add("-svc");
+                  command.add("1");
+               }
+            }
+         }
+      }
       command.add(job.videoFile);
       process = new backgroundProcess();
       if ( process.run(command) ) {
@@ -141,7 +164,7 @@ public class captions extends baseTask implements Serializable {
          log.error("Failed to start command: " + process.toString());
          process.printStderr();
          process = null;
-         jobMonitor.removeFromJobList(job);
+         jobMonitor.kill(job);
          return false;
       }
       return true;
@@ -171,15 +194,20 @@ public class captions extends baseTask implements Serializable {
             }
          }
         return true;
-      } else {
-         // Job finished         
-         jobMonitor.removeFromJobList(job);
-         
+      } else {         
          // Check for problems
          int failed = 0;
          // No or empty srtFile means problems
          if ( ! file.isFile(srtFile) || file.isEmpty(srtFile) ) {
             failed = 1;
+         }
+         
+         if (failed == 0) {
+            // Very small file means problems
+            if (file.size(srtFile) < 1000) {
+               log.error("srt file size < 1000 probably means a problem");
+               failed = 1;
+            }
          }
          
          // exit code != 0 => trouble
@@ -188,9 +216,22 @@ public class captions extends baseTask implements Serializable {
          }
          
          if (failed == 1) {
-            log.error(executable + " failed (exit code: " + exit_code + " ) - check command: " + process.toString());
-            process.printStderr();
+            if (try_again || ! executable.equals("ccextractor")) {
+               log.error(executable + " failed (exit code: " + exit_code + " ) - check command: " + process.toString());
+               process.printStderr();
+            } else {
+               try_again = true;
+               log.warn("Trying ccextractor again with different options");
+               if ( start() ) {
+                  job.process = this;
+                  jobMonitor.updateJobStatus(job, "running");
+                  job.time = new Date().getTime();
+                  return true;
+               }
+            }
+            jobMonitor.removeFromJobList(job);
          } else {
+            jobMonitor.removeFromJobList(job);
             log.warn(executable + " job completed: " + jobMonitor.getElapsedTime(job.time));
             log.print("---DONE--- job=" + job.type + " output=" + job.srtFile);
             // Rename srtFile to job.srtFile if they are different
