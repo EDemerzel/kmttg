@@ -7,6 +7,7 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -195,6 +196,7 @@ public class Pushes {
       dialog.initOwner(frame);
       dialog.setTitle("Push Queue");
       Scene scene = new Scene(new VBox());
+  	  scene.addEventFilter(MouseEvent.MOUSE_ENTERED_TARGET, config.gui.contextHelpMouseEventHandler);
       config.gui.setFontSize(scene, config.FontSize);
       ((VBox) scene.getRoot()).getChildren().add(content);
       dialog.setScene(scene);

@@ -21,6 +21,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
@@ -163,6 +164,7 @@ public class configAuto implements Initializable {
     	  loader.setResources(bundle);
     	  configAuto_fxml = loader.<Parent>load();
       	  Scene scene = new Scene(configAuto_fxml);
+      	  scene.addEventFilter(MouseEvent.MOUSE_ENTERED_TARGET, config.gui.contextHelpMouseEventHandler);
       	  // save our official instance of configAuto
       	  singleton = loader.<configAuto>getController();
       	  
