@@ -2038,6 +2038,7 @@ public class configMain implements Initializable {
     	  loader.setResources(bundle);
     	  configMain_fxml = loader.<Parent>load();
       	  Scene scene = new Scene(configMain_fxml);
+      	  scene.addEventFilter(MouseEvent.MOUSE_ENTERED_TARGET, config.gui.contextHelpMouseEventHandler);
       	  // save our official instance of configAuto
       	  singleton = loader.<configMain>getController();
       	  

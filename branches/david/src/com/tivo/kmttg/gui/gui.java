@@ -8,6 +8,7 @@ import java.io.FileWriter;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.net.URL;
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -211,6 +212,8 @@ public static class guiApp extends Application {
     	  // config.gui is set to the controller instance during that initialize
     	  
     	  Scene scene = new Scene(gui_fxml);
+    	  // new help tooltip handler
+    	  scene.addEventFilter(MouseEvent.MOUSE_ENTERED_TARGET, config.gui.contextHelpMouseEventHandler);	   
     	  config.gui.jFrame = stage;
 //    	  Scene scene = new Scene(new VBox());
 
@@ -239,23 +242,26 @@ public static class guiApp extends Application {
       // adjust the main canvas components
       getContentPane();
    }
+
+   /**
+    * Handler applied to every scene containing tooltips to view in the help area.
+    */
+   public EventHandler<MouseEvent> contextHelpMouseEventHandler = new EventHandler<MouseEvent>() {
+	    @Override
+	    public void handle(MouseEvent mouseEvent) {
+	    	if (helpTabPane != null && helpTabPane.getTabs().size() > 0) {
+	    		EventTarget target = mouseEvent.getTarget();
+	    		if (target != null && target instanceof Control) {
+	    			Tooltip tooltip = ((Control) target).getTooltip();
+	    			if (tooltip != null) {
+	    				helpTabPane.getTabs().get(0).setContent(tooltip.getGraphic());
+	    			}
+	    		}
+	    	}
+	    }
+	};
    
    public void initializeScene(Stage stage, Scene scene) {
-	   // new help tooltip handler
-	   scene.addEventFilter(MouseEvent.MOUSE_ENTERED_TARGET, new EventHandler<MouseEvent>() {
-		    @Override
-		    public void handle(MouseEvent mouseEvent) {
-		    	if (helpTabPane != null && helpTabPane.getTabs().size() > 0) {
-		    		EventTarget target = mouseEvent.getTarget();
-		    		if (target != null && target instanceof Control) {
-		    			Tooltip tooltip = ((Control) target).getTooltip();
-		    			if (tooltip != null) {
-		    				helpTabPane.getTabs().get(0).setContent(tooltip.getGraphic());
-		    			}
-		    		}
-		    	}
-		    }
-		});	   
             
       // Add additional rpc remote tab
       remote_gui = new remotegui(jFrame);
@@ -533,7 +539,7 @@ public static class guiApp extends Application {
          // Encoding description label
          String description = "";
          if (encodeConfig.getValidEncodeNames().size() > 0) {
-            description = "  " + encodeConfig.getDescription(encodeConfig.getEncodeName());
+        	 description = MessageFormat.format(bundle.getString("encoding_description_label"), encodeConfig.getEncodeName(), encodeConfig.getDescription(encodeConfig.getEncodeName()), encodeConfig.getExtension(encodeConfig.getEncodeName()), encodeConfig.getCommandName(encodeConfig.getEncodeName()));
          }
          encoding_description_label.setText(description);
          
@@ -1107,9 +1113,9 @@ public static class guiApp extends Application {
     	  return;
       }
       config.encodeName = encodeName;
-      String description = encodeConfig.getDescription(encodeName);
+ 	  String description = MessageFormat.format(bundle.getString("encoding_description_label"), encodeConfig.getEncodeName(), encodeConfig.getDescription(encodeConfig.getEncodeName()), encodeConfig.getExtension(encodeConfig.getEncodeName()), encodeConfig.getCommandName(encodeConfig.getEncodeName()));
       // Set encoding_description_label accordingly
-      encoding_description_label.setText("  " + description);
+      encoding_description_label.setText(description);
    }
  
    // Cancel button callback

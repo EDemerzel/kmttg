@@ -27,6 +27,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.Tooltip;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -352,7 +353,9 @@ public class AdvSearch {
       });
 
       dialog.setTitle("Advanced Search");
-      dialog.setScene(new Scene(content));
+      Scene scene = new Scene(content);
+  	  scene.addEventFilter(MouseEvent.MOUSE_ENTERED_TARGET, config.gui.contextHelpMouseEventHandler);
+  	  dialog.setScene(scene);
       config.gui.setFontSize(dialog.getScene(), config.FontSize);
       dialog.initOwner(frame);
       dialog.show();

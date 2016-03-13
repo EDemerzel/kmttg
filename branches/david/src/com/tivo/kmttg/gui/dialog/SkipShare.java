@@ -15,6 +15,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
@@ -193,6 +194,7 @@ public class SkipShare {
       dialog.initOwner(frame);
       dialog.setTitle("Skip Share Import");
       Scene scene = new Scene(new VBox());
+  	  scene.addEventFilter(MouseEvent.MOUSE_ENTERED_TARGET, config.gui.contextHelpMouseEventHandler);
       config.gui.setFontSize(scene, config.FontSize);
       ((VBox) scene.getRoot()).getChildren().add(content);
       dialog.setScene(scene);
