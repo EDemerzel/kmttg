@@ -391,6 +391,17 @@
 	  	
   	</GridPane>
   </Tab>
+  <Tab text="%tab_autoskip">
+    <GridPane alignment="CENTER" vgap="5" hgap="5">
+    <Button fx:id="autoskip_doc" text="%autoskip_doc" GridPane.columnIndex="1" GridPane.rowIndex="0"
+    onAction="#autoskip_docCB"/>
+    <CheckBox fx:id="autoskip_enabled" text="%autoskip_enabled" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+    <CheckBox fx:id="autoskip_import" text="%autoskip_import" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+    <CheckBox fx:id="autoskip_prune" text="%autoskip_prune" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+    <Label text="%autoskip_padding" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+    <TextField fx:id="autoskip_padding" prefWidth="15" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+    </GridPane>
+  </Tab>
  </TabPane>
  <!--  common_panel -->
  <HBox alignment="CENTER" spacing="50">

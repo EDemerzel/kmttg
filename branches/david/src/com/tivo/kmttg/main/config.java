@@ -17,13 +17,12 @@ import java.util.Stack;
 import javafx.scene.paint.Color;
 
 import com.tivo.kmttg.rpc.Remote;
-import com.tivo.kmttg.rpc.SkipService;
 import com.tivo.kmttg.util.*;
 import com.tivo.kmttg.gui.gui;
 import com.tivo.kmttg.httpserver.kmttgServer;
 
 public class config {
-   public static String kmttg = "kmttg v2.1m_branch";
+   public static String kmttg = "kmttg v2.1n_branch";
    
    // encoding related
    public static String encProfDir = "";
@@ -217,8 +216,11 @@ public class config {
    public static int httpserver_share_filter = 0;
    public static LinkedHashMap<String,String> httpserver_shares = new LinkedHashMap<String,String>();
    
-   // SkipService related
-   public static SkipService skipService = null;
+   // autoskip related
+   public static int autoskip_enabled = 1;
+   public static int autoskip_import = 1;
+   public static int autoskip_prune = 0;
+   public static int autoskip_padding = 0;
    
    public static Stack<String> parse() {
       debug.print("");
@@ -990,10 +992,9 @@ public class config {
             if (key.equals("single_download")) {
                single_download = Integer.parseInt(string.removeLeadingTrailingSpaces(line));
             }
-            /* Intentionally disabled
             if (key.equals("persistQueue")) {
                 persistQueue = Boolean.parseBoolean(string.removeLeadingTrailingSpaces(line));
-             }*/
+            }
             if (key.equals("outputDir")) {
                outputDir = line;
             }
@@ -1159,6 +1160,18 @@ public class config {
             }
             if (key.equals("download_delay")) {
                download_delay = Integer.parseInt(string.removeLeadingTrailingSpaces(line));
+            }
+            if (key.equals("autoskip_enabled")) {
+               autoskip_enabled = Integer.parseInt(string.removeLeadingTrailingSpaces(line));
+            }
+            if (key.equals("autoskip_import")) {
+               autoskip_import = Integer.parseInt(string.removeLeadingTrailingSpaces(line));
+            }
+            if (key.equals("autoskip_prune")) {
+               autoskip_prune = Integer.parseInt(string.removeLeadingTrailingSpaces(line));
+            }
+            if (key.equals("autoskip_padding")) {
+               autoskip_padding = Integer.parseInt(string.removeLeadingTrailingSpaces(line));
             }
             if (key.equals("download_time_estimate")) {
                download_time_estimate = Integer.parseInt(string.removeLeadingTrailingSpaces(line));
@@ -1327,7 +1340,7 @@ public class config {
          
          ofp.write("<single_download>\n" + single_download + "\n\n");
          
-         // Intentionally disabled ofp.write("<persistQueue>\n" + persistQueue + "\n\n");
+         ofp.write("<persistQueue>\n" + persistQueue + "\n\n");
          
          ofp.write("<tivoFileNameFormat>\n" + tivoFileNameFormat + "\n\n");
          
@@ -1423,6 +1436,14 @@ public class config {
          ofp.write("<download_time_estimate>\n" + download_time_estimate + "\n\n");
          
          ofp.write("<download_check_length>\n" + download_check_length + "\n\n");
+         
+         ofp.write("<autoskip_enabled>\n" + autoskip_enabled + "\n\n");
+         
+         ofp.write("<autoskip_import>\n" + autoskip_import + "\n\n");
+         
+         ofp.write("<autoskip_prune>\n" + autoskip_prune + "\n\n");
+         
+         ofp.write("<autoskip_padding>\n" + autoskip_padding + "\n\n");
          
          ofp.write("<autoLogSizeMB>\n" + autoLogSizeMB + "\n\n");
          

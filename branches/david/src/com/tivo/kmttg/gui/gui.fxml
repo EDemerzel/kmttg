@@ -43,7 +43,9 @@
         <MenuItem fx:id="searchMenuItem" onAction="#searchMenuItemCB" text="%searchMenuItem" accelerator="Shortcut+F" />
         <!-- if config.rpcEnabled() && AutoSkip.skipEnabled() -->
             <MenuItem fx:id="autoSkipMenuItem" onAction="#autoSkipMenuItemCB" text="%autoSkipMenuItem" />
-            <CheckMenuItem fx:id="skipServiceMenuItem" onAction="#skipServiceMenuItemCB" text="%skipServiceMenuItem" />
+            <Menu fx:id="autoSkipServiceMenu" text="%autoSkipServiceMenu">
+                <!-- dynamically added tivo names as checkmenuitems -->
+            </Menu>
 <!-- this menu item gets detached no matter what -->
 <MenuItem fx:id="thumbsMenuItem" onAction="#thumbsMenuItemCB" text="%thumbsMenuItem" accelerator="Shortcut+T" />
         <MenuItem onAction="#exitMenuItemCB" text="%exitMenuItem" />

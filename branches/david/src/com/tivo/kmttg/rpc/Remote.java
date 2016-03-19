@@ -913,7 +913,7 @@ public class Remote {
 
       try {
          JSONObject json = new JSONObject();
-         json.put("count", count);
+         //json.put("count", count);
          json.put("flatten", true);
          JSONArray items = new JSONArray();
          while (! stop) {
@@ -921,6 +921,7 @@ public class Remote {
             result = Command("MyShows", json);
             if (result != null && result.has("recordingFolderItem")) {
                JSONArray a = result.getJSONArray("recordingFolderItem");
+               count = a.length();
                for (int i=0; i<a.length(); ++i) {
                   JSONObject j = a.getJSONObject(i);
                   // Single item
@@ -928,7 +929,7 @@ public class Remote {
                   if (! unique.containsKey(id))
                      items.put(j);
                } // for i
-               if (a.length() < count)
+               if (count == 0)
                   stop = true;
             } else {
                stop = true;
@@ -2978,6 +2979,47 @@ public class Remote {
          }
       };
       new Thread(task).start();
+   }
+   
+   // RPC query for tivo.com SKIP data based on contentId
+   public void getClipData(String contentId) {
+      try {
+         JSONObject json = new JSONObject();
+         json.put("contentId", contentId);
+         JSONObject result = Command("clipMetadataSearch", json);
+         if (result != null && result.has("clipMetadata")) {
+            JSONArray clipId = new JSONArray();
+            JSONArray clipMetadata = result.getJSONArray("clipMetadata");
+            for (int i=0; i<clipMetadata.length(); ++i) {
+               JSONObject clip = clipMetadata.getJSONObject(i);
+               clipId.put(clip.getString("clipMetadataId"));
+            }
+            json.remove("contentId");
+            json.put("clipMetadataId", clipId);
+            result = Command("clipMetadataSearch", json);
+            if (result != null && result.has("clipMetadata")) {
+               clipMetadata = result.getJSONArray("clipMetadata");
+               log.warn(
+                  "\nSKIP data available for contentId: " + contentId +
+                  " (entries=" + clipMetadata.length() + ")"
+               );
+               for (int i=0; i<clipMetadata.length(); ++i) {
+                  JSONObject data = result.getJSONArray("clipMetadata").getJSONObject(i);
+                  if (data.has("syncMark"))
+                     data.remove("syncMark");
+                  data.put("syncMark", "<syncMark array removed for display purposes>");
+                  log.print(data.toString(3));
+               }
+            } else {
+               log.warn("\nSKIP data not available for contentId: " + contentId);
+            }
+         } else {
+            log.warn("\nSKIP data not available for contentId: " + contentId);
+         }
+      } catch (JSONException e) {
+         log.error("getClipData - " + e.getMessage());
+      }
+      disconnect();
    }
       
    private void print(String message) {

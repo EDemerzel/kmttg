@@ -63,8 +63,8 @@ import com.tivo.kmttg.gui.sortable.sortableSize;
 import com.tivo.kmttg.main.auto;
 import com.tivo.kmttg.main.config;
 import com.tivo.kmttg.main.jobMonitor;
-import com.tivo.kmttg.rpc.AutoSkip;
 import com.tivo.kmttg.rpc.Remote;
+import com.tivo.kmttg.rpc.SkipManager;
 import com.tivo.kmttg.rpc.rnpl;
 import com.tivo.kmttg.util.createMeta;
 import com.tivo.kmttg.util.debug;
@@ -678,6 +678,26 @@ public class nplTable extends TableMap {
          int row = selected[0];
          sortableDate s = NowPlaying.getTreeItem(row).getValue().getDATE();
          createMeta.getExtendedMetadata(tivoName, s.data, true);
+      } else if (keyCode == KeyCode.K) {
+         int[] selected = GetSelectedRows();
+         if (selected == null || selected.length < 1)
+            return;
+         int row = selected[0];
+         sortableDate s = NowPlaying.getTreeItem(row).getValue().getDATE();
+         if (s.data.containsKey("contentId")) {
+            final String contentId = s.data.get("contentId");
+            Task<Void> task = new Task<Void>() {
+               @Override public Void call() {
+                  Remote r = config.initRemote(tivoName);
+                  if (r.success) {
+                     r.getClipData(contentId);
+                     r.disconnect();
+                  }
+                  return null;
+               }
+            };
+            new Thread(task).start();            
+         }
       } else if (keyCode == KeyCode.T) {
          TableUtil.toggleTreeState(NowPlaying);
       }
@@ -717,10 +737,10 @@ public class nplTable extends TableMap {
          }
       }*/
       else if (keyCode == KeyCode.Z) {
-         if (AutoSkip.skipEnabled()) {
-            if (AutoSkip.isMonitoring()) {
+         if (SkipManager.skipEnabled()) {
+            if (SkipManager.isMonitoring(tivoName)) {
                log.print("Scheduling AutoSkip disable");
-               AutoSkip.disable();
+               SkipManager.disable(tivoName);
                return;
             }
             if (config.rpcEnabled(tivoName)) {
@@ -730,7 +750,7 @@ public class nplTable extends TableMap {
                int row = selected[0];
                sortableDate s = NowPlaying.getTreeItem(row).getValue().getDATE();
                log.print("Starting AutoSkip");
-               AutoSkip.skipPlay(tivoName, s.data);
+               SkipManager.skipPlay(tivoName, s.data);
             }
          }
       }
@@ -914,8 +934,8 @@ public class nplTable extends TableMap {
       if (h == null) return;
       
       // Update skipEntries
-      if (AutoSkip.skipEnabled()) {
-         skipEntries = AutoSkip.getEntries();
+      if (SkipManager.skipEnabled()) {
+         skipEntries = SkipManager.getEntries();
       }
       
       if (showFolders())
@@ -1537,8 +1557,8 @@ public class nplTable extends TableMap {
    // Identify NPL table items containing skip data
    public void updateSkipStatus(String contentId) {
       UpdatingNPL = true;
-      if (AutoSkip.skipEnabled()) {
-         skipEntries = AutoSkip.getEntries();
+      if (SkipManager.skipEnabled()) {
+         skipEntries = SkipManager.getEntries();
       }
       for (int row=0; row<NowPlaying.getExpandedItemCount(); row++) {
          sortableDate s = NowPlaying.getTreeItem(row).getValue().getDATE();
