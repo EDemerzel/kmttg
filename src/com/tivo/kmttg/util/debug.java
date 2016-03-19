@@ -50,9 +50,11 @@ public class debug {
             output = ">>> [UNKNOWN CALLER]: " + msg;
          }
          System.out.println(output);
+         System.out.flush();
          if (ofp != null) {
             try {
                ofp.write(output + "\n");
+               ofp.flush();
             } catch (IOException e) {
                e.printStackTrace();
             }
