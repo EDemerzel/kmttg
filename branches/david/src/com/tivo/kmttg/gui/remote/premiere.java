@@ -5,8 +5,10 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Hashtable;
+import java.util.ResourceBundle;
 import java.util.Stack;
 
 import javafx.beans.value.ChangeListener;
@@ -15,6 +17,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
@@ -41,30 +45,35 @@ import com.tivo.kmttg.rpc.Remote;
 import com.tivo.kmttg.util.file;
 import com.tivo.kmttg.util.log;
 
-public class premiere {
-   public VBox panel = null;
+public class premiere implements Initializable {
+   @FXML public VBox panel = null;
    public premiereTable tab = null;   
-   public ChoiceBox<String> tivo = null;
-   public ChoiceBox<String> days = null;
-   public MyListView channels = null;
+   @FXML public ChoiceBox<String> tivo = null;
+   @FXML public ChoiceBox<String> days = null;
+   @FXML public MyListView channels = null;
    public Hashtable<String,JSONArray> channel_info = new Hashtable<String,JSONArray>();
-   public Button record = null;
-   public Button recordSP = null;
-   public Button wishlist = null;
+   @FXML public Button record = null;
+   @FXML public Button recordSP = null;
+   @FXML public Button wishlist = null;
+   
+   @FXML private Button refresh;
+   @FXML private Button channels_update;
+   @FXML private GridPane row2;
 
-   public premiere(final Stage frame) {
+   @Override
+   public void initialize(URL location, ResourceBundle resources) {
       
-      // Premiere tab items            
-      HBox row1 = new HBox();
-      row1.setSpacing(5);
-      row1.setAlignment(Pos.CENTER_LEFT);
-      row1.setPadding(new Insets(5,0,0,5));
-      
-      Label title = new Label("Season Premieres");
-      
-      Label tivo_label = new Label();
-      
-      tivo = new ChoiceBox<String>();
+//      // Premiere tab items            
+//      HBox row1 = new HBox();
+//      row1.setSpacing(5);
+//      row1.setAlignment(Pos.CENTER_LEFT);
+//      row1.setPadding(new Insets(5,0,0,5));
+//      
+//      Label title = new Label("Season Premieres");
+//      
+//      Label tivo_label = new Label();
+//      
+//      tivo = new ChoiceBox<String>();
       tivo.valueProperty().addListener(new ChangeListener<String>() {
          @Override public void changed(ObservableValue<? extends String> ov, String oldVal, String newVal) {
             if (newVal != null) {   
@@ -81,18 +90,63 @@ public class premiere {
       });
       tivo.setTooltip(tooltip.getToolTip("tivo_premiere"));
 
-      Label days_label = new Label("Days");      
-      days = new ChoiceBox<String>();
+//      Label days_label = new Label("Days");      
+//      days = new ChoiceBox<String>();
       days.setTooltip(tooltip.getToolTip("premiere_days"));
-      for (int i=1; i<=12; ++i) {
-         days.getItems().add("" + i);
-      }
-      days.setValue("12");
+//      for (int i=1; i<=12; ++i) {
+//         days.getItems().add("" + i);
+//      }
+//      days.setValue("12");
 
-      Button refresh = new Button("Search");
+//      Button refresh = new Button("Search");
       refresh.setTooltip(tooltip.getToolTip("refresh_premiere"));
-      refresh.setOnAction(new EventHandler<ActionEvent>() {
-         public void handle(ActionEvent e) {
+//      record = new Button("Record");
+      record.setTooltip(tooltip.getToolTip("record_premiere"));
+//      recordSP = new Button("Season Pass");
+      recordSP.setTooltip(tooltip.getToolTip("recordSP_premiere"));
+//      wishlist = new Button("WL");
+      wishlist.setTooltip(tooltip.getToolTip("wishlist_search"));
+//      Button channels_update = new Button("Update Channels");
+      channels_update.setTooltip(tooltip.getToolTip("premiere_channels_update"));
+      
+//      channels = new MyListView();
+      channels.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+//      channels.setOrientation(Orientation.VERTICAL);      
+      channels.setTooltip(tooltip.getToolTip("premiere_channels"));
+//      VBox.setVgrow(channels, Priority.ALWAYS); // stretch vertically
+      
+//      row1.getChildren().add(title);
+//      row1.getChildren().add(tivo_label);
+//      row1.getChildren().add(tivo);
+//      row1.getChildren().add(refresh);
+//      row1.getChildren().add(days);
+//      row1.getChildren().add(days_label);
+//      row1.getChildren().add(record);
+//      row1.getChildren().add(recordSP);
+//      row1.getChildren().add(wishlist);
+//      row1.getChildren().add(util.space(40));
+//      row1.getChildren().add(channels_update);
+      
+      tab = new premiereTable();
+      VBox.setVgrow(tab.TABLE, Priority.ALWAYS); // stretch vertically
+      
+//      GridPane row2 = new GridPane();
+//      row2.setHgap(5);
+//      row2.setPadding(new Insets(0,0,0,5));      
+//      row2.getColumnConstraints().add(0, util.cc_stretch());
+//      row2.getColumnConstraints().add(1, util.cc_none());
+//      row2.getRowConstraints().add(0, util.rc_stretch());
+//      channels.setMinWidth(150); channels.setMaxWidth(150);
+      row2.add(tab.TABLE, 0, 0);
+//      row2.add(channels, 1, 0);
+//      VBox.setVgrow(row2, Priority.ALWAYS); // stretch vertically
+
+//      panel = new VBox();
+//      panel.setSpacing(1);
+//      panel.getChildren().addAll(row1, row2);      
+   }
+
+   @FXML private void refreshCB(ActionEvent e) {
             // Refresh table
             TableUtil.clear(tab.TABLE);
             String tivoName = tivo.getValue();
@@ -114,33 +168,21 @@ public class premiere {
                job.premiere        = tab;
                jobMonitor.submitNewJob(job);
             }
-         }
-      });
-      
-      record = new Button("Record");
-      record.setTooltip(tooltip.getToolTip("record_premiere"));
-      record.setOnAction(new EventHandler<ActionEvent>() {
-         public void handle(ActionEvent e) {
+   }
+
+   @FXML private void recordCB(ActionEvent e) {
             String tivoName = tivo.getValue();
             if (tivoName != null && tivoName.length() > 0)
                tab.recordSingle(tivoName);
-         }
-      });
-      
-      recordSP = new Button("Season Pass");
-      recordSP.setTooltip(tooltip.getToolTip("recordSP_premiere"));
-      recordSP.setOnAction(new EventHandler<ActionEvent>() {
-         public void handle(ActionEvent e) {
+   }
+
+   @FXML private void recordSPCB(ActionEvent e) {
             String tivoName = tivo.getValue();
             if (tivoName != null && tivoName.length() > 0)
                tab.recordSP(tivoName);
-         }
-      });
-      
-      wishlist = new Button("WL");
-      wishlist.setTooltip(tooltip.getToolTip("wishlist_search"));
-      wishlist.setOnAction(new EventHandler<ActionEvent>() {
-         public void handle(ActionEvent e) {
+   }
+
+   @FXML private void wishlistCB(ActionEvent e) {
             String tivoName = tivo.getValue();
             if (tivoName != null && tivoName.length() > 0) {
                int[] selected = TableUtil.GetSelectedRows(tab.TABLE);
@@ -149,13 +191,9 @@ public class premiere {
                   json = tab.GetRowData(selected[0]);
                config.gui.remote_gui.createWishlist(tivoName, json);
             }
-         }
-      });
-      
-      Button channels_update = new Button("Update Channels");
-      channels_update.setTooltip(tooltip.getToolTip("premiere_channels_update"));
-      channels_update.setOnAction(new EventHandler<ActionEvent>() {
-         public void handle(ActionEvent e) {
+   }
+
+   @FXML private void channels_updateCB(ActionEvent e) {
             String tivoName = tivo.getValue();
             if (tivoName != null && tivoName.length() > 0) {
                // Build list of received channels for this TiVo
@@ -167,45 +205,8 @@ public class premiere {
                job.remote_channels = true;
                jobMonitor.submitNewJob(job);
             }
-         }
-      });
-      
-      channels = new MyListView();
-      channels.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-      channels.setOrientation(Orientation.VERTICAL);      
-      channels.setTooltip(tooltip.getToolTip("premiere_channels"));
-      VBox.setVgrow(channels, Priority.ALWAYS); // stretch vertically
-      
-      row1.getChildren().add(title);
-      row1.getChildren().add(tivo_label);
-      row1.getChildren().add(tivo);
-      row1.getChildren().add(refresh);
-      row1.getChildren().add(days);
-      row1.getChildren().add(days_label);
-      row1.getChildren().add(record);
-      row1.getChildren().add(recordSP);
-      row1.getChildren().add(wishlist);
-      row1.getChildren().add(util.space(40));
-      row1.getChildren().add(channels_update);
-      
-      tab = new premiereTable();
-      VBox.setVgrow(tab.TABLE, Priority.ALWAYS); // stretch vertically
-      
-      GridPane row2 = new GridPane();
-      row2.setHgap(5);
-      row2.setPadding(new Insets(0,0,0,5));      
-      row2.getColumnConstraints().add(0, util.cc_stretch());
-      row2.getColumnConstraints().add(1, util.cc_none());
-      row2.getRowConstraints().add(0, util.rc_stretch());
-      channels.setMinWidth(150); channels.setMaxWidth(150);
-      row2.add(tab.TABLE, 0, 0);
-      row2.add(channels, 1, 0);
-      VBox.setVgrow(row2, Priority.ALWAYS); // stretch vertically
-
-      panel = new VBox();
-      panel.setSpacing(1);
-      panel.getChildren().addAll(row1, row2);      
    }
+      
    
    // Read channel info from a file
    // Columns are:

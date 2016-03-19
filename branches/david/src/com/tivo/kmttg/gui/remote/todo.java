@@ -1,12 +1,16 @@
 package com.tivo.kmttg.gui.remote;
 
 import java.io.File;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -18,6 +22,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 
 import com.tivo.kmttg.gui.table.TableUtil;
 import com.tivo.kmttg.gui.table.todoTable;
@@ -27,26 +32,30 @@ import com.tivo.kmttg.main.jobMonitor;
 import com.tivo.kmttg.rpc.Remote;
 import com.tivo.kmttg.util.log;
 
-public class todo {
-   public VBox panel = null;
+public class todo implements Initializable {
+   @FXML public VBox panel = null;
    public todoTable tab = null;
-   public ChoiceBox<String> tivo = null;
-   public Label label = null;
-   public Button cancel = null;
-   public Button modify = null;
+   @FXML public ChoiceBox<String> tivo = null;
+   @FXML public Label label = null;
+   @FXML public Button cancel = null;
+   @FXML public Button modify = null;
    
-   public todo(final Stage frame) {
+   @FXML private Button refresh;
+   @FXML private Button export;
+   
+   @Override
+   public void initialize(URL location, ResourceBundle resources) {
       // ToDo Tab items            
-      HBox row1 = new HBox();
-      row1.setSpacing(5);
-      row1.setPadding(new Insets(5,0,0,5));
-      row1.setAlignment(Pos.CENTER_LEFT);
-      
-      Label title = new Label("ToDo list");
-      
-      Label tivo_label = new Label();
-      
-      tivo = new ChoiceBox<String>();
+//      HBox row1 = new HBox();
+//      row1.setSpacing(5);
+//      row1.setPadding(new Insets(5,0,0,5));
+//      row1.setAlignment(Pos.CENTER_LEFT);
+//      
+//      Label title = new Label("ToDo list");
+//      
+//      Label tivo_label = new Label();
+//      
+//      tivo = new ChoiceBox<String>();
       tivo.valueProperty().addListener(new ChangeListener<String>() {
          @Override public void changed(ObservableValue<? extends String> ov, String oldVal, String newVal) {
             if (newVal != null && config.gui.remote_gui != null) {
@@ -61,10 +70,35 @@ public class todo {
       });
       tivo.setTooltip(tooltip.getToolTip("tivo_todo"));
 
-      Button refresh = new Button("Refresh");
+//      Button refresh = new Button("Refresh");
       refresh.setTooltip(tooltip.getToolTip("refresh_todo"));
-      refresh.setOnAction(new EventHandler<ActionEvent>() {
-         public void handle(ActionEvent e) {
+//      cancel = new Button("Cancel");
+      cancel.setTooltip(tooltip.getToolTip("cancel_todo"));
+//      modify = new Button("Modify");
+      modify.setTooltip(tooltip.getToolTip("modify_todo"));
+//      Button export = new Button("Export ...");
+      export.setTooltip(tooltip.getToolTip("export_todo"));
+//      label = new Label();
+//      
+//      row1.getChildren().add(title);
+//      row1.getChildren().add(tivo_label);
+//      row1.getChildren().add(tivo);
+//      row1.getChildren().add(refresh);
+//      row1.getChildren().add(cancel);
+//      row1.getChildren().add(modify);
+//      row1.getChildren().add(export);
+//      row1.getChildren().add(label);
+      
+      tab = new todoTable();
+      VBox.setVgrow(tab.TABLE, Priority.ALWAYS); // stretch vertically
+            
+//      panel = new VBox();
+//      panel.setSpacing(1);
+//      panel.getChildren().addAll(row1, tab.TABLE);
+      panel.getChildren().add(tab.TABLE);
+   }
+   
+   @FXML private void refreshCB(ActionEvent e) {
             // Refresh to do list
             TableUtil.clear(tab.TABLE);
             label.setText("");
@@ -79,32 +113,21 @@ public class todo {
                job.todo        = tab;
                jobMonitor.submitNewJob(job);
             }
-         }
-      });
+   }
 
-      cancel = new Button("Cancel");
-      cancel.setTooltip(tooltip.getToolTip("cancel_todo"));
-      cancel.setOnAction(new EventHandler<ActionEvent>() {
-         public void handle(ActionEvent e) {
+   @FXML private void cancelCB(ActionEvent e) {
             tab.DeleteCB();
-         }
-      });
+   }
 
-      modify = new Button("Modify");
-      modify.setTooltip(tooltip.getToolTip("modify_todo"));
-      modify.setOnAction(new EventHandler<ActionEvent>() {
-         public void handle(ActionEvent e) {
+   @FXML private void modifyCB(ActionEvent e) {
             String tivoName = tivo.getValue();
             if (tivoName != null && tivoName.length() > 0) {
                tab.recordSingle(tivoName);
             }
-         }
-      });
+   }
 
-      Button export = new Button("Export ...");
-      export.setTooltip(tooltip.getToolTip("export_todo"));
-      export.setOnAction(new EventHandler<ActionEvent>() {
-         public void handle(ActionEvent e) {
+   @FXML private void exportCB(ActionEvent e) {
+	   final Window frame = tivo.getScene().getWindow();
             final String tivoName = tivo.getValue();
             config.gui.remote_gui.Browser.getExtensionFilters().clear();
             config.gui.remote_gui.Browser.getExtensionFilters().addAll(new ExtensionFilter("CSV Files", "*.csv"));
@@ -127,25 +150,6 @@ public class todo {
                };
                new Thread(task).start();
             }
-         }
-      });
-      
-      label = new Label();
-      
-      row1.getChildren().add(title);
-      row1.getChildren().add(tivo_label);
-      row1.getChildren().add(tivo);
-      row1.getChildren().add(refresh);
-      row1.getChildren().add(cancel);
-      row1.getChildren().add(modify);
-      row1.getChildren().add(export);
-      row1.getChildren().add(label);
-      
-      tab = new todoTable();
-      VBox.setVgrow(tab.TABLE, Priority.ALWAYS); // stretch vertically
-            
-      panel = new VBox();
-      panel.setSpacing(1);
-      panel.getChildren().addAll(row1, tab.TABLE);
    }
+      
 }

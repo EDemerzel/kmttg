@@ -1,6 +1,8 @@
 package com.tivo.kmttg.gui.remote;
 
 import java.io.File;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 import com.tivo.kmttg.JSON.JSONObject;
 import com.tivo.kmttg.gui.MyListView;
@@ -16,6 +18,8 @@ import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
@@ -30,37 +34,44 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 import javafx.stage.FileChooser.ExtensionFilter;
 
-public class guide {
-   public VBox panel = null;
+public class guide implements Initializable {
+   @FXML public VBox panel = null;
    public guideTable tab = null;
-   public MyListView ChanList = null;
-   public  Button refresh = null;
-   public ChoiceBox<String> tivo = null;
-   public ChoiceBox<String> start = null;
-   public CheckBox guide_channels = null;
-   public Button record = null;
-   public Button recordSP = null;
-   public Button wishlist = null;
+   @FXML public MyListView ChanList = null;
+   @FXML public  Button refresh = null;
+   @FXML public ChoiceBox<String> tivo = null;
+   @FXML public ChoiceBox<String> start = null;
+   @FXML public CheckBox guide_channels = null;
+   @FXML public Button record = null;
+   @FXML public Button recordSP = null;
+   @FXML public Button wishlist = null;
    public  int range = 12; // Number of hours to show in guide at a time
    public int hour_increment = 12; // Number of hours for date increment
    public int total_range = 11;    // Number of days
-   public Button manual_record = null;
+   @FXML public Button manual_record = null;
    
-   public guide(final Stage frame) {
+   @FXML private Button export_channels;
+   @FXML private Button guide_refresh_todo;
+   @FXML private GridPane tab_row;
+   
+   
+   @Override
+   public void initialize(URL location, ResourceBundle resources) {
       
-      // Guide Tab items            
-      HBox row1 = new HBox();
-      row1.setSpacing(5);
-      row1.setAlignment(Pos.CENTER_LEFT);
-      row1.setPadding(new Insets(5,0,0,5)); // top, right, bottom, left
-      
-      Label title = new Label("Guide");
-      
-      Label tivo_label = new Label();
-      
-      tivo = new ChoiceBox<String>();
+//      // Guide Tab items            
+//      HBox row1 = new HBox();
+//      row1.setSpacing(5);
+//      row1.setAlignment(Pos.CENTER_LEFT);
+//      row1.setPadding(new Insets(5,0,0,5)); // top, right, bottom, left
+//      
+//      Label title = new Label("Guide");
+//      
+//      Label tivo_label = new Label();
+//      
+//      tivo = new ChoiceBox<String>();
       tivo.valueProperty().addListener(new ChangeListener<String>() {
          @Override public void changed(ObservableValue<? extends String> ov, String oldVal, String newVal) {
             // Don't do anything if oldVal is null or kmttg starting (implies values being reset)
@@ -80,12 +91,12 @@ public class guide {
       });
       tivo.setTooltip(tooltip.getToolTip("tivo_guide"));
       
-      guide_channels = new CheckBox("All");
-      guide_channels.setSelected(false);
+//      guide_channels = new CheckBox("All");
+//      guide_channels.setSelected(false);
       guide_channels.setTooltip(tooltip.getToolTip("guide_channels"));
       
-      Label guide_start_label = new Label("Start");
-      start = new ChoiceBox<String>();
+//      Label guide_start_label = new Label("Start");
+//      start = new ChoiceBox<String>();
       start.setTooltip(tooltip.getToolTip("guide_start"));
       // When start time changes need to update the table when appropriate
       start.valueProperty().addListener(new ChangeListener<String>() {
@@ -101,23 +112,83 @@ public class guide {
          }
       });
 
-      refresh = new Button("Channels");
+//      refresh = new Button("Channels");
       refresh.setTooltip(tooltip.getToolTip("refresh_guide"));
-      refresh.setOnAction(new EventHandler<ActionEvent>() {
-         public void handle(ActionEvent e) {
+//      Button export_channels = new Button("Export ...");
+      export_channels.setTooltip(tooltip.getToolTip("export_channels"));
+//      record = new Button("Record");
+      record.setTooltip(tooltip.getToolTip("guide_record"));
+//      recordSP = new Button("Season Pass");
+      recordSP.setTooltip(tooltip.getToolTip("guide_recordSP"));
+//      wishlist = new Button("WL");
+      wishlist.setTooltip(tooltip.getToolTip("wishlist_search"));
+//      manual_record = new Button("MR");
+      manual_record.setTooltip(tooltip.getToolTip("guide_manual_record"));
+//      Button guide_refresh_todo = new Button("Refresh ToDo");
+      guide_refresh_todo.setTooltip(tooltip.getToolTip("guide_refresh_todo"));
+      
+//      row1.getChildren().add(title);
+//      row1.getChildren().add(tivo_label);
+//      row1.getChildren().add(tivo);
+//      row1.getChildren().add(guide_start_label);
+//      row1.getChildren().add(start);
+//      row1.getChildren().add(guide_channels);
+//      row1.getChildren().add(refresh);
+//      row1.getChildren().add(export_channels);
+//      row1.getChildren().add(record);
+//      row1.getChildren().add(recordSP);
+//      row1.getChildren().add(wishlist);
+//      row1.getChildren().add(manual_record);
+//      row1.getChildren().add(guide_refresh_todo);
+      
+      tab = new guideTable();
+      VBox.setVgrow(tab.TABLE, Priority.ALWAYS); // stretch vertically
+      
+//      ChanList = new MyListView();
+//      ChanList.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+//      ChanList.setOrientation(Orientation.VERTICAL);
+      // When a list item is selected, update the table when appropriate
+      ChanList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+         @Override
+         public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+            if (newValue != null) {
+               String tivoName = tivo.getValue();
+               if (tivoName != null) {
+                  tab.updateTable(tivoName, newValue);
+               }
+            }
+         }
+      });
+      ChanList.setTooltip(tooltip.getToolTip("guideChanList"));
+      VBox.setVgrow(ChanList, Priority.ALWAYS); // stretch vertically
+      
+//      GridPane tab_row = new GridPane();
+//      tab_row.setHgap(1);
+//      tab_row.setPadding(new Insets(0,0,0,5));
+//      tab_row.getColumnConstraints().add(0, util.cc_none());
+//      tab_row.getColumnConstraints().add(1, util.cc_stretch());
+//      tab_row.getRowConstraints().add(0, util.rc_stretch());
+//      ChanList.setMinWidth(150); ChanList.setMaxWidth(150);
+//      tab_row.add(ChanList, 0, 0);
+      tab_row.add(tab.TABLE, 1, 0);
+      VBox.setVgrow(tab_row, Priority.ALWAYS); // stretch vertically
+            
+//      panel = new VBox();
+//      panel.setSpacing(1);
+//      panel.getChildren().addAll(row1, tab_row);
+   }
+   
+   @FXML private void refreshCB(ActionEvent e) {
             ChanList.getItems().clear();
             String tivoName = tivo.getValue();
             if (tivoName != null && tivoName.length() > 0) {
                // Obtain and display channel list
                tab.updateChannels(tivoName, true);
             }
-         }
-      });
-
-      Button export_channels = new Button("Export ...");
-      export_channels.setTooltip(tooltip.getToolTip("export_channels"));
-      export_channels.setOnAction(new EventHandler<ActionEvent>() {
-         public void handle(ActionEvent e) {
+   }
+   
+   @FXML private void export_channelsCB(ActionEvent e) {
+	   Window frame = tivo.getScene().getWindow();
             final String tivoName = tivo.getValue();
             config.gui.remote_gui.Browser.getExtensionFilters().addAll(new ExtensionFilter("CSV Files", "*.csv"));
             config.gui.remote_gui.Browser.getExtensionFilters().add(new FileChooser.ExtensionFilter("ALL FILES", "*"));
@@ -139,35 +210,23 @@ public class guide {
                };
                new Thread(task).start();
             }
-         }
-      });
-
-      record = new Button("Record");
-      record.setTooltip(tooltip.getToolTip("guide_record"));
-      record.setOnAction(new EventHandler<ActionEvent>() {
-         public void handle(ActionEvent e) {
+   }
+   
+   @FXML private void recordCB(ActionEvent e) {
             String tivoName = tivo.getValue();
             if (tivoName != null && tivoName.length() > 0) {
                tab.recordSingle(tivoName);
             }
-         }
-      });
-
-      recordSP = new Button("Season Pass");
-      recordSP.setTooltip(tooltip.getToolTip("guide_recordSP"));
-      recordSP.setOnAction(new EventHandler<ActionEvent>() {
-         public void handle(ActionEvent e) {
+   }
+   
+   @FXML private void recordSPCB(ActionEvent e) {
             String tivoName = tivo.getValue();
             if (tivoName != null && tivoName.length() > 0) {
                tab.recordSP(tivoName);
             }
-         }
-      });
-      
-      wishlist = new Button("WL");
-      wishlist.setTooltip(tooltip.getToolTip("wishlist_search"));
-      wishlist.setOnAction(new EventHandler<ActionEvent>() {
-         public void handle(ActionEvent e) {
+   }
+   
+   @FXML private void wishlistCB(ActionEvent e) {
             String tivoName = tivo.getValue();
             if (tivoName != null && tivoName.length() > 0) {
                int[] selected = TableUtil.GetSelectedRows(tab.TABLE);
@@ -176,24 +235,16 @@ public class guide {
                   json = tab.GetRowData(selected[0]);
                config.gui.remote_gui.createWishlist(tivoName, json);
             }
-         }
-      });
-      
-      manual_record = new Button("MR");
-      manual_record.setTooltip(tooltip.getToolTip("guide_manual_record"));
-      manual_record.setOnAction(new EventHandler<ActionEvent>() {
-         public void handle(ActionEvent e) {
+   }
+   
+   @FXML private void manual_recordCB(ActionEvent e) {
             String tivoName = tivo.getValue();
             if (tivoName != null && tivoName.length() > 0) {
                util.mRecordOpt.promptUser(tivoName);
             }
-         }
-      });
-
-      Button guide_refresh_todo = new Button("Refresh ToDo");
-      guide_refresh_todo.setTooltip(tooltip.getToolTip("guide_refresh_todo"));
-      guide_refresh_todo.setOnAction(new EventHandler<ActionEvent>() {
-         public void handle(ActionEvent e) {
+   }
+   
+   @FXML private void guide_refresh_todoCB(ActionEvent e) {
             String tivoName = tivo.getValue();
             if (tivoName != null && tivoName.length() > 0) {
                Task<Void> task = new Task<Void>() {
@@ -206,58 +257,5 @@ public class guide {
                };
                new Thread(task).start();
             }
-         }
-      });
-      
-      row1.getChildren().add(title);
-      row1.getChildren().add(tivo_label);
-      row1.getChildren().add(tivo);
-      row1.getChildren().add(guide_start_label);
-      row1.getChildren().add(start);
-      row1.getChildren().add(guide_channels);
-      row1.getChildren().add(refresh);
-      row1.getChildren().add(export_channels);
-      row1.getChildren().add(record);
-      row1.getChildren().add(recordSP);
-      row1.getChildren().add(wishlist);
-      row1.getChildren().add(manual_record);
-      row1.getChildren().add(guide_refresh_todo);
-      
-      tab = new guideTable();
-      VBox.setVgrow(tab.TABLE, Priority.ALWAYS); // stretch vertically
-      
-      ChanList = new MyListView();
-      ChanList.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-      ChanList.setOrientation(Orientation.VERTICAL);
-      // When a list item is selected, update the table when appropriate
-      ChanList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
-         @Override
-         public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-            if (newValue != null) {
-               String tivoName = tivo.getValue();
-               if (tivoName != null) {
-                  tab.updateTable(tivoName, newValue);
-               }
-            }
-         }
-      });
-      ChanList.setTooltip(tooltip.getToolTip("guideChanList"));
-      VBox.setVgrow(ChanList, Priority.ALWAYS); // stretch vertically
-      
-      GridPane tab_row = new GridPane();
-      tab_row.setHgap(1);
-      tab_row.setPadding(new Insets(0,0,0,5));
-      tab_row.getColumnConstraints().add(0, util.cc_none());
-      tab_row.getColumnConstraints().add(1, util.cc_stretch());
-      tab_row.getRowConstraints().add(0, util.rc_stretch());
-      ChanList.setMinWidth(150); ChanList.setMaxWidth(150);
-      tab_row.add(ChanList, 0, 0);
-      tab_row.add(tab.TABLE, 1, 0);
-      VBox.setVgrow(tab_row, Priority.ALWAYS); // stretch vertically
-            
-      panel = new VBox();
-      panel.setSpacing(1);
-      panel.getChildren().addAll(row1, tab_row);      
    }
-
 }

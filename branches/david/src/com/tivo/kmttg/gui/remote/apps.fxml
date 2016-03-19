@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?scenebuilder-stylesheet ../../../../../../release/css/kmttg.css?>
+
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.Tab?>
+
+<TabPane xmlns:fx="http://javafx.com/fxml/1" fx:id="tabbed_panel" tabClosingPolicy="UNAVAILABLE" prefHeight="1000">
+    <Tab text="Remote Control">
+        <fx:include fx:id="remotecontrol" source="remotecontrol.fxml" />
+    </Tab>
+    <Tab text="Search">
+        <fx:include fx:id="search" source="search.fxml" />
+    </Tab>
+    <Tab text="Guide">
+        <fx:include fx:id="guide" source="guide.fxml" />
+    </Tab>
+    <Tab text="Season Premieres">
+        <fx:include fx:id="premiere" source="premiere.fxml" />
+    </Tab>
+    <Tab text="Deleted">
+        <fx:include fx:id="deleted" source="deleted.fxml" />
+    </Tab>
+    <!-- Intentionally commented out for now
+    <Tab text="Channels">
+        <fx:include fx:id="channels" source="channels.fxml" />
+    </Tab>
+     -->
+    <Tab text="Thumbs">
+        <fx:include fx:id="thumbs" source="thumbs.fxml" />
+    </Tab>
+    <Tab text="Info">
+        <fx:include fx:id="info" source="info.fxml" />
+    </Tab>
+    <Tab text="Slingbox">
+        <fx:include source="../slingboxgui.fxml" />
+    </Tab>
+</TabPane>

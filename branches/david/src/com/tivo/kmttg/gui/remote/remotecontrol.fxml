@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?scenebuilder-stylesheet ../../../../../../release/css/kmttg.css?>
+
+<?import java.lang.*?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tivo.kmttg.gui.remote.remotecontrol"
+    fx:id="panel" styleClass="rc" alignment="CENTER">
+    <HBox spacing="5" alignment="CENTER_LEFT">
+    <padding><Insets top="0" right="0" bottom="0" left="5"/></padding>
+        <Label text="TiVo" style="-fx-text-fill: white;"/>
+        <ChoiceBox fx:id="tivo" id="nottivobuttonid"><!-- apparently fx:id doubles as style id when not specified which matches our tivo button in the remote --></ChoiceBox>
+        <Button fx:id="hme_button" text="Launch App:" onAction="#hme_buttonCB"/>
+        <ChoiceBox fx:id="hme">
+         <String fx:value="Netflix (html)"/>
+         <String fx:value="YouTube (html)"/>
+         <String fx:value="Vudu (html)"/>
+         <String fx:value="Plex"/>
+         <String fx:value="Amazon Prime"/>
+         <String fx:value="Hulu Plus"/>
+         <String fx:value="Spotify"/>
+         <String fx:value="iHeartRadio"/>
+         <String fx:value="Opera TV Store"/>
+         <String fx:value="streambaby"/>
+        </ChoiceBox>
+        <Button fx:id="sps_button" text="SPS backdoor:" onAction="#sps_buttonCB"/>
+        <ChoiceBox fx:id="hme_sps"></ChoiceBox>
+    </HBox>
+    <Pane styleClass="rc" minHeight="190">
+        <!--  these buttons are positioned with stylesheet translations
+              to be able to account for the actual image and scale, 
+              so the Pane must force enough space to show them. -->
+        <Button styleClass="rc_button" id="back" onAction="#rcCB"/>
+        <Button styleClass="rc_button" id="channelUp" onAction="#rcCB" />
+        <Label styleClass="rc" id="channel" />
+        <Button styleClass="rc_button" id="channelDown" onAction="#rcCB" />
+        <Button styleClass="rc_button" id="left" onAction="#rcCB" />
+        <Button styleClass="rc_button" id="zoom" onAction="#rcCB" />
+        <Button styleClass="rc_button" id="tivo" onAction="#rcCB" />
+        <Button styleClass="rc_button" id="up" onAction="#rcCB" />
+        <Button styleClass="rc_button" id="select" onAction="#rcCB" />
+        <Button styleClass="rc_button" id="down" onAction="#rcCB"/>
+        <Button styleClass="rc_button" id="liveTv" onAction="#rcCB" />
+        <Button styleClass="rc_button" id="info" onAction="#rcCB" />
+        <Button styleClass="rc_button" id="right" onAction="#rcCB"  />
+        <Button styleClass="rc_button" id="guide" onAction="#rcCB" />
+        
+        <Button styleClass="rc_button" id="num1" onAction="#rcCB" />
+        <Button styleClass="rc_button" id="num2" onAction="#rcCB" />
+        <Button styleClass="rc_button" id="num3" onAction="#rcCB" />
+        <Button styleClass="rc_button" id="num4" onAction="#rcCB" />
+        <Button styleClass="rc_button" id="num5" onAction="#rcCB" />
+        <Button styleClass="rc_button" id="num6" onAction="#rcCB" />
+        <Button styleClass="rc_button" id="num7" onAction="#rcCB" />
+        <Button styleClass="rc_button" id="num8" onAction="#rcCB" />
+        <Button styleClass="rc_button" id="num9" onAction="#rcCB" />
+        <Button styleClass="rc_button" id="clear" onAction="#rcCB" />
+        <Button styleClass="rc_button" id="num0" onAction="#rcCB" />
+        <Button styleClass="rc_button" id="enter" onAction="#rcCB" />
+        <Button styleClass="rc_button" id="actionA" onAction="#rcCB" />
+        <Button styleClass="rc_button" id="actionB" onAction="#rcCB" />
+        <Button styleClass="rc_button" id="actionC" onAction="#rcCB" />
+        <Button styleClass="rc_button" id="actionD" onAction="#rcCB" />
+        
+        <Button styleClass="rc_button" id="thumbsDown" onAction="#rcCB" />
+        <Button styleClass="rc_button" id="reverse" onAction="#rcCB" />
+        <Button styleClass="rc_button" id="replay" onAction="#rcCB" />
+        <Button styleClass="rc_button" id="play" onAction="#rcCB" />
+        <Button styleClass="rc_button" id="pause" onAction="#rcCB" />
+        <Button styleClass="rc_button" id="slow" onAction="#rcCB" />
+        <Button styleClass="rc_button" id="record" onAction="#rcCB" />
+        <Button styleClass="rc_button" id="thumbsUp" onAction="#rcCB" />
+        <Button styleClass="rc_button" id="forward" onAction="#rcCB" />
+        <Button styleClass="rc_button" id="advance" onAction="#rcCB" />
+        
+        <Button styleClass="rc_label" fx:id="standby" id="standby" text="Toggle standby" />
+        <Button styleClass="rc_label" fx:id="toggle_cc" id="toggle_cc" text="Toggle CC" />
+        <Button styleClass="rc_label" fx:id="myShows" id="My_Shows" text="My Shows" />
+        
+    </Pane>
+    <HBox spacing="5" alignment="CENTER_LEFT">
+    <padding><Insets top="0" right="0" bottom="0" left="5"/></padding>
+        <Button fx:id="jumpto_button" text="Jump to minute:" onAction="#jumpto_buttonCB" />
+        <TextField fx:id="jumpto_text" text="0" minWidth="50" prefWidth="50"/>
+        <Button fx:id="jumpahead_button" text="Skip minutes ahead:" onAction="#jumpahead_buttonCB" />
+        <TextField fx:id="jumpahead_text" text="5" minWidth="50" prefWidth="50"/>
+        <Button fx:id="jumpback_button" text="Skip minutes back:" onAction="#jumpback_buttonCB" />
+        <TextField fx:id="jumpback_text" text="5" minWidth="50" prefWidth="50"/>
+        
+    </HBox>
+</VBox>
+

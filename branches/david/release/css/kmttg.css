@@ -53,6 +53,60 @@
 /* Free Space */
 .piechart_shows .default-color3.chart-pie { -fx-pie-color: blue; }
 
+.rc {-fx-background-color: black;}
+
+.rc_button {-fx-background-color: transparent; -fx-padding: 5, 5, 5, 5;}
+.rc_button:pressed {-fx-background-color: transparent; -fx-padding: 6 4 4 6;}
+.rc_label {-fx-background-color: black; -fx-text-fill: white; -fx-padding: 5, 5, 5, 5;}
+.rc_label:pressed {-fx-background-color: black; -fx-text-fill: white; -fx-padding: 6 4 4 6;}
+
+.rc #back {-fx-graphic:url(../rc_images/back.png);                  -fx-translate-x:20; -fx-translate-y:0; -fx-scale-x:.6; -fx-scale-y:.6;}
+.rc #channelUp {-fx-graphic:url(../rc_images/channel_up.png);       -fx-translate-x:20; -fx-translate-y:25; -fx-scale-x:.7; -fx-scale-y:.7;}
+.rc #channel {-fx-graphic:url(../rc_images/channel_label.png);      -fx-translate-x:25; -fx-translate-y:60; -fx-scale-x:.7; -fx-scale-y:.7;}
+.rc #channelDown {-fx-graphic:url(../rc_images/channel_down.png);   -fx-translate-x:20; -fx-translate-y:65; -fx-scale-x:.7; -fx-scale-y:.7;}
+.rc #left {-fx-graphic:url(../rc_images/left.png);                  -fx-translate-x:10; -fx-translate-y:80; -fx-scale-x:.5; -fx-scale-y:.5;}
+.rc #zoom {-fx-graphic:url(../rc_images/zoom.png);                  -fx-translate-x:20; -fx-translate-y:140; -fx-scale-x:.7; -fx-scale-y:.7;}
+.rc #tivo {-fx-graphic:url(../rc_images/tivo.png);                  -fx-translate-x:60; -fx-translate-y:0; -fx-scale-x:.7; -fx-scale-y:.7;}
+.rc #up {-fx-graphic:url(../rc_images/up.png);                      -fx-translate-x:50; -fx-translate-y:40; -fx-scale-x:.5; -fx-scale-y:.5;}
+.rc #select {-fx-graphic:url(../rc_images/select.png);              -fx-translate-x:60; -fx-translate-y:90; -fx-scale-x:.5; -fx-scale-y:.5;}
+.rc #down {-fx-graphic:url(../rc_images/down.png);                  -fx-translate-x:50; -fx-translate-y:125; -fx-scale-x:.5; -fx-scale-y:.5;}
+.rc #liveTv {-fx-graphic:url(../rc_images/livetv.png);              -fx-translate-x:115; -fx-translate-y:15; -fx-scale-x:.7; -fx-scale-y:.7;}
+.rc #info {-fx-graphic:url(../rc_images/info.png);                  -fx-translate-x:115; -fx-translate-y:55; -fx-scale-x:.7; -fx-scale-y:.7;}
+.rc #right {-fx-graphic:url(../rc_images/right.png);                -fx-translate-x:95; -fx-translate-y:80; -fx-scale-x:.5; -fx-scale-y:.5;}
+.rc #guide {-fx-graphic:url(../rc_images/guide.png);                -fx-translate-x:115; -fx-translate-y:140; -fx-scale-x:.7; -fx-scale-y:.7;}
+
+.rc #num1 {-fx-graphic:url(../rc_images/1.png);         -fx-translate-x:200; -fx-translate-y:0; -fx-scale-x:.7; -fx-scale-y:.7;}
+.rc #num2 {-fx-graphic:url(../rc_images/2.png);         -fx-translate-x:245; -fx-translate-y:0; -fx-scale-x:.7; -fx-scale-y:.7;}
+.rc #num3 {-fx-graphic:url(../rc_images/3.png);         -fx-translate-x:290; -fx-translate-y:0; -fx-scale-x:.7; -fx-scale-y:.7;}
+.rc #num4 {-fx-graphic:url(../rc_images/4.png);         -fx-translate-x:200; -fx-translate-y:35; -fx-scale-x:.7; -fx-scale-y:.7;}
+.rc #num5 {-fx-graphic:url(../rc_images/5.png);         -fx-translate-x:245; -fx-translate-y:35; -fx-scale-x:.7; -fx-scale-y:.7;}
+.rc #num6 {-fx-graphic:url(../rc_images/6.png);         -fx-translate-x:290; -fx-translate-y:35; -fx-scale-x:.7; -fx-scale-y:.7;}
+.rc #num7 {-fx-graphic:url(../rc_images/7.png);         -fx-translate-x:200; -fx-translate-y:70; -fx-scale-x:.7; -fx-scale-y:.7;}
+.rc #num8 {-fx-graphic:url(../rc_images/8.png);         -fx-translate-x:245; -fx-translate-y:70; -fx-scale-x:.7; -fx-scale-y:.7;}
+.rc #num9 {-fx-graphic:url(../rc_images/9.png);         -fx-translate-x:290; -fx-translate-y:70; -fx-scale-x:.7; -fx-scale-y:.7;}
+.rc #clear {-fx-graphic:url(../rc_images/clear.png);    -fx-translate-x:200; -fx-translate-y:105; -fx-scale-x:.7; -fx-scale-y:.7;}
+.rc #num0 {-fx-graphic:url(../rc_images/0.png);         -fx-translate-x:245; -fx-translate-y:105; -fx-scale-x:.7; -fx-scale-y:.7;}
+.rc #enter {-fx-graphic:url(../rc_images/enter.png);    -fx-translate-x:290; -fx-translate-y:105; -fx-scale-x:.7; -fx-scale-y:.7;}
+.rc #actionA {-fx-graphic:url(../rc_images/A.png);      -fx-translate-x:185; -fx-translate-y:135; -fx-scale-x:.7; -fx-scale-y:.7;}
+.rc #actionB {-fx-graphic:url(../rc_images/B.png);      -fx-translate-x:225; -fx-translate-y:135; -fx-scale-x:.7; -fx-scale-y:.7;}
+.rc #actionC {-fx-graphic:url(../rc_images/C.png);      -fx-translate-x:265; -fx-translate-y:135; -fx-scale-x:.7; -fx-scale-y:.7;}
+.rc #actionD {-fx-graphic:url(../rc_images/D.png);      -fx-translate-x:305; -fx-translate-y:135; -fx-scale-x:.7; -fx-scale-y:.7;}
+
+.rc #thumbsDown {-fx-graphic:url(../rc_images/thumbsdown.png);  -fx-translate-x:355; -fx-translate-y:0;     -fx-scale-x:.7; -fx-scale-y:.7;}
+.rc #reverse {-fx-graphic:url(../rc_images/reverse.png);        -fx-translate-x:350; -fx-translate-y:55;    -fx-scale-x:.5; -fx-scale-y:.5;}
+.rc #replay {-fx-graphic:url(../rc_images/replay.png);          -fx-translate-x:360; -fx-translate-y:105;   -fx-scale-x:.7; -fx-scale-y:.7;}
+.rc #play {-fx-graphic:url(../rc_images/play.png);              -fx-translate-x:395; -fx-translate-y:10;    -fx-scale-x:.7; -fx-scale-y:.7;}
+.rc #pause {-fx-graphic:url(../rc_images/pause.png);            -fx-translate-x:384; -fx-translate-y:40;    -fx-scale-x:.4; -fx-scale-y:.4;}
+.rc #slow {-fx-graphic:url(../rc_images/slow.png);              -fx-translate-x:395; -fx-translate-y:95;    -fx-scale-x:.7; -fx-scale-y:.7;}
+.rc #record {-fx-graphic:url(../rc_images/record.png);          -fx-translate-x:402; -fx-translate-y:140;   -fx-scale-x:.7; -fx-scale-y:.7;}
+.rc #thumbsUp {-fx-graphic:url(../rc_images/thumbsup.png);      -fx-translate-x:445; -fx-translate-y:0;     -fx-scale-x:.7; -fx-scale-y:.7;}
+.rc #forward {-fx-graphic:url(../rc_images/forward.png);        -fx-translate-x:440; -fx-translate-y:55;    -fx-scale-x:.5; -fx-scale-y:.5;}
+.rc #advance {-fx-graphic:url(../rc_images/advance.png);        -fx-translate-x:445; -fx-translate-y:105;   -fx-scale-x:.7; -fx-scale-y:.7;}
+
+.rc #standby {  -fx-translate-x:500; -fx-translate-y:10;}
+.rc #toggle_cc {-fx-translate-x:500; -fx-translate-y:40;}
+.rc #My_Shows { -fx-translate-x:500; -fx-translate-y:70;}
+
 .show_details_bg {-fx-background-color: #10004C;} /* dark blue */
 .show_details_actor {-fx-background-color: #10004C; -fx-text-fill: #00E9FF; -fx-font-weight: bold;} /* light blue */
 .show_details_title {-fx-background-color: #10004C; -fx-text-fill: #FFFF00; -fx-font-weight: bold;} /* yellow */

@@ -7,6 +7,8 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.FilenameFilter;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.net.URL;
 import java.text.MessageFormat;
 import java.util.ArrayList;
@@ -110,8 +112,13 @@ public class gui implements Initializable {
    @FXML private Stage jFrame = null;
    private String title = config.kmttg;
    @FXML private SplitPane jContentPane = null;
+   @FXML private SplitPane recordingsSplit = null;
    @FXML private SplitPane splitBottom = null;
    @FXML private TabPane tabbed_panel = null;
+   @FXML private Tab schedules_tab;
+   @FXML private Tab apps_tab;
+   @FXML private TabPane tabbed_panel_schedules = null;
+   @FXML private TabPane tabbed_panel_apps = null;
    @FXML private Menu fileMenu = null;
    @FXML private Menu jobMenu = null;
    @FXML private Menu autoMenu = null;
@@ -222,7 +229,10 @@ public static class guiApp extends Application {
 
 	   } catch (Exception e1) {
 		   // TODO Auto-generated catch block
-		   e1.printStackTrace();
+    	  StringWriter sw = new StringWriter();
+    	  PrintWriter writer = new PrintWriter(sw);
+    	  e1.printStackTrace(writer);
+    	  debug.print("DEBUG: failed to load gui UI:"+sw.toString());
 		   config.gui = null;
 		   config.gui.jFrame = null;
 	   }
@@ -231,10 +241,49 @@ public static class guiApp extends Application {
       
    @Override
    public void initialize(URL location, ResourceBundle resources) {
+	   debug.print("");
       bundle = resources;
       config.gui = this;
       show_details = showDetailsController;
       plain_show_details = new textpane(plain_show_details_view);
+      
+      // add apps and schedules using one controller.
+      try {
+    	  if(remote_gui == null) {
+    		  remote_gui = new remotegui();
+    	  }
+    	  remotegui controller = remote_gui;
+    	  FXMLLoader apps_loader = new FXMLLoader(gui.class.getResource(
+    			  "remote/apps.fxml"));
+    	  FXMLLoader schedules_loader = new FXMLLoader(gui.class.getResource(
+    			  "remote/schedules.fxml"));
+    	  apps_loader.setController(controller);
+    	  schedules_loader.setController(controller);
+    	  
+    	  //TODO ResourceBundle for remotegui stuff, for the fxml files
+//    	  ResourceBundle bundle = ResourceBundle.getBundle("com.tivo.kmttg.gui.remotegui");
+//    	  apps_loader.setResources(bundle);
+//    	  schedules_loader.setResources(bundle);    	  
+    	  tabbed_panel_apps = apps_loader.<TabPane>load();
+    	  tabbed_panel_schedules = schedules_loader.<TabPane>load();
+    	  
+    	  apps_tab.setContent(tabbed_panel_apps);
+    	  schedules_tab.setContent(tabbed_panel_schedules);
+
+    	  // initialize would be called twice because we're using the same controller in both, 
+    	  // but that initialize needs all fields filled in.  
+    	  // Instead we make remotegui not implement Initializable, 
+    	  // and do the work after both fxml files have been loaded.
+    	  controller.initializeManual(apps_loader.getLocation(), apps_loader.getResources());
+    	  //TODO make sure that used the appropriate bundle for remotegui
+    	  
+      } catch (Exception e) {
+    	  StringWriter sw = new StringWriter();
+    	  PrintWriter writer = new PrintWriter(sw);
+    	  e.printStackTrace(writer);
+    	  debug.print("DEBUG: failed to load remote UI:"+sw.toString());
+    	  log.error("failed to load remote UI:"+e);
+      }
       
       // adjust the menubar as needed
       initMenuBar();
@@ -263,9 +312,8 @@ public static class guiApp extends Application {
    
    public void initializeScene(Stage stage, Scene scene) {
             
-      // Add additional rpc remote tab
-      remote_gui = new remotegui(jFrame);
-      addTabPane(bundle.getString("tab_remote"), tabbed_panel, remote_gui.getPanel());
+//      // Add additional rpc remote tab
+//      addTabPane(bundle.getString("tab_remote"), tabbed_panel_apps, remote_gui.getPanel());
       
       // Init TableMap utility class
       TableMap.init();
@@ -557,7 +605,7 @@ public static class guiApp extends Application {
             @Override public void changed(ObservableValue<? extends Tab> ov, Tab oldVal, Tab newVal) {
                if (getCurrentTabName() != null && getCurrentTabName().equals(bundle.getString("tab_remote"))) {
                   // Set focus on remote pane
-                  remote_gui.tabbed_panel.requestFocus();
+                  remote_gui.getPanel().requestFocus();
                }
             }
          });
@@ -1000,23 +1048,32 @@ public static class guiApp extends Application {
       // Refresh encoding profiles in case toggled between VRD & regular
       if (config.GUIMODE && refreshProfiles) refreshEncodingProfilesCB();
       
-      // Add remote tab if appropriate
-      if (config.GUIMODE) {
-        if (remote_gui == null) {
-         remote_gui = new remotegui(jFrame);
-        }
-        addTabPane(bundle.getString("tab_remote"), tabbed_panel, remote_gui.getPanel());
-      } else {
-    	  tabbed_panel.getTabs().removeIf((t) -> t.getText().equals(bundle.getString("tab_remote")));
-      }
+      //FIXME commented out - remotegui is more complicated now
+      //FIXME (GUIMODE only adjusts these tabbed panes?? maybe this was just a speedup)
+//      // Add remote tab if appropriate
+//      if (config.GUIMODE) {
+//        if (remote_gui == null) {
+//         remote_gui = new remotegui(jFrame);
+//        }
+//        addTabPane(bundle.getString("tab_remote"), tabbed_panel_apps, remote_gui.getPanel());
+//      } else {
+//    	  tabbed_panel_apps.getTabs().removeIf((t) -> t.getText().equals(bundle.getString("tab_remote")));
+//      }
       
       // Add slingbox tab if appropriate
       if (config.slingBox == 1) {
-         if (slingbox_gui == null)
-            slingbox_gui = new slingboxgui(jFrame);
-         addTabPane(bundle.getString("tab_slingbox"), tabbed_panel, slingbox_gui.getPanel());
+    	  //re-add slingbox_gui if they just turned it on.
+    	  if(tabbed_panel_apps.getTabs().filtered((t) -> t.getText().equals(bundle.getString("tab_slingbox"))).size() == 0) {
+    		  Tab tab = new Tab();
+    		  tab.setContent(slingbox_gui.getPanel());
+    		  tabbed_panel_apps.getTabs().add(tab);
+    	  }
+//         if (slingbox_gui == null)
+//            slingbox_gui = slingboxgui.load(jFrame);
+//         if(slingbox_gui != null)
+//        	 addTabPane(bundle.getString("tab_slingbox"), tabbed_panel_apps, slingbox_gui.getPanel());
       } else {
-    	  tabbed_panel.getTabs().removeIf((t) -> t.getText().equals(bundle.getString("tab_slingbox")));
+    	  tabbed_panel_apps.getTabs().removeIf((t) -> t.getText().equals(bundle.getString("tab_slingbox")));
       }
    }
    
@@ -1201,6 +1258,7 @@ public static class guiApp extends Application {
    
    public String getCurrentTabName() {
       debug.print("");
+      //FIXME this doesn't account for new tab layout
       return tabbed_panel.getSelectionModel().getSelectedItem().getText();
    }
    
@@ -1385,14 +1443,15 @@ public static class guiApp extends Application {
          if (slingbox_gui != null)
             slingbox_gui.updateConfig();
          try {
-            double centerDivider0 = jContentPane.getDividerPositions()[0];
-            double centerDivider = jContentPane.getDividerPositions()[1];
+            double centerDivider0 = recordingsSplit.getDividerPositions()[0];
+            double centerDivider = jContentPane.getDividerPositions()[0];
             double bottomDivider = splitBottom.getDividerPositions()[0];
             double helpDisplay = -1;
             if (helpSplit.getItems().contains(helpTabPane)) {
             	helpDisplay = helpSplit.getDividerPositions()[0];
             }
             progressPane.isExpanded();
+            //FIXME doesn't account for new tab layout
             String tabName = tabbed_panel.getSelectionModel().getSelectedItem().getText();
             int width = (int)jFrame.getWidth(); if (width <0) width = 0;
             int height = (int)jFrame.getHeight(); if (height <0) height = 0;
@@ -1437,7 +1496,8 @@ public static class guiApp extends Application {
             ofp.write("<progressExpanded>\n"    + (progressPane.isExpanded()?1:0) + "\n");
             ofp.write("<helpDisplay>\n"         + helpDisplay                + "\n");
             if (remote_gui != null) {
-               int tabIndex_r = remote_gui.tabbed_panel.getSelectionModel().getSelectedIndex();
+            	//FIXME doesn't account for new tab layout... or does it?
+               int tabIndex_r = remote_gui.getPanel().getSelectionModel().getSelectedIndex();
                ofp.write("<tab_remote>\n"       + tabIndex_r                 + "\n");
             }
             ofp.write("<tab>\n"                 + tabName                    + "\n");
@@ -1773,6 +1833,7 @@ public static class guiApp extends Application {
                }
             }
             if (key.equals("tab_remote")) {
+            	//FIXME doesn't account for new layout
                try {
                   value = Integer.parseInt(line);
                } catch (NumberFormatException e) {
@@ -1972,9 +2033,9 @@ public static class guiApp extends Application {
             }
             @Override public void run() {
                 if (centerDivider0 > 0 && centerDivider0 < 1)
-                    jContentPane.setDividerPosition(0, centerDivider0);
+                    recordingsSplit.setDividerPosition(0, centerDivider0);
                 if (centerDivider > 0 && centerDivider < 1)
-                    jContentPane.setDividerPosition(1, centerDivider);
+                    jContentPane.setDividerPosition(0, centerDivider);
                
                if (bottomDivider > 0 && bottomDivider < 1)
                   splitBottom.setDividerPosition(0, bottomDivider);

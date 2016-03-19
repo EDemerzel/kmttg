@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?scenebuilder-stylesheet ../../../../../../release/css/kmttg.css?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.TextField?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.Insets?>
+
+<GridPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tivo.kmttg.gui.slingboxgui"
+    fx:id="panel" alignment="CENTER" hgap="5" vgap="1">
+    
+    <HBox GridPane.columnIndex="1" GridPane.rowIndex="0" spacing="10">
+    <padding><Insets top="0" right="0" bottom="5" left="0"/></padding>
+        <Button fx:id="start" text="Start" onAction="#startCB"/>
+        <Button fx:id="stop" text="Stop" onAction="#stopCB"/>
+        <Button fx:id="Help" text="Help" onAction="#HelpCB"/>
+    </HBox>
+    <CheckBox GridPane.columnIndex="2" GridPane.rowIndex="0" text="Capture raw file" fx:id="raw" selected="false"/>
+    
+    <Label GridPane.columnIndex="0" GridPane.rowIndex="1" text="Slingbox IP" />
+    <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" fx:id="ip" minWidth="30"/>
+    <Label GridPane.columnIndex="2" GridPane.rowIndex="1" text="Slingbox port"/>
+    <TextField GridPane.columnIndex="3" GridPane.rowIndex="1" fx:id="port" minWidth="30"/>
+
+    <Label GridPane.columnIndex="0" GridPane.rowIndex="2" text="Slingbox password"/>
+    <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" fx:id="pass" minWidth="30"/>
+    <Label GridPane.columnIndex="2" GridPane.rowIndex="2" text="Slingbox capture file directory"/>
+    <TextField GridPane.columnIndex="3" GridPane.rowIndex="2" fx:id="dir" minWidth="30"/>
+
+    <Label GridPane.columnIndex="0" GridPane.rowIndex="3" text="Perl executable"/>
+    <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" fx:id="perl" minWidth="30"/>
+    <Label GridPane.columnIndex="2" GridPane.rowIndex="3" text="File name"/>
+    <TextField GridPane.columnIndex="3" GridPane.rowIndex="3" fx:id="filename" minWidth="30"/>
+
+    <Label GridPane.columnIndex="0" GridPane.rowIndex="4" text="Slingbox model"/>
+    <ChoiceBox GridPane.columnIndex="1" GridPane.rowIndex="4" fx:id="type" >
+        <String fx:value="Slingbox 350/500"/>
+        <String fx:value="Slingbox Pro HD"/>
+        <String fx:value="Slingbox Pro"/>
+        <String fx:value="Slingbox Solo"/>
+    </ChoiceBox>
+    <Label GridPane.columnIndex="2" GridPane.rowIndex="4" text="Video container to use"/>
+    <ChoiceBox GridPane.columnIndex="3" GridPane.rowIndex="4" fx:id="container">
+        <String fx:value="mpegts"/>
+        <String fx:value="matroska"/>
+    </ChoiceBox>
+
+    <Label GridPane.columnIndex="0" GridPane.rowIndex="5" text="Video resolution"/>
+    <ChoiceBox GridPane.columnIndex="1" GridPane.rowIndex="5" fx:id="res">
+        <String fx:value="1920x1080"/>
+        <String fx:value="640x480"/>
+    </ChoiceBox>
+    <Label GridPane.columnIndex="2" GridPane.rowIndex="5" text="Video bit rate (Kbps)"/>
+    <ChoiceBox GridPane.columnIndex="3" GridPane.rowIndex="5" fx:id="vbw">
+        <String fx:value="4000"/>
+        <String fx:value="5000"/>
+        <String fx:value="6000"/>
+        <String fx:value="7000"/>
+    </ChoiceBox>
+
+    <Label GridPane.columnIndex="0" GridPane.rowIndex="6" text="Capture # minutes"/>
+    <TextField GridPane.columnIndex="1" GridPane.rowIndex="6" fx:id="dur" minWidth="30"/>
+    <Label GridPane.columnIndex="2" GridPane.rowIndex="6" text="Tune to channel"/>
+    <TextField GridPane.columnIndex="3" GridPane.rowIndex="6" fx:id="chan" minWidth="30"/>
+        
+</GridPane>
+

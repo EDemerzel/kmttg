@@ -1,6 +1,8 @@
 package com.tivo.kmttg.gui.remote;
 
 import java.io.File;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 import com.tivo.kmttg.gui.table.TableUtil;
 import com.tivo.kmttg.gui.table.channelsTable;
@@ -11,6 +13,8 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -21,30 +25,34 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 import javafx.stage.FileChooser.ExtensionFilter;
 
-public class channels {
-   public VBox panel = null;
+public class channels implements Initializable {
+   @FXML public VBox panel = null;
    public channelsTable tab = null;
-   public Button refresh = null;
-   public Button copy = null;
-   public Button update = null;
-   public Label label = null;
-   public ChoiceBox<String> tivo = null;
+   @FXML public Button refresh = null;
+   @FXML public Button copy = null;
+   @FXML public Button update = null;
+   @FXML public Label label = null;
+   @FXML public ChoiceBox<String> tivo = null;
+
+   @FXML private Button save;
+   @FXML private Button load;
    
-   public channels(final Stage frame) {
-      
-      // Channels tab items      
-      HBox row1 = new HBox();
-      row1.setSpacing(5);
-      row1.setAlignment(Pos.CENTER_LEFT);
-      row1.setPadding(new Insets(5,0,0,5));
-      
-      Label title = new Label("Channels");
-      
-      Label tivo_label = new Label();
-      
-      tivo = new ChoiceBox<String>();
+   @Override
+   public void initialize(URL location, ResourceBundle resources) {
+//      // Channels tab items      
+//      HBox row1 = new HBox();
+//      row1.setSpacing(5);
+//      row1.setAlignment(Pos.CENTER_LEFT);
+//      row1.setPadding(new Insets(5,0,0,5));
+//      
+//      Label title = new Label("Channels");
+//      
+//      Label tivo_label = new Label();
+//      
+//      tivo = new ChoiceBox<String>();
       tivo.valueProperty().addListener(new ChangeListener<String>() {
          @Override public void changed(ObservableValue<? extends String> ov, String oldVal, String newVal) {
             if (newVal != null && config.gui.remote_gui != null) {                
@@ -61,10 +69,40 @@ public class channels {
       });
       tivo.setTooltip(tooltip.getToolTip("tivo_channels"));
 
-      Button save = new Button("Save...");
+//      Button save = new Button("Save...");
       save.setTooltip(tooltip.getToolTip("save_channels"));
-      save.setOnAction(new EventHandler<ActionEvent>() {
-         public void handle(ActionEvent e) {
+
+//      Button load = new Button("Load...");
+      load.setTooltip(tooltip.getToolTip("load_channels"));
+//      copy = new Button("Copy");
+      copy.setTooltip(tooltip.getToolTip("copy_channels"));
+//      refresh = new Button("Refresh");
+      refresh.setTooltip(tooltip.getToolTip("refresh_channels"));
+//      update = new Button("Modify");
+      update.setTooltip(tooltip.getToolTip("update_channels"));
+
+//      label = new Label();
+//    
+//      row1.getChildren().add(title);
+//      row1.getChildren().add(tivo_label);
+//      row1.getChildren().add(tivo);
+//      row1.getChildren().add(refresh);
+//      row1.getChildren().add(save);
+//      row1.getChildren().add(load);
+//      row1.getChildren().add(copy);
+//      row1.getChildren().add(update);
+//      row1.getChildren().add(label);
+
+      tab = new channelsTable();
+      VBox.setVgrow(tab.TABLE, Priority.ALWAYS); // stretch vertically
+
+//      panel = new VBox();
+//      panel.setSpacing(1);
+//      panel.getChildren().addAll(row1, tab.TABLE);      
+      panel.getChildren().add(tab.TABLE);      
+   }
+   @FXML private void saveCB(ActionEvent e) {
+	   Window frame = tivo.getScene().getWindow();
             // Save channels list
             String tivoName = tivo.getValue();
             if (tivoName != null && tivoName.length() > 0) {
@@ -84,13 +122,9 @@ public class channels {
                   }
                }
             }
-         }
-      });
-
-      Button load = new Button("Load...");
-      load.setTooltip(tooltip.getToolTip("load_channels"));
-      load.setOnAction(new EventHandler<ActionEvent>() {
-         public void handle(ActionEvent e) {
+   }
+   @FXML private void loadCB(ActionEvent e) {
+	   Window frame = tivo.getScene().getWindow();
             // Load channels list
             String tivoName = tivo.getValue();
             if (tivoName != null && tivoName.length() > 0) {
@@ -106,62 +140,29 @@ public class channels {
                   tab.loadChannels(selectedFile.getAbsolutePath());
                }
             }
-         }
-      });
+   }
 
-      copy = new Button("Copy");
-      copy.setTooltip(tooltip.getToolTip("copy_channels"));
-      copy.setOnAction(new EventHandler<ActionEvent>() {
-         public void handle(ActionEvent e) {
+   @FXML private void copyCB(ActionEvent e) {
             // Copy selected channels
             String tivoName = tivo.getValue();
             if (tivoName != null && tivoName.length() > 0)
                tab.copyChannels(tivoName);
-         }
-      });
+   }
 
-      refresh = new Button("Refresh");
-      refresh.setTooltip(tooltip.getToolTip("refresh_channels"));
-      refresh.setOnAction(new EventHandler<ActionEvent>() {
-         public void handle(ActionEvent e) {
+   @FXML private void refreshCB(ActionEvent e) {
             // Refresh channels list
             String tivoName = tivo.getValue();
             if (tivoName != null && tivoName.length() > 0) {
                label.setText("");
                tab.refreshChannels(tivoName);
             }
-         }
-      });
+   }
 
-      update = new Button("Modify");
-      update.setTooltip(tooltip.getToolTip("update_channels"));
-      update.setOnAction(new EventHandler<ActionEvent>() {
-         public void handle(ActionEvent e) {
+   @FXML private void updateCB(ActionEvent e) {
             // Update channels list
             String tivoName = tivo.getValue();
             if (tivoName != null && tivoName.length() > 0)
                label.setText("");
                tab.updateChannels(tivoName);
-         }
-      });
-      
-      label = new Label();
-            
-      row1.getChildren().add(title);
-      row1.getChildren().add(tivo_label);
-      row1.getChildren().add(tivo);
-      row1.getChildren().add(refresh);
-      row1.getChildren().add(save);
-      row1.getChildren().add(load);
-      row1.getChildren().add(copy);
-      row1.getChildren().add(update);
-      row1.getChildren().add(label);
-      
-      tab = new channelsTable();
-      VBox.setVgrow(tab.TABLE, Priority.ALWAYS); // stretch vertically
-      
-      panel = new VBox();
-      panel.setSpacing(1);
-      panel.getChildren().addAll(row1, tab.TABLE);      
    }
 }

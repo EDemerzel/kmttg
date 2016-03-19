@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tivo.kmttg.gui.remote.info"
+    fx:id="panel" spacing="1">
+    <HBox spacing="5" alignment="CENTER_LEFT">
+    <padding><Insets top="5" right="0" bottom="0" left="5"/></padding>
+        <Label text="System Information"/>
+        <Label /><!-- tivo_label... has no content. -->
+        <ChoiceBox fx:id="tivo"></ChoiceBox>
+        <HBox minWidth="40" prefWidth="40"/>
+        <Button fx:id="refresh" text="Refresh" onAction="#refreshCB"/>
+        <Button fx:id="netconnect" text="Network Connect" onAction="#netconnectCB"/>
+        <HBox minWidth="40" prefWidth="40"/>
+        <Button fx:id="reboot" text="Reboot" onAction="#rebootCB"/>
+    </HBox>
+    <!--  wrapText=true disables horizontal scrollbar -->
+    <TextArea fx:id="text" style="-fx-font-family: monospace;" editable="false" wrapText="true" VBox.vgrow="ALWAYS"/>
+</VBox>
+

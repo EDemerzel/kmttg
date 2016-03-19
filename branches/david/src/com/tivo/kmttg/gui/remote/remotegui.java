@@ -1,19 +1,24 @@
 package com.tivo.kmttg.gui.remote;
 
 import java.io.File;
+import java.net.URL;
 import java.util.Arrays;
 import java.util.Hashtable;
+import java.util.ResourceBundle;
 
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Task;
 import javafx.event.EventHandler;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -36,10 +41,36 @@ import com.tivo.kmttg.gui.table.TableUtil;
 import com.tivo.kmttg.main.config;
 import com.tivo.kmttg.rpc.Remote;
 import com.tivo.kmttg.rpc.rnpl;
+import com.tivo.kmttg.util.debug;
 import com.tivo.kmttg.util.log;
 
 public class remotegui {
-   public TabPane tabbed_panel = null;
+   @FXML private TabPane tabbed_panel = null;
+
+   @FXML private VBox todo;
+   @FXML private todo todoController;
+   @FXML private VBox guide;
+   @FXML private guide guideController;
+   @FXML private VBox stream;
+   @FXML private stream streamController;
+   @FXML private VBox seasonpasses;
+   @FXML private seasonpasses seasonpassesController;
+   @FXML private VBox cancelled;
+   @FXML private cancelled cancelledController;
+   @FXML private VBox deleted;
+   @FXML private deleted deletedController;
+   @FXML private VBox thumbs;
+   @FXML private thumbs thumbsController;
+   @FXML private VBox channels;
+   @FXML private channels channelsController;
+   @FXML private VBox premiere;
+   @FXML private premiere premiereController;
+   @FXML private VBox info;
+   @FXML private info infoController;
+   @FXML private VBox search;
+   @FXML private search searchController;
+   @FXML private VBox remotecontrol;
+   @FXML private remotecontrol remotecontrolController;
    
    public todo todo_tab = null;
    public guide guide_tab = null;
@@ -50,24 +81,24 @@ public class remotegui {
    public thumbs thumbs_tab = null;
    public channels channels_tab = null;
    public premiere premiere_tab = null;
-   public info info_tab = null;
+   private info info_tab = null;
    public search search_tab = null;
-   public remotecontrol rc_tab = null;
+   private remotecontrol rc_tab = null;
    
    public FileChooser Browser = null;
 
-   public remotegui(final Stage frame) {
+   public void initializeManual(URL location, ResourceBundle resources) {
       Browser = new FileChooser();
       Browser.setInitialDirectory(new File(config.programDir));
       Browser.setTitle("Choose File");
       
-      tabbed_panel = new TabPane();
-      tabbed_panel.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
+//      tabbed_panel = new TabPane();
+//      tabbed_panel.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
       tabbed_panel.getSelectionModel().selectedItemProperty().addListener( new ChangeListener<Tab>() {
          @Override
          public void changed(ObservableValue<? extends Tab> ov, Tab oldTab, Tab newTab) {
             String selected = newTab.getText();
-            if (selected.equals("Search")) {
+            if (selected.equals(searchName())) {
                // Set focus on text_search field
                Platform.runLater(new Runnable() {
                   @Override
@@ -76,11 +107,11 @@ public class remotegui {
                   }
                });
             }
-            if (selected.equals("Guide")) {
+            if (selected.equals(guideName())) {
                // Reset date range in Guide start time combo box
                guide_tab.tab.setChoiceBoxDates(guide_tab.start, guide_tab.hour_increment, guide_tab.total_range);
             }
-            if (selected.equals("Remote")) {
+            if (selected.equals(remoteControlName())) {
                // Set focus on tabbed_panel
                Platform.runLater(new Runnable() {
                   @Override
@@ -142,34 +173,46 @@ public class remotegui {
          }
       });
       
-      // Build the individual tab contents
-      todo_tab = new todo(frame);
-      guide_tab = new guide(frame);
-      stream_tab = new stream(frame);
-      sp_tab = new seasonpasses(frame);
-      cancel_tab = new cancelled(frame);
-      deleted_tab = new deleted(frame);
-      thumbs_tab = new thumbs(frame);
-      channels_tab = new channels(frame);
-      premiere_tab = new premiere(frame);
-      info_tab = new info(frame);
-      search_tab = new search(frame);
-      rc_tab = new remotecontrol(frame);
-            
-      // Add all panels to tabbed panel
-      addTabPane("ToDo", todo_tab.panel);
-      addTabPane("Season Passes", sp_tab.panel);
-      addTabPane("Won't Record", cancel_tab.panel);
-      addTabPane("Season Premieres", premiere_tab.panel);
-      addTabPane("Search", search_tab.panel);
-      addTabPane("Guide", guide_tab.panel);
-      addTabPane("Streaming", stream_tab.panel);
-      addTabPane("Deleted", deleted_tab.panel);
-      // Intentionally commented out for now
-      //addTabPane("Channels", channels_tab.panel);
-      addTabPane("Thumbs", thumbs_tab.panel);
-      addTabPane("Remote", rc_tab.panel);
-      addTabPane("Info", info_tab.panel);
+	   todo_tab = todoController;
+	   guide_tab = guideController;
+	   stream_tab = streamController;
+	   sp_tab = seasonpassesController;
+	   cancel_tab = cancelledController;
+	   deleted_tab = deletedController;
+	   thumbs_tab = thumbsController;
+	   channels_tab = channelsController;
+	   premiere_tab = premiereController;
+	   info_tab = infoController;
+	   search_tab = searchController;
+	   rc_tab = remotecontrolController;
+//      // Build the individual tab contents
+//      todo_tab = new todo(frame);
+//      guide_tab = new guide(frame);
+//      stream_tab = new stream(frame);
+//      sp_tab = new seasonpasses(frame);
+//      cancel_tab = new cancelled(frame);
+//      deleted_tab = new deleted(frame);
+//      thumbs_tab = new thumbs(frame);
+//      channels_tab = new channels(frame);
+//      premiere_tab = new premiere(frame);
+//      info_tab = new info(frame);
+//      search_tab = new search(frame);
+//      rc_tab = new remotecontrol(frame);
+//            
+//      // Add all panels to tabbed panel
+//      addTabPane(todoName(), todo_tab.panel);
+//      addTabPane(seasonPassName(), sp_tab.panel);
+//      addTabPane(wontRecordName(), cancel_tab.panel);
+//      addTabPane(seasonPremieresName(), premiere_tab.panel);
+//      addTabPane(searchName(), search_tab.panel);
+//      addTabPane(guideName(), guide_tab.panel);
+//      addTabPane(streamingName(), stream_tab.panel);
+//      addTabPane(deletedName(), deleted_tab.panel);
+//      // Intentionally commented out for now
+//      //addTabPane(channelsName(), channels_tab.panel);
+//      addTabPane(thumbsName(), thumbs_tab.panel);
+//      addTabPane(remoteControlName(), rc_tab.panel);
+//      addTabPane(infoName(), info_tab.panel);
       
       // Init the tivo ChoiceBoxes
       setTivoNames();
@@ -182,16 +225,64 @@ public class remotegui {
       TableUtil.autoSizeTableViewColumns(cancel_tab.tab.TABLE, true);
       TableUtil.autoSizeTableViewColumns(deleted_tab.tab.TABLE, true);
       TableUtil.autoSizeTableViewColumns(thumbs_tab.tab.TABLE, true);
-      TableUtil.autoSizeTableViewColumns(channels_tab.tab.TABLE, true);
+      if(channels_tab != null) TableUtil.autoSizeTableViewColumns(channels_tab.tab.TABLE, true);
       TableUtil.autoSizeTableViewColumns(search_tab.tab.TABLE, true);
    }
    
-   private void addTabPane(String name, Node content) {
-      Tab tab = new Tab();
-      tab.setContent(content);
-      tab.setText(name);
-      tabbed_panel.getTabs().add(tab);
+   private String infoName() {
+	   return "Info";
    }
+
+   private String channelsName() {
+	   return "Channels";
+   }
+
+   private String thumbsName() {
+	   return "Thumbs";
+   }
+
+   private String remoteControlName() {
+	   return "Remote";
+   }
+
+   private String deletedName() {
+	   return "Deleted";
+   }
+
+   private String guideName() {
+	   return "Guide";
+   }
+
+   private String streamingName() {
+	   return "Streaming";
+   }
+
+   private String searchName() {
+	   return "Search";
+   }
+
+   private String seasonPremieresName() {
+	   return "Season Premieres";
+   }
+
+   private String wontRecordName() {
+	   return "Won't Record";
+   }
+
+   private String seasonPassName() {
+	   return "Season Passes";
+   }
+
+   private String todoName() {
+	   return "ToDo";
+   }
+   
+//   private void addTabPane(String name, Node content) {
+//      Tab tab = new Tab();
+//      tab.setContent(content);
+//      tab.setText(name);
+//      tabbed_panel.getTabs().add(tab);
+//   }
       
    public TabPane getPanel() {
       return tabbed_panel;
@@ -226,29 +317,29 @@ public class remotegui {
    }
    
    public String getTivoName(String tab) {
-      if (tab.equals("todo") || tab.equals("ToDo"))
+      if (tab.equals("todo") || tab.equals(todoName()))
          return todo_tab.tivo.getValue();
-      if (tab.equals("guide") || tab.equals("Guide"))
+      if (tab.equals("guide") || tab.equals(guideName()))
          return guide_tab.tivo.getValue();
-      if (tab.equals("stream") || tab.equals("Streaming"))
+      if (tab.equals("stream") || tab.equals(streamingName()))
          return stream_tab.tivo.getValue();
-      if (tab.equals("sp") || tab.equals("Season Passes"))
+      if (tab.equals("sp") || tab.equals(seasonPassName()))
          return sp_tab.tivo.getValue();
-      if (tab.equals("cancel") || tab.equals("Won't Record"))
+      if (tab.equals("cancel") || tab.equals(wontRecordName()))
          return cancel_tab.tivo.getValue();
-      if (tab.equals("deleted") || tab.equals("Deleted"))
+      if (tab.equals("deleted") || tab.equals(deletedName()))
          return deleted_tab.tivo.getValue();
-      if (tab.equals("thumbs") || tab.equals("Thumbs"))
+      if (tab.equals("thumbs") || tab.equals(thumbsName()))
          return thumbs_tab.tivo.getValue();
-      if (tab.equals("channels") || tab.equals("Channels"))
+      if (tab.equals("channels") || tab.equals(channelsName()))
          return channels_tab.tivo.getValue();
-      if (tab.equals("search") || tab.equals("Search"))
+      if (tab.equals("search") || tab.equals(searchName()))
          return search_tab.tivo.getValue();
-      if (tab.equals("rc") || tab.equals("Remote"))
+      if (tab.equals("rc") || tab.equals(remoteControlName()))
          return rc_tab.tivo.getValue();
-      if (tab.equals("info") || tab.equals("Info"))
+      if (tab.equals("info") || tab.equals(infoName()))
          return info_tab.tivo.getValue();
-      if (tab.equals("premiere") || tab.equals("Season Premieres"))
+      if (tab.equals("premiere") || tab.equals(seasonPremieresName()))
          return premiere_tab.tivo.getValue();
       return null;
    }
@@ -297,7 +388,7 @@ public class remotegui {
       cancel_tab.tivo.getItems().clear();
       deleted_tab.tivo.getItems().clear();
       thumbs_tab.tivo.getItems().clear();
-      channels_tab.tivo.getItems().clear();
+      if(channels_tab != null) channels_tab.tivo.getItems().clear();
       search_tab.tivo.getItems().clear();
       rc_tab.tivo.getItems().clear();
       info_tab.tivo.getItems().clear();
@@ -310,7 +401,7 @@ public class remotegui {
             cancel_tab.tivo.getItems().add(tivoName);
             deleted_tab.tivo.getItems().add(tivoName);
             thumbs_tab.tivo.getItems().add(tivoName);            
-            channels_tab.tivo.getItems().add(tivoName);            
+            if(channels_tab != null) channels_tab.tivo.getItems().add(tivoName);            
             search_tab.tivo.getItems().add(tivoName);
             info_tab.tivo.getItems().add(tivoName);
             premiere_tab.tivo.getItems().add(tivoName);
@@ -329,7 +420,7 @@ public class remotegui {
       setComboDefVal(cancel_tab.tivo);
       setComboDefVal(deleted_tab.tivo);
       setComboDefVal(thumbs_tab.tivo);
-      setComboDefVal(channels_tab.tivo);
+      if(channels_tab != null) setComboDefVal(channels_tab.tivo);
       setComboDefVal(search_tab.tivo);
       setComboDefVal(rc_tab.tivo);
       setComboDefVal(info_tab.tivo);
@@ -416,53 +507,53 @@ public class remotegui {
          state = true;
       else
          state = false;
-      if (tab.equals("ToDo")) {
+      if (tab.equals(todoName())) {
          todo_tab.cancel.setDisable(!state);
          todo_tab.modify.setDisable(!state);
       }
-      if (tab.equals("Season Passes")) {
+      if (tab.equals(seasonPassName())) {
          sp_tab.reorder.setDisable(!state);
          sp_tab.copy.setDisable(!state);
       }
-      if (tab.equals("Won't Record")) {
+      if (tab.equals(wontRecordName())) {
          cancel_tab.record.setDisable(!state);
       }
-      if (tab.equals("Season Premieres")) {
+      if (tab.equals(seasonPremieresName())) {
          premiere_tab.wishlist.setDisable(!state);
          premiere_tab.record.setDisable(!state);
          premiere_tab.recordSP.setDisable(!state);
       }
-      if (tab.equals("Search")) {
+      if (tab.equals(searchName())) {
          search_tab.wishlist.setDisable(!state);
          search_tab.record.setDisable(!state);
          search_tab.recordSP.setDisable(!state);
          search_tab.manual_record.setDisable(!state);
       }
-      if (tab.equals("Guide")) {
+      if (tab.equals(guideName())) {
          guide_tab.wishlist.setDisable(!state);
          guide_tab.record.setDisable(!state);
          guide_tab.recordSP.setDisable(!state);
          guide_tab.manual_record.setDisable(!state);
       }
-      if (tab.equals("Deleted")) {
+      if (tab.equals(deletedName())) {
          deleted_tab.recover.setDisable(!state);
          deleted_tab.permDelete.setDisable(!state);
       }
-      if (tab.equals("Remote")) {
+      if (tab.equals(remoteControlName())) {
          rc_tab.hme_button.setDisable(!state);
          rc_tab.jumpto_button.setDisable(!state);
          rc_tab.jumpahead_button.setDisable(!state);
          rc_tab.jumpback_button.setDisable(!state);
       }
-      if (tab.equals("Thumbs")) {
+      if (tab.equals(thumbsName())) {
          thumbs_tab.copy.setDisable(!state);
          thumbs_tab.update.setDisable(!state);
       }
-      if (tab.equals("Channels")) {
+      if (tab.equals(channelsName())) {
          channels_tab.copy.setDisable(!state);
          channels_tab.update.setDisable(!state);
       }
-      if (tab.equals("Info")) {
+      if (tab.equals(infoName())) {
          info_tab.reboot.setDisable(!state);
       }
    }

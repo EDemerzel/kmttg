@@ -1,5 +1,8 @@
 package com.tivo.kmttg.gui.remote;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import com.tivo.kmttg.gui.table.streamTable;
 import com.tivo.kmttg.main.config;
 import com.tivo.kmttg.main.jobData;
@@ -11,6 +14,8 @@ import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -21,26 +26,27 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class stream {
-   public VBox panel = null;
+public class stream implements Initializable {
+   @FXML public VBox panel = null;
    public streamTable tab = null;
-   public Button refresh = null;
-   public Button remove = null;
-   public ChoiceBox<String> tivo = null;
+   @FXML public Button refresh = null;
+   @FXML public Button remove = null;
+   @FXML public ChoiceBox<String> tivo = null;
    
-   public stream(final Stage frame) {
+   @Override
+   public void initialize(URL location, ResourceBundle resources) {
       
-      // Streaming Tab items
-      HBox row1 = new HBox();
-      row1.setSpacing(5);
-      row1.setAlignment(Pos.CENTER_LEFT);
-      row1.setPadding(new Insets(5,0,0,5));
-      
-      Label title = new Label("Streaming");
-      
-      Label tivo_label = new Label();
-      
-      tivo = new ChoiceBox<String>();
+//      // Streaming Tab items
+//      HBox row1 = new HBox();
+//      row1.setSpacing(5);
+//      row1.setAlignment(Pos.CENTER_LEFT);
+//      row1.setPadding(new Insets(5,0,0,5));
+//      
+//      Label title = new Label("Streaming");
+//      
+//      Label tivo_label = new Label();
+//      
+//      tivo = new ChoiceBox<String>();
       tivo.valueProperty().addListener(new ChangeListener<String>() {
          @Override public void changed(ObservableValue<? extends String> ov, String oldVal, String newVal) {
             if (newVal != null && config.gui.remote_gui != null) {
@@ -55,10 +61,28 @@ public class stream {
       });
       tivo.setTooltip(tooltip.getToolTip("tivo_stream"));
       
-      refresh = new Button("Refresh");
+//      refresh = new Button("Refresh");
       refresh.setTooltip(tooltip.getToolTip("refresh_stream"));
-      refresh.setOnAction(new EventHandler<ActionEvent>() {
-         public void handle(ActionEvent e) {
+      
+//      remove = new Button("Remove");
+      remove.setTooltip(tooltip.getToolTip("remove_stream"));
+//      row1.getChildren().add(title);
+//      row1.getChildren().add(tivo_label);
+//      row1.getChildren().add(tivo);
+//      row1.getChildren().add(refresh);
+//      row1.getChildren().add(remove);
+      
+      tab = new streamTable();
+      VBox.setVgrow(tab.TABLE, Priority.ALWAYS); // stretch vertically
+        
+//      panel = new VBox();
+//      panel.setSpacing(1);
+//      panel.setPadding(new Insets(0,0,0,5));
+//      panel.getChildren().addAll(row1, tab.TABLE);      
+      panel.getChildren().add(tab.TABLE);
+   }
+   
+   @FXML private void refreshCB(ActionEvent e) {
             // At top level => Update current folder contents
             final String tivoName = tivo.getValue();
             if (tivoName != null && tivoName.length() > 0) {
@@ -79,29 +103,10 @@ public class stream {
                };
                new Thread(task).start();
             }
-         }
-      });
-      
-      remove = new Button("Remove");
-      remove.setTooltip(tooltip.getToolTip("remove_stream"));
-      remove.setOnAction(new EventHandler<ActionEvent>() {
-         public void handle(ActionEvent e) {
-            tab.removeButtonCB();
-         }
-      });
-      
-      row1.getChildren().add(title);
-      row1.getChildren().add(tivo_label);
-      row1.getChildren().add(tivo);
-      row1.getChildren().add(refresh);
-      row1.getChildren().add(remove);
-      
-      tab = new streamTable();
-      VBox.setVgrow(tab.TABLE, Priority.ALWAYS); // stretch vertically
-        
-      panel = new VBox();
-      panel.setSpacing(1);
-      panel.setPadding(new Insets(0,0,0,5));
-      panel.getChildren().addAll(row1, tab.TABLE);      
    }
+
+   @FXML private void removeCB(ActionEvent e) {
+            tab.removeButtonCB();
+   }
+      
 }

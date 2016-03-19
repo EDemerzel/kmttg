@@ -2,7 +2,9 @@ package com.tivo.kmttg.gui.remote;
 
 import java.io.File;
 import java.net.InetAddress;
+import java.net.URL;
 import java.net.UnknownHostException;
+import java.util.ResourceBundle;
 import java.util.Stack;
 
 import com.tivo.kmttg.JSON.JSONException;
@@ -20,8 +22,11 @@ import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
@@ -37,32 +42,35 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-public class remotecontrol {
-   public VBox panel = null;
-   public ChoiceBox<String> tivo = null;
-   public ChoiceBox<String> hme = null;
-   public ChoiceBox<String> hme_sps = null;
-   public TextField jumpto_text = null;
-   public TextField jumpahead_text = null;
-   public TextField jumpback_text = null;
+public class remotecontrol implements Initializable {
+   @FXML public VBox panel = null;
+   @FXML public ChoiceBox<String> tivo = null;
+   @FXML public ChoiceBox<String> hme = null;
+   @FXML public ChoiceBox<String> hme_sps = null;
+   @FXML public TextField jumpto_text = null;
+   @FXML public TextField jumpahead_text = null;
+   @FXML public TextField jumpback_text = null;
    public Boolean cc_state = false;
    
    // These buttons selectively disabled
-   public Button hme_button = null;
-   public Button sps_button = null;
-   public Button jumpto_button = null;
-   public Button jumpahead_button = null;
-   public Button jumpback_button = null;
-   String background = config.gui.getWebColor(Color.BLACK);
-   String text_color = config.gui.getWebColor(Color.WHITE);
+   @FXML public Button hme_button = null;
+   @FXML public Button sps_button = null;
+   @FXML public Button jumpto_button = null;
+   @FXML public Button jumpahead_button = null;
+   @FXML public Button jumpback_button = null;
    
-   public remotecontrol (final Stage frame) {
+   @FXML private Button standby;
+   @FXML private Button toggle_cc;
+   @FXML private Button myShows;
+   
+   @Override
+   public void initialize(URL location, ResourceBundle resources) {
       // Remote Control Tab items
-      panel = new VBox();
-      panel.setStyle("-fx-background-color: " + background);
-      
-      Pane panel_controls = new Pane();
-      panel_controls.setStyle("-fx-background-color: " + background);
+//      panel = new VBox();
+//      panel.setStyle("-fx-background-color: " + background);
+//      
+//      Pane panel_controls = new Pane();
+//      panel_controls.setStyle("-fx-background-color: " + background);
       
       // TiVo Remote control panel
       final Object[][] Buttons = {
@@ -110,24 +118,33 @@ public class remotecontrol {
 
       for (int i=0; i<Buttons.length; ++i) {
          final String event = (String)Buttons[i][0];
-         String imageName = (String)Buttons[i][1];
-         double scale = (Double)Buttons[i][2];
-         int x = (Integer)Buttons[i][3];
-         int y = (Integer)Buttons[i][4];
+//         String imageName = (String)Buttons[i][1];
+//         double scale = (Double)Buttons[i][2];
+//         int x = (Integer)Buttons[i][3];
+//         int y = (Integer)Buttons[i][4];
          int cropx = (Integer)Buttons[i][5];
          int cropy = (Integer)Buttons[i][6];
          String keyName = (String)Buttons[i][7];
          KeyCode keyCode = (KeyCode)Buttons[i][8];
          if (event.startsWith("lab_")) {
-            Label l = ImageLabel(imageName, scale);
-            if (l == null) continue;
-            l.setLayoutX(x);
-            l.setLayoutY(y);
-            panel_controls.getChildren().add(l);
+//            Label l = ImageLabel(imageName, scale);
+//            if (l == null) continue;
+//            l.setLayoutX(x);
+//            l.setLayoutY(y);
+//            panel_controls.getChildren().add(l);
          } else {
-            Button b = ImageButton(imageName, scale);
+//            Button b = ImageButton(imageName, scale);
+        	 Node item = panel.lookup("#"+event);
+        	 if(!(item instanceof Button)) {
+        		 continue;
+        	 }
+        	 Button b = (Button) item;
             if (b == null) continue;
+            
+            disableSpaceAction(b);
+            
             b.setTooltip(tooltip.getToolTip(event));
+            // TODO: the following four "if" statements appear to be redundant since the same code runs regardless a little later
             if (event.equals("left"))
                AddButtonShortcut(b, keyName, keyCode);
             if (event.equals("right"))
@@ -136,55 +153,13 @@ public class remotecontrol {
                AddButtonShortcut(b, keyName, keyCode);
             if (event.equals("down"))
                AddButtonShortcut(b, keyName, keyCode);
-            panel_controls.getChildren().add(b);
-            b.setLayoutX(x);
-            b.setLayoutY(y);
-            b.setPrefWidth(b.getPrefWidth()-cropx);
-            b.setPrefHeight(b.getPrefHeight()-cropy);
-            b.setOnAction(new EventHandler<ActionEvent>() {
-               public void handle(ActionEvent e) {
-                  // Set focus on tabbed_panel
-                  Platform.runLater(new Runnable() {
-                     @Override
-                     public void run() {
-                        if (config.gui.remote_gui != null)
-                           config.gui.remote_gui.tabbed_panel.requestFocus();
-                     }
-                  });
-                  final String tivoName = (String)tivo.getValue();
-                  if (tivoName != null && tivoName.length() > 0) {
-                     Task<Void> task = new Task<Void>() {
-                        @Override public Void call() {
-                           if (config.rpcEnabled(tivoName)) {
-                              Remote r = config.initRemote(tivoName);
-                              if (r.success) {
-                                 try {
-                                    JSONObject json = new JSONObject();
-                                    json.put("event", event);
-                                    r.Command("keyEventSend", json);
-                                 } catch (JSONException e1) {
-                                    log.error("RC - " + e1.getMessage());
-                                 }
-                                 r.disconnect();
-                              }
-                           } else {
-                              // Use telnet protocol
-                              new telnet(config.TIVOS.get(tivoName), mapToTelnet(new String[] {event}));
-                           }
-                           // Set focus on tabbed_panel
-                           Platform.runLater(new Runnable() {
-                              @Override
-                              public void run() {
-                                 config.gui.remote_gui.tabbed_panel.requestFocus();
-                              }
-                           });
-                           return null;
-                        }
-                     };
-                     new Thread(task).start();
-                  }
-               }
-            });
+//            panel_controls.getChildren().add(b);
+//            b.setLayoutX(x);
+//            b.setLayoutY(y);
+//            b.setPrefWidth(b.getPrefWidth()-cropx);
+//            b.setPrefHeight(b.getPrefHeight()-cropy);
+//            b.setOnAction(new EventHandler<ActionEvent>() {
+//            });
             if (keyName != null && keyCode != null) {
                AddButtonShortcut(b, keyName, keyCode);
             }
@@ -192,87 +167,36 @@ public class remotecontrol {
       }
       
       // Special buttons
-      Button standby = new CustomButton(
-         "Toggle standby", "standby",
-         new String[] {"standby"}
-      );
-      panel_controls.getChildren().add(standby);
-      standby.setLayoutX(500);
-      standby.setLayoutY(10);
+//      Button standby = new CustomButton(
+//         "Toggle standby", "standby",
+//         new String[] {"standby"}
+//      );
+//      panel_controls.getChildren().add(standby);
+//      standby.setLayoutX(500);
+//      standby.setLayoutY(10);
+//      standby.setOnAction(new EventHandler<ActionEvent>() {
+//        });
       
-      Button toggle_cc = new CustomButton("Toggle CC", "toggle_cc", null);
-      panel_controls.getChildren().add(toggle_cc);
-      toggle_cc.setLayoutX(500);
-      toggle_cc.setLayoutY(40);
-      toggle_cc.setOnAction(new EventHandler<ActionEvent>() {
-         public void handle(ActionEvent e) {
-            String tivoName = (String)tivo.getValue();
-            if (tivoName != null && tivoName.length() > 0) {
-               String event;
-               if (cc_state)
-                  event = "ccOff";
-               else
-                  event = "ccOn";
-               cc_state = ! cc_state;
-               if (config.rpcEnabled(tivoName)) {
-                  Remote r = config.initRemote(tivoName);
-                  if (r.success) {
-                     try {
-                        JSONObject json = new JSONObject();
-                        json.put("event", event);
-                        r.Command("keyEventSend", json);
-                     } catch (JSONException e1) {
-                        log.error("RC - " + e1.getMessage());
-                     }
-                     r.disconnect();
-                  }
-               } else {
-                  // Use telnet interface
-                  String[] sequence = new String[1];
-                  if (event.equals("ccOff"))
-                     sequence[0] = "CC_OFF";
-                  if (event.equals("ccOn"))
-                     sequence[0] = "CC_ON";
-                  new telnet(config.TIVOS.get(tivoName), sequence);                     
-               }
-            }
-         }
-      });
       
-      Button myShows = new CustomButton("My Shows", "My Shows", null);
-      panel_controls.getChildren().add(myShows);
-      myShows.setLayoutX(500);
-      myShows.setLayoutY(70);
-      myShows.setOnAction(new EventHandler<ActionEvent>() {
-         public void handle(ActionEvent e) {
-            String tivoName = (String)tivo.getValue();
-            if (tivoName != null && tivoName.length() > 0) {
-               if (config.rpcEnabled(tivoName)) {
-                  Remote r = config.initRemote(tivoName);
-                  if (r.success) {
-                     try {
-                        JSONObject json = new JSONObject();
-                        json.put("event", "nowShowing");
-                        r.Command("keyEventSend", json);
-                     } catch (JSONException e1) {
-                        log.error("RC - " + e1.getMessage());
-                     }
-                     r.disconnect();
-                  }
-               } else {
-                  // Use telnet interface
-                  String[] sequence = new String[] {"NOWSHOWING"};
-                  new telnet(config.TIVOS.get(tivoName), sequence);                     
-               }
-            }
-         }
-      });
+//      Button toggle_cc = new CustomButton("Toggle CC", "toggle_cc", null);
+//      panel_controls.getChildren().add(toggle_cc);
+//      toggle_cc.setLayoutX(500);
+//      toggle_cc.setLayoutY(40);
+//      toggle_cc.setOnAction(new EventHandler<ActionEvent>() {
+//      });
+      
+//      Button myShows = new CustomButton("My Shows", "My Shows", null);
+//      panel_controls.getChildren().add(myShows);
+//      myShows.setLayoutX(500);
+//      myShows.setLayoutY(70);
+//      myShows.setOnAction(new EventHandler<ActionEvent>() {
+//      });
             
       // Other components for the panel      
-      Label label = new Label("TiVo");
-      label.setStyle("-fx-text-fill: " + text_color + ";");
-
-      tivo = new ChoiceBox<String>();
+//      Label label = new Label("TiVo");
+//      label.setStyle("-fx-text-fill: " + text_color + ";");
+//
+//      tivo = new ChoiceBox<String>();
       tivo.valueProperty().addListener(new ChangeListener<String>() {
          @Override public void changed(ObservableValue<? extends String> ov, String oldVal, String newVal) {
             if (newVal != null && config.gui.remote_gui != null) {
@@ -283,76 +207,13 @@ public class remotecontrol {
       });
       tivo.setTooltip(tooltip.getToolTip("tivo_rc"));
 
-      hme_button = new Button("Launch App:");
+//      hme_button = new Button("Launch App:");
       disableSpaceAction(hme_button);
       hme_button.setTooltip(tooltip.getToolTip("hme_button"));
-      hme_button.setOnAction(new EventHandler<ActionEvent>() {
-         public void handle(ActionEvent e) {
-            final String name = hme.getValue();
-            if (name != null && name.length() > 0) {
-               Task<Void> task = new Task<Void>() {
-                  @Override public Void call() {
-                     Remote r = config.initRemote(tivo.getValue());
-                     if (r.success) {
-                        try {
-                           JSONObject json = new JSONObject();
-                           String uri="";
-                           if (name.equals("Netflix (flash)"))
-                              uri = "x-tivo:flash:uuid:F23D193D-D2C2-4D18-9ABE-FA6B8488302F";
-                           if (name.equals("Plex"))
-                              uri = "x-tivo:web:https://plex.tv/web/tv/tivo";
-                           if (name.equals("Spotify"))
-                              uri = "x-tivo:web:https://d27nv3bwly96dm.cloudfront.net/indexOperav2.html";
-                           if (name.equals("Opera TV Store"))
-                              uri = "x-tivo:web:tvstore";
-                           if (name.equals("My Opera TV Store Apps"))
-                              uri = "x-tivo:web:tvstore:https://tivo.tvstore.opera.com/?startwith=myapps";
-                           if (name.equals("iHeartRadio"))
-                              uri = "x-tivo:web:https://tv.iheart.com/tivo/";
-                           if (name.equals("Netflix (html)"))
-                              uri = "x-tivo:netflix:netflix";
-                           if (name.equals("YouTube"))
-                              uri = "x-tivo:flash:uuid:B8CEA236-0C3D-41DA-9711-ED220480778E";
-                           if (name.equals("YouTube (html)"))
-                              uri = "x-tivo:web:https://www.youtube.com/tv";
-                           if (name.equals("Amazon Prime"))
-                              uri = "x-tivo:web:https://atv-ext.amazon.com/cdp/resources/app_host/index.html?deviceTypeID=A3UXGKN0EORVOF";
-                           if (name.equals("Vudu (html)"))
-                              uri = "x-tivo:vudu:vudu";
-                           if (name.equals("Amazon (hme)"))
-                              uri = "x-tivo:hme:uuid:35FE011C-3850-2228-FBC5-1B9EDBBE5863";
-                           if (name.equals("Hulu Plus"))
-                              uri = "x-tivo:flash:uuid:802897EB-D16B-40C8-AEEF-0CCADB480559";
-                           if (name.equals("AOL On"))
-                              uri = "x-tivo:flash:uuid:EA1DEF9D-D346-4284-91A0-FEA8EAF4CD39";
-                           if (name.equals("Launchpad"))
-                              uri = "x-tivo:flash:uuid:545E064D-C899-407E-9814-69A021D68DAD";
-                           if (name.equals("streambaby")) {
-                              String ip;
-                              try {
-                                 ip = InetAddress.getLocalHost().getHostAddress();
-                              } catch (UnknownHostException e) {
-                                 ip = "localhost";
-                              }
-                              int port = 7290;
-                              uri = "x-tivo:hme:http://" + ip + ":" + port + "/streambaby";
-                           }
-                           json.put("uri", uri);
-                           r.Command("Navigate", json);
-                        } catch (JSONException e1) {
-                           log.error("Launch App - " + e1.getMessage());
-                        }
-                        r.disconnect();
-                     }
-                     return null;
-                  }
-               };
-               new Thread(task).start();
-            }
-         }
-      });
+//      hme_button.setOnAction(new EventHandler<ActionEvent>() {
+//      });
       
-      hme = new ChoiceBox<String>();
+//      hme = new ChoiceBox<String>();
       hme.setTooltip(tooltip.getToolTip("hme_rc"));
 
       // util.SPS backdoors
@@ -413,23 +274,13 @@ public class remotecontrol {
       sps_text += sps_text_end;
       util.SPS.put(sps_name + "_tooltip", sps_text);
      
-      sps_button = new Button("SPS backdoor:");
+//      sps_button = new Button("SPS backdoor:");
       disableSpaceAction(sps_button);
       sps_button.setTooltip(tooltip.getToolTip("rc_sps_button"));
-      sps_button.setOnAction(new EventHandler<ActionEvent>() {
-         public void handle(ActionEvent e) {
-            String name = (String)hme_sps.getValue();
-            String tivoName = (String)tivo.getValue();
-            if (name != null && name.length() > 0 && tivoName != null && tivoName.length() > 0) {
-               executeMacro(
-                  tivoName,
-                  util.SPS.get(name).split(" ")
-               );
-            }
-         }
-      });
+//      sps_button.setOnAction(new EventHandler<ActionEvent>() {
+//      });
       
-      hme_sps = new ChoiceBox<String>();
+//      hme_sps = new ChoiceBox<String>();
       hme_sps.valueProperty().addListener(new ChangeListener<String>() {
          @Override public void changed(ObservableValue<? extends String> ov, String oldVal, String newVal) {
             if (newVal != null) {
@@ -444,169 +295,63 @@ public class remotecontrol {
          hme_sps.getSelectionModel().select(0);
       }
       
-      jumpto_button = new Button("Jump to minute:");
+//      jumpto_button = new Button("Jump to minute:");
       AddButtonShortcut(jumpto_button, "Altm", KeyCode.M);
       disableSpaceAction(jumpto_button);
       jumpto_button.setTooltip(tooltip.getToolTip("jumpto_text"));
-      jumpto_button.setOnAction(new EventHandler<ActionEvent>() {
-         public void handle(ActionEvent e) {
-            final String tivoName = (String)tivo.getValue();
-            String mins_string = string.removeLeadingTrailingSpaces(jumpto_text.getText());
-            if (tivoName == null || tivoName.length() == 0)
-               return;
-            if (mins_string == null || mins_string.length() == 0)
-               return;
-            try {
-               final int secs = (int)(Float.parseFloat(mins_string)*60);
-               Task<Void> task = new Task<Void>() {
-                  @Override public Void call() {
-                     Remote r = config.initRemote(tivoName);
-                     if (r.success) {
-                        JSONObject json = new JSONObject();
-                        try {
-                           Long pos = (long)1000*secs;
-                           json.put("offset", pos);
-                           r.Command("Jump", json);
-                        } catch (JSONException e) {
-                           log.error("Jump to minute failed - " + e.getMessage());
-                        }
-                        r.disconnect();
-                     }
-                     return null;
-                  }
-               };
-               new Thread(task).start();
-            } catch (NumberFormatException e1) {
-               log.error("Illegal number of minutes specified: " + mins_string);
-               return;
-            }            
-         }
-      });
-      jumpto_text = new TextField(); jumpto_text.setMinWidth(50); jumpto_text.setPrefWidth(50);
+//      jumpto_button.setOnAction(new EventHandler<ActionEvent>() {
+//      });
+//      jumpto_text = new TextField(); jumpto_text.setMinWidth(50); jumpto_text.setPrefWidth(50);
       jumpto_text.setTooltip(tooltip.getToolTip("jumpto_text"));
       jumpto_text.setText("0");
 
-      jumpahead_button = new Button("Skip minutes ahead:");
+//      jumpahead_button = new Button("Skip minutes ahead:");
       AddButtonShortcut(jumpahead_button, "Alt.", KeyCode.PERIOD);
       disableSpaceAction(jumpahead_button);
       jumpahead_button.setTooltip(tooltip.getToolTip("jumpahead_text"));
-      jumpahead_button.setOnAction(new EventHandler<ActionEvent>() {
-         public void handle(ActionEvent e) {
-            final String tivoName = (String)tivo.getValue();
-            String mins_string = string.removeLeadingTrailingSpaces(jumpahead_text.getText());
-            if (tivoName == null || tivoName.length() == 0)
-               return;
-            if (mins_string == null || mins_string.length() == 0)
-               return;
-            try {
-               final int secs = (int)(Float.parseFloat(mins_string)*60);
-               Task<Void> task = new Task<Void>() {
-                  @Override public Void call() {
-                     Remote r = config.initRemote(tivoName);
-                     if (r.success) {
-                        JSONObject json = new JSONObject();
-                        JSONObject reply = r.Command("Position", json);
-                        if (reply != null && reply.has("position")) {
-                           try {
-                              Long pos = reply.getLong("position");
-                              pos += (long)1000*secs;
-                              json.put("offset", pos);
-                              r.Command("Jump", json);
-                           } catch (JSONException e) {
-                              log.error("Skip minutes ahead failed - " + e.getMessage());
-                           }
-                        }
-                        r.disconnect();
-                     }
-                     return null;
-                  }
-               };
-               new Thread(task).start();
-            } catch (NumberFormatException e1) {
-               log.error("Illegal number of minutes specified: " + mins_string);
-               return;
-            }            
-         }
-      });
-      jumpahead_text = new TextField(); jumpahead_text.setMinWidth(50); jumpahead_text.setPrefWidth(50);
+//      jumpahead_button.setOnAction(new EventHandler<ActionEvent>() {
+//      });
+//      jumpahead_text = new TextField(); jumpahead_text.setMinWidth(50); jumpahead_text.setPrefWidth(50);
       jumpahead_text.setTooltip(tooltip.getToolTip("jumpahead_text"));
       jumpahead_text.setText("5");
 
-      jumpback_button = new Button("Skip minutes back:");
+//      jumpback_button = new Button("Skip minutes back:");
       AddButtonShortcut(jumpback_button, "Alt,", KeyCode.COMMA);
       disableSpaceAction(jumpback_button);
       jumpback_button.setTooltip(tooltip.getToolTip("jumpback_text"));
-      jumpback_button.setOnAction(new EventHandler<ActionEvent>() {
-         public void handle(ActionEvent e) {
-            final String tivoName = (String)tivo.getValue();
-            String mins_string = string.removeLeadingTrailingSpaces(jumpback_text.getText());
-            if (tivoName == null || tivoName.length() == 0)
-               return;
-            if (mins_string == null || mins_string.length() == 0)
-               return;
-            try {
-               final int secs = (int)(Float.parseFloat(mins_string)*60);
-               Task<Void> task = new Task<Void>() {
-                  @Override public Void call() {
-                     Remote r = config.initRemote(tivoName);
-                     if (r.success) {
-                        JSONObject json = new JSONObject();
-                        JSONObject reply = r.Command("Position", json);
-                        if (reply != null && reply.has("position")) {
-                           try {
-                              Long pos = reply.getLong("position");
-                              pos -= (long)1000*secs;
-                              if (pos < 0)
-                                 pos = (long)0;
-                              json.put("offset", pos);
-                              r.Command("Jump", json);
-                           } catch (JSONException e) {
-                              log.error("Skip minutes back failed - " + e.getMessage());
-                           }
-                        }
-                        r.disconnect();
-                     }
-                     return null;
-                  }
-               };
-               new Thread(task).start();
-            } catch (NumberFormatException e1) {
-               log.error("Illegal number of minutes specified: " + mins_string);
-               return;
-            }            
-         }
-      });
-      jumpback_text = new TextField(); jumpback_text.setMinWidth(50); jumpback_text.setPrefWidth(50);
+//      jumpback_button.setOnAction(new EventHandler<ActionEvent>() {
+//      });
+//      jumpback_text = new TextField(); jumpback_text.setMinWidth(50); jumpback_text.setPrefWidth(50);
       jumpback_text.setTooltip(tooltip.getToolTip("jumpback_text"));
       jumpback_text.setText("5");
       
-      // Top panel
-      HBox rctop = new HBox();
-      rctop.setSpacing(5);
-      rctop.setPadding(new Insets(0,0,0,5));
-      rctop.setAlignment(Pos.CENTER_LEFT);
-      rctop.getChildren().add(label);
-      rctop.getChildren().add(tivo);
-      rctop.getChildren().add(hme_button);
-      rctop.getChildren().add(hme);
-      rctop.getChildren().add(sps_button);
-      rctop.getChildren().add(hme_sps);
-
-      // Bottom panel
-      HBox rcbot = new HBox();
-      rcbot.setSpacing(5);
-      rcbot.setPadding(new Insets(0,0,0,5));
-      rcbot.setAlignment(Pos.CENTER_LEFT);
-      rcbot.getChildren().add(jumpto_button);
-      rcbot.getChildren().add(jumpto_text);
-      rcbot.getChildren().add(jumpback_button);
-      rcbot.getChildren().add(jumpback_text);
-      rcbot.getChildren().add(jumpahead_button);
-      rcbot.getChildren().add(jumpahead_text);
-
-      // Combine all RC panels together
-      panel.setAlignment(Pos.CENTER);
-      panel.getChildren().addAll(rctop, panel_controls, rcbot);
+//      // Top panel
+//      HBox rctop = new HBox();
+//      rctop.setSpacing(5);
+//      rctop.setPadding(new Insets(0,0,0,5));
+//      rctop.setAlignment(Pos.CENTER_LEFT);
+//      rctop.getChildren().add(label);
+//      rctop.getChildren().add(tivo);
+//      rctop.getChildren().add(hme_button);
+//      rctop.getChildren().add(hme);
+//      rctop.getChildren().add(sps_button);
+//      rctop.getChildren().add(hme_sps);
+//
+//      // Bottom panel
+//      HBox rcbot = new HBox();
+//      rcbot.setSpacing(5);
+//      rcbot.setPadding(new Insets(0,0,0,5));
+//      rcbot.setAlignment(Pos.CENTER_LEFT);
+//      rcbot.getChildren().add(jumpto_button);
+//      rcbot.getChildren().add(jumpto_text);
+//      rcbot.getChildren().add(jumpback_button);
+//      rcbot.getChildren().add(jumpback_text);
+//      rcbot.getChildren().add(jumpahead_button);
+//      rcbot.getChildren().add(jumpahead_text);
+//
+//      // Combine all RC panels together
+//      panel.setAlignment(Pos.CENTER);
+//      panel.getChildren().addAll(rctop, panel_controls, rcbot);
       
       // RC tab keyboard shortcuts without buttons
       for (char c='A'; c<='Z'; ++c) {
@@ -671,59 +416,364 @@ public class remotecontrol {
          );
       }      
    }
-
-   private class CustomButton extends Button {
-      private final String STYLE_NORMAL = "-fx-background-color: transparent; -fx-padding: 5, 5, 5, 5;";
-      private final String STYLE_PRESSED = "-fx-background-color: transparent; -fx-padding: 6 4 4 6;";
-      private final String STYLE_LABEL1 = "-fx-background-color: " + background +
-            "; -fx-text-fill: " + text_color + "; -fx-padding: 5, 5, 5, 5;";
-      private final String STYLE_LABEL2 = "-fx-background-color: " + background +
-            "; -fx-text-fill: " + text_color + "; -fx-padding: 6 4 4 6;";
-      
-      public CustomButton(Image image) {
-         super();
-         setGraphic(new ImageView(image));
-         setStyle(STYLE_NORMAL);
-         
-         // These actions give visual effect when button pressed
-         setOnMousePressed(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                setStyle(STYLE_PRESSED);
-            }            
-         });
-        
-        setOnMouseReleased(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-               setStyle(STYLE_NORMAL);
-            }            
-         });
-      }
-      
-      public CustomButton(String label, String toolTip, String[] macro) {
-         super(label);
-         setTooltip(tooltip.getToolTip(toolTip));
-         if (macro != null)
-            setMacroCB(this, macro);
-         setStyle(STYLE_LABEL1);
-         
-         // These actions give visual effect when button pressed
-         setOnMousePressed(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                setStyle(STYLE_LABEL2);
-            }            
-         });
-        
-        setOnMouseReleased(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-               setStyle(STYLE_LABEL1);
-            }            
-         });
-      }
+   
+   @FXML private void standbyCB(ActionEvent e) {
+              // Set focus on tabbed_panel
+              Platform.runLater(new Runnable() {
+                 @Override
+                 public void run() {
+                    config.gui.remote_gui.getPanel().requestFocus();
+                 }
+              });
+              final String tivoName = tivo.getValue();
+              if (tivoName != null && tivoName.length() > 0) {
+                 executeMacro(tivoName, new String[] {"standby"});
+              }
    }
+   
+   @FXML private void toggle_ccCB(ActionEvent e) {
+            String tivoName = (String)tivo.getValue();
+            if (tivoName != null && tivoName.length() > 0) {
+               String event;
+               if (cc_state)
+                  event = "ccOff";
+               else
+                  event = "ccOn";
+               cc_state = ! cc_state;
+               if (config.rpcEnabled(tivoName)) {
+                  Remote r = config.initRemote(tivoName);
+                  if (r.success) {
+                     try {
+                        JSONObject json = new JSONObject();
+                        json.put("event", event);
+                        r.Command("keyEventSend", json);
+                     } catch (JSONException e1) {
+                        log.error("RC - " + e1.getMessage());
+                     }
+                     r.disconnect();
+                  }
+               } else {
+                  // Use telnet interface
+                  String[] sequence = new String[1];
+                  if (event.equals("ccOff"))
+                     sequence[0] = "CC_OFF";
+                  if (event.equals("ccOn"))
+                     sequence[0] = "CC_ON";
+                  new telnet(config.TIVOS.get(tivoName), sequence);                     
+               }
+            }
+   }
+   
+   @FXML private void myShowsCB(ActionEvent e) {
+            String tivoName = (String)tivo.getValue();
+            if (tivoName != null && tivoName.length() > 0) {
+               if (config.rpcEnabled(tivoName)) {
+                  Remote r = config.initRemote(tivoName);
+                  if (r.success) {
+                     try {
+                        JSONObject json = new JSONObject();
+                        json.put("event", "nowShowing");
+                        r.Command("keyEventSend", json);
+                     } catch (JSONException e1) {
+                        log.error("RC - " + e1.getMessage());
+                     }
+                     r.disconnect();
+                  }
+               } else {
+                  // Use telnet interface
+                  String[] sequence = new String[] {"NOWSHOWING"};
+                  new telnet(config.TIVOS.get(tivoName), sequence);                     
+               }
+            }
+   }
+
+   @FXML private void hme_buttonCB(ActionEvent e) {
+            final String name = hme.getValue();
+            if (name != null && name.length() > 0) {
+               Task<Void> task = new Task<Void>() {
+                  @Override public Void call() {
+                     Remote r = config.initRemote(tivo.getValue());
+                     if (r.success) {
+                        try {
+                           JSONObject json = new JSONObject();
+                           String uri="";
+                           if (name.equals("Netflix (flash)"))
+                              uri = "x-tivo:flash:uuid:F23D193D-D2C2-4D18-9ABE-FA6B8488302F";
+                           if (name.equals("Plex"))
+                              uri = "x-tivo:web:https://plex.tv/web/tv/tivo";
+                           if (name.equals("Spotify"))
+                              uri = "x-tivo:web:https://d27nv3bwly96dm.cloudfront.net/indexOperav2.html";
+                           if (name.equals("Opera TV Store"))
+                              uri = "x-tivo:web:tvstore";
+                           if (name.equals("My Opera TV Store Apps"))
+                              uri = "x-tivo:web:tvstore:https://tivo.tvstore.opera.com/?startwith=myapps";
+                           if (name.equals("iHeartRadio"))
+                              uri = "x-tivo:web:https://tv.iheart.com/tivo/";
+                           if (name.equals("Netflix (html)"))
+                              uri = "x-tivo:netflix:netflix";
+                           if (name.equals("YouTube"))
+                              uri = "x-tivo:flash:uuid:B8CEA236-0C3D-41DA-9711-ED220480778E";
+                           if (name.equals("YouTube (html)"))
+                              uri = "x-tivo:web:https://www.youtube.com/tv";
+                           if (name.equals("Amazon Prime"))
+                              uri = "x-tivo:web:https://atv-ext.amazon.com/cdp/resources/app_host/index.html?deviceTypeID=A3UXGKN0EORVOF";
+                           if (name.equals("Vudu (html)"))
+                              uri = "x-tivo:vudu:vudu";
+                           if (name.equals("Amazon (hme)"))
+                              uri = "x-tivo:hme:uuid:35FE011C-3850-2228-FBC5-1B9EDBBE5863";
+                           if (name.equals("Hulu Plus"))
+                              uri = "x-tivo:flash:uuid:802897EB-D16B-40C8-AEEF-0CCADB480559";
+                           if (name.equals("AOL On"))
+                              uri = "x-tivo:flash:uuid:EA1DEF9D-D346-4284-91A0-FEA8EAF4CD39";
+                           if (name.equals("Launchpad"))
+                              uri = "x-tivo:flash:uuid:545E064D-C899-407E-9814-69A021D68DAD";
+                           if (name.equals("streambaby")) {
+                              String ip;
+                              try {
+                                 ip = InetAddress.getLocalHost().getHostAddress();
+                              } catch (UnknownHostException e) {
+                                 ip = "localhost";
+                              }
+                              int port = 7290;
+                              uri = "x-tivo:hme:http://" + ip + ":" + port + "/streambaby";
+                           }
+                           json.put("uri", uri);
+                           r.Command("Navigate", json);
+                        } catch (JSONException e1) {
+                           log.error("Launch App - " + e1.getMessage());
+                        }
+                        r.disconnect();
+                     }
+                     return null;
+                  }
+               };
+               new Thread(task).start();
+            }
+   }
+         
+   @FXML private void sps_buttonCB(ActionEvent e) {
+            String name = (String)hme_sps.getValue();
+            String tivoName = (String)tivo.getValue();
+            if (name != null && name.length() > 0 && tivoName != null && tivoName.length() > 0) {
+               executeMacro(
+                  tivoName,
+                  util.SPS.get(name).split(" ")
+               );
+            }
+   }
+
+   @FXML private void jumpto_buttonCB(ActionEvent e) {
+            final String tivoName = (String)tivo.getValue();
+            String mins_string = string.removeLeadingTrailingSpaces(jumpto_text.getText());
+            if (tivoName == null || tivoName.length() == 0)
+               return;
+            if (mins_string == null || mins_string.length() == 0)
+               return;
+            try {
+               final int secs = (int)(Float.parseFloat(mins_string)*60);
+               Task<Void> task = new Task<Void>() {
+                  @Override public Void call() {
+                     Remote r = config.initRemote(tivoName);
+                     if (r.success) {
+                        JSONObject json = new JSONObject();
+                        try {
+                           Long pos = (long)1000*secs;
+                           json.put("offset", pos);
+                           r.Command("Jump", json);
+                        } catch (JSONException e) {
+                           log.error("Jump to minute failed - " + e.getMessage());
+                        }
+                        r.disconnect();
+                     }
+                     return null;
+                  }
+               };
+               new Thread(task).start();
+            } catch (NumberFormatException e1) {
+               log.error("Illegal number of minutes specified: " + mins_string);
+               return;
+            }            
+   }
+   
+   @FXML private void jumpahead_buttonCB(ActionEvent e) {
+            final String tivoName = (String)tivo.getValue();
+            String mins_string = string.removeLeadingTrailingSpaces(jumpahead_text.getText());
+            if (tivoName == null || tivoName.length() == 0)
+               return;
+            if (mins_string == null || mins_string.length() == 0)
+               return;
+            try {
+               final int secs = (int)(Float.parseFloat(mins_string)*60);
+               Task<Void> task = new Task<Void>() {
+                  @Override public Void call() {
+                     Remote r = config.initRemote(tivoName);
+                     if (r.success) {
+                        JSONObject json = new JSONObject();
+                        JSONObject reply = r.Command("Position", json);
+                        if (reply != null && reply.has("position")) {
+                           try {
+                              Long pos = reply.getLong("position");
+                              pos += (long)1000*secs;
+                              json.put("offset", pos);
+                              r.Command("Jump", json);
+                           } catch (JSONException e) {
+                              log.error("Skip minutes ahead failed - " + e.getMessage());
+                           }
+                        }
+                        r.disconnect();
+                     }
+                     return null;
+                  }
+               };
+               new Thread(task).start();
+            } catch (NumberFormatException e1) {
+               log.error("Illegal number of minutes specified: " + mins_string);
+               return;
+            }            
+   }
+   
+   @FXML private void jumpback_buttonCB(ActionEvent e) {
+            final String tivoName = (String)tivo.getValue();
+            String mins_string = string.removeLeadingTrailingSpaces(jumpback_text.getText());
+            if (tivoName == null || tivoName.length() == 0)
+               return;
+            if (mins_string == null || mins_string.length() == 0)
+               return;
+            try {
+               final int secs = (int)(Float.parseFloat(mins_string)*60);
+               Task<Void> task = new Task<Void>() {
+                  @Override public Void call() {
+                     Remote r = config.initRemote(tivoName);
+                     if (r.success) {
+                        JSONObject json = new JSONObject();
+                        JSONObject reply = r.Command("Position", json);
+                        if (reply != null && reply.has("position")) {
+                           try {
+                              Long pos = reply.getLong("position");
+                              pos -= (long)1000*secs;
+                              if (pos < 0)
+                                 pos = (long)0;
+                              json.put("offset", pos);
+                              r.Command("Jump", json);
+                           } catch (JSONException e) {
+                              log.error("Skip minutes back failed - " + e.getMessage());
+                           }
+                        }
+                        r.disconnect();
+                     }
+                     return null;
+                  }
+               };
+               new Thread(task).start();
+            } catch (NumberFormatException e1) {
+               log.error("Illegal number of minutes specified: " + mins_string);
+               return;
+            }            
+   }
+
+   	/**
+	 * Run appropriate remote control code using the style ID from the source as
+	 * the key event name.
+	 * 
+	 * @param e
+	 */
+   @FXML private void rcCB(ActionEvent e) {
+	   final String event = ((Button)e.getSource()).getId();
+	   // Set focus on tabbed_panel
+	   Platform.runLater(new Runnable() {
+		   @Override
+		   public void run() {
+			   if (config.gui.remote_gui != null)
+				   config.gui.remote_gui.getPanel().requestFocus();
+		   }
+	   });
+	   final String tivoName = (String)tivo.getValue();
+	   if (tivoName != null && tivoName.length() > 0) {
+		   Task<Void> task = new Task<Void>() {
+			   @Override public Void call() {
+				   if (config.rpcEnabled(tivoName)) {
+					   Remote r = config.initRemote(tivoName);
+					   if (r.success) {
+						   try {
+							   JSONObject json = new JSONObject();
+							   json.put("event", event);
+							   r.Command("keyEventSend", json);
+						   } catch (JSONException e1) {
+							   log.error("RC - " + e1.getMessage());
+						   }
+						   r.disconnect();
+					   }
+				   } else {
+					   // Use telnet protocol
+					   new telnet(config.TIVOS.get(tivoName), mapToTelnet(new String[] {event}));
+				   }
+				   // Set focus on tabbed_panel
+				   Platform.runLater(new Runnable() {
+					   @Override
+					   public void run() {
+						   config.gui.remote_gui.getPanel().requestFocus();
+					   }
+				   });
+				   return null;
+			   }
+		   };
+		   new Thread(task).start();
+	   }
+   }
+   
+   
+//   private class CustomButton extends Button {
+//      private final String STYLE_NORMAL = "-fx-background-color: transparent; -fx-padding: 5, 5, 5, 5;";
+//      private final String STYLE_PRESSED = "-fx-background-color: transparent; -fx-padding: 6 4 4 6;";
+//      private final String STYLE_LABEL1 = "-fx-background-color: " + background +
+//            "; -fx-text-fill: " + text_color + "; -fx-padding: 5, 5, 5, 5;";
+//      private final String STYLE_LABEL2 = "-fx-background-color: " + background +
+//            "; -fx-text-fill: " + text_color + "; -fx-padding: 6 4 4 6;";
+//      
+//      public CustomButton(Image image) {
+//         super();
+//         setGraphic(new ImageView(image));
+//         setStyle(STYLE_NORMAL);
+//         
+//         // These actions give visual effect when button pressed
+//         setOnMousePressed(new EventHandler<MouseEvent>() {
+//            @Override
+//            public void handle(MouseEvent event) {
+//                setStyle(STYLE_PRESSED);
+//            }            
+//         });
+//        
+//        setOnMouseReleased(new EventHandler<MouseEvent>() {
+//            @Override
+//            public void handle(MouseEvent event) {
+//               setStyle(STYLE_NORMAL);
+//            }            
+//         });
+//      }
+//      
+//      public CustomButton(String label, String toolTip, String[] macro) {
+//         super(label);
+//         setTooltip(tooltip.getToolTip(toolTip));
+//         if (macro != null)
+//            setMacroCB(this, macro);
+//         setStyle(STYLE_LABEL1);
+//         
+//         // These actions give visual effect when button pressed
+//         setOnMousePressed(new EventHandler<MouseEvent>() {
+//            @Override
+//            public void handle(MouseEvent event) {
+//                setStyle(STYLE_LABEL2);
+//            }            
+//         });
+//        
+//        setOnMouseReleased(new EventHandler<MouseEvent>() {
+//            @Override
+//            public void handle(MouseEvent event) {
+//               setStyle(STYLE_LABEL1);
+//            }            
+//         });
+//      }
+//   }
    
    private static Image scale(String imageFile, double scale) {
       Image unscaled = new Image(new File(imageFile).toURI().toString());
@@ -738,29 +788,29 @@ public class remotecontrol {
       }
    }
    
-   private Button ImageButton(String imageFile, double scale) {
-      String f = config.programDir + File.separator + "rc_images" + File.separator + imageFile;
-      if (file.isFile(f)) {
-         Button b = new CustomButton(scale(f, scale));
-         disableSpaceAction(b);
-         return b;
-      }
-      log.error("Installation issue: image file not found: " + f);
-      return null;
-   }
-
-   private Label ImageLabel(String imageFile, double scale) {
-      String f = config.programDir + File.separator + "rc_images" + File.separator + imageFile;
-      if (file.isFile(f)) {
-         ImageView view = new ImageView(scale(f, scale));
-         Label l = new Label();
-         l.setGraphic(view);
-         l.setStyle("-fx-background-color:" + background);
-         return l;
-      }
-      log.error("Installation issue: image file not found: " + f);
-      return null;
-   }
+//   private Button ImageButton(String imageFile, double scale) {
+//      String f = config.programDir + File.separator + "rc_images" + File.separator + imageFile;
+//      if (file.isFile(f)) {
+//         Button b = new CustomButton(scale(f, scale));
+//         disableSpaceAction(b);
+//         return b;
+//      }
+//      log.error("Installation issue: image file not found: " + f);
+//      return null;
+//   }
+//
+//   private Label ImageLabel(String imageFile, double scale) {
+//      String f = config.programDir + File.separator + "rc_images" + File.separator + imageFile;
+//      if (file.isFile(f)) {
+//         ImageView view = new ImageView(scale(f, scale));
+//         Label l = new Label();
+//         l.setGraphic(view);
+//         l.setStyle("-fx-background-color:" + background);
+//         return l;
+//      }
+//      log.error("Installation issue: image file not found: " + f);
+//      return null;
+//   }
    
    private void AddButtonShortcut(Button b, String actionName, KeyCode key) {
       PanelKey.buttonKeys.push(new PanelKey(actionName, key, b));
@@ -812,7 +862,7 @@ public class remotecontrol {
             Platform.runLater(new Runnable() {
                @Override
                public void run() {
-                  config.gui.remote_gui.tabbed_panel.requestFocus();
+                  config.gui.remote_gui.getPanel().requestFocus();
                }
             });
             return null;
@@ -821,23 +871,23 @@ public class remotecontrol {
       new Thread(task).start();
    }
 
-   private void setMacroCB(Button b, final String[] sequence) {
-      b.setOnAction(new EventHandler<ActionEvent>() {
-         public void handle(ActionEvent e) {
-            // Set focus on tabbed_panel
-            Platform.runLater(new Runnable() {
-               @Override
-               public void run() {
-                  config.gui.remote_gui.tabbed_panel.requestFocus();
-               }
-            });
-            final String tivoName = tivo.getValue();
-            if (tivoName != null && tivoName.length() > 0) {
-               executeMacro(tivoName, sequence);
-            }
-         }
-      });
-   }
+//   private void setMacroCB(Button b, final String[] sequence) {
+//      b.setOnAction(new EventHandler<ActionEvent>() {
+//         public void handle(ActionEvent e) {
+//            // Set focus on tabbed_panel
+//            Platform.runLater(new Runnable() {
+//               @Override
+//               public void run() {
+//                  config.gui.remote_gui.getPanel().requestFocus();
+//               }
+//            });
+//            final String tivoName = tivo.getValue();
+//            if (tivoName != null && tivoName.length() > 0) {
+//               executeMacro(tivoName, sequence);
+//            }
+//         }
+//      });
+//   }
 
    // This handles key presses in RC panel not bound to buttons
    public void RC_keyPress(final Boolean isAscii, final String command) {
@@ -880,15 +930,16 @@ public class remotecontrol {
    }
       
    public void setHmeDestinations(final String tivoName) {
-      String[] hmeNames = {
-         "Netflix (html)", "YouTube (html)", "Vudu (html)", "Plex",
-         "Amazon Prime", "Hulu Plus", "Spotify", "iHeartRadio",
-         "Opera TV Store", "streambaby"
-      };
-      hme.getItems().clear();
-      for (int i=0; i<hmeNames.length; ++i)
-         hme.getItems().add(hmeNames[i]);
-      hme.getSelectionModel().select(hmeNames[0]);
+//      String[] hmeNames = {
+//         "Netflix (html)", "YouTube (html)", "Vudu (html)", "Plex",
+//         "Amazon Prime", "Hulu Plus", "Spotify", "iHeartRadio",
+//         "Opera TV Store", "streambaby"
+//      };
+//      hme.getItems().clear();
+//      for (int i=0; i<hmeNames.length; ++i)
+//         hme.getItems().add(hmeNames[i]);
+      hme.getSelectionModel().select(0);
+//      .select(hmeNames[0]);
    }
 
 }
