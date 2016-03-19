@@ -40,6 +40,7 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
 import com.tivo.kmttg.gui.MyTooltip;
+import com.tivo.kmttg.gui.help;
 import com.tivo.kmttg.httpserver.kmttgServer;
 import com.tivo.kmttg.main.beacon;
 import com.tivo.kmttg.main.config;
@@ -147,6 +148,9 @@ public class configMain implements Initializable {
    @FXML private TextField limit_npl_fetches = null;
    @FXML private TextField active_job_limit = null;
    @FXML private TextField t2extract = null;
+   @FXML private CheckBox autoskip_enabled = null;
+   @FXML private CheckBox autoskip_import = null;
+   @FXML private CheckBox autoskip_prune = null;
    //private static TextField t2extract_args = null;
    /** included so we can hide it */
    @FXML private Label ccextractor_label = null;
@@ -187,6 +191,8 @@ public class configMain implements Initializable {
    private FileChooser FileBrowser = null;
    private DirectoryChooser DirBrowser = null;
    @FXML private TabPane tabbed_panel = null;
+   @FXML private TextField autoskip_padding = null;
+   @FXML private Button autoskip_doc = null;
       
    public static void display(Stage frame) {
       debug.print("frame=" + frame);
@@ -964,6 +970,18 @@ public class configMain implements Initializable {
       
       // download_delay
       download_delay.setText("" + config.download_delay);
+      
+      // autoskip_enabled
+      autoskip_enabled.setSelected(config.autoskip_enabled == 1);
+      
+      // autoskip_enabled
+      autoskip_import.setSelected(config.autoskip_import == 1);
+      
+      // autoskip_prune
+      autoskip_prune.setSelected(config.autoskip_prune == 1);
+      
+      // autoskip_padding
+      autoskip_padding.setText("" + config.autoskip_padding);
       
       // metadata_entries
       metadata_entries.setText("" + config.metadata_entries);
@@ -1892,6 +1910,40 @@ public class configMain implements Initializable {
          config.download_delay = 10;
       }
       
+      // autoskip_enabled
+      if (autoskip_enabled.isSelected())
+         config.autoskip_enabled = 1;
+      else
+         config.autoskip_enabled = 0;
+      
+      // autoskip_import
+      if (autoskip_import.isSelected())
+         config.autoskip_import = 1;
+      else
+         config.autoskip_import = 0;
+      
+      // autoskip_prune
+      if (autoskip_prune.isSelected())
+         config.autoskip_prune = 1;
+      else
+         config.autoskip_prune = 0;
+      
+      // autoskip_padding
+      value = string.removeLeadingTrailingSpaces(autoskip_padding.getText());
+      if (value.length() > 0) {
+         try {
+            config.autoskip_padding = Integer.parseInt(value);
+         } catch(NumberFormatException e) {
+            textFieldError(autoskip_padding, "Illegal setting for AutoSkip padding: '" + value + "'");
+            log.error("Setting to 0");
+            config.autoskip_padding = 0;
+            autoskip_padding.setText("" + config.autoskip_padding);
+            errors++;
+         }
+      } else {
+         config.autoskip_padding = 0;
+      }
+      
       // autoLogSizeMB
       value = string.removeLeadingTrailingSpaces(autoLogSizeMB.getText());
       if (value.length() > 0) {
@@ -2577,6 +2629,11 @@ public class configMain implements Initializable {
       download_tries.setTooltip(getToolTip("download_tries"));
       download_retry_delay.setTooltip(getToolTip("download_retry_delay"));
       download_delay.setTooltip(getToolTip("download_delay"));
+      autoskip_enabled.setTooltip(getToolTip("autoskip_enabled"));
+      autoskip_import.setTooltip(getToolTip("autoskip_import"));
+      autoskip_prune.setTooltip(getToolTip("autoskip_prune"));
+      autoskip_padding.setTooltip(getToolTip("autoskip_padding"));
+      autoskip_doc.setTooltip(getToolTip("autoskip_doc"));
       metadata_entries.setTooltip(getToolTip("metadata_entries"));
       httpserver_port.setTooltip(getToolTip("httpserver_port"));
       httpserver_cache.setTooltip(getToolTip("httpserver_cache"));
@@ -2611,4 +2668,7 @@ public class configMain implements Initializable {
       return MyTooltip.make(text);
    }
       
+	@FXML public void autoskip_docCB(ActionEvent event) {
+		help.showInBrowser("https://sourceforge.net/p/kmttg/wiki/AutoSkip/");
+	}
 }

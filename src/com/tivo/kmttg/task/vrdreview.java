@@ -19,8 +19,8 @@ import org.w3c.dom.Element;
 import com.tivo.kmttg.main.config;
 import com.tivo.kmttg.main.jobData;
 import com.tivo.kmttg.main.jobMonitor;
-import com.tivo.kmttg.rpc.AutoSkip;
 import com.tivo.kmttg.rpc.SkipImport;
+import com.tivo.kmttg.rpc.SkipManager;
 import com.tivo.kmttg.util.backgroundProcess;
 import com.tivo.kmttg.util.debug;
 import com.tivo.kmttg.util.file;
@@ -187,6 +187,16 @@ public class vrdreview extends baseTask implements Serializable {
          } else {
             log.warn("vrdreview job completed: " + jobMonitor.getElapsedTime(job.time));
             log.print("---DONE--- job=" + job.type + " output=" + job.vprjFile);
+                        
+            if (job.autoskip && file.isFile(job.vprjFile)) {
+               // AutoSkip table entry creation
+               Stack<Hashtable<String,Long>> cuts = SkipImport.vrdImport(job.vprjFile, job.duration);
+               if (cuts != null && cuts.size() > 0) {
+                  if (SkipManager.hasEntry(job.contentId))
+                     SkipManager.removeEntry(job.contentId);
+                  SkipManager.saveEntry(job.contentId, job.offerId, 0L, job.title, job.tivoName, cuts);
+               }
+            }
             
             if (config.VrdReview_noCuts == 1) {
                if (config.RemoveComcutFiles == 1) {
@@ -218,18 +228,6 @@ public class vrdreview extends baseTask implements Serializable {
                   if (file.rename(metaFile, s))
                      log.print("(Renamed " + metaFile + " to " + s);
                }
-            }
-            
-            if (job.autoskip && file.isFile(job.vprjFile)) {
-               // Skip table entry creation
-               Stack<Hashtable<String,Long>> cuts = SkipImport.vrdImport(job.vprjFile, job.duration);
-               if (cuts != null && cuts.size() > 0) {
-                  if (AutoSkip.hasEntry(job.contentId))
-                     AutoSkip.removeEntry(job.contentId);
-                  AutoSkip.saveEntry(job.contentId, job.offerId, 0L, job.title, job.tivoName, cuts);
-               }
-               String prefix = string.replaceSuffix(string.basename(job.mpegFile), "");
-               file.cleanUpFiles(prefix);               
             }
          }
       }
