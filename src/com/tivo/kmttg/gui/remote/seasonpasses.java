@@ -1,7 +1,9 @@
 package com.tivo.kmttg.gui.remote;
 
 import java.io.File;
+import java.net.URL;
 import java.util.Optional;
+import java.util.ResourceBundle;
 import java.util.Stack;
 
 import com.tivo.kmttg.JSON.JSONException;
@@ -17,6 +19,8 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -28,31 +32,39 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 import javafx.stage.FileChooser.ExtensionFilter;
 
-public class seasonpasses {
-   public VBox panel = null;
+public class seasonpasses implements Initializable {
+   @FXML public VBox panel = null;
    public spTable tab = null;
-   public ChoiceBox<String> tivo = null;
-   public Button copy = null;
-   public Button conflicts = null;
-   public Button modify = null;
-   public Button upcoming = null;   
-   public Button reorder = null;
+   @FXML public ChoiceBox<String> tivo = null;
+   @FXML public Button copy = null;
+   @FXML public Button conflicts = null;
+   @FXML public Button modify = null;
+   @FXML public Button upcoming = null;   
+   @FXML public Button reorder = null;
    
-   public seasonpasses(final Stage frame) {
-      
+   @FXML private Button refresh;
+   @FXML private Button save;
+   @FXML private Button load;
+   @FXML private Button export;
+   @FXML private Button delete;
+   
+   @Override
+   public void initialize(URL location, ResourceBundle resources) {
+   
       // Season Passes Tab items      
-      HBox row1 = new HBox();
-      row1.setSpacing(5);
-      row1.setAlignment(Pos.CENTER_LEFT);
-      row1.setPadding(new Insets(5,0,0,5));
-
-      Label title = new Label("Season Passes");
-
-      Label tivo_label = new Label();
-
-      tivo = new ChoiceBox<String>();
+//      HBox row1 = new HBox();
+//      row1.setSpacing(5);
+//      row1.setAlignment(Pos.CENTER_LEFT);
+//      row1.setPadding(new Insets(5,0,0,5));
+//
+//      Label title = new Label("Season Passes");
+//
+//      Label tivo_label = new Label();
+//
+//      tivo = new ChoiceBox<String>();
       tivo.valueProperty().addListener(new ChangeListener<String>() {
          @Override public void changed(ObservableValue<? extends String> ov, String oldVal, String newVal) {
             if (newVal != null && config.gui.remote_gui != null) {
@@ -67,21 +79,57 @@ public class seasonpasses {
       });
       tivo.setTooltip(tooltip.getToolTip("tivo_sp"));
 
-      Button refresh = new Button("Refresh");
+//      Button refresh = new Button("Refresh");
       refresh.setTooltip(tooltip.getToolTip("refresh_sp"));
-      refresh.setOnAction(new EventHandler<ActionEvent>() {
-         public void handle(ActionEvent e) {
+//      Button save = new Button("Save...");
+      save.setTooltip(tooltip.getToolTip("save_sp"));
+//      Button load = new Button("Load...");
+      load.setTooltip(tooltip.getToolTip("load_sp"));
+//      Button export = new Button("Export...");
+      export.setTooltip(tooltip.getToolTip("export_sp"));
+//      copy = new Button("Copy");
+      copy.setTooltip(tooltip.getToolTip("copy_sp"));
+//      Button delete = new Button("Delete");
+      delete.setTooltip(tooltip.getToolTip("delete_sp"));
+//      modify = new Button("Modify");
+      modify.setTooltip(tooltip.getToolTip("modify_sp"));
+//      reorder = new Button("Re-order");
+      reorder.setTooltip(tooltip.getToolTip("reorder_sp"));
+//      upcoming = new Button("Upcoming");
+      upcoming.setTooltip(tooltip.getToolTip("upcoming_sp"));
+//      conflicts = new Button("Conflicts");
+      conflicts.setTooltip(tooltip.getToolTip("conflicts_sp"));
+//      row1.getChildren().add(title);
+//      row1.getChildren().add(tivo_label);
+//      row1.getChildren().add(tivo);
+//      row1.getChildren().add(refresh);
+//      row1.getChildren().add(save);
+//      row1.getChildren().add(load);
+//      row1.getChildren().add(export);
+//      row1.getChildren().add(delete);
+//      row1.getChildren().add(copy);
+//      row1.getChildren().add(modify);
+//      row1.getChildren().add(reorder);
+//      row1.getChildren().add(upcoming);
+//      row1.getChildren().add(conflicts);
+
+      tab = new spTable();
+      VBox.setVgrow(tab.TABLE, Priority.ALWAYS); // stretch vertically
+
+//      panel = new VBox();
+//      panel.setSpacing(1);
+//      panel.getChildren().addAll(row1, tab.TABLE);      
+      panel.getChildren().add(tab.TABLE);
+   }
+   @FXML private void refreshCB(ActionEvent e) {
             // Refresh SP list
             TableUtil.clear(tab.TABLE);
             tab.setLoaded(false);
             SPListCB(tivo.getValue());
-         }
-      });
+   }
 
-      Button save = new Button("Save...");
-      save.setTooltip(tooltip.getToolTip("save_sp"));
-      save.setOnAction(new EventHandler<ActionEvent>() {
-         public void handle(ActionEvent e) {
+   @FXML private void saveCB(ActionEvent e) {
+	   final Window frame = tivo.getScene().getWindow();
             // Save SP data to a file
             String tivoName = tivo.getValue();
             if (tivoName != null && tivoName.length() > 0) {
@@ -101,13 +149,10 @@ public class seasonpasses {
                   }
                }
             }
-         }
-      });         
+   }
 
-      Button load = new Button("Load...");
-      load.setTooltip(tooltip.getToolTip("load_sp"));
-      load.setOnAction(new EventHandler<ActionEvent>() {
-         public void handle(ActionEvent e) {
+   @FXML private void loadCB(ActionEvent e) {
+	   final Window frame = tivo.getScene().getWindow();
             // Load SP data from a file
             config.gui.remote_gui.Browser.getExtensionFilters().clear();
             config.gui.remote_gui.Browser.getExtensionFilters().addAll(new ExtensionFilter("SP Files", "*.sp"));
@@ -119,13 +164,10 @@ public class seasonpasses {
             if (selectedFile != null) {
                tab.SPListLoad(selectedFile.getAbsolutePath());
             }
-         }
-      });         
+   }
 
-      Button export = new Button("Export...");
-      export.setTooltip(tooltip.getToolTip("export_sp"));
-      export.setOnAction(new EventHandler<ActionEvent>() {
-         public void handle(ActionEvent e) {
+   @FXML private void exportCB(ActionEvent e) {
+	   final Window frame = tivo.getScene().getWindow();
             // Export SP data to a file in csv format
             String tivoName = tivo.getValue();
             if (tivoName != null && tivoName.length() > 0) {
@@ -145,13 +187,9 @@ public class seasonpasses {
                   }
                }
             }
-         }
-      });         
+   }
 
-      copy = new Button("Copy");
-      copy.setTooltip(tooltip.getToolTip("copy_sp"));
-      copy.setOnAction(new EventHandler<ActionEvent>() {
-         public void handle(ActionEvent e) {
+   @FXML private void copyCB(ActionEvent e) {
             // Copy selected SPs to a TiVo
             // Build list of eligible TiVos
             String thisTivo = tivo.getValue();
@@ -187,21 +225,13 @@ public class seasonpasses {
                }
                tab.SPListCopy(tivoName);
             }
-         }
-      });         
+   }
 
-      Button delete = new Button("Delete");
-      delete.setTooltip(tooltip.getToolTip("delete_sp"));
-      delete.setOnAction(new EventHandler<ActionEvent>() {
-         public void handle(ActionEvent e) {
+   @FXML private void deleteCB(ActionEvent e) {
             tab.SPListDelete();
-         }
-      });         
+   }
 
-      modify = new Button("Modify");
-      modify.setTooltip(tooltip.getToolTip("modify_sp"));
-      modify.setOnAction(new EventHandler<ActionEvent>() {
-         public void handle(ActionEvent e) {
+   @FXML private void modifyCB(ActionEvent e) {
             // Modify selected SP
             String tivoName = tivo.getValue();
             if (tivoName != null && tivoName.length() > 0) {
@@ -212,13 +242,9 @@ public class seasonpasses {
                   tab.SPListModify(tivoName);
                }
             }
-         }
-      });         
+   }
 
-      reorder = new Button("Re-order");
-      reorder.setTooltip(tooltip.getToolTip("reorder_sp"));
-      reorder.setOnAction(new EventHandler<ActionEvent>() {
-         public void handle(ActionEvent e) {
+   @FXML private void reorderCB(ActionEvent e) {
             // Re-prioritize SPs on TiVo to match current table row order
             String tivoName = tivo.getValue();
             if (tivoName != null && tivoName.length() > 0) {
@@ -229,13 +255,9 @@ public class seasonpasses {
                   tab.SPReorderCB(tivoName);
                }
             }
-         }
-      });         
+   }
 
-      upcoming = new Button("Upcoming");
-      upcoming.setTooltip(tooltip.getToolTip("upcoming_sp"));
-      upcoming.setOnAction(new EventHandler<ActionEvent>() {
-         public void handle(ActionEvent e) {
+   @FXML private void upcomingCB(ActionEvent e) {
             int selected[] = TableUtil.GetSelectedRows(tab.TABLE);
             if (selected.length > 0) {
                int row = selected[0];
@@ -264,13 +286,9 @@ public class seasonpasses {
                   log.warn("No upcoming episodes scheduled for selected Season Pass");
                }
             }
-         }
-      });
+   }
 
-      conflicts = new Button("Conflicts");
-      conflicts.setTooltip(tooltip.getToolTip("conflicts_sp"));
-      conflicts.setOnAction(new EventHandler<ActionEvent>() {
-         public void handle(ActionEvent e) {
+   @FXML private void conflictsCB(ActionEvent e) {
             int selected[] = TableUtil.GetSelectedRows(tab.TABLE);
             if (selected.length > 0) {
                int row = selected[0];
@@ -298,29 +316,6 @@ public class seasonpasses {
                   log.warn("No conflicting episodes for selected Season Pass");
                }
             }
-         }
-      });
-
-      row1.getChildren().add(title);
-      row1.getChildren().add(tivo_label);
-      row1.getChildren().add(tivo);
-      row1.getChildren().add(refresh);
-      row1.getChildren().add(save);
-      row1.getChildren().add(load);
-      row1.getChildren().add(export);
-      row1.getChildren().add(delete);
-      row1.getChildren().add(copy);
-      row1.getChildren().add(modify);
-      row1.getChildren().add(reorder);
-      row1.getChildren().add(upcoming);
-      row1.getChildren().add(conflicts);
-
-      tab = new spTable();
-      VBox.setVgrow(tab.TABLE, Priority.ALWAYS); // stretch vertically
-
-      panel = new VBox();
-      panel.setSpacing(1);
-      panel.getChildren().addAll(row1, tab.TABLE);      
    }
    
    // Submit remote SP request to Job Monitor

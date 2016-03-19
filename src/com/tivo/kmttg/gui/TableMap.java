@@ -26,6 +26,7 @@ public class TableMap {
       map.put("streaming", config.gui.remote_gui.stream_tab.tab);
       map.put("stream", config.gui.remote_gui.stream_tab.tab);
       map.put("thumbs", config.gui.remote_gui.thumbs_tab.tab);
+      if(config.gui.remote_gui.channels_tab != null)
       map.put("channels", config.gui.remote_gui.channels_tab.tab);
    }
    

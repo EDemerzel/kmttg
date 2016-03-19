@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?scenebuilder-stylesheet ../../../../../../release/css/kmttg.css?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tivo.kmttg.gui.remote.cancelled"
+    fx:id="panel" spacing="1">
+<padding><Insets top="0" right="0" bottom="0" left="5"/></padding>
+    <HBox spacing="5" alignment="CENTER_LEFT">
+    <padding><Insets top="5" right="0" bottom="0" left="5"/></padding>
+        <Label text="Not Record list"/>
+        <Label /><!-- tivo_label... has no content. -->
+        <ChoiceBox fx:id="tivo"></ChoiceBox>
+        <Button fx:id="refresh" text="Refresh" onAction="#refreshCB"/>
+        <Button fx:id="record" text="Record" onAction="#recordCB"/>
+        <Button fx:id="explain" text="Explain" onAction="#explainCB"/>
+        <Button fx:id="refresh_todo" text="Refresh ToDo" onAction="#refresh_todoCB"/>
+        <Button fx:id="autoresolve" text="Autoresolve" onAction="#autoresolveCB"/>
+        <CheckBox fx:id="includeHistory" text="Include History" selected="false"/>
+        
+    </HBox>
+</VBox>
+

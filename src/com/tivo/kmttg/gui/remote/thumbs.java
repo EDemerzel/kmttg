@@ -1,7 +1,9 @@
 package com.tivo.kmttg.gui.remote;
 
 import java.io.File;
+import java.net.URL;
 import java.util.Optional;
+import java.util.ResourceBundle;
 import java.util.Stack;
 
 import com.tivo.kmttg.gui.table.TableUtil;
@@ -13,6 +15,8 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -24,30 +28,35 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 import javafx.stage.FileChooser.ExtensionFilter;
 
-public class thumbs {
-   public VBox panel = null;
+public class thumbs implements Initializable {
+   @FXML public VBox panel = null;
    public thumbsTable tab = null;
-   public Button refresh = null;
-   public Button copy = null;
-   public Button update = null;
-   public Label label = null;
-   public ChoiceBox<String> tivo = null;
+   @FXML public Button refresh = null;
+   @FXML public Button copy = null;
+   @FXML public Button update = null;
+   @FXML public Label label = null;
+   @FXML public ChoiceBox<String> tivo = null;
    
-   public thumbs(final Stage frame) {
+   @FXML private Button load;
+   @FXML private Button save;
+   
+   @Override
+   public void initialize(URL location, ResourceBundle resources) {
       
       // Thumbs tab items      
-      HBox row1 = new HBox();
-      row1.setSpacing(5);
-      row1.setAlignment(Pos.CENTER_LEFT);
-      row1.setPadding(new Insets(5,0,0,5));
-      
-      Label title = new Label("Thumb Ratings");
-      
-      Label tivo_label = new Label();
-      
-      tivo = new ChoiceBox<String>();
+//      HBox row1 = new HBox();
+//      row1.setSpacing(5);
+//      row1.setAlignment(Pos.CENTER_LEFT);
+//      row1.setPadding(new Insets(5,0,0,5));
+//      
+//      Label title = new Label("Thumb Ratings");
+//      
+//      Label tivo_label = new Label();
+//      
+//      tivo = new ChoiceBox<String>();
       tivo.valueProperty().addListener(new ChangeListener<String>() {
          @Override public void changed(ObservableValue<? extends String> ov, String oldVal, String newVal) {
             if (newVal != null && config.gui.remote_gui != null) {                
@@ -64,10 +73,40 @@ public class thumbs {
       });
       tivo.setTooltip(tooltip.getToolTip("tivo_thumbs"));
 
-      Button save = new Button("Save...");
+//      Button save = new Button("Save...");
       save.setTooltip(tooltip.getToolTip("save_thumbs"));
-      save.setOnAction(new EventHandler<ActionEvent>() {
-         public void handle(ActionEvent e) {
+      
+//      Button load = new Button("Load...");
+      load.setTooltip(tooltip.getToolTip("load_thumbs"));
+//      copy = new Button("Copy");
+      copy.setTooltip(tooltip.getToolTip("copy_thumbs"));
+//      refresh = new Button("Refresh");
+      refresh.setTooltip(tooltip.getToolTip("refresh_thumbs"));
+//      update = new Button("Modify");
+      update.setTooltip(tooltip.getToolTip("update_thumbs"));
+//      label = new Label();
+//            
+//      row1.getChildren().add(title);
+//      row1.getChildren().add(tivo_label);
+//      row1.getChildren().add(tivo);
+//      row1.getChildren().add(refresh);
+//      row1.getChildren().add(save);
+//      row1.getChildren().add(load);
+//      row1.getChildren().add(copy);
+//      row1.getChildren().add(update);
+//      row1.getChildren().add(label);
+      
+      tab = new thumbsTable();
+      VBox.setVgrow(tab.TABLE, Priority.ALWAYS); // stretch vertically
+      
+//      panel = new VBox();
+//      panel.setSpacing(1);
+//      panel.getChildren().addAll(row1, tab.TABLE);      
+      panel.getChildren().add(tab.TABLE);
+   }
+   
+   @FXML private void saveCB(ActionEvent e) {
+	   final Window frame = tivo.getScene().getWindow();
             // Save thumbs list
             String tivoName = tivo.getValue();
             if (tivoName != null && tivoName.length() > 0) {
@@ -87,13 +126,10 @@ public class thumbs {
                   }
                }
             }
-         }
-      });
+   }
 
-      Button load = new Button("Load...");
-      load.setTooltip(tooltip.getToolTip("load_thumbs"));
-      load.setOnAction(new EventHandler<ActionEvent>() {
-         public void handle(ActionEvent e) {
+   @FXML private void loadCB(ActionEvent e) {
+	   final Window frame = tivo.getScene().getWindow();
             // Load thumbs list
             String tivoName = tivo.getValue();
             if (tivoName != null && tivoName.length() > 0) {
@@ -109,13 +145,10 @@ public class thumbs {
                   tab.loadThumbs(selectedFile.getAbsolutePath());
                }
             }
-         }
-      });
+   }
 
-      copy = new Button("Copy");
-      copy.setTooltip(tooltip.getToolTip("copy_thumbs"));
-      copy.setOnAction(new EventHandler<ActionEvent>() {
-         public void handle(ActionEvent e) {
+   @FXML private void copyCB(ActionEvent e) {
+	   final Window frame = tivo.getScene().getWindow();
             // Copy selected thumbs to a TiVo
             // Build list of eligible TiVos (series 4 and later and no Minis)
             String thisTivo = tivo.getValue();
@@ -151,51 +184,24 @@ public class thumbs {
                }
                tab.copyThumbs(tivoName);
             }
-         }
-      });
+   }
 
-      refresh = new Button("Refresh");
-      refresh.setTooltip(tooltip.getToolTip("refresh_thumbs"));
-      refresh.setOnAction(new EventHandler<ActionEvent>() {
-         public void handle(ActionEvent e) {
+   @FXML private void refreshCB(ActionEvent e) {
+	   final Window frame = tivo.getScene().getWindow();
             // Refresh thumbs list
             String tivoName = tivo.getValue();
             if (tivoName != null && tivoName.length() > 0) {
                label.setText("");
                tab.refreshThumbs(tivoName);
             }
-         }
-      });
+   }
 
-      update = new Button("Modify");
-      update.setTooltip(tooltip.getToolTip("update_thumbs"));
-      update.setOnAction(new EventHandler<ActionEvent>() {
-         public void handle(ActionEvent e) {
+   @FXML private void updateCB(ActionEvent e) {
+	   final Window frame = tivo.getScene().getWindow();
             // Update thumbs list
             String tivoName = tivo.getValue();
             if (tivoName != null && tivoName.length() > 0)
                label.setText("");
                tab.updateThumbs(tivoName);
-         }
-      });
-      
-      label = new Label();
-            
-      row1.getChildren().add(title);
-      row1.getChildren().add(tivo_label);
-      row1.getChildren().add(tivo);
-      row1.getChildren().add(refresh);
-      row1.getChildren().add(save);
-      row1.getChildren().add(load);
-      row1.getChildren().add(copy);
-      row1.getChildren().add(update);
-      row1.getChildren().add(label);
-      
-      tab = new thumbsTable();
-      VBox.setVgrow(tab.TABLE, Priority.ALWAYS); // stretch vertically
-      
-      panel = new VBox();
-      panel.setSpacing(1);
-      panel.getChildren().addAll(row1, tab.TABLE);      
    }
 }

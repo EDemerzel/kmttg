@@ -1,6 +1,8 @@
 package com.tivo.kmttg.gui.remote;
 
+import java.net.URL;
 import java.util.Hashtable;
+import java.util.ResourceBundle;
 
 import com.tivo.kmttg.JSON.JSONArray;
 import com.tivo.kmttg.JSON.JSONObject;
@@ -18,6 +20,8 @@ import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -33,43 +37,46 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class search {
-   public VBox panel = null;
-   public ChoiceBox<String> tivo = null;
+public class search implements Initializable {
+   @FXML public VBox panel = null;
+   @FXML public ChoiceBox<String> tivo = null;
    public searchTable tab = null;
-   public TextField text = null;
-   public Button button = null;
-   public Spinner<Integer> max = null;
-   public ChoiceBox<String> search_type = null;
-   public CheckBox includeFree = null;
-   public CheckBox includePaid = null;
+   @FXML public TextField text = null;
+   @FXML public Button button = null;
+   @FXML public Spinner<Integer> max = null;
+   @FXML public ChoiceBox<String> search_type = null;
+   @FXML public CheckBox includeFree = null;
+   @FXML public CheckBox includePaid = null;
    //public CheckBox includeVod = null;
    //public CheckBox unavailable = null;
    public Hashtable<String,JSONArray> search_info = new Hashtable<String,JSONArray>();
    public AdvSearch advSearch = new AdvSearch();
-   public Button manual_record = null;
-   public Button record = null;    
-   public Button recordSP = null;    
-   public Button wishlist = null;    
+   @FXML public Button manual_record = null;
+   @FXML public Button record = null;    
+   @FXML public Button recordSP = null;    
+   @FXML public Button wishlist = null;    
    
-   public search (final Stage frame) {
-      
-      // Search tab items      
-      HBox row1 = new HBox();
-      row1.setSpacing(5);
-      row1.setAlignment(Pos.CENTER_LEFT);
-      row1.setPadding(new Insets(5,0,0,5));
-      
-      HBox row2 = new HBox();
-      row2.setSpacing(5);
-      row2.setAlignment(Pos.CENTER_LEFT);
-      row2.setPadding(new Insets(0,0,0,5));
-      
-      Label title = new Label("Search");
-      
-      Label tivo_label = new Label();
-      
-      tivo = new ChoiceBox<String>();
+   @FXML private Button adv;
+   @FXML private Button refresh_todo;
+   
+   @Override
+   public void initialize(URL location, ResourceBundle resources) {
+//      // Search tab items      
+//      HBox row1 = new HBox();
+//      row1.setSpacing(5);
+//      row1.setAlignment(Pos.CENTER_LEFT);
+//      row1.setPadding(new Insets(5,0,0,5));
+//      
+//      HBox row2 = new HBox();
+//      row2.setSpacing(5);
+//      row2.setAlignment(Pos.CENTER_LEFT);
+//      row2.setPadding(new Insets(0,0,0,5));
+//      
+//      Label title = new Label("Search");
+//      
+//      Label tivo_label = new Label();
+//      
+//      tivo = new ChoiceBox<String>();
       tivo.valueProperty().addListener(new ChangeListener<String>() {
          @Override public void changed(ObservableValue<? extends String> ov, String oldVal, String newVal) {
             if (newVal != null && config.gui.remote_gui != null) {
@@ -80,10 +87,100 @@ public class search {
       });
       tivo.setTooltip(tooltip.getToolTip("tivo_search"));
 
-      button = new Button("Search");
+//      button = new Button("Search");
       button.setTooltip(tooltip.getToolTip("button_search"));
-      button.setOnAction(new EventHandler<ActionEvent>() {
-         public void handle(ActionEvent e) {
+//      text = new TextField(); text.setMinWidth(15);
+//      text.setMinWidth(text.getPrefWidth());
+      // Press "Search" button when enter pressed in search text field
+      text.addEventHandler(KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>() {
+         public void handle(KeyEvent event) {
+            if (event.isControlDown())
+               return;
+            if( event.getCode() == KeyCode.ENTER ) {
+               button.fire();
+               event.consume();
+            }
+         }
+      });
+
+      text.setTooltip(tooltip.getToolTip("text_search"));
+
+//      Button adv = new Button("Search++");
+      adv.setTooltip(tooltip.getToolTip("adv_search"));
+      
+//      record = new Button("Record");
+      record.setTooltip(tooltip.getToolTip("record_search"));
+      
+//      recordSP = new Button("SP");
+      recordSP.setTooltip(tooltip.getToolTip("record_sp_search"));
+//      wishlist = new Button("WL");
+      wishlist.setTooltip(tooltip.getToolTip("wishlist_search"));
+//      manual_record = new Button("MR");
+      manual_record.setTooltip(tooltip.getToolTip("guide_manual_record"));
+//      Button refresh_todo = new Button("Refresh ToDo");
+      refresh_todo.setTooltip(tooltip.getToolTip("refresh_todo_search"));
+//      Label max_label = new Label("Max");
+//      max = new Spinner<Integer>(50, 800, 100, 50);
+//      max.setEditable(true);
+//      max.setMaxWidth(90);
+      max.setTooltip(tooltip.getToolTip("max_search"));
+      
+//      row1.getChildren().add(title);
+//      row1.getChildren().add(tivo_label);
+//      row1.getChildren().add(tivo);
+//      row1.getChildren().add(button);
+//      row1.getChildren().add(text);
+//      row1.getChildren().add(max_label);
+//      row1.getChildren().add(max);
+//      row1.getChildren().add(adv);
+//      row1.getChildren().add(record);
+//      row1.getChildren().add(recordSP);
+//      row1.getChildren().add(wishlist);
+//      row1.getChildren().add(manual_record);
+//      row1.getChildren().add(refresh_todo);
+//      
+//      Label search_type_label = new Label("Type");
+//      
+//      search_type = new ChoiceBox<String>();
+//      search_type.getItems().addAll(
+//         "keywords", "actor", "director", "producer", "executiveProducer", "writer"
+//      );
+//      search_type.setValue("keywords");
+      search_type.setTooltip(tooltip.getToolTip("search_type"));
+      
+//      includeFree = new CheckBox("Streaming content");
+//      includeFree.setSelected(false);
+      includeFree.setTooltip(tooltip.getToolTip("includeFree"));
+      
+//      includePaid = new CheckBox("Paid streaming content");
+//      includePaid.setSelected(false);
+      includePaid.setTooltip(tooltip.getToolTip("includePaid"));
+      
+      //includeVod = new CheckBox("VOD content");
+      //includeVod.setSelected(false);
+      //includeVod.setTooltip(tooltip.getToolTip("includeVod"));
+      
+      //unavailable = new CheckBox("Unavailable");
+      //unavailable.setSelected(false);
+      //unavailable.setTooltip(tooltip.getToolTip("unavailable"));
+      
+//      row2.getChildren().add(search_type_label);
+//      row2.getChildren().add(search_type);
+//      row2.getChildren().add(includeFree);
+//      row2.getChildren().add(includePaid);
+      //row2.getChildren().add(includeVod);
+      //row2.getChildren().add(unavailable);
+      
+      tab = new searchTable();
+      VBox.setVgrow(tab.TABLE, Priority.ALWAYS); // stretch vertically
+      
+//      panel = new VBox();
+//      panel.setSpacing(1);
+//      panel.getChildren().addAll(row1, row2, tab.TABLE);
+      panel.getChildren().add(tab.TABLE);
+   }
+
+   @FXML private void buttonCB(ActionEvent e) {
             // New search
             tab.clear();
             String tivoName = tivo.getValue();
@@ -104,64 +201,32 @@ public class search {
                job.remote_search_keyword = keyword;
                jobMonitor.submitNewJob(job);
             }
-         }
-      });
+   }
 
-      text = new TextField(); text.setMinWidth(15);
-      text.setMinWidth(text.getPrefWidth());
-      // Press "Search" button when enter pressed in search text field
-      text.addEventHandler(KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>() {
-         public void handle(KeyEvent event) {
-            if (event.isControlDown())
-               return;
-            if( event.getCode() == KeyCode.ENTER ) {
-               button.fire();
-               event.consume();
-            }
-         }
-      });
-
-      text.setTooltip(tooltip.getToolTip("text_search"));
-
-      Button adv = new Button("Search++");
-      adv.setTooltip(tooltip.getToolTip("adv_search"));
-      adv.setOnAction(new EventHandler<ActionEvent>() {
-         public void handle(ActionEvent e) {
+   @FXML private void advCB(ActionEvent e) {
             String tivoName = tivo.getValue();
             if (tivoName != null && tivoName.length() > 0) {
                advSearch.display(
                   config.gui.getFrame(), tivoName, (Integer)max.getValue()
                );
             }
-         }
-      });
+   }
 
-      record = new Button("Record");
-      record.setTooltip(tooltip.getToolTip("record_search"));
-      record.setOnAction(new EventHandler<ActionEvent>() {
-         public void handle(ActionEvent e) {
+   @FXML private void recordCB(ActionEvent e) {
             String tivoName = tivo.getValue();
             if (tivoName != null && tivoName.length() > 0) {
                tab.recordSingle(tivoName);
             }
-         }
-      });
+   }
 
-      recordSP = new Button("SP");
-      recordSP.setTooltip(tooltip.getToolTip("record_sp_search"));
-      recordSP.setOnAction(new EventHandler<ActionEvent>() {
-         public void handle(ActionEvent e) {
+   @FXML private void recordSPCB(ActionEvent e) {
             String tivoName = tivo.getValue();
             if (tivoName != null && tivoName.length() > 0) {
                tab.recordSP(tivoName);
             }
-         }
-      });
+   }
       
-      wishlist = new Button("WL");
-      wishlist.setTooltip(tooltip.getToolTip("wishlist_search"));
-      wishlist.setOnAction(new EventHandler<ActionEvent>() {
-         public void handle(ActionEvent e) {
+   @FXML private void wishlistCB(ActionEvent e) {
             String tivoName = tivo.getValue();
             if (tivoName != null && tivoName.length() > 0) {
                int[] selected = TableUtil.GetSelectedRows(tab.TABLE);
@@ -170,24 +235,16 @@ public class search {
                   json = tab.GetRowData(selected[0]);
                config.gui.remote_gui.createWishlist(tivoName, json);
             }
-         }
-      });
+   }
       
-      manual_record = new Button("MR");
-      manual_record.setTooltip(tooltip.getToolTip("guide_manual_record"));
-      manual_record.setOnAction(new EventHandler<ActionEvent>() {
-         public void handle(ActionEvent e) {
+   @FXML private void manual_recordCB(ActionEvent e) {
             String tivoName = tivo.getValue();
             if (tivoName != null && tivoName.length() > 0) {
                util.mRecordOpt.promptUser(tivoName);
             }
-         }
-      });
+   }
 
-      Button refresh_todo = new Button("Refresh ToDo");
-      refresh_todo.setTooltip(tooltip.getToolTip("refresh_todo_search"));
-      refresh_todo.setOnAction(new EventHandler<ActionEvent>() {
-         public void handle(ActionEvent e) {
+   @FXML private void refresh_todoCB(ActionEvent e) {
             String tivoName = tivo.getValue();
             if (tivoName != null && tivoName.length() > 0) {
                Task<Void> task = new Task<Void>() {
@@ -200,67 +257,6 @@ public class search {
                };
                new Thread(task).start();
             }
-         }
-      });
-
-      Label max_label = new Label("Max");
-      max = new Spinner<Integer>(50, 800, 100, 50);
-      max.setEditable(true);
-      max.setMaxWidth(90);
-      max.setTooltip(tooltip.getToolTip("max_search"));
-      
-      row1.getChildren().add(title);
-      row1.getChildren().add(tivo_label);
-      row1.getChildren().add(tivo);
-      row1.getChildren().add(button);
-      row1.getChildren().add(text);
-      row1.getChildren().add(max_label);
-      row1.getChildren().add(max);
-      row1.getChildren().add(adv);
-      row1.getChildren().add(record);
-      row1.getChildren().add(recordSP);
-      row1.getChildren().add(wishlist);
-      row1.getChildren().add(manual_record);
-      row1.getChildren().add(refresh_todo);
-      
-      Label search_type_label = new Label("Type");
-      
-      search_type = new ChoiceBox<String>();
-      search_type.getItems().addAll(
-         "keywords", "actor", "director", "producer", "executiveProducer", "writer"
-      );
-      search_type.setValue("keywords");
-      search_type.setTooltip(tooltip.getToolTip("search_type"));
-      
-      includeFree = new CheckBox("Streaming content");
-      includeFree.setSelected(false);
-      includeFree.setTooltip(tooltip.getToolTip("includeFree"));
-      
-      includePaid = new CheckBox("Paid streaming content");
-      includePaid.setSelected(false);
-      includePaid.setTooltip(tooltip.getToolTip("includePaid"));
-      
-      //includeVod = new CheckBox("VOD content");
-      //includeVod.setSelected(false);
-      //includeVod.setTooltip(tooltip.getToolTip("includeVod"));
-      
-      //unavailable = new CheckBox("Unavailable");
-      //unavailable.setSelected(false);
-      //unavailable.setTooltip(tooltip.getToolTip("unavailable"));
-      
-      row2.getChildren().add(search_type_label);
-      row2.getChildren().add(search_type);
-      row2.getChildren().add(includeFree);
-      row2.getChildren().add(includePaid);
-      //row2.getChildren().add(includeVod);
-      //row2.getChildren().add(unavailable);
-      
-      tab = new searchTable();
-      VBox.setVgrow(tab.TABLE, Priority.ALWAYS); // stretch vertically
-      
-      panel = new VBox();
-      panel.setSpacing(1);
-      panel.getChildren().addAll(row1, row2, tab.TABLE);      
    }
 
 }

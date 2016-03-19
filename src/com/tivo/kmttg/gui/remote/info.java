@@ -1,7 +1,9 @@
 package com.tivo.kmttg.gui.remote;
 
+import java.net.URL;
 import java.util.Hashtable;
 import java.util.Optional;
+import java.util.ResourceBundle;
 
 import com.tivo.kmttg.JSON.JSONArray;
 import com.tivo.kmttg.JSON.JSONException;
@@ -16,6 +18,8 @@ import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
@@ -30,27 +34,30 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class info {
-   public VBox panel = null;   
-   public ChoiceBox<String> tivo = null;
-   public Button reboot = null;
-   public TextArea text = null;
+public class info implements Initializable {
+   @FXML public VBox panel = null;   
+   @FXML public ChoiceBox<String> tivo = null;
+   @FXML public Button reboot = null;
+   @FXML public TextArea text = null;
    public Hashtable<String,String> tivo_data = new Hashtable<String,String>();
    public Hashtable<String, Button> buttons = new Hashtable<String, Button>();
    
-   public info (final Stage frame) {
-      
-      // System Information tab items      
-      HBox row1 = new HBox();
-      row1.setSpacing(5);
-      row1.setAlignment(Pos.CENTER_LEFT);
-      row1.setPadding(new Insets(5,0,0,5));
-
-      Label title = new Label("System Information");
-
-      Label tivo_label = new Label("");
-
-      tivo = new ChoiceBox<String>();
+   @FXML private Button refresh;
+   @FXML private Button netconnect;
+   
+   @Override
+   public void initialize(URL location, ResourceBundle resources) {
+//      // System Information tab items      
+//      HBox row1 = new HBox();
+//      row1.setSpacing(5);
+//      row1.setAlignment(Pos.CENTER_LEFT);
+//      row1.setPadding(new Insets(5,0,0,5));
+//
+//      Label title = new Label("System Information");
+//
+//      Label tivo_label = new Label("");
+//
+//      tivo = new ChoiceBox<String>();
       tivo.valueProperty().addListener(new ChangeListener<String>() {
          @Override public void changed(ObservableValue<? extends String> ov, String oldVal, String newVal) {
             if (newVal != null) {
@@ -72,21 +79,40 @@ public class info {
       });
       tivo.setTooltip(tooltip.getToolTip("tivo_info"));
 
-      Button refresh = new Button("Refresh");
+//      Button refresh = new Button("Refresh");
       refresh.setTooltip(tooltip.getToolTip("refresh_info"));
-      refresh.setOnAction(new EventHandler<ActionEvent>() {
-         public void handle(ActionEvent e) {
+//      Button netconnect = new Button("Network Connect");
+      netconnect.setTooltip(tooltip.getToolTip("netconnect_info"));
+//      reboot = new Button("Reboot");
+      reboot.setTooltip(tooltip.getToolTip("reboot_info"));
+
+//      row1.getChildren().add(title);
+//      row1.getChildren().add(tivo_label);
+//      row1.getChildren().add(tivo);
+//      row1.getChildren().add(util.space(40));
+//      row1.getChildren().add(refresh);
+//      row1.getChildren().add(netconnect);
+//      row1.getChildren().add(util.space(40));
+//      row1.getChildren().add(reboot);
+//
+//      text = new TextArea();
+//      text.setStyle("-fx-font-family: monospace;");
+//      text.setEditable(false);
+//      text.setWrapText(true); // This disables horizontal scrollbar
+//      VBox.setVgrow(text, Priority.ALWAYS); // stretch vertically
+//
+//      panel = new VBox();
+//      panel.setSpacing(1);
+//      panel.getChildren().addAll(row1, text);
+   }
+   @FXML private void refreshCB(ActionEvent e) {
             // Refresh info text
             String tivoName = tivo.getValue();
             if (tivoName != null && tivoName.length() > 0)
                RC_infoCB(tivoName);
-         }
-      });
-
-      Button netconnect = new Button("Network Connect");
-      netconnect.setTooltip(tooltip.getToolTip("netconnect_info"));
-      netconnect.setOnAction(new EventHandler<ActionEvent>() {
-         public void handle(ActionEvent e) {
+   }
+   
+   @FXML private void netconnectCB(ActionEvent e) {
             // Initiate a net connect on selected TiVo
             String tivoName = tivo.getValue();
             if (tivoName != null && tivoName.length() > 0) {
@@ -100,13 +126,9 @@ public class info {
                   r.disconnect();
                }
             }
-         }
-      });
+   }
 
-      reboot = new Button("Reboot");
-      reboot.setTooltip(tooltip.getToolTip("reboot_info"));
-      reboot.setOnAction(new EventHandler<ActionEvent>() {
-         public void handle(ActionEvent e) {
+   @FXML private void rebootCB(ActionEvent e) {
             // Reboot selected TiVo
             final String tivoName = tivo.getValue();
             if (tivoName != null && tivoName.length() > 0) {
@@ -126,29 +148,8 @@ public class info {
                   }
                });
             }
-         }
-      });
-
-      row1.getChildren().add(title);
-      row1.getChildren().add(tivo_label);
-      row1.getChildren().add(tivo);
-      row1.getChildren().add(util.space(40));
-      row1.getChildren().add(refresh);
-      row1.getChildren().add(netconnect);
-      row1.getChildren().add(util.space(40));
-      row1.getChildren().add(reboot);
-
-      text = new TextArea();
-      text.setStyle("-fx-font-family: monospace;");
-      text.setEditable(false);
-      text.setWrapText(true); // This disables horizontal scrollbar
-      VBox.setVgrow(text, Priority.ALWAYS); // stretch vertically
-
-      panel = new VBox();
-      panel.setSpacing(1);
-      panel.getChildren().addAll(row1, text);
-
    }
+
    private void RC_infoCB(final String tivoName) {
       Task<Void> task = new Task<Void>() {
          @Override public Void call() {

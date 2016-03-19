@@ -79,7 +79,11 @@
     </Menu>
 </MenuBar>
 <SplitPane orientation="HORIZONTAL" dividerPositions=".75" fx:id="helpSplit">
-<SplitPane fx:id="jContentPane" dividerPositions=".5,1.00" orientation="VERTICAL">
+<SplitPane fx:id="jContentPane" dividerPositions="1.00" orientation="VERTICAL">
+    <TabPane VBox.vgrow="ALWAYS" tabClosingPolicy="UNAVAILABLE" prefHeight="1000">
+    
+    <Tab text="Recordings">
+    <SplitPane fx:id="recordingsSplit" dividerPositions=".25" orientation="VERTICAL">
     <HBox>
      <StackPane fx:id="show_details_stack" HBox.hgrow="SOMETIMES" maxWidth="600">
         <fx:include fx:id="showDetails" source="dialog/ShowDetails.fxml" />
@@ -87,6 +91,7 @@
         <WebView fx:id="plain_show_details_view" />
         <!-- Tivo-specific graphs are dynamically added -->
      </StackPane>
+     
     <TitledPane id="startPane" text="%startPane" collapsible="false" expanded="true" HBox.hgrow="SOMETIMES">
       <VBox>
       <padding><Insets top="0" right="0" bottom="0" left="0"/></padding>
@@ -144,19 +149,13 @@
      </HBox>
       </VBox>
      </TitledPane>
+     
      </HBox>
+     <!--  splitter  -->
     <VBox>
         <TabPane fx:id="tabbed_panel" VBox.vgrow="ALWAYS" tabClosingPolicy="UNAVAILABLE" prefHeight="1000">
             <Tab text="%tab_files">
                 <!--  new tivoTab("FILES").getPanel() -->
-            </Tab>
-            <!--  if config.GUIDMODE && remote_gui == null -->
-            <Tab text="%tab_remote">
-                <!--  (remote_gui = new remotegui(jFrame)).getPanel() -->
-            </Tab>
-            <!-- during refreshOptions  if config.slingBox == 1 (actively remove if 0)-->
-            <Tab text="%tab_slingbox">
-                <!--  (slingbox_gui = new slingboxgui(jFrame)).getPanel() -->
             </Tab>
             <!-- Tivo-titled tabs are dynamically added/removed -->
             <!-- 
@@ -166,6 +165,31 @@
              -->
         </TabPane>
     </VBox> 
+    </SplitPane>
+    </Tab>
+    
+    <Tab text="Scheduled" fx:id="schedules_tab">
+        <!--  set in class to share controller <fx:include source="remote/schedules.fxml"/> -->
+        <!-- 
+        <TabPane fx:id="tabbed_panel_scheduled" VBox.vgrow="ALWAYS" tabClosingPolicy="UNAVAILABLE" prefHeight="1000">
+            < ! - -  if config.GUIDMODE && remote_gui == null - - >
+            <Tab text="%tab_remote">
+                < ! - -  (remote_gui = new remotegui(jFrame)).getPanel() - - >
+            </Tab>
+            < ! - - during refreshOptions  if config.slingBox == 1 (actively remove if 0)- - >
+            <Tab text="%tab_slingbox">
+                < ! - -  (slingbox_gui = new slingboxgui(jFrame)).getPanel() - - >
+            </Tab>
+        </TabPane>
+         -->
+    </Tab>
+    
+    <Tab text="Apps" fx:id="apps_tab">
+        <!-- set in class to share controller <fx:include source="remote/apps.fxml"/>  -->
+    </Tab>
+    
+    </TabPane>
+    
     <TitledPane fx:id="progressPane" text="%progressPane" expanded="false">
         <VBox minHeight="150">
         <padding><Insets top="0" right="0" bottom="0" left="0"/></padding>

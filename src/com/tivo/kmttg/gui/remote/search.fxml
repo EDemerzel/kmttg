@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?scenebuilder-stylesheet ../../../../../../release/css/kmttg.css?>
+
+<?import java.lang.*?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.geometry.Insets?>
+
+
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tivo.kmttg.gui.remote.search"
+    fx:id="panel" spacing="1">
+    <HBox spacing="5" alignment="CENTER_LEFT">
+    <padding><Insets top="5" right="0" bottom="0" left="5"/></padding>
+        <Label text="Search"/>
+        <Label /><!-- tivo_label... has no content. -->
+        <ChoiceBox fx:id="tivo"></ChoiceBox>
+        <Button fx:id="button" text="Search" onAction="#buttonCB"/>
+        <TextField fx:id="text" minWidth="15"/><!--  TODO also sets minWidth to getPrefWidth() -->
+        <Label text="Max"/>
+        <Spinner fx:id="max" min="50" max="800" initialValue="100" amountToStepBy="50" editable="true" maxWidth="90"/>
+        <Button fx:id="adv" text="Search++" onAction="#advCB"/>
+        <Button fx:id="record" text="Record" onAction="#recordCB"/>
+        <Button fx:id="recordSP" text="SP" onAction="#recordSPCB"/>
+        <Button fx:id="wishlist" text="WL" onAction="#wishlistCB"/>
+        <Button fx:id="manual_record" text="MR" onAction="#manual_recordCB"/>
+        <Button fx:id="refresh_todo" text="Refresh ToDo" onAction="#refresh_todoCB"/>
+    </HBox>
+    
+    <HBox spacing="5" alignment="CENTER_LEFT">
+    <padding><Insets top="0" right="0" bottom="0" left="5"/></padding>
+        <Label text="Type" />
+        <ChoiceBox fx:id="search_type" value="keywords">
+            <String fx:value="keywords"/>
+            <String fx:value="actor"/>
+            <String fx:value="director"/>
+            <String fx:value="producer"/>
+            <String fx:value="executiveProducer"/>
+            <String fx:value="writer"/>
+        </ChoiceBox>
+        <CheckBox fx:id="includeFree" text="Streaming content" selected="false" />
+        <CheckBox fx:id="includePaid" text="Paid streaming content" selected="false" />
+        
+        <!--  table vgrow=ALWAYS -->
+    </HBox>
+</VBox>
+
